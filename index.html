@@ -15,10 +15,10 @@
     <!-- Open Graph / WhatsApp / Facebook / Instagram -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Operação Sob Controle — Por Tata Pereira">
-    <meta property="og:description" content="Em 7 dias, estruture o Processo de Avaliação de Cães da sua empresa pet e pare de decidir no improviso. De 24 a 30 de agosto.">
-    <meta property="og:url" content="https://www.tatapereira.com/">
-    <meta property="og:image" content="https://www.tatapereira.com/assets/og-cover.jpg">
-    <meta property="og:image:secure_url" content="https://www.tatapereira.com/assets/og-cover.jpg">
+    <meta property="og:description" content="Em 7 dias, estruture o Processo de Avaliação de Cães da sua empresa pet e pare de decidir no improviso. De 12 a 18 de agosto.">
+    <meta property="og:url" content="https://profissaopet.github.io/sob-controle/">
+    <meta property="og:image" content="https://raw.githubusercontent.com/profissaopet/sob-controle/main/assets/og-cover.jpg">
+    <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/profissaopet/sob-controle/main/assets/og-cover.jpg">
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="675">
@@ -29,8 +29,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Operação Sob Controle — Por Tata Pereira">
     <meta name="twitter:description" content="Em 7 dias, estruture o Processo de Avaliação de Cães da sua empresa pet.">
-    <meta name="twitter:image" content="https://www.tatapereira.com/assets/og-cover.jpg">
-    <meta name="twitter:url" content="https://www.tatapereira.com/">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/profissaopet/sob-controle/main/assets/og-cover.jpg">
 
     <!-- Schema.org Dados Estruturados (JSON-LD) -->
     <script type="application/ld+json">
@@ -59,8 +58,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Script Oficial da Stripe -->
-    <script async src="https://js.stripe.com/v3/checkout.js"></script>
+    
     
     <style>
         /* CSS Reset & Variables */
@@ -223,8 +221,8 @@
         .hero-media {
             animation: floatMedia 5s ease-in-out infinite;
             margin: 25px auto;
-            max-width: 720px;
-            aspect-ratio: 16 / 9;
+            width: min(100%, 420px);
+            aspect-ratio: 9 / 16;
             border-radius: 18px;
             overflow: hidden;
             border: 2px solid rgba(255, 255, 255, 0.05);
@@ -235,6 +233,13 @@
             width: 100%;
             display: block;
             filter: brightness(0.95);
+        }
+
+        .hero-media iframe {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border: 0;
         }
 
         .hero-date {
@@ -1189,9 +1194,7 @@
                 padding: 10px;
             }
 
-            .stripe-popup-container {
-                padding: 24px 18px 20px 18px;
-            }
+
             .bio-wrapper {
                 flex-direction: column;
                 gap: 20px;
@@ -1235,9 +1238,9 @@
                     <span class="digit-unit">s</span>
                 </div>
             </div>
-            <button class="header-banner-cta open-stripe-modal" type="button" aria-label="Abrir modal de inscrição">
+            <a href="https://pay.hotmart.com/M107075913V" target="_blank" class="header-banner-cta">
                 Garantir vaga
-            </button>
+            </a>
         </div>
     </div>
 
@@ -1249,18 +1252,15 @@
             <h1>Em 7 dias, estruture o Processo de Avaliação de Cães da sua empresa e pare de decidir no improviso</h1>
             <p class="hero-subtitle">Crie critérios mais claros para decidir quais cães podem fazer parte da sua operação com mais segurança, organização e previsibilidade.</p>
             
-            <!-- REQUISITO: Div da imagem do processo e player de vídeo -->
+            <!-- Vídeo do desafio em formato vertical -->
             <div class="hero-media" style="position: relative;">
-                <img src="https://raw.githubusercontent.com/profissaopet/sob-controle/main/assets/3.png" alt="Tata Pereira com cão branco de coleira colorida">
-                <button type="button" class="open-stripe-modal" aria-label="Abrir modal de inscrição">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="white" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                </button>
+                <iframe src="https://www.youtube.com/embed/ftuq3dwJDRk?autoplay=1&amp;mute=0&amp;playsinline=1&amp;rel=0" title="Vídeo do desafio Operação Sob Controle" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
-              <div class="hero-date">De 24 a 30 de agosto, às 20h.</div>
+              <div class="hero-date">De 12 a 18 de agosto, às 20h.</div>
             <br>
               <!-- REQUISITO: Div de inscrições/botões fica localizada abaixo da imagem -->
             <div style="margin-top: 10px;">
-                <button class="cta-btn open-stripe-modal">Quero Estruturar Meu Processo</button>
+                <a href="https://pay.hotmart.com/M107075913V" target="_blank" class="cta-btn">Quero Estruturar Meu Processo</a>
                 <span class="cta-subtext">Vagas limitadas.</span>
             </div>
             
@@ -1317,7 +1317,7 @@
             </div>
             
             <div class="text-center" style="margin-top: 30px;">
-                <button class="cta-btn open-stripe-modal">Quero Participar do Desafio</button>
+                <a href="https://pay.hotmart.com/M107075913V" target="_blank" class="cta-btn">Quero Participar do Desafio</a>
             </div>
         </div>
     </section>
@@ -1398,7 +1398,7 @@
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
                     </div>
                     <div class="feature-title">Quando</div>
-                    <div class="feature-desc">De 24 a 30 de agosto, encontros ao vivo às 20h pelo Google Meet.</div>
+                    <div class="feature-desc">De 12 a 18 de agosto, encontros ao vivo às 20h pelo Google Meet.</div>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon-wrapper">
@@ -1557,7 +1557,7 @@
                 </div>
                 <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px;">Apenas para os primeiros participantes do desafio</p>
                 
-                <button class="cta-btn open-stripe-modal" style="width: 100%;">Quero Garantir Minha Vaga por R$37</button>
+                <a href="https://pay.hotmart.com/M107075913V" target="_blank" class="cta-btn" style="width: 100%;">Quero Garantir Minha Vaga por R$37</a>
                 <span class="cta-subtext" style="margin-top: 12px;">Vagas limitadas.</span>
             </div>
         </div>
@@ -1570,59 +1570,59 @@
             <div class="includes-list">
                 <div class="checklist-item">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    <span> 6 encontros ao vivo de implementação</span>
+                    <span>✓ 6 encontros ao vivo de implementação</span>
                 </div>
                 <div class="checklist-item">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    <span> 1 Imersão Domus ao vivo</span>
+                    <span>✓ 1 Imersão Domus ao vivo</span>
                 </div>
                 <div class="checklist-item">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    <span> Mapa do Processo de Avaliação</span>
+                    <span>✓ Mapa do Processo de Avaliação</span>
                 </div>
                 <div class="checklist-item">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    <span> Fluxograma completo</span>
+                    <span>✓ Fluxograma completo</span>
                 </div>
                 <div class="checklist-item">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    <span> Questionário de Avaliação editável</span>
+                    <span>✓ Questionário de Avaliação editável</span>
                 </div>
                 <div class="checklist-item">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    <span> Checklist Técnico</span>
+                    <span>✓ Checklist Técnico</span>
                 </div>
                 <div class="checklist-item">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    <span> Matriz de Decisão</span>
+                    <span>✓ Matriz de Decisão</span>
                 </div>
                 <div class="checklist-item">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    <span> Modelo de POP</span>
+                    <span>✓ Modelo de POP</span>
                 </div>
                 <div class="checklist-item">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    <span> Modelo de Relatório</span>
+                    <span>✓ Modelo de Relatório</span>
                 </div>
                 <div class="checklist-item">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    <span> Planilha de Controle das Avaliações</span>
+                    <span>✓ Planilha de Controle das Avaliações</span>
                 </div>
                 <div class="checklist-item">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    <span> Dashboard de acompanhamento</span>
+                    <span>✓ Dashboard de acompanhamento</span>
                 </div>
                 <div class="checklist-item">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    <span> Grupo exclusivo no WhatsApp + acesso 30 dias</span>
+                    <span>✓ Grupo exclusivo no WhatsApp + acesso 30 dias</span>
                 </div>
                 <div class="checklist-item">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    <span> BÔNUS 01: Google Forms na Prática</span>
+                    <span>✓ BÔNUS 01: Google Forms na Prática</span>
                 </div>
                 <div class="checklist-item">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                    <span> BÔNUS 02: Introdução aos Drives Caninos</span>
+                    <span>✓ BÔNUS 02: Introdução aos Drives Caninos</span>
                 </div>
             </div>
         </div>
@@ -1817,10 +1817,10 @@
         <div class="container">
             <h2 style="font-size: 2rem; line-height: 1.3; margin-bottom: 15px;">Pare de decidir no improviso.<br>Estruture seu processo em 7 dias.</h2>
             <p style="color: var(--text-muted); font-size: 1.05rem; max-width: 650px; margin: 0 auto 30px auto;">
-                De 24 a 30 de agosto, às 20h • 6 encontros + 1 Imersão Domus + materiais editáveis + grupo de implementação
+                De 12 a 18 de agosto, às 20h • 6 encontros + 1 Imersão Domus + materiais editáveis + grupo de implementação
             </p>
             
-            <button class="cta-btn open-stripe-modal">Quero Estruturar Meu Processo de Avaliação</button>
+            <a href="https://pay.hotmart.com/M107075913V" target="_blank" class="cta-btn">Quero Estruturar Meu Processo de Avaliação</a>
             <span class="cta-subtext" style="margin-top: 12px;">Vagas limitadas.</span>
         </div>
     </section>
@@ -1837,33 +1837,7 @@
     </footer>
 
 
-    <!-- MODAL POP-UP CONTAINER DO COMPONENTE OFICIAL DA STRIPE -->
-    <div id="stripe-checkout-popup" class="stripe-popup-overlay">
-        <div class="stripe-popup-container" role="dialog" aria-modal="true" aria-labelledby="stripe-popup-title">
-            <button id="close-stripe-popup" class="stripe-popup-close" aria-label="Fechar janela">
-                <svg width="22" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-            </button>
 
-            <span class="stripe-popup-badge">Pagamento seguro</span>
-            <h3 id="stripe-popup-title" style="font-size: 1.3rem; font-weight: 800; margin-bottom: 6px; color: var(--text-white);">Finalize sua inscrição</h3>
-            <p class="stripe-popup-content">
-                Clique no botão oficial abaixo para abrir o ambiente criptografado de pagamento com cartão ou Pix.
-            </p>
-
-            <div style="margin: 6px 0 18px; padding: 14px 16px; border-radius: 14px; background: rgba(241, 191, 66, 0.12); border: 1px solid rgba(241, 191, 66, 0.2);">
-                <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-yellow); font-weight: 700; margin-bottom: 4px;">Oferta especial</div>
-                <div style="font-size: 1.85rem; font-weight: 800; color: var(--text-white);">R$ 37</div>
-                <div style="font-size: 0.9rem; color: var(--text-muted);">Acesso imediato ao desafio</div>
-            </div>
-
-            <div class="stripe-popup-buywrap">
-                <div id="stripe-buy-button-container"><stripe-buy-button
-  buy-button-id="buy_btn_1TuG9jPoZcULugVUnpTDLqb2"
-  publishable-key="pk_live_51SS2SwPoZcULugVU9M7u6QgIyVAiVSQY7b4xLnQYp0MD68jbXJu00Utq7mr7QXlTO1muco8yx5kUiJxlH9TJFP4F00hDhYks6X"
-></div>
-            </div>
-        </div>
-    </div>
 
 
     <!-- Script Accordion do FAQ -->
@@ -1882,55 +1856,7 @@
         });
     </script>
 
-    <!-- Script de Ativação do Modal Dinâmico da Stripe -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const stripeModal = document.getElementById('stripe-checkout-popup');
-            const openModalButtons = document.querySelectorAll('.open-stripe-modal');
-            const closeModalButton = document.getElementById('close-stripe-popup');
-            const stripeContainer = document.getElementById('stripe-buy-button-container');
 
-            openModalButtons.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    stripeModal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
-
-                    if (stripeContainer && !stripeContainer.dataset.initialized) {
-                        stripeContainer.dataset.initialized = 'true';
-                        const script = document.createElement('script');
-                        script.src = 'https://js.stripe.com/v3/buy-button.js';
-                        script.async = true;
-                        script.onload = function() {
-                            if (window.StripeBuyButton) {
-                                window.StripeBuyButton({
-                                    publishableKey: 'pk_live_51SS2SwPoZcULugVU9M7u6QgIyVAiVSQY7b4xLnQYp0MD68jbXJu00Utq7mr7QXlTO1muco8yx5kUiJxlH9TJFP4F00hDhYks6X',
-                                    buyButtonId: 'buy_btn_1TuG9jPoZcULugVUnpTDLqb2',
-                                    containerId: 'stripe-buy-button-container'
-                                });
-                            }
-                        };
-                        document.body.appendChild(script);
-                    }
-                });
-            });
-
-            if (closeModalButton) {
-                closeModalButton.addEventListener('click', closePopup);
-            }
-
-            stripeModal.addEventListener('click', (e) => {
-                if (e.target === stripeModal) {
-                    closePopup();
-                }
-            });
-
-            function closePopup() {
-                stripeModal.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-    </script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -1942,7 +1868,7 @@
 
             if (!daysEl || !hoursEl || !minutesEl || !secondsEl || !statusEl) return;
 
-            const targetDate = new Date('2026-08-24T20:00:00-03:00');
+            const targetDate = new Date('2026-08-11T20:00:00-03:00');
 
             function updateCountdown() {
                 const now = new Date();
