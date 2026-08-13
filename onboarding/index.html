@@ -3,776 +3,110 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow, noarchive">
-  <meta name="theme-color" content="#0f101d">
-  <title>Bem-vinda! | Operação Sob Controle</title>
-
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#0b0c16">
+  <title>Seu projeto começa agora | Operação Sob Controle</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-
   <style>
-    :root {
-      --bg: #0b0c16;
-      --bg-2: #101221;
-      --card: rgba(25, 27, 47, .72);
-      --card-solid: #17192b;
-      --yellow: #f1bf42;
-      --yellow-2: #f6cf68;
-      --yellow-glow: rgba(241,191,66,.24);
-      --green: #45d483;
-      --white: #fff;
-      --muted: #a6aac5;
-      --muted-2: #747995;
-      --line: rgba(255,255,255,.09);
-      --line-yellow: rgba(241,191,66,.35);
-      --radius: 18px;
-      --shadow: 0 25px 70px rgba(0,0,0,.34);
-    }
-
-    * { box-sizing: border-box; }
-
-    html, body {
-      margin: 0;
-      min-height: 100%;
-      background: var(--bg);
-      color: var(--white);
-      font-family: Inter, system-ui, sans-serif;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    body {
-      overflow-x: hidden;
-      background:
-        radial-gradient(circle at 15% 8%, rgba(241,191,66,.12), transparent 27rem),
-        radial-gradient(circle at 88% 88%, rgba(86,91,163,.14), transparent 30rem),
-        var(--bg);
-    }
-
-    button, a { font: inherit; }
-    button { color: inherit; }
-    a { color: inherit; }
-
-    .app {
-      width: min(1180px, 100%);
-      min-height: 100vh;
-      margin: auto;
-      padding: 22px 24px 26px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* ---------- Header ---------- */
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      padding-bottom: 17px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-    }
-
-    .brand img {
-      width: 38px;
-      height: 38px;
-      object-fit: contain;
-    }
-
-    .brand small {
-      display: block;
-      color: var(--yellow);
-      font-size: .65rem;
-      font-weight: 800;
-      letter-spacing: .15em;
-      text-transform: uppercase;
-    }
-
-    .brand strong {
-      display: block;
-      margin-top: 2px;
-      font-family: "Plus Jakarta Sans", sans-serif;
-      font-size: .9rem;
-    }
-
-    .purchase {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 12px;
-      border: 1px solid rgba(69,212,131,.25);
-      border-radius: 999px;
-      background: rgba(69,212,131,.08);
-      color: var(--green);
-      font-size: .73rem;
-      font-weight: 800;
-      white-space: nowrap;
-    }
-
-    .purchase i {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 9px var(--green);
-    }
-
-    /* ---------- Hero ---------- */
-    .hero {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(390px, .9fr);
-      align-items: center;
-      gap: clamp(35px, 7vw, 90px);
-      flex: 1;
-      padding: 42px 0 30px;
-    }
-
-    .hero-copy {
-      position: relative;
-      max-width: 610px;
-    }
-
-    .welcome {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 11px;
-      border: 1px solid var(--line-yellow);
-      border-radius: 999px;
-      background: rgba(241,191,66,.06);
-      color: var(--yellow);
-      font-size: .7rem;
-      font-weight: 800;
-      letter-spacing: .07em;
-      text-transform: uppercase;
-      animation: rise .6s ease both;
-    }
-
-    .welcome span {
-      font-size: .95rem;
-      line-height: 1;
-    }
-
-    h1 {
-      margin: 17px 0 14px;
-      font-family: "Plus Jakarta Sans", sans-serif;
-      font-size: clamp(2.45rem, 5vw, 4.7rem);
-      line-height: .98;
-      letter-spacing: -.055em;
-      animation: rise .65s .05s ease both;
-    }
-
-    h1 .gold {
-      display: block;
-      background: linear-gradient(110deg, #fff 15%, var(--yellow-2) 72%, var(--yellow) 100%);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .hero-copy > p {
-      max-width: 560px;
-      margin: 0;
-      color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.7;
-      animation: rise .65s .1s ease both;
-    }
-
-    .mini-promise {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-top: 22px;
-      animation: rise .65s .15s ease both;
-    }
-
-    .mini-promise span {
-      padding: 8px 11px;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      background: rgba(255,255,255,.025);
-      color: #dfe1ef;
-      font-size: .74rem;
-      font-weight: 700;
-    }
-
-    /* ---------- Onboarding card ---------- */
-    .onboarding {
-      position: relative;
-      padding: 20px;
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      background: linear-gradient(145deg, rgba(28,30,52,.84), rgba(15,16,29,.86));
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      animation: card-in .7s .12s ease both;
-    }
-
-    .onboarding::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      border-radius: inherit;
-      background: linear-gradient(135deg, rgba(241,191,66,.10), transparent 30%);
-    }
-
-    .card-top {
-      position: relative;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 18px;
-    }
-
-    .card-kicker {
-      color: var(--muted);
-      font-size: .72rem;
-      font-weight: 700;
-    }
-
-    .step-counter {
-      color: var(--yellow);
-      font-size: .72rem;
-      font-weight: 800;
-    }
-
-    .progress {
-      position: relative;
-      height: 5px;
-      margin-bottom: 22px;
-      overflow: hidden;
-      border-radius: 999px;
-      background: rgba(255,255,255,.07);
-    }
-
-    .progress-bar {
-      width: 33.333%;
-      height: 100%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, var(--yellow), var(--yellow-2));
-      box-shadow: 0 0 16px var(--yellow-glow);
-      transition: width .35s ease;
-    }
-
-    .steps {
-      position: relative;
-      min-height: 245px;
-    }
-
-    .step {
-      display: none;
-      animation: step-in .3s ease both;
-    }
-
-    .step.active { display: block; }
-
-    .step-icon {
-      display: grid;
-      width: 46px;
-      height: 46px;
-      place-items: center;
-      margin-bottom: 13px;
-      border: 1px solid var(--line-yellow);
-      border-radius: 13px;
-      background: rgba(241,191,66,.08);
-      font-size: 1.25rem;
-    }
-
-    .step h2 {
-      margin: 0 0 8px;
-      font-family: "Plus Jakarta Sans", sans-serif;
-      font-size: 1.25rem;
-      letter-spacing: -.025em;
-    }
-
-    .step > p {
-      margin: 0;
-      color: var(--muted);
-      font-size: .85rem;
-      line-height: 1.55;
-    }
-
-    .choice-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 10px;
-      margin-top: 18px;
-    }
-
-    .choice {
-      padding: 13px;
-      border: 1px solid var(--line);
-      border-radius: 13px;
-      background: rgba(8,9,17,.45);
-      cursor: pointer;
-      text-align: left;
-      transition: .2s ease;
-    }
-
-    .choice:hover,
-    .choice.selected {
-      border-color: var(--line-yellow);
-      background: rgba(241,191,66,.07);
-      transform: translateY(-2px);
-    }
-
-    .choice strong {
-      display: block;
-      color: var(--yellow);
-      font-size: .78rem;
-      margin-bottom: 4px;
-    }
-
-    .choice span {
-      color: var(--muted);
-      font-size: .72rem;
-      line-height: 1.4;
-    }
-
-    .journey-preview {
-      display: grid;
-      grid-template-columns: repeat(7,1fr);
-      gap: 5px;
-      margin-top: 19px;
-    }
-
-    .journey-preview span {
-      padding: 9px 2px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      color: var(--muted);
-      font-size: .62rem;
-      font-weight: 800;
-      text-align: center;
-    }
-
-    .journey-preview span:first-child {
-      border-color: var(--yellow);
-      background: var(--yellow-glow);
-      color: var(--yellow);
-    }
-
-    .delivery {
-      margin-top: 18px;
-      padding: 13px 14px;
-      border: 1px dashed var(--line-yellow);
-      border-radius: 12px;
-      background: rgba(241,191,66,.045);
-    }
-
-    .delivery strong {
-      display: block;
-      margin-bottom: 3px;
-      color: var(--yellow);
-      font-size: .78rem;
-    }
-
-    .delivery span {
-      color: var(--muted);
-      font-size: .72rem;
-      line-height: 1.4;
-    }
-
-    /* ---------- Bottom navigation ---------- */
-    .onboarding-nav {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-top: 17px;
-      padding-top: 16px;
-      border-top: 1px solid var(--line);
-    }
-
-    .back {
-      border: 0;
-      background: transparent;
-      color: var(--muted);
-      cursor: pointer;
-      font-size: .76rem;
-      font-weight: 700;
-    }
-
-    .back:hover { color: var(--white); }
-
-    .next,
-    .start {
-      display: inline-flex;
-      min-height: 43px;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 10px 17px;
-      border: 0;
-      border-radius: 11px;
-      background: linear-gradient(135deg, var(--yellow-2), #dfa92c);
-      color: var(--bg);
-      cursor: pointer;
-      font-size: .78rem;
-      font-weight: 800;
-      box-shadow: 0 7px 20px var(--yellow-glow);
-      transition: .2s ease;
-    }
-
-    .next:hover,
-    .start:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 11px 28px rgba(241,191,66,.32);
-    }
-
-    .back[hidden],
-    .start[hidden],
-    .next[hidden] { display: none; }
-
-    /* ---------- Final CTA ---------- */
-    .final-cta {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding-top: 14px;
-      border-top: 1px solid var(--line);
-      text-align: center;
-    }
-
-    .final-cta a {
-      display: inline-flex;
-      min-height: 48px;
-      width: min(100%, 570px);
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 13px 22px;
-      border-radius: 12px;
-      background: rgba(241,191,66,.08);
-      border: 1px solid var(--line-yellow);
-      color: var(--yellow);
-      text-decoration: none;
-      font-family: "Plus Jakarta Sans", sans-serif;
-      font-size: .86rem;
-      font-weight: 800;
-      transition: .2s ease;
-    }
-
-    .final-cta a:hover {
-      background: var(--yellow);
-      color: var(--bg);
-      transform: translateY(-2px);
-    }
-
-    .final-cta small {
-      margin-top: 7px;
-      color: var(--muted-2);
-      font-size: .67rem;
-    }
-
-    /* ---------- Accessibility / motion ---------- */
-    :focus-visible {
-      outline: 3px solid var(--yellow);
-      outline-offset: 3px;
-    }
-
-    @keyframes rise {
-      from { opacity: 0; transform: translateY(14px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes card-in {
-      from { opacity: 0; transform: translateX(22px) scale(.985); }
-      to { opacity: 1; transform: translateX(0) scale(1); }
-    }
-
-    @keyframes step-in {
-      from { opacity: 0; transform: translateX(8px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
-      }
-    }
-
-    /* ---------- Responsive ---------- */
-    @media (max-width: 850px) {
-      .hero {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        padding-top: 34px;
-      }
-
-      .hero-copy {
-        max-width: 720px;
-        margin: auto;
-        text-align: center;
-      }
-
-      .welcome,
-      .mini-promise {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .mini-promise { justify-content: center; }
-
-      h1 { font-size: clamp(2.4rem, 9vw, 3.8rem); }
-    }
-
-    @media (max-width: 540px) {
-      .app { padding: 15px; }
-
-      header { align-items: flex-start; }
-
-      .purchase {
-        padding: 6px 9px;
-        font-size: .66rem;
-      }
-
-      .purchase i { display: none; }
-
-      .hero { padding: 30px 0 24px; }
-
-      .hero-copy > p { font-size: .9rem; }
-
-      .onboarding {
-        padding: 16px;
-        border-radius: 17px;
-      }
-
-      .choice-grid { grid-template-columns: 1fr; }
-
-      .journey-preview span {
-        padding: 8px 1px;
-        font-size: .58rem;
-      }
-
-      .onboarding-nav { margin-top: 14px; }
-    }
+    :root{--bg:#0b0c16;--panel:#151728;--panel2:#1a1d32;--gold:#f1bf42;--gold2:#f8d879;--green:#47d58a;--white:#fff;--muted:#a8adc8;--dim:#737995;--line:rgba(255,255,255,.09);--goldline:rgba(241,191,66,.34);--danger:#ff8585;--radius:20px;--shadow:0 28px 90px rgba(0,0,0,.38)}
+    *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--white);font-family:Inter,sans-serif;-webkit-font-smoothing:antialiased}body{overflow-x:hidden;background:radial-gradient(circle at 15% 4%,rgba(241,191,66,.12),transparent 28rem),radial-gradient(circle at 90% 90%,rgba(83,89,158,.14),transparent 30rem),var(--bg)}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.26;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:38px 38px;mask-image:linear-gradient(to bottom,#000,transparent 85%)}
+    button,a{font:inherit}.shell{position:relative;width:min(1180px,calc(100% - 40px));margin:auto}.topbar{height:76px;display:flex;align-items:center;border-bottom:1px solid var(--line)}.topbar .shell{display:flex;align-items:center;justify-content:space-between;gap:15px}.brand{display:flex;align-items:center;gap:10px}.brand img{width:39px;height:39px;object-fit:contain}.brand small,.brand strong{display:block}.brand small{color:var(--gold);font-size:.64rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}.brand strong{margin-top:2px;font-family:"Plus Jakarta Sans",sans-serif;font-size:.88rem}.confirmed{display:flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid rgba(71,213,138,.25);border-radius:99px;background:rgba(71,213,138,.07);color:var(--green);font-size:.72rem;font-weight:800}.confirmed i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
+    main{padding:40px 0 55px}.state{display:none}.state.active{display:block;animation:rise .5s ease both}.status{max-width:610px;margin:10vh auto;padding:44px 28px;border:1px solid var(--line);border-radius:var(--radius);background:rgba(21,23,40,.88);box-shadow:var(--shadow);text-align:center}.status-icon{width:58px;height:58px;margin:0 auto 18px;border:1px solid var(--goldline);border-radius:50%;display:grid;place-items:center;color:var(--gold);background:rgba(241,191,66,.08);font-size:1.25rem;font-weight:800}.spinner{width:25px;height:25px;border:3px solid rgba(241,191,66,.2);border-top-color:var(--gold);border-radius:50%;animation:spin .75s linear infinite}.status h1{margin:0 0 10px;font:800 clamp(1.55rem,4vw,2.15rem)/1.15 "Plus Jakarta Sans",sans-serif}.status p{max-width:460px;margin:auto;color:var(--muted);line-height:1.65}
+    .intro{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:28px}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--gold);font-size:.69rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}.eyebrow:before{content:"";width:22px;height:1px;background:currentColor}.intro h1{max-width:720px;margin:12px 0 10px;font:800 clamp(2.15rem,5vw,4.3rem)/1 "Plus Jakarta Sans",sans-serif;letter-spacing:-.055em}.intro h1 span{color:var(--gold)}.intro p{max-width:650px;margin:0;color:var(--muted);font-size:.96rem;line-height:1.65}.progress-copy{text-align:right;color:var(--dim);font-size:.72rem;font-weight:700;white-space:nowrap}.progress-copy strong{display:block;margin-top:5px;color:var(--gold);font-size:.85rem}
+    .experience{display:grid;grid-template-columns:minmax(0,.88fr) minmax(440px,1.12fr);min-height:530px;overflow:hidden;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,rgba(25,28,49,.93),rgba(12,13,24,.96));box-shadow:var(--shadow)}
+    .story{display:flex;flex-direction:column;padding:34px;border-right:1px solid var(--line)}.chapter{display:none;flex:1;animation:slide .35s ease both}.chapter.active{display:block}.chapter-label{color:var(--gold);font-size:.7rem;font-weight:800;letter-spacing:.11em;text-transform:uppercase}.chapter h2{margin:12px 0 11px;font:800 clamp(1.6rem,3vw,2.35rem)/1.12 "Plus Jakarta Sans",sans-serif;letter-spacing:-.035em}.chapter>p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.65}.mission-note{margin-top:20px;padding:14px 16px;border-left:2px solid var(--gold);background:rgba(241,191,66,.055);color:#dde0ef;font-size:.8rem;line-height:1.55}.action{width:100%;min-height:48px;margin-top:22px;border:0;border-radius:12px;background:linear-gradient(135deg,var(--gold2),#dda72b);color:#11121e;cursor:pointer;font-size:.8rem;font-weight:800;box-shadow:0 10px 28px rgba(241,191,66,.18);transition:.2s ease}.action:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(241,191,66,.28)}.action:disabled{cursor:default;opacity:.72;transform:none}
+    .cracks{display:grid;gap:9px;margin-top:19px}.crack{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 13px;border:1px solid rgba(255,133,133,.18);border-radius:11px;background:rgba(255,133,133,.045);color:#e4e6f2;cursor:pointer;text-align:left;transition:.25s ease}.crack span{color:var(--danger);font-weight:800}.crack.repaired{border-color:rgba(71,213,138,.23);background:rgba(71,213,138,.06);color:var(--muted)}.crack.repaired span{color:var(--green)}
+    .days{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:18px}.day{padding:10px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.02);cursor:pointer;text-align:left;color:var(--muted);transition:.2s ease}.day b{display:block;margin-bottom:3px;color:var(--gold);font-size:.66rem;text-transform:uppercase}.day span{font-size:.7rem;line-height:1.3}.day.placed{border-color:var(--goldline);background:rgba(241,191,66,.075);color:#e8e9f2}.day:last-child{grid-column:1/-1}.te-total{margin-top:12px;color:var(--dim);font-size:.72rem}.te-total strong{color:var(--gold)}
+    .keys{display:grid;gap:10px;margin-top:19px}.key-card{position:relative;padding:15px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.025)}.key-card.done{border-color:rgba(71,213,138,.28);background:rgba(71,213,138,.045)}.key-top{display:flex;align-items:center;justify-content:space-between;gap:10px}.key-card h3{margin:0;font-size:.86rem}.key-card p{margin:5px 0 12px;color:var(--muted);font-size:.72rem}.key-link,.key-submit{width:100%;min-height:42px;border:1px solid var(--goldline);border-radius:9px;background:rgba(241,191,66,.08);color:var(--gold);display:flex;align-items:center;justify-content:center;text-decoration:none;cursor:pointer;font-size:.72rem;font-weight:800;transition:.2s ease}.key-link:hover,.key-submit:hover{background:var(--gold);color:var(--bg)}.key-submit:disabled{opacity:.7;cursor:wait}.key-status{color:var(--dim);font-size:.64rem;font-weight:800}.key-card.done .key-status{color:var(--green)}.finish-message{display:none;margin-top:12px;color:var(--green);font-size:.75rem;font-weight:700;text-align:center}.finish-message.show{display:block}
+    .story-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:24px;padding-top:18px;border-top:1px solid var(--line)}.back,.next{min-height:42px;border-radius:10px;cursor:pointer;font-size:.75rem;font-weight:800}.back{border:0;background:transparent;color:var(--muted)}.next{padding:9px 17px;border:1px solid var(--goldline);background:rgba(241,191,66,.08);color:var(--gold)}.back[hidden],.next[hidden]{display:none}.next:disabled{opacity:.4;cursor:not-allowed}
+    .build{position:relative;display:grid;place-items:center;min-height:530px;padding:25px;overflow:hidden;background:radial-gradient(circle at 50% 57%,rgba(241,191,66,.105),transparent 45%)}.build:before{content:"PLANTA • CASA DOMUS";position:absolute;top:25px;right:27px;color:rgba(255,255,255,.18);font-size:.61rem;font-weight:800;letter-spacing:.15em}.blueprint{width:min(100%,520px);overflow:visible}.blueprint .line{fill:none;stroke:rgba(255,255,255,.16);stroke-width:2;stroke-dasharray:5 7}.blueprint .foundation,.blueprint .brick,.blueprint .roof,.blueprint .door,.blueprint .key-shape{transition:fill .5s ease,stroke .5s ease,opacity .5s ease,transform .5s cubic-bezier(.2,.8,.2,1);transform-box:fill-box;transform-origin:center}.blueprint .foundation{fill:rgba(255,255,255,.05);stroke:rgba(255,255,255,.18)}.blueprint .brick{fill:rgba(255,255,255,.025);stroke:rgba(255,255,255,.13);transform:translateY(-18px);opacity:.3}.blueprint .roof,.blueprint .door{fill:rgba(255,255,255,.02);stroke:rgba(255,255,255,.14);opacity:.45}.blueprint .crack-line{fill:none;stroke:var(--danger);stroke-width:3;opacity:.7;transition:.4s ease}.blueprint .key-shape{fill:none;stroke:rgba(255,255,255,.18);stroke-width:4}.build.foundation-set .foundation,.build.bricks-1 .brick:nth-of-type(-n+2),.build.bricks-2 .brick:nth-of-type(-n+4),.build.bricks-3 .brick:nth-of-type(-n+6),.build.bricks-4 .brick:nth-of-type(-n+8),.build.bricks-5 .brick:nth-of-type(-n+10),.build.bricks-6 .brick:nth-of-type(-n+12),.build.bricks-7 .brick{fill:rgba(241,191,66,.2);stroke:var(--gold);filter:drop-shadow(0 0 7px rgba(241,191,66,.22));transform:translateY(0);opacity:1}.build.repair-1 .crack-line:nth-of-type(1),.build.repair-2 .crack-line:nth-of-type(-n+2),.build.repair-3 .crack-line{stroke:var(--gold);opacity:.2}.build.bricks-7 .roof,.build.bricks-7 .door{stroke:var(--gold);fill:rgba(241,191,66,.09);opacity:1;filter:drop-shadow(0 0 7px rgba(241,191,66,.18))}.build.keys-ready .key-shape{stroke:var(--gold);filter:drop-shadow(0 0 6px rgba(241,191,66,.3))}.build-caption{position:absolute;bottom:24px;left:0;right:0;text-align:center;color:var(--dim);font-size:.7rem}.build-caption strong{display:block;margin-bottom:4px;color:var(--gold);font-size:.78rem}.brick-float{position:absolute;width:78px;height:34px;border:1px solid var(--gold);border-radius:4px;background:linear-gradient(145deg,rgba(248,216,121,.45),rgba(241,191,66,.16));box-shadow:0 8px 25px rgba(241,191,66,.18);animation:float 2.8s ease-in-out infinite}.brick-float:after{content:"10 TE";display:grid;height:100%;place-items:center;color:var(--gold2);font-size:.65rem;font-weight:800}.build.foundation-set .brick-float{opacity:0;transform:translateY(80px);pointer-events:none;transition:.55s ease}
+    footer{padding:22px 0;border-top:1px solid var(--line);color:var(--dim);font-size:.7rem;text-align:center}
+    :focus-visible{outline:3px solid var(--gold);outline-offset:3px}@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}@keyframes slide{from{opacity:0;transform:translateX(10px)}to{opacity:1;transform:none}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes float{50%{transform:translateY(-8px)}}
+    @media(max-width:900px){.intro{align-items:start}.experience{grid-template-columns:1fr}.story{border-right:0;border-bottom:1px solid var(--line)}.build{min-height:430px;grid-row:1}.experience{display:flex;flex-direction:column-reverse}.build:before{top:18px}.blueprint{max-height:360px}.story{min-height:500px}}
+    @media(max-width:580px){.shell{width:min(100% - 26px,1180px)}.topbar{height:68px}.confirmed{font-size:.63rem;padding:6px 8px}.confirmed i{display:none}.intro{display:block}.progress-copy{text-align:left;margin-top:16px}.intro h1{font-size:2.35rem}.experience{border-radius:17px}.story{padding:22px}.build{min-height:320px;padding:16px}.blueprint{max-height:275px}.build-caption{bottom:12px}.days{grid-template-columns:1fr}.day:last-child{grid-column:auto}.chapter h2{font-size:1.65rem}.story{min-height:565px}.brick-float{width:65px;height:29px}}
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+    /* ---------- Storytelling guiado pela rolagem ---------- */
+    .scroll-hint{display:flex;align-items:center;gap:9px;margin-top:18px;color:var(--dim);font-size:.7rem;font-weight:700;letter-spacing:.04em}.scroll-hint i{width:18px;height:28px;border:1px solid var(--goldline);border-radius:10px;position:relative}.scroll-hint i:after{content:"";position:absolute;top:5px;left:50%;width:3px;height:6px;border-radius:3px;background:var(--gold);transform:translateX(-50%);animation:scroll-dot 1.6s ease-in-out infinite}
+    html{scroll-snap-type:y mandatory;scroll-padding-top:92px;overscroll-behavior-y:none}.intro{height:calc(100svh - 92px);min-height:600px;align-items:center;scroll-snap-align:start;scroll-snap-stop:always}.experience{grid-template-columns:minmax(0,.9fr) minmax(430px,1.1fr);overflow:visible;border:0;border-radius:0;background:none;box-shadow:none;align-items:start}.story{display:block;padding:0 34px 0 0;border:0}.chapter,.chapter.active{display:flex;height:calc(100svh - 108px);min-height:600px;padding:38px 34px;flex-direction:column;justify-content:center;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,rgba(25,28,49,.9),rgba(12,13,24,.94));box-shadow:var(--shadow);opacity:.38;transform:scale(.975);transition:opacity .5s ease,transform .5s ease,border-color .5s ease;scroll-snap-align:start;scroll-snap-stop:always}.chapter+.chapter{margin-top:0}.chapter.in-view{opacity:1;transform:scale(1);border-color:var(--goldline)}.story-nav{display:none}.build{position:sticky;top:92px;height:calc(100svh - 108px);min-height:600px;border:1px solid var(--line);border-radius:22px;background:radial-gradient(circle at 50% 57%,rgba(241,191,66,.105),transparent 45%),linear-gradient(145deg,rgba(25,28,49,.9),rgba(12,13,24,.96));box-shadow:var(--shadow)}.action{pointer-events:none}.crack,.day{cursor:default}
+    @keyframes scroll-dot{0%{opacity:0;transform:translate(-50%,0)}35%{opacity:1}100%{opacity:0;transform:translate(-50%,10px)}}
+    @media(max-width:900px){html{scroll-padding-top:70px}.intro{min-height:calc(100svh - 95px)}.experience{display:grid;grid-template-columns:1fr;grid-template-areas:"build" "story"}.build{grid-area:build;grid-row:auto;top:70px;width:100%;height:36svh;min-height:250px;z-index:4}.story{grid-area:story;padding:0;min-height:0}.chapter,.chapter.active{height:64svh;min-height:450px;padding:28px 24px;border-radius:0 0 18px 18px;scroll-margin-top:36svh}.blueprint{max-height:29svh}.build-caption{bottom:11px}}
+    @media(max-width:580px){main{padding-top:22px}.intro{min-height:calc(100svh - 90px);padding-bottom:8px}.scroll-hint{justify-content:center}.build{top:68px;height:32svh;min-height:225px;border-radius:16px 16px 0 0}.build:before{font-size:.48rem;right:12px;top:12px}.blueprint{max-height:25svh}.story{padding-top:0;min-height:0}.chapter,.chapter.active{height:68svh;min-height:475px;padding:20px 18px;border-radius:0 0 16px 16px;scroll-margin-top:32svh}.chapter h2{font-size:1.38rem;margin:8px 0}.chapter>p{font-size:.78rem;line-height:1.48}.chapter-label{font-size:.61rem}.mission-note{margin-top:12px;padding:10px 12px;font-size:.7rem}.action{min-height:40px;margin-top:12px;font-size:.68rem}.cracks{gap:6px;margin-top:12px}.crack{padding:9px 10px;font-size:.68rem}.days{grid-template-columns:repeat(2,1fr);gap:5px;margin-top:10px}.day{padding:7px}.day b{font-size:.57rem}.day span{font-size:.61rem}.day:last-child{grid-column:1/-1}.te-total{margin-top:7px}.keys{gap:7px;margin-top:12px}.key-card{padding:10px}.key-card p{margin:3px 0 7px}.key-link{min-height:36px;font-size:.64rem}}
   </style>
 </head>
-
 <body>
-  <div class="app">
-
-    <header>
-      <div class="brand">
-        <img src="../assets/tata-logo-dog.png" alt="Tata Pereira">
-        <div>
-          <small>Tata Pereira</small>
-          <strong>Operação Sob Controle</strong>
+  <header class="topbar"><div class="shell"><div class="brand"><img src="../assets/tata-logo-dog.png" alt=""><div><small>Tata Pereira</small><strong>Operação Sob Controle</strong></div></div><div class="confirmed"><i></i> Inscrição confirmada</div></div></header>
+  <main class="shell">
+    <section id="authorized" class="state active">
+      <div class="intro"><div><span class="eyebrow">Arquiteta DOMUS detectada</span><h1>Seu projeto começa <span>agora.</span></h1><p>Em sete dias, você vai transformar as rachaduras do improviso em uma barreira de entrada segura, técnica e replicável.</p><div class="scroll-hint"><i aria-hidden="true"></i> Role para iniciar a construção</div></div><div class="progress-copy">CONSTRUÇÃO DA FUNDAÇÃO<strong id="chapter-progress">ETAPA 1 DE 4</strong></div></div>
+      <div class="experience">
+        <div class="story">
+          <article class="chapter active" data-chapter="1"><span class="chapter-label">Capítulo 01 • A fundação</span><h2>Toda estrutura segura começa com o primeiro tijolo.</h2><p>A partir de agora, você entra como <strong>Arquiteta DOMUS</strong>. Sua missão é projetar uma operação que não dependa de decisões improvisadas.</p><div class="mission-note">Ao avançar, seu primeiro Tijolo Estrutural encontra o lugar certo e dá início à fundação.</div><button class="action" id="foundation-button" type="button" tabindex="-1">PRIMEIRO TIJOLO ASSENTADO • +10 TE</button></article>
+          <article class="chapter" data-chapter="2"><span class="chapter-label">Capítulo 02 • A inspeção</span><h2>Identifique as rachaduras do improviso.</h2><p>Toque em cada rachadura para descobrir como ela será reparada durante o desafio.</p><div class="cracks"><button class="crack" data-repair="Fluxo de avaliação"><b>Decisões sob pressão</b><span>reparar +</span></button><button class="crack" data-repair="Matriz de decisão"><b>Falta de critérios objetivos</b><span>reparar +</span></button><button class="crack" data-repair="POP e indicadores"><b>Processos sem registro</b><span>reparar +</span></button></div></article>
+          <article class="chapter" data-chapter="3"><span class="chapter-label">Capítulo 03 • A construção</span><h2>Erga sua barreira em sete etapas.</h2><p>Assente os tijolos para conhecer o projeto. Cada missão entregue fortalece uma parte da operação.</p><div class="days"><button class="day"><b>Dia 1 • 10 TE</b><span>Fluxo de avaliação</span></button><button class="day"><b>Dia 2 • 20 TE</b><span>Anamnese</span></button><button class="day"><b>Dia 3 • 20 TE</b><span>Observação presencial</span></button><button class="day"><b>Dia 4 • 30 TE</b><span>Matriz de decisão</span></button><button class="day"><b>Dia 5 • 20 TE</b><span>POP escrito</span></button><button class="day"><b>Dia 6 • 10 TE</b><span>Dados e indicadores</span></button><button class="day"><b>Dia 7 • Grande marco</b><span>Entrega das chaves</span></button></div><div class="te-total">Estrutura apresentada: <strong id="te-total">0 TE</strong></div></article>
+          <article class="chapter" data-chapter="4"><span class="chapter-label">Capítulo 04 • As duas chaves</span><h2>Prepare seus dois ambientes.</h2><p>Conclua os dois passos antes de fechar esta página. O bot do WhatsApp confirmará seus dados e orientará sua entrada.</p><div class="keys"><div class="key-card" id="whatsapp-card"><div class="key-top"><h3>01 • Casa DOMUS</h3><span class="key-status">PENDENTE</span></div><p>Chame o bot para validar sua compra e receber as próximas orientações.</p><a class="key-link" id="whatsapp-button" href="#" target="_blank" rel="noopener noreferrer">CHAMAR O BOT NO WHATSAPP</a></div><div class="key-card" id="hotmart-card"><div class="key-top"><h3>02 • Sala de Projetos</h3><span class="key-status">PENDENTE</span></div><p>Briefing inicial, vídeos, aulas e materiais.</p><a class="key-link" id="hotmart-button" href="#" target="_blank" rel="noopener noreferrer">ASSISTIR NA HOTMART</a></div></div><div class="finish-message" id="finish-message">✓ Ferramentas preparadas. Sua construção pode começar.</div></article>
+          <nav class="story-nav" aria-label="Navegação do onboarding"><button class="back" id="back-button" type="button" hidden>← Voltar</button><button class="next" id="next-button" type="button" disabled>Continuar →</button></nav>
         </div>
+        <div class="build" id="build" aria-label="Casa DOMUS sendo construída"><div class="brick-float" aria-hidden="true"></div><svg class="blueprint" viewBox="0 0 600 470" role="img" aria-labelledby="house-title"><title id="house-title">Representação arquitetônica da Casa DOMUS</title><path class="line" d="M55 420H545M78 435H522M92 114L300 32l208 82M63 420V442M537 420V442"/><path class="roof" d="M88 194L300 70l212 124v32L300 102 88 226z"/><rect class="foundation" x="82" y="388" width="436" height="32" rx="4"/><g class="brick-group"><rect class="brick" x="100" y="336" width="94" height="42" rx="3"/><rect class="brick" x="202" y="336" width="94" height="42" rx="3"/><rect class="brick" x="304" y="336" width="94" height="42" rx="3"/><rect class="brick" x="406" y="336" width="94" height="42" rx="3"/><rect class="brick" x="100" y="286" width="94" height="42" rx="3"/><rect class="brick" x="202" y="286" width="94" height="42" rx="3"/><rect class="brick" x="304" y="286" width="94" height="42" rx="3"/><rect class="brick" x="406" y="286" width="94" height="42" rx="3"/><rect class="brick" x="100" y="236" width="94" height="42" rx="3"/><rect class="brick" x="202" y="236" width="94" height="42" rx="3"/><rect class="brick" x="304" y="236" width="94" height="42" rx="3"/><rect class="brick" x="406" y="236" width="94" height="42" rx="3"/><rect class="brick" x="100" y="186" width="94" height="42" rx="3"/><rect class="brick" x="202" y="186" width="94" height="42" rx="3"/><rect class="brick" x="304" y="186" width="94" height="42" rx="3"/><rect class="brick" x="406" y="186" width="94" height="42" rx="3"/></g><path class="door" d="M263 420V294c0-13 10-23 23-23h28c13 0 23 10 23 23v126z"/><path class="crack-line" d="M175 194l-12 21 15 16-14 22"/><path class="crack-line" d="M424 245l14 17-12 19 15 14"/><path class="crack-line" d="M224 320l11 14-13 18"/><g class="key-shape"><circle cx="300" cy="219" r="20"/><path d="M300 239v25h19v14h19"/></g></svg><div class="build-caption"><strong id="build-title">Projeto aguardando fundação</strong><span id="build-subtitle">Seu primeiro tijolo está pronto.</span></div></div>
       </div>
-
-      <div class="purchase" role="status">
-        <i aria-hidden="true"></i>
-        Compra confirmada
-      </div>
-    </header>
-
-    <main class="hero">
-      <section class="hero-copy" aria-labelledby="welcome-title">
-        <div class="welcome">
-          <span>✦</span> Seu acesso está liberado
-        </div>
-
-        <h1 id="welcome-title">
-          Bem-vinda à
-          <span class="gold">Operação Sob Controle.</span>
-        </h1>
-
-        <p>
-          Agora começa a parte mais importante: transformar conhecimento
-          em organização de verdade. Preparamos uma jornada simples para
-          você saber exatamente <strong>onde entrar, o que fazer e como entregar.</strong>
-        </p>
-
-        <div class="mini-promise" aria-label="Benefícios da jornada">
-          <span>✓ 7 dias de prática</span>
-          <span>✓ Passo a passo</span>
-          <span>✓ Sem complicação</span>
-        </div>
-      </section>
-
-      <section class="onboarding" aria-label="Seu primeiro passo">
-        <div class="card-top">
-          <span class="card-kicker" id="step-label">Vamos começar?</span>
-          <span class="step-counter" id="step-counter">1 de 3</span>
-        </div>
-
-        <div class="progress" aria-label="Progresso do onboarding">
-          <div class="progress-bar" id="progress-bar"></div>
-        </div>
-
-        <div class="steps">
-
-          <!-- STEP 1 -->
-          <article class="step active" data-step="1">
-            <div class="step-icon">👋</div>
-            <h2>Primeiro: saiba onde tudo acontece</h2>
-            <p>
-              Você vai usar dois ambientes durante a jornada. É simples:
-              um é para aprender, o outro é para acompanhar e entregar.
-            </p>
-
-            <div class="choice-grid">
-              <button class="choice selected" type="button">
-                <strong>🎓 HOTMART</strong>
-                <span>Aulas e materiais complementares no seu ritmo.</span>
-              </button>
-
-              <button class="choice" type="button">
-                <strong>🐾 WHATSAPP</strong>
-                <span>Orientações, acompanhamento e envio dos arquivos.</span>
-              </button>
-            </div>
-          </article>
-
-          <!-- STEP 2 -->
-          <article class="step" data-step="2">
-            <div class="step-icon">🗺️</div>
-            <h2>Depois: siga a jornada de 7 dias</h2>
-            <p>
-              Cada dia tem um foco. Você não precisa descobrir o próximo passo:
-              basta seguir a sequência e executar.
-            </p>
-
-            <div class="journey-preview" aria-label="Jornada de 7 dias">
-              <span>D1<br>Aval.</span>
-              <span>D2<br>Anam.</span>
-              <span>D3<br>Pres.</span>
-              <span>D4<br>Matriz</span>
-              <span>D5<br>POP</span>
-              <span>D6<br>Ind.</span>
-              <span>D7<br>Audit.</span>
-            </div>
-          </article>
-
-          <!-- STEP 3 -->
-          <article class="step" data-step="3">
-            <div class="step-icon">🚀</div>
-            <h2>E por fim: entregue e avance</h2>
-            <p>
-              Terminou a atividade? Baixe, preencha e envie pelo WhatsApp.
-              O arquivo enviado é o seu desafio entregue.
-            </p>
-
-            <div class="delivery">
-              <strong>📎 Regra de ouro</strong>
-              <span>
-                Arquivo enviado = desafio entregue. Sem burocracia.
-              </span>
-            </div>
-          </article>
-
-        </div>
-
-        <div class="onboarding-nav">
-          <button class="back" id="back-button" type="button" hidden>
-            ← Voltar
-          </button>
-
-          <button class="next" id="next-button" type="button">
-            Entendi, próximo →
-          </button>
-
-          <a
-            class="start"
-            id="start-button"
-            href="https://wa.me/5521999999999?text=Quero%20come%C3%A7ar%20o%20Opera%C3%A7%C3%A3o%20Sob%20Controle"
-            target="_blank"
-            rel="noopener noreferrer"
-            hidden>
-            COMEÇAR MEU DESAFIO 🚀
-          </a>
-        </div>
-      </section>
-    </main>
-
-    <footer class="final-cta">
-      <a
-        href="https://wa.me/5521999999999?text=Quero%20come%C3%A7ar%20o%20Opera%C3%A7%C3%A3o%20Sob%20Controle"
-        target="_blank"
-        rel="noopener noreferrer">
-        💬 Acessar meu WhatsApp e começar
-      </a>
-      <small>Sua identificação será feita automaticamente pelo e-mail da compra.</small>
-    </footer>
-
-  </div>
-
+    </section>
+  </main>
+  <footer>© 2026 Tata Pereira • Método DOMUS • Operação Sob Controle</footer>
   <script>
-    (() => {
-      "use strict";
+  /* CONFIGURAÇÃO: substitua apenas estas duas URLs antes de publicar. */
+  const WHATSAPP_BOT_URL = "https://wa.me/15553786051?text=Ol%C3%A1%21%20Quero%20iniciar%20meu%20onboarding%20da%20Opera%C3%A7%C3%A3o%20Sob%20Controle.";
+  const HOTMART_URL = "https://consumer.hotmart.com/";
 
-      const steps = [...document.querySelectorAll(".step")];
-      const nextButton = document.querySelector("#next-button");
-      const backButton = document.querySelector("#back-button");
-      const startButton = document.querySelector("#start-button");
-      const progressBar = document.querySelector("#progress-bar");
-      const counter = document.querySelector("#step-counter");
-      const label = document.querySelector("#step-label");
-      const choices = [...document.querySelectorAll(".choice")];
+  (()=>{'use strict';
+    const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+    function validUrl(value, domain){try{const url=new URL(value);return url.protocol==='https:'&&(url.hostname===domain||url.hostname.endsWith('.'+domain))}catch{return false}}
+    const whatsapp=$('#whatsapp-button'), hotmart=$('#hotmart-button');
+    if(validUrl(WHATSAPP_BOT_URL,'wa.me')||validUrl(WHATSAPP_BOT_URL,'whatsapp.com')) whatsapp.href=WHATSAPP_BOT_URL;
+    else {whatsapp.removeAttribute('target');whatsapp.setAttribute('aria-disabled','true');whatsapp.title='Configure WHATSAPP_BOT_URL no HTML';}
+    if(validUrl(HOTMART_URL,'hotmart.com')) hotmart.href=HOTMART_URL;
+    else {hotmart.removeAttribute('target');hotmart.setAttribute('aria-disabled','true');hotmart.title='Configure HOTMART_URL no HTML';}
 
-      let currentStep = 1;
+    function start(){const build=$('#build'), chapters=$$('.chapter');
+      const titles=['Fundação iniciada','Inspeção das rachaduras','Barreira em construção','Duas chaves liberadas'];
+      const subtitles=['O primeiro tijolo encontrou seu lugar.','Os pontos frágeis estão sendo reparados.','Cada etapa fortalece sua operação.','Abra a Casa DOMUS e a Sala de Projetos.'];
+      const totals=[10,30,50,80,100,110,110];
+      let activeChapter=0, animationTimer;
 
-      const labels = {
-        1: "Vamos começar?",
-        2: "Agora ficou fácil",
-        3: "É hora de colocar em prática"
-      };
-
-      function render() {
-        steps.forEach((step) => {
-          const active = Number(step.dataset.step) === currentStep;
-          step.classList.toggle("active", active);
-        });
-
-        counter.textContent = `${currentStep} de ${steps.length}`;
-        label.textContent = labels[currentStep];
-        progressBar.style.width = `${(currentStep / steps.length) * 100}%`;
-
-        backButton.hidden = currentStep === 1;
-        nextButton.hidden = currentStep === steps.length;
-        startButton.hidden = currentStep !== steps.length;
-
-        const activeStep = document.querySelector(`.step[data-step="${currentStep}"]`);
-        activeStep?.querySelector("button, a")?.focus({ preventScroll: true });
+      function resetBuild(){
+        build.className='build';
+        $$('.crack').forEach(b=>{b.classList.remove('repaired');b.querySelector('span').textContent='reparar +'});
+        $$('.day').forEach(b=>b.classList.remove('placed'));
+        $('#te-total').textContent='0 TE';
       }
 
-      nextButton.addEventListener("click", () => {
-        if (currentStep < steps.length) {
-          currentStep += 1;
-          render();
-        }
-      });
+      function animateScene(chapter){
+        clearTimeout(animationTimer); resetBuild(); activeChapter=chapter;
+        $('#chapter-progress').textContent=`ETAPA ${chapter} DE 4`;
+        $('#build-title').textContent=titles[chapter-1];
+        $('#build-subtitle').textContent=subtitles[chapter-1];
+        if(chapter>=1) build.classList.add('foundation-set');
+        if(chapter>=2){$$('.crack').forEach((b,i)=>{setTimeout(()=>{if(activeChapter!==chapter)return;b.classList.add('repaired');b.querySelector('span').textContent='✓ '+b.dataset.repair;build.classList.add('repair-'+(i+1))},180*(i+1))})}
+        if(chapter>=3){$$('.day').forEach((b,i)=>{setTimeout(()=>{if(activeChapter!==chapter)return;b.classList.add('placed');build.classList.add('bricks-'+(i+1));$('#te-total').textContent=i===6?'110 TE + Grande Marco':totals[i]+' TE'},130*(i+1))})}
+        if(chapter>=4) animationTimer=setTimeout(()=>{if(activeChapter===chapter)build.classList.add('keys-ready')},950);
+      }
 
-      backButton.addEventListener("click", () => {
-        if (currentStep > 1) {
-          currentStep -= 1;
-          render();
-        }
-      });
-
-      choices.forEach((choice) => {
-        choice.addEventListener("click", () => {
-          choices.forEach((item) => item.classList.remove("selected"));
-          choice.classList.add("selected");
-        });
-      });
-
-      render();
-    })();
+      const observer=new IntersectionObserver(entries=>{
+        const visible=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+        if(!visible)return;
+        const chapter=Number(visible.target.dataset.chapter);
+        chapters.forEach(c=>c.classList.toggle('in-view',c===visible.target));
+        if(chapter!==activeChapter)animateScene(chapter);
+      },{threshold:[.35,.55,.75],rootMargin:'-12% 0px -20% 0px'});
+      chapters.forEach(c=>observer.observe(c));
+      function mark(card){card.classList.add('done');card.querySelector('.key-status').textContent='ACESSO ABERTO';if($('#whatsapp-card').classList.contains('done')&&$('#hotmart-card').classList.contains('done'))$('#finish-message').classList.add('show')}
+      whatsapp.addEventListener('click',event=>{if(whatsapp.getAttribute('aria-disabled')==='true'){event.preventDefault();return}mark($('#whatsapp-card'));whatsapp.textContent='ABRIR WHATSAPP NOVAMENTE'});
+      $('#hotmart-button').addEventListener('click',()=>mark($('#hotmart-card')));
+      chapters[0].classList.add('in-view');animateScene(1);
+    } start();
+  })();
   </script>
 </body>
 </html>
