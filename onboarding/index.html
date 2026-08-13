@@ -4,201 +4,775 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow, noarchive">
-  <meta name="referrer" content="no-referrer">
   <meta name="theme-color" content="#0f101d">
-  <title>Boas-vindas | Operação Sob Controle</title>
+  <title>Bem-vinda! | Operação Sob Controle</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg-dark: #0f101d;
-      --bg-deep: #0b0c16;
-      --bg-card: #191b2f;
-      --bg-card-hover: #1f223b;
-      --accent-yellow: #f1bf42;
-      --accent-yellow-hover: #dfb03a;
-      --text-white: #fff;
-      --text-muted: #a6aac5;
-      --border: rgba(255,255,255,.08);
+      --bg: #0b0c16;
+      --bg-2: #101221;
+      --card: rgba(25, 27, 47, .72);
+      --card-solid: #17192b;
+      --yellow: #f1bf42;
+      --yellow-2: #f6cf68;
+      --yellow-glow: rgba(241,191,66,.24);
       --green: #45d483;
-      --red: #ff7474;
-      --radius: 16px;
+      --white: #fff;
+      --muted: #a6aac5;
+      --muted-2: #747995;
+      --line: rgba(255,255,255,.09);
+      --line-yellow: rgba(241,191,66,.35);
+      --radius: 18px;
+      --shadow: 0 25px 70px rgba(0,0,0,.34);
     }
-    html { scroll-behavior: smooth; }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--white);
+      font-family: Inter, system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
     body {
-      min-height: 100vh; background: var(--bg-dark); color: var(--text-white);
-      font-family: Inter, sans-serif; line-height: 1.55; -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 15% 8%, rgba(241,191,66,.12), transparent 27rem),
+        radial-gradient(circle at 88% 88%, rgba(86,91,163,.14), transparent 30rem),
+        var(--bg);
     }
-    body::before {
-      content: ""; position: fixed; inset: 0; pointer-events: none;
-      background: radial-gradient(circle at 50% -10%, rgba(241,191,66,.13), transparent 36%),
-                  radial-gradient(circle at 100% 60%, rgba(77,83,146,.10), transparent 30%);
+
+    button, a { font: inherit; }
+    button { color: inherit; }
+    a { color: inherit; }
+
+    .app {
+      width: min(1180px, 100%);
+      min-height: 100vh;
+      margin: auto;
+      padding: 22px 24px 26px;
+      display: flex;
+      flex-direction: column;
     }
-    .shell { width: min(100% - 40px, 980px); margin: 0 auto; position: relative; }
-    .topbar { padding: 28px 0; border-bottom: 1px solid var(--border); }
-    .brand { display: flex; align-items: center; justify-content: center; gap: 11px; }
-    .brand img { width: 43px; height: 43px; object-fit: contain; }
-    .brand-copy { display: grid; line-height: 1.1; }
-    .brand-copy strong { color: var(--accent-yellow); font-size: .78rem; letter-spacing: .17em; text-transform: uppercase; }
-    .brand-copy span { margin-top: 4px; font-size: .92rem; font-weight: 700; }
-    main { padding: 64px 0 88px; }
-    
-    .eyebrow { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-yellow); font-size: .78rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 18px; }
-    .eyebrow::before { content: ""; width: 22px; height: 1px; background: currentColor; }
-    
-    .hero { text-align: center; max-width: 790px; margin: 0 auto 70px; }
-    .hero .check { width: 64px; height: 64px; border: 1px solid rgba(69,212,131,.28); border-radius: 50%; margin: 0 auto 23px; display: grid; place-items: center; color: var(--green); background: rgba(69,212,131,.08); font-size: 1.7rem; }
-    .hero h1 { font-size: clamp(2.2rem, 7vw, 4.1rem); line-height: 1.05; letter-spacing: -.045em; }
-    .hero h1 span { color: var(--accent-yellow); }
-    .hero p { color: var(--text-muted); font-size: clamp(1rem, 2.5vw, 1.17rem); max-width: 620px; margin: 22px auto 0; }
-    
-    section { margin-top: 70px; }
-    .section-head { max-width: 670px; margin-bottom: 28px; }
-    .section-head h2 { font-size: clamp(1.65rem, 4vw, 2.35rem); line-height: 1.18; letter-spacing: -.025em; }
-    .section-head p { color: var(--text-muted); margin-top: 10px; }
-    
-    .environments { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .environment { padding: 30px; border-radius: var(--radius); border: 1px solid var(--border); background: linear-gradient(145deg, rgba(31,34,59,.85), rgba(25,27,47,.85)); }
-    .environment-number { color: var(--accent-yellow); font-size: .73rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
-    .environment h3 { margin: 18px 0 9px; font-size: 1.35rem; letter-spacing: .02em; display: flex; align-items: center; gap: 10px; }
-    .environment p { color: var(--text-muted); }
-    .environment ul { margin-top: 15px; list-style: none; color: var(--text-white); font-size: .92rem; }
-    .environment ul li { margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-    .environment ul li::before { content: "•"; color: var(--accent-yellow); font-weight: bold; }
-    
-    .journey { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
-    .day { min-height: 154px; padding: 20px 14px; border-radius: 13px; border: 1px solid var(--border); background: var(--bg-card); transition: transform .25s ease, border-color .25s ease; }
-    .day:hover { transform: translateY(-4px); border-color: rgba(241,191,66,.35); }
-    .day span { display: block; color: var(--accent-yellow); font-size: .73rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
-    .day strong { display: block; margin-top: 27px; font-size: .94rem; line-height: 1.35; }
-    
-    .delivery { display: grid; grid-template-columns: 1.05fr .95fr; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; background: var(--bg-card); }
-    .delivery-copy { padding: 36px; }
-    .delivery-copy h2 { font-size: clamp(1.55rem, 4vw, 2.15rem); margin-bottom: 13px; }
-    .delivery-copy p { color: var(--text-muted); }
-    .equation { padding: 36px; background: rgba(241,191,66,.08); display: grid; align-content: center; text-align: center; }
-    .equation strong { color: var(--accent-yellow); font-size: clamp(1.2rem, 3vw, 1.55rem); }
-    .equation small { color: var(--text-muted); margin-top: 10px; }
-    
-    .cta-panel { padding: 48px 30px; border: 1px solid rgba(241,191,66,.25); border-radius: 20px; text-align: center; background: linear-gradient(145deg, rgba(241,191,66,.10), rgba(25,27,47,.7)); box-shadow: 0 24px 70px rgba(0,0,0,.22); }
-    .cta-panel h2 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
-    .cta-panel p { color: var(--text-muted); margin: 10px auto 25px; max-width: 550px; }
-    .cta { display: inline-block; text-decoration: none; width: min(100%, 520px); padding: 17px 24px; border: 0; border-radius: 12px; background: var(--accent-yellow); color: var(--bg-dark); font: 800 .95rem Inter, sans-serif; letter-spacing: .025em; text-align: center; cursor: pointer; box-shadow: 0 12px 35px rgba(241,191,66,.2); transition: transform .2s ease, background .2s ease; }
-    .cta:hover { transform: translateY(-2px); background: var(--accent-yellow-hover); }
-    .privacy { display: block; margin-top: 13px; color: var(--text-muted); font-size: .76rem; }
-    
-    footer { padding: 28px 0; border-top: 1px solid var(--border); color: var(--text-muted); text-align: center; font-size: .78rem; }
-    
-    @media (max-width: 820px) { .journey { grid-template-columns: repeat(2, 1fr); } .day:last-child { grid-column: 1 / -1; } }
-    @media (max-width: 640px) { 
-      .shell { width: min(100% - 28px, 980px); } 
-      main { padding-top: 42px; } 
-      .environments, .delivery { grid-template-columns: 1fr; } 
-      .hero { margin-bottom: 50px; } 
-      section { margin-top: 52px; } 
-      .environment, .delivery-copy, .equation { padding: 25px; } 
-      .journey { grid-template-columns: 1fr; } 
-      .day, .day:last-child { min-height: 0; grid-column: auto; display: flex; gap: 18px; align-items: center; } 
-      .day strong { margin: 0; } 
-      .cta-panel { padding: 36px 18px; } 
+
+    /* ---------- Header ---------- */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding-bottom: 17px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .brand img {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--yellow);
+      font-size: .65rem;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    .brand strong {
+      display: block;
+      margin-top: 2px;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: .9rem;
+    }
+
+    .purchase {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border: 1px solid rgba(69,212,131,.25);
+      border-radius: 999px;
+      background: rgba(69,212,131,.08);
+      color: var(--green);
+      font-size: .73rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .purchase i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 9px var(--green);
+    }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(390px, .9fr);
+      align-items: center;
+      gap: clamp(35px, 7vw, 90px);
+      flex: 1;
+      padding: 42px 0 30px;
+    }
+
+    .hero-copy {
+      position: relative;
+      max-width: 610px;
+    }
+
+    .welcome {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 11px;
+      border: 1px solid var(--line-yellow);
+      border-radius: 999px;
+      background: rgba(241,191,66,.06);
+      color: var(--yellow);
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      animation: rise .6s ease both;
+    }
+
+    .welcome span {
+      font-size: .95rem;
+      line-height: 1;
+    }
+
+    h1 {
+      margin: 17px 0 14px;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: clamp(2.45rem, 5vw, 4.7rem);
+      line-height: .98;
+      letter-spacing: -.055em;
+      animation: rise .65s .05s ease both;
+    }
+
+    h1 .gold {
+      display: block;
+      background: linear-gradient(110deg, #fff 15%, var(--yellow-2) 72%, var(--yellow) 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-copy > p {
+      max-width: 560px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      animation: rise .65s .1s ease both;
+    }
+
+    .mini-promise {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 22px;
+      animation: rise .65s .15s ease both;
+    }
+
+    .mini-promise span {
+      padding: 8px 11px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(255,255,255,.025);
+      color: #dfe1ef;
+      font-size: .74rem;
+      font-weight: 700;
+    }
+
+    /* ---------- Onboarding card ---------- */
+    .onboarding {
+      position: relative;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: linear-gradient(145deg, rgba(28,30,52,.84), rgba(15,16,29,.86));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      animation: card-in .7s .12s ease both;
+    }
+
+    .onboarding::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(241,191,66,.10), transparent 30%);
+    }
+
+    .card-top {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .card-kicker {
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 700;
+    }
+
+    .step-counter {
+      color: var(--yellow);
+      font-size: .72rem;
+      font-weight: 800;
+    }
+
+    .progress {
+      position: relative;
+      height: 5px;
+      margin-bottom: 22px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(255,255,255,.07);
+    }
+
+    .progress-bar {
+      width: 33.333%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--yellow), var(--yellow-2));
+      box-shadow: 0 0 16px var(--yellow-glow);
+      transition: width .35s ease;
+    }
+
+    .steps {
+      position: relative;
+      min-height: 245px;
+    }
+
+    .step {
+      display: none;
+      animation: step-in .3s ease both;
+    }
+
+    .step.active { display: block; }
+
+    .step-icon {
+      display: grid;
+      width: 46px;
+      height: 46px;
+      place-items: center;
+      margin-bottom: 13px;
+      border: 1px solid var(--line-yellow);
+      border-radius: 13px;
+      background: rgba(241,191,66,.08);
+      font-size: 1.25rem;
+    }
+
+    .step h2 {
+      margin: 0 0 8px;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: 1.25rem;
+      letter-spacing: -.025em;
+    }
+
+    .step > p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .85rem;
+      line-height: 1.55;
+    }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .choice {
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: rgba(8,9,17,.45);
+      cursor: pointer;
+      text-align: left;
+      transition: .2s ease;
+    }
+
+    .choice:hover,
+    .choice.selected {
+      border-color: var(--line-yellow);
+      background: rgba(241,191,66,.07);
+      transform: translateY(-2px);
+    }
+
+    .choice strong {
+      display: block;
+      color: var(--yellow);
+      font-size: .78rem;
+      margin-bottom: 4px;
+    }
+
+    .choice span {
+      color: var(--muted);
+      font-size: .72rem;
+      line-height: 1.4;
+    }
+
+    .journey-preview {
+      display: grid;
+      grid-template-columns: repeat(7,1fr);
+      gap: 5px;
+      margin-top: 19px;
+    }
+
+    .journey-preview span {
+      padding: 9px 2px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--muted);
+      font-size: .62rem;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .journey-preview span:first-child {
+      border-color: var(--yellow);
+      background: var(--yellow-glow);
+      color: var(--yellow);
+    }
+
+    .delivery {
+      margin-top: 18px;
+      padding: 13px 14px;
+      border: 1px dashed var(--line-yellow);
+      border-radius: 12px;
+      background: rgba(241,191,66,.045);
+    }
+
+    .delivery strong {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--yellow);
+      font-size: .78rem;
+    }
+
+    .delivery span {
+      color: var(--muted);
+      font-size: .72rem;
+      line-height: 1.4;
+    }
+
+    /* ---------- Bottom navigation ---------- */
+    .onboarding-nav {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 17px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+
+    .back {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: .76rem;
+      font-weight: 700;
+    }
+
+    .back:hover { color: var(--white); }
+
+    .next,
+    .start {
+      display: inline-flex;
+      min-height: 43px;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 17px;
+      border: 0;
+      border-radius: 11px;
+      background: linear-gradient(135deg, var(--yellow-2), #dfa92c);
+      color: var(--bg);
+      cursor: pointer;
+      font-size: .78rem;
+      font-weight: 800;
+      box-shadow: 0 7px 20px var(--yellow-glow);
+      transition: .2s ease;
+    }
+
+    .next:hover,
+    .start:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 11px 28px rgba(241,191,66,.32);
+    }
+
+    .back[hidden],
+    .start[hidden],
+    .next[hidden] { display: none; }
+
+    /* ---------- Final CTA ---------- */
+    .final-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      text-align: center;
+    }
+
+    .final-cta a {
+      display: inline-flex;
+      min-height: 48px;
+      width: min(100%, 570px);
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 22px;
+      border-radius: 12px;
+      background: rgba(241,191,66,.08);
+      border: 1px solid var(--line-yellow);
+      color: var(--yellow);
+      text-decoration: none;
+      font-family: "Plus Jakarta Sans", sans-serif;
+      font-size: .86rem;
+      font-weight: 800;
+      transition: .2s ease;
+    }
+
+    .final-cta a:hover {
+      background: var(--yellow);
+      color: var(--bg);
+      transform: translateY(-2px);
+    }
+
+    .final-cta small {
+      margin-top: 7px;
+      color: var(--muted-2);
+      font-size: .67rem;
+    }
+
+    /* ---------- Accessibility / motion ---------- */
+    :focus-visible {
+      outline: 3px solid var(--yellow);
+      outline-offset: 3px;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes card-in {
+      from { opacity: 0; transform: translateX(22px) scale(.985); }
+      to { opacity: 1; transform: translateX(0) scale(1); }
+    }
+
+    @keyframes step-in {
+      from { opacity: 0; transform: translateX(8px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 850px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding-top: 34px;
+      }
+
+      .hero-copy {
+        max-width: 720px;
+        margin: auto;
+        text-align: center;
+      }
+
+      .welcome,
+      .mini-promise {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .mini-promise { justify-content: center; }
+
+      h1 { font-size: clamp(2.4rem, 9vw, 3.8rem); }
+    }
+
+    @media (max-width: 540px) {
+      .app { padding: 15px; }
+
+      header { align-items: flex-start; }
+
+      .purchase {
+        padding: 6px 9px;
+        font-size: .66rem;
+      }
+
+      .purchase i { display: none; }
+
+      .hero { padding: 30px 0 24px; }
+
+      .hero-copy > p { font-size: .9rem; }
+
+      .onboarding {
+        padding: 16px;
+        border-radius: 17px;
+      }
+
+      .choice-grid { grid-template-columns: 1fr; }
+
+      .journey-preview span {
+        padding: 8px 1px;
+        font-size: .58rem;
+      }
+
+      .onboarding-nav { margin-top: 14px; }
     }
   </style>
 </head>
+
 <body>
-  <header class="topbar">
-    <div class="shell brand">
-      <img src="../assets/tata-logo-dog.png" alt="Tata Pereira" aria-hidden="true">
-      <div class="brand-copy">
-        <strong>Tata Pereira</strong>
-        <span>Operação Sob Controle</span>
-      </div>
-    </div>
-  </header>
+  <div class="app">
 
-  <main class="shell">
-    <div class="hero">
-      <div class="check" aria-hidden="true">✓</div>
-      <span class="eyebrow">Compra Aprovada</span>
-      <h1>Sua inscrição está <span>confirmada!</span></h1>
-      <p>Você está a um passo de começar seus sete dias de estrutura, clareza e decisões seguras na sua empresa pet.</p>
-    </div>
+    <header>
+      <div class="brand">
+        <img src="../assets/tata-logo-dog.png" alt="Tata Pereira">
+        <div>
+          <small>Tata Pereira</small>
+          <strong>Operação Sob Controle</strong>
+        </div>
+      </div>
 
-    <section aria-labelledby="ambientes-title">
-      <div class="section-head">
-        <span class="eyebrow">Como funciona</span>
-        <h2 id="ambientes-title">Apenas dois ambientes. Tudo simples.</h2>
-        <p>Você utilizará apenas a Hotmart e o WhatsApp durante todo o desafio.</p>
+      <div class="purchase" role="status">
+        <i aria-hidden="true"></i>
+        Compra confirmada
       </div>
-      <div class="environments">
-        <article class="environment">
-          <span class="environment-number">Ambiente 01</span>
-          <h3>HOTMART 🎓</h3>
-          <p>Sua plataforma de aulas e materiais de apoio.</p>
-          <ul>
-            <li>Aulas em vídeo detalhadas</li>
-            <li>Materiais complementares</li>
-            <li>Acesso imediato no seu e-mail</li>
-          </ul>
-        </article>
-        <article class="environment">
-          <span class="environment-number">Ambiente 02</span>
-          <h3>WHATSAPP 🐾</h3>
-          <p>O centro de execução da sua rotina.</p>
-          <ul>
-            <li>Envio e recepção dos desafios diários</li>
-            <li>Acompanhamento do seu progresso</li>
-            <li>Validação e suporte das entregas</li>
-          </ul>
-        </article>
-      </div>
-    </section>
+    </header>
 
-    <section aria-labelledby="jornada-title">
-      <div class="section-head">
-        <span class="eyebrow">Sua jornada</span>
-        <h2 id="jornada-title">Sete dias para colocar a operação sob controle.</h2>
-      </div>
-      <div class="journey">
-        <article class="day"><span>Dia 1</span><strong>Fluxo de Avaliação</strong></article>
-        <article class="day"><span>Dia 2</span><strong>Anamnese</strong></article>
-        <article class="day"><span>Dia 3</span><strong>Avaliação Presencial</strong></article>
-        <article class="day"><span>Dia 4</span><strong>Matriz de Decisão</strong></article>
-        <article class="day"><span>Dia 5</span><strong>POP</strong></article>
-        <article class="day"><span>Dia 6</span><strong>Registros e Indicadores</strong></article>
-        <article class="day"><span>Dia 7</span><strong>Auditoria Final</strong></article>
-      </div>
-    </section>
+    <main class="hero">
+      <section class="hero-copy" aria-labelledby="welcome-title">
+        <div class="welcome">
+          <span>✦</span> Seu acesso está liberado
+        </div>
 
-    <section class="delivery" aria-labelledby="entrega-title">
-      <div class="delivery-copy">
-        <span class="eyebrow">A entrega</span>
-        <h2 id="entrega-title">Um desafio por dia.</h2>
-        <p>Assista à aula na Hotmart, baixe a atividade e envie o arquivo preenchido pelo WhatsApp. O objetivo é colocar a mão na massa e evoluir.</p>
-      </div>
-      <div class="equation">
-        <strong>Arquivo enviado = desafio entregue</strong>
-        <small>Direto, prático e sem complicação.</small>
-      </div>
-    </section>
+        <h1 id="welcome-title">
+          Bem-vinda à
+          <span class="gold">Operação Sob Controle.</span>
+        </h1>
 
-    <section class="cta-panel" aria-labelledby="cta-title">
-      <span class="eyebrow">Começar Agora</span>
-      <h2 id="cta-title">Inicie pelo WhatsApp</h2>
-      <p>Clique no botão abaixo para abrir a conversa oficial. Nosso assistente vai localizar sua compra pelo e-mail e ativar seu acesso aos desafios.</p>
-      
-      <!-- Substitua SEUNUMERO pelo número com DDD (ex: 5521999999999) e a mensagem codificada em URL -->
-      <a href="https://wa.me/5521999999999?text=Quero%20come%C3%A7ar%20o%20Opera%C3%A7%C3%A3o%20Sob%20Controle" class="cta" target="_blank" rel="noopener">
-        INICIAR MEU DESAFIO NO WHATSAPP
+        <p>
+          Agora começa a parte mais importante: transformar conhecimento
+          em organização de verdade. Preparamos uma jornada simples para
+          você saber exatamente <strong>onde entrar, o que fazer e como entregar.</strong>
+        </p>
+
+        <div class="mini-promise" aria-label="Benefícios da jornada">
+          <span>✓ 7 dias de prática</span>
+          <span>✓ Passo a passo</span>
+          <span>✓ Sem complicação</span>
+        </div>
+      </section>
+
+      <section class="onboarding" aria-label="Seu primeiro passo">
+        <div class="card-top">
+          <span class="card-kicker" id="step-label">Vamos começar?</span>
+          <span class="step-counter" id="step-counter">1 de 3</span>
+        </div>
+
+        <div class="progress" aria-label="Progresso do onboarding">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="steps">
+
+          <!-- STEP 1 -->
+          <article class="step active" data-step="1">
+            <div class="step-icon">👋</div>
+            <h2>Primeiro: saiba onde tudo acontece</h2>
+            <p>
+              Você vai usar dois ambientes durante a jornada. É simples:
+              um é para aprender, o outro é para acompanhar e entregar.
+            </p>
+
+            <div class="choice-grid">
+              <button class="choice selected" type="button">
+                <strong>🎓 HOTMART</strong>
+                <span>Aulas e materiais complementares no seu ritmo.</span>
+              </button>
+
+              <button class="choice" type="button">
+                <strong>🐾 WHATSAPP</strong>
+                <span>Orientações, acompanhamento e envio dos arquivos.</span>
+              </button>
+            </div>
+          </article>
+
+          <!-- STEP 2 -->
+          <article class="step" data-step="2">
+            <div class="step-icon">🗺️</div>
+            <h2>Depois: siga a jornada de 7 dias</h2>
+            <p>
+              Cada dia tem um foco. Você não precisa descobrir o próximo passo:
+              basta seguir a sequência e executar.
+            </p>
+
+            <div class="journey-preview" aria-label="Jornada de 7 dias">
+              <span>D1<br>Aval.</span>
+              <span>D2<br>Anam.</span>
+              <span>D3<br>Pres.</span>
+              <span>D4<br>Matriz</span>
+              <span>D5<br>POP</span>
+              <span>D6<br>Ind.</span>
+              <span>D7<br>Audit.</span>
+            </div>
+          </article>
+
+          <!-- STEP 3 -->
+          <article class="step" data-step="3">
+            <div class="step-icon">🚀</div>
+            <h2>E por fim: entregue e avance</h2>
+            <p>
+              Terminou a atividade? Baixe, preencha e envie pelo WhatsApp.
+              O arquivo enviado é o seu desafio entregue.
+            </p>
+
+            <div class="delivery">
+              <strong>📎 Regra de ouro</strong>
+              <span>
+                Arquivo enviado = desafio entregue. Sem burocracia.
+              </span>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="onboarding-nav">
+          <button class="back" id="back-button" type="button" hidden>
+            ← Voltar
+          </button>
+
+          <button class="next" id="next-button" type="button">
+            Entendi, próximo →
+          </button>
+
+          <a
+            class="start"
+            id="start-button"
+            href="https://wa.me/5521999999999?text=Quero%20come%C3%A7ar%20o%20Opera%C3%A7%C3%A3o%20Sob%20Controle"
+            target="_blank"
+            rel="noopener noreferrer"
+            hidden>
+            COMEÇAR MEU DESAFIO 🚀
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="final-cta">
+      <a
+        href="https://wa.me/5521999999999?text=Quero%20come%C3%A7ar%20o%20Opera%C3%A7%C3%A3o%20Sob%20Controle"
+        target="_blank"
+        rel="noopener noreferrer">
+        💬 Acessar meu WhatsApp e começar
       </a>
-      
-      <small class="privacy">Você precisará apenas informar o mesmo e-mail utilizado na compra.</small>
-    </section>
-  </main>
+      <small>Sua identificação será feita automaticamente pelo e-mail da compra.</small>
+    </footer>
 
-  <footer>
-    <div class="shell">© 2026 Tata Pereira • Tata Educação • Todos os direitos reservados.</div>
-  </footer>
+  </div>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const steps = [...document.querySelectorAll(".step")];
+      const nextButton = document.querySelector("#next-button");
+      const backButton = document.querySelector("#back-button");
+      const startButton = document.querySelector("#start-button");
+      const progressBar = document.querySelector("#progress-bar");
+      const counter = document.querySelector("#step-counter");
+      const label = document.querySelector("#step-label");
+      const choices = [...document.querySelectorAll(".choice")];
+
+      let currentStep = 1;
+
+      const labels = {
+        1: "Vamos começar?",
+        2: "Agora ficou fácil",
+        3: "É hora de colocar em prática"
+      };
+
+      function render() {
+        steps.forEach((step) => {
+          const active = Number(step.dataset.step) === currentStep;
+          step.classList.toggle("active", active);
+        });
+
+        counter.textContent = `${currentStep} de ${steps.length}`;
+        label.textContent = labels[currentStep];
+        progressBar.style.width = `${(currentStep / steps.length) * 100}%`;
+
+        backButton.hidden = currentStep === 1;
+        nextButton.hidden = currentStep === steps.length;
+        startButton.hidden = currentStep !== steps.length;
+
+        const activeStep = document.querySelector(`.step[data-step="${currentStep}"]`);
+        activeStep?.querySelector("button, a")?.focus({ preventScroll: true });
+      }
+
+      nextButton.addEventListener("click", () => {
+        if (currentStep < steps.length) {
+          currentStep += 1;
+          render();
+        }
+      });
+
+      backButton.addEventListener("click", () => {
+        if (currentStep > 1) {
+          currentStep -= 1;
+          render();
+        }
+      });
+
+      choices.forEach((choice) => {
+        choice.addEventListener("click", () => {
+          choices.forEach((item) => item.classList.remove("selected"));
+          choice.classList.add("selected");
+        });
+      });
+
+      render();
+    })();
+  </script>
 </body>
 </html>
