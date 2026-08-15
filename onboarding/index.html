@@ -160,8 +160,8 @@
   </main>
   <button class="popup-backdrop" id="popup-backdrop" type="button" aria-label="Fechar construção"></button>
   <button class="construction-toggle" id="construction-toggle" type="button" aria-haspopup="dialog" aria-controls="build"><i aria-hidden="true"></i><span>VER CONSTRUÇÃO</span></button>
-  <div class="whatsapp-modal" id="whatsapp-modal" aria-hidden="true"><div class="whatsapp-dialog" role="dialog" aria-modal="true" aria-labelledby="whatsapp-modal-title"><button class="whatsapp-close" id="whatsapp-modal-close" type="button" aria-label="Fechar">×</button><small>Passo 01 • Comunidade</small><h2 id="whatsapp-modal-title">Entre para a Comunidade do WhatsApp</h2><p>No computador, leia o QR Code com o celular. Se estiver no celular, use o botão abaixo.</p><img class="whatsapp-qr" src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&amp;format=svg&amp;data=https%3A%2F%2Fchat.whatsapp.com%2FFSLiVsGW3ieLa02jJm5gz1" alt="QR Code para entrar na Comunidade do WhatsApp"><div class="whatsapp-modal-actions"><a class="whatsapp-open whatsapp-entry" id="modal-whatsapp-open" href="#">ABRIR NO WHATSAPP</a><button class="whatsapp-confirm" id="whatsapp-modal-confirm" type="button">JÁ ENTREI • CONTINUAR</button></div></div></div>
-  <footer>© 2026 Tata Pereira • Metodologia DOMUS • <a href="../entregas/" style="color:var(--gold);text-decoration:none">Central de Entregas</a></footer>
+  <div class="whatsapp-modal" id="whatsapp-modal" aria-hidden="true"><div class="whatsapp-dialog" role="dialog" aria-modal="true" aria-labelledby="whatsapp-modal-title"><button class="whatsapp-close" id="whatsapp-modal-close" type="button" aria-label="Fechar">×</button><small>Passo 01 • Comunidade</small><h2 id="whatsapp-modal-title">Entre para a Comunidade do WhatsApp</h2><p>No computador, leia o QR Code com o celular. Se estiver no celular, use o botão abaixo.</p><img class="whatsapp-qr" src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&amp;format=svg&amp;data=https%3A%2F%2Fchat.whatsapp.com%2FFSLiVsGW3ieLa02jJm5gz1" alt="QR Code para entrar na Comunidade do WhatsApp"><div class="whatsapp-modal-actions"><a class="whatsapp-open whatsapp-entry" id="modal-whatsapp-open" href="#" target="_blank" rel="noopener noreferrer">ABRIR NO WHATSAPP</a><button class="whatsapp-confirm" id="whatsapp-modal-confirm" type="button">JÁ ENTREI • CONTINUAR</button></div></div></div>
+  <footer>© 2026 Tata Pereira • Metodologia DOMUS • <a href="../entregas/" target="_blank" rel="noopener noreferrer" style="color:var(--gold);text-decoration:none">Central de Entregas</a></footer>
   <script>
   /* CONFIGURAÇÃO: substitua apenas estas duas URLs antes de publicar. */
   const WHATSAPP_BOT_URL = "https://chat.whatsapp.com/FSLiVsGW3ieLa02jJm5gz1";
@@ -272,11 +272,6 @@
       whatsappModalClose.addEventListener('click',closeWhatsappModal);
       whatsappModal.addEventListener('click',event=>{if(event.target===whatsappModal)closeWhatsappModal()});
       whatsappModalConfirm.addEventListener('click',()=>{completeCommunity();closeWhatsappModal();chapters[0].scrollIntoView({behavior:'smooth',block:'start'})});
-      $$('a[target="_blank"]').filter(link=>link.id!=='step-whatsapp-button').forEach(link=>link.addEventListener('click',event=>{
-        if(link.getAttribute('aria-disabled')==='true')return;
-        event.preventDefault();
-        window.location.assign(link.href);
-      }));
       async function forceMapDownload(link){
         const response=await fetch(link.href);
         if(!response.ok)throw new Error('Não foi possível carregar o PDF');
