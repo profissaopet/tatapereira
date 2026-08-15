@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="community-locked">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
   <style>
     :root{--bg:#0b0c16;--panel:#151728;--panel2:#1a1d32;--gold:#f1bf42;--gold2:#f8d879;--green:#47d58a;--white:#fff;--muted:#a8adc8;--dim:#737995;--line:rgba(255,255,255,.09);--goldline:rgba(241,191,66,.34);--danger:#ff8585;--radius:20px;--shadow:0 28px 90px rgba(0,0,0,.38)}
-    *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--white);font-family:Inter,sans-serif;-webkit-font-smoothing:antialiased}body{overflow-x:hidden;background:radial-gradient(circle at 15% 4%,rgba(241,191,66,.12),transparent 28rem),radial-gradient(circle at 90% 90%,rgba(83,89,158,.14),transparent 30rem),var(--bg)}
+    *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--white);font-family:Inter,sans-serif;-webkit-font-smoothing:antialiased}body{overflow-x:hidden;background:radial-gradient(circle at 15% 4%,rgba(241,191,66,.12),transparent 28rem),radial-gradient(circle at 90% 90%,rgba(83,89,158,.14),transparent 30rem),var(--bg)}html.community-locked,body.community-locked{overflow:hidden;overscroll-behavior:none}
     body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.26;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:38px 38px;mask-image:linear-gradient(to bottom,#000,transparent 85%)}
     button,a{font:inherit}.shell{position:relative;width:min(1180px,calc(100% - 40px));margin:auto}.topbar{height:76px;display:flex;align-items:center;border-bottom:1px solid var(--line)}.topbar .shell{display:flex;align-items:center;justify-content:space-between;gap:15px}.brand{display:flex;align-items:center;gap:10px}.brand img{width:39px;height:39px;object-fit:contain}.brand small,.brand strong{display:block}.brand small{color:var(--gold);font-size:.64rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}.brand strong{margin-top:2px;font-family:"Plus Jakarta Sans",sans-serif;font-size:.88rem}.confirmed{display:flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid rgba(71,213,138,.25);border-radius:99px;background:rgba(71,213,138,.07);color:var(--green);font-size:.72rem;font-weight:800}.confirmed i{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
     main{padding:40px 0 55px}.state{display:none}.state.active{display:block;animation:rise .5s ease both}.status{max-width:610px;margin:10vh auto;padding:44px 28px;border:1px solid var(--line);border-radius:var(--radius);background:rgba(21,23,40,.88);box-shadow:var(--shadow);text-align:center}.status-icon{width:58px;height:58px;margin:0 auto 18px;border:1px solid var(--goldline);border-radius:50%;display:grid;place-items:center;color:var(--gold);background:rgba(241,191,66,.08);font-size:1.25rem;font-weight:800}.spinner{width:25px;height:25px;border:3px solid rgba(241,191,66,.2);border-top-color:var(--gold);border-radius:50%;animation:spin .75s linear infinite}.status h1{margin:0 0 10px;font:800 clamp(1.55rem,4vw,2.15rem)/1.15 "Plus Jakarta Sans",sans-serif}.status p{max-width:460px;margin:auto;color:var(--muted);line-height:1.65}
@@ -115,11 +115,9 @@
     /* Vídeo persistente + planta flutuante */
     @media(min-width:901px){
       .intro{padding-right:440px;grid-template-columns:1fr;position:relative}
-      .video-column{position:fixed;top:88px;right:max(24px,calc((100vw - 1180px)/2));width:390px;z-index:20;transition:opacity .32s ease,transform .32s ease,visibility .32s ease}
-      .welcome-video{height:min(66svh,580px)}
-      body.story-started .video-column{top:82px;width:320px;right:max(20px,calc((100vw - 1180px)/2));transform:none}
-      body.story-started .welcome-video{width:320px;height:auto;aspect-ratio:9/16;border-radius:18px}
-      body.story-started .video-download{width:320px}
+      .video-column,body.story-started .video-column{position:fixed;top:82px;right:max(20px,calc((100vw - 1180px)/2));width:320px;z-index:20;transform:none;transition:opacity .32s ease,visibility .32s ease}
+      .welcome-video,body.story-started .welcome-video{width:320px;height:auto;aspect-ratio:9/16;border-radius:18px}
+      .video-download,body.story-started .video-download{width:320px}
       .experience{display:block;padding-right:360px}
       .story{width:100%;padding-right:0}
       .build{position:fixed;inset:50% auto auto 50%;width:min(calc(100% - 40px),620px);height:min(78svh,650px);min-height:500px;padding:25px;border-radius:22px;z-index:101;transform:translate(-50%,-46%) scale(.96);box-shadow:0 34px 100px rgba(0,0,0,.72);opacity:0;visibility:hidden;pointer-events:none;transition:.28s ease}
@@ -129,25 +127,25 @@
       .popup-backdrop{display:block}
     }
     @media(max-width:900px){
-      .video-column{transition:width .3s ease,transform .3s ease,opacity .3s ease}
+      .video-column{transition:opacity .3s ease}
       body:not(.story-started) .build,body:not(.story-started) .construction-toggle{opacity:0;visibility:hidden;pointer-events:none}
-      body.story-started .video-column{position:fixed;top:10px;right:10px;width:160px;z-index:88;filter:drop-shadow(0 12px 25px rgba(0,0,0,.55))}
-      body.story-started .welcome-video{width:160px;height:auto;aspect-ratio:9/16;border-radius:13px}
-      body.story-started .poster-copy{left:7px;right:7px;bottom:9px}body.story-started .poster-copy small{display:none}body.story-started .poster-copy strong{font-size:.68rem}
-      body.story-started .video-play{right:auto;left:50%;bottom:54px;width:36px;height:36px;font-size:.82rem;transform:translateX(-50%)}
-      body.story-started .video-download{width:160px;min-height:38px;margin-top:6px;padding:6px;border-radius:10px;font-size:.55rem;text-align:center}body.story-started .video-download>span:first-child,body.story-started .video-download small{display:none}
+      .video-column,body.story-started .video-column{position:fixed;top:10px;right:10px;width:160px;z-index:88;filter:drop-shadow(0 12px 25px rgba(0,0,0,.55))}
+      .welcome-video,body.story-started .welcome-video{width:160px;height:auto;aspect-ratio:9/16;border-radius:13px}
+      .poster-copy,body.story-started .poster-copy{left:7px;right:7px;bottom:9px}.poster-copy small,body.story-started .poster-copy small{display:none}.poster-copy strong,body.story-started .poster-copy strong{font-size:.68rem}
+      .video-play,body.story-started .video-play{right:auto;left:50%;bottom:54px;width:36px;height:36px;font-size:.82rem;transform:translateX(-50%)}
+      .video-download,body.story-started .video-download{width:160px;min-height:38px;margin-top:6px;padding:6px;border-radius:10px;font-size:.55rem;text-align:center}.video-download>span:first-child,.video-download small,body.story-started .video-download>span:first-child,body.story-started .video-download small{display:none}
       .build{right:auto;left:14px;bottom:calc(68px + env(safe-area-inset-bottom));width:112px;height:96px;transform:none}
       .build:not(.popup-open) .blueprint{width:102px;height:87px}
       .construction-toggle{right:10px}
     }
   </style>
 </head>
-<body>
+<body class="community-locked">
   <header class="topbar"><div class="shell"><div class="brand"><img src="../assets/tata-logo-dog.png" alt=""><div><small>Tata Pereira</small><strong>Operação Sob Controle</strong></div></div><div class="confirmed"><i></i> Inscrição confirmada</div></div></header>
   <main class="shell">
     <section id="authorized" class="state active">
       <div class="intro">
-        <div class="intro-copy"><span class="eyebrow">Arquiteta DOMUS detectada</span><h1>Seu projeto começa <span>agora.</span></h1><p>Você não está mais sozinha no improviso. Prepare seus primeiros passos para entrar com o pé direito na transformação.</p><div class="immediate-step" id="whatsapp-step"><small>Passo 01 • Comunidade do WhatsApp</small><strong>Entre para a Comunidade do WhatsApp</strong><p>Abra a comunidade em uma nova guia e continue seu onboarding por aqui.</p><a class="immediate-whatsapp whatsapp-entry" id="step-whatsapp-button" href="#" target="_blank" rel="noopener noreferrer">ENTRAR PARA A COMUNIDADE</a></div><div class="scroll-hint"><i aria-hidden="true"></i> Role para continuar</div></div>
+        <div class="intro-copy"><span class="eyebrow">Arquiteta DOMUS detectada</span><h1>Seu projeto começa <span>agora.</span></h1><p>Você não está mais sozinha no improviso. Prepare seus primeiros passos para entrar com o pé direito na transformação.</p><div class="immediate-step" id="whatsapp-step"><small>Passo 01 • Comunidade do WhatsApp</small><strong>Entre para a Comunidade do WhatsApp</strong><p>Abra a comunidade em uma nova guia e continue seu onboarding por aqui.</p><a class="immediate-whatsapp whatsapp-entry" id="step-whatsapp-button" href="#" target="_blank" rel="noopener noreferrer">ENTRAR PARA A COMUNIDADE</a></div><div class="scroll-hint" id="scroll-hint"><i aria-hidden="true"></i> Entre na comunidade para continuar</div></div>
         <div class="video-column"><div class="welcome-video" id="welcome-video"><iframe id="welcome-video-player" src="about:blank" title="Vídeo de boas-vindas da Operação Sob Controle" allow="autoplay; fullscreen" allowfullscreen referrerpolicy="no-referrer"></iframe><div class="video-poster" aria-hidden="true"><img src="../assets/tata-bracos-cruzados.png" alt=""><div class="poster-copy"><small>Operação Sob Controle</small><strong>Vídeo de<br>Boas-vindas</strong></div></div><button class="video-play" id="video-play" type="button" aria-label="Reproduzir vídeo de boas-vindas">▶</button></div><a class="video-download map-download" href="assets/missao-zero-mapa-avaliacao.pdf" download="Missao_Zero_Mapa_Avaliacao.pdf" data-filename="Missao_Zero_Mapa_Avaliacao.pdf" aria-disabled="true"><span aria-hidden="true">↓</span><span><small>Próximo passo</small>BAIXAR MAPA DE AVALIAÇÃO</span></a></div>
       </div>
       <div class="experience">
@@ -279,7 +277,7 @@
         if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
       }));
       const whatsappModal=$('#whatsapp-modal'),whatsappModalClose=$('#whatsapp-modal-close'),whatsappModalConfirm=$('#whatsapp-modal-confirm');
-      function completeCommunity(){communityReady=true;$('#whatsapp-step').classList.add('done');stepVideo.disabled=false;if($('#video-step').classList.contains('done'))mapDownloads.forEach(mapLink=>mapLink.removeAttribute('aria-disabled'));syncFirstBrick();pulseBuild('COMUNIDADE CONECTADA')}
+      function completeCommunity(){communityReady=true;document.documentElement.classList.remove('community-locked');document.body.classList.remove('community-locked');$('#scroll-hint').lastChild.textContent=' Agora role para continuar';$('#whatsapp-step').classList.add('done');stepVideo.disabled=false;if($('#video-step').classList.contains('done'))mapDownloads.forEach(mapLink=>mapLink.removeAttribute('aria-disabled'));syncFirstBrick();pulseBuild('COMUNIDADE CONECTADA')}
       function openWhatsappModal(){whatsappModal.classList.add('open');whatsappModal.setAttribute('aria-hidden','false');document.body.classList.add('modal-lock');whatsappModalClose.focus()}
       function closeWhatsappModal(){whatsappModal.classList.remove('open');whatsappModal.setAttribute('aria-hidden','true');document.body.classList.remove('modal-lock')}
       $('#step-whatsapp-button').addEventListener('click',event=>{
