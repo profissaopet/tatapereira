@@ -9,8 +9,17 @@ function normalizeEmail(value = '') {
 }
 
 function normalizePhone(value = '') {
+  // Remove caracteres não-numéricos
   const digits = String(value).replace(/\D/g, '');
-  return digits.startsWith('55') ? digits : `55${digits}`;
+
+  // Garante que o número tenha o código do país (55) para consistência com o banco de dados.
+  // Se o número já tiver "55" no início, retorna como está para não duplicar.
+  if (digits.startsWith('55')) {
+    return digits;
+  }
+
+  // Caso contrário, adiciona "55" ao início do número.
+  return `55${digits}`;
 }
 
 export default async function handler(request, response) {
