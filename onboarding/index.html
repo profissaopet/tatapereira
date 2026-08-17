@@ -561,7 +561,10 @@
     }
     .step-action[aria-disabled="true"] { opacity: .4; pointer-events: none; }
     .onboarding-step.done { border-color: rgba(71, 213, 138, .28); background: rgba(71, 213, 138, .055); }
-    .onboarding-step.done>i { border-color: var(--green); background: rgba(71, 213, 138, .12); color: transparent; }
+    .onboarding-step.done>i { 
+      border-color: var(--green); background: rgba(71, 213, 138, .12); color: var(--green); font-size: 0; 
+    }
+    .onboarding-step.done>i::before { content: "✓"; font-size: .8rem; line-height: 1; }
     .onboarding-step.done .step-action { display: none; }
     .map-download-options { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
     .mission-note {
@@ -841,7 +844,6 @@
     .build.roof-ready .roof, .build.door-ready .door { 
       stroke: var(--gold); 
       stroke-width: 4.5; 
-      fill: rgba(241, 191, 66, .12); 
       fill: rgba(241, 191, 66, .26); 
       opacity: 1; 
       filter: drop-shadow(0 0 8px rgba(241, 191, 66, .45));
@@ -1167,6 +1169,47 @@
       footer { display: none !important; }
     }
 
+    /* TELA DE CONCLUSÃO FINAL */
+    .completion-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      display: grid;
+      place-items: center;
+      padding: 16px;
+      background: rgba(11, 12, 22, .85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .4s ease, visibility .4s;
+    }
+    .completion-overlay.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    .completion-dialog {
+      text-align: center;
+      max-width: 420px;
+      animation: cardFadeIn .4s cubic-bezier(.2,.8,.2,1) .2s both;
+    }
+    .completion-icon {
+      font-size: 3.5rem;
+      line-height: 1;
+      margin-bottom: 12px;
+      animation: completion-icon-pop .5s cubic-bezier(.25, .8, .25, 1.5) .4s both;
+    }
+    @keyframes completion-icon-pop {
+      from { transform: scale(0.5); }
+      to { transform: scale(1); }
+    }
+    .completion-dialog h2 {
+      font: 800 clamp(1.5rem, 5vw, 2rem)/1.1 "Plus Jakarta Sans", sans-serif;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .completion-dialog p { color: var(--muted); font-size: .85rem; line-height: 1.5; margin-bottom: 20px; }
+
     /* SISTEMA DE NOTIFICAÇÕES (TOAST) */
     .toast-container {
       position: fixed;
@@ -1254,8 +1297,8 @@
                 <div><strong>Baixe o Mapa de Avaliação</strong>
                   <p>Este é o primeiro tijolo da sua construção. Escolha a versão para imprimir ou editável.</p>
                   <div class="map-download-options"><a class="step-action map-download" id="step-map-download"
-                      href="assets/missao-zero-mapa-avaliacao.pdf" download="Missao_Zero_Mapa_Avaliacao.pdf">PDF • IMPRIMIR</a><a class="step-action map-download"
-                      href="assets/missao-zero-mapa-avaliacao-editavel.docx"
+                      href="https://github.com/profissaopet/tatapereira/raw/ee0caf7a4bf6937727682a656b11fb08a688f048/onboarding/assets/missao-zero-mapa-avaliacao.pdf" download="Missao_Zero_Mapa_Avaliacao.pdf">PDF • IMPRIMIR</a><a class="step-action map-download"
+                      href="https://github.com/profissaopet/tatapereira/raw/ee0caf7a4bf6937727682a656b11fb08a688f048/onboarding/assets/missao-zero-mapa-avaliacao-editavel.docx"
                       download="Missao_Zero_Mapa_Avaliacao_Editavel.docx">DOCX • EDITÁVEL</a></div>
                 </div>
               </div>
@@ -1341,7 +1384,7 @@
           <svg class="blueprint" viewBox="50 25 550 425" role="img" aria-labelledby="house-title">
             <title id="house-title">Representação arquitetônica da Metodologia DOMUS</title>
             <path class="line" d="M55 420H498M78 435H475M63 420V442M480 420V442"/>
-            <path class="roof" d="M88 154L300 50l212 104v28L300 82 88 182z" />
+            <path class="roof" d="M88 154L290 50l202 104v28L290 82 88 182z" />
             <rect class="foundation" x="82" y="388" width="398" height="32" rx="4"/>
             <rect class="pillar" x="100" y="186" width="180" height="194" rx="3"/>
             <rect class="pillar" x="290" y="186" width="180" height="194" rx="3"/>
@@ -1359,8 +1402,13 @@
             <path class="crack-line" d="M384 255c5 8 -5 13 5 22s-5 15 5 24" />
             <path class="crack-line" d="M204 330c5 8 -5 13 5 22" />
             <path class="door" d="M240 380V254c0-13 10-23 23-23h34c13 0 23 10 23 23v126z" />
+            <path class="crack-line" d="M175 204c-5 8 5 13 -5 22s5 15 -5 24"/>
+            <path class="crack-line" d="M384 255c5 8 -5 13 5 22s-5 15 5 24"/>
+            <path class="crack-line" d="M204 330c5 8 -5 13 5 22"/>
+            <path class="door" d="M240 380V254c0-13 10-23 23-23h34c13 0 23 10 23 23v126z"/>
             <g class="key-shape" transform="translate(255, -10)">
               <path d="M300,195 a25,25 0 1,0 0,50 a25,25 0 1,0 0,-50 Z M300,205 a15,15 0 1,1 0,30 a15,15 0 1,1 0,-30 Z M296,245 v40 h8 v-40 Z M304,260 h20 v-8 h-20 Z M304,275 h28 v-8 h-28 Z" />
+              <path d="M300,195 a25,25 0 1,0 0,50 a25,25 0 1,0 0,-50 Z M300,205 a15,15 0 1,1 0,30 a15,15 0 1,1 0,-30 Z M296,245 v40 h8 v-40 Z M304,260 h20 v-8 h-20 Z M304,275 h28 v-8 h-28 Z"/>
             </g>
           </svg>
           <div class="build-caption"><strong id="build-title">Fundação iniciada</strong><span
@@ -1381,6 +1429,15 @@
       <div class="whatsapp-modal-actions"><a class="whatsapp-open whatsapp-entry" id="modal-whatsapp-open" href="#"
           target="_blank" rel="noopener noreferrer">ABRIR NO WHATSAPP</a><button class="whatsapp-confirm"
           id="whatsapp-modal-confirm" type="button">JÁ ENTREI • CONTINUAR</button></div>
+    </div>
+  </div>
+  <!-- TELA DE CONCLUSÃO FINAL -->
+  <div id="completion-overlay" class="completion-overlay">
+    <div class="completion-dialog">
+      <div class="completion-icon">🎉</div>
+      <h2>Projeto Concluído!</h2>
+      <p>Parabéns pela sua decisão! Você deu o primeiro passo para transformar sua operação. Agora, junte-se à nossa comunidade para começar a construção.</p>
+      <a href="#" class="next-step-btn whatsapp-entry" style="max-width: 280px; margin: 0 auto;">ENTRAR NA COMUNIDADE</a>
     </div>
   </div>
   <!-- Contêiner para as Notificações Toast -->
@@ -1684,7 +1741,12 @@
         document.addEventListener('domus:video-started', () => { videoReady = true; syncFirstBrick(); pulseBuild('VÍDEO INICIADO'); showToast('Vídeo de boas-vindas iniciado!'); });
 
         document.addEventListener('keydown', event => { if (event.key === 'Escape' && whatsappModal.classList.contains('open')) closeWhatsappModal(); });
-        function mark(card) { card.classList.add('done'); card.querySelector('.key-status').textContent = 'ACESSO ABERTO'; if ($('#whatsapp-card').classList.contains('done') && $('#hotmart-card').classList.contains('done') && $('#deliveries-card').classList.contains('done')) $('#finish-message').classList.add('show') }
+        function mark(card) { 
+          card.classList.add('done'); card.querySelector('.key-status').textContent = 'ACESSO ABERTO'; 
+          if ($('#hotmart-card').classList.contains('done') && $('#deliveries-card').classList.contains('done')) {
+            $('#completion-overlay').classList.add('visible');
+          }
+        }
         whatsappLinks.filter(link => link.id !== 'step-whatsapp-button').forEach(link => link.addEventListener('click', event => { if (link.getAttribute('aria-disabled') === 'true') { event.preventDefault(); return } mark($('#whatsapp-card')); }));
         $('#hotmart-button').addEventListener('click', () => { mark($('#hotmart-card')); build.classList.add('roof-ready'); });
         $$('.deliveries-entry').forEach(link => link.addEventListener('click', () => { mark($('#deliveries-card')); build.classList.add('door-ready'); }));
