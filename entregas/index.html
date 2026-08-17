@@ -19,12 +19,13 @@
     .mission-list{display:grid;gap:9px}.mission{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:11px;align-items:center;width:100%;padding:12px;border:1px solid var(--line);border-radius:13px;background:rgba(255,255,255,.02);color:var(--text);cursor:pointer;text-align:left;transition:.2s}.mission:hover,.mission.selected{border-color:rgba(241,191,66,.65);background:var(--gold-soft);transform:translateY(-1px)}.mission-index{display:grid;width:40px;height:40px;place-items:center;border:1px solid rgba(241,191,66,.27);border-radius:11px;color:var(--gold);font-size:.68rem;font-weight:800}.mission.done .mission-index{border-color:rgba(73,214,139,.4);background:rgba(73,214,139,.1);color:var(--green)}.mission-title strong,.mission-title small{display:block}.mission-title strong{font-size:.75rem}.mission-title small{margin-top:4px;color:var(--muted);font-size:.61rem}.mission-status{padding:5px 7px;border-radius:999px;background:rgba(255,255,255,.05);color:var(--dim);font-size:.53rem;font-weight:800;text-transform:uppercase}.mission.done .mission-status{background:rgba(73,214,139,.09);color:var(--green)}
     .delivery{padding:20px}.delivery-empty{display:grid;min-height:280px;padding:30px;place-items:center;text-align:center}.delivery-empty span{display:grid;width:54px;height:54px;margin:0 auto 15px;place-items:center;border:1px solid rgba(241,191,66,.28);border-radius:16px;background:var(--gold-soft);color:var(--gold);font-size:1.25rem}.delivery-empty h2{margin:0 0 7px;font:800 1.2rem/1.25 "Plus Jakarta Sans",sans-serif}.delivery-empty p{max-width:360px;margin:0;color:var(--muted);font-size:.72rem;line-height:1.5}.selected-mission{display:flex;align-items:center;gap:11px;margin-bottom:18px;padding:12px;border:1px solid rgba(241,191,66,.28);border-radius:13px;background:var(--gold-soft)}.selected-mission b,.selected-mission small{display:block}.selected-mission b{font-size:.75rem}.selected-mission small{margin-top:3px;color:var(--muted);font-size:.61rem}.selected-badge{display:grid;width:39px;height:39px;flex:0 0 39px;place-items:center;border-radius:10px;background:var(--gold);color:#11121a;font-size:.68rem;font-weight:800}.identity{display:grid;gap:7px;margin-bottom:16px;padding:13px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.02)}.identity div{display:flex;justify-content:space-between;gap:14px}.identity span{color:var(--dim);font-size:.61rem}.identity b{overflow:hidden;color:var(--muted);font-size:.61rem;text-overflow:ellipsis;white-space:nowrap}.upload{position:relative;display:grid;min-height:122px;padding:19px;place-items:center;border:1px dashed rgba(241,191,66,.4);border-radius:13px;background:rgba(241,191,66,.035);text-align:center;cursor:pointer}.upload input{position:absolute;inset:0;opacity:0;cursor:pointer}.upload strong,.upload small{display:block}.upload strong{font-size:.75rem}.upload small{margin-top:6px;color:var(--dim);font-size:.61rem}.upload.has-file{border-style:solid;border-color:var(--green);background:rgba(73,214,139,.06)}.privacy{margin:12px 0 0;color:var(--dim);font-size:.58rem;line-height:1.45}
     .history{margin-top:18px;padding:19px}.history-list{display:grid;gap:8px}.history-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.018)}.history-item b,.history-item small{display:block}.history-item b{font-size:.7rem}.history-item small{margin-top:3px;color:var(--dim);font-size:.59rem}.history-state{color:var(--green);font-size:.57rem;font-weight:800;text-transform:uppercase}.empty-history{padding:22px;border:1px dashed var(--line);border-radius:12px;color:var(--dim);font-size:.69rem;text-align:center}.mobile-action{position:fixed;z-index:35;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));display:none}.mobile-action .primary{box-shadow:0 15px 35px rgba(0,0,0,.45)}footer{padding:23px;border-top:1px solid var(--line);color:var(--dim);font-size:.61rem;text-align:center}
+    .history{margin-top:18px;padding:19px}.history-list{display:grid;gap:8px}.history-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.018)}.history-item b,.history-item small{display:block}.history-item b{font-size:.7rem}.history-item small{margin-top:3px;color:var(--dim);font-size:.59rem}.history-state{color:var(--green);font-size:.57rem;font-weight:800;text-transform:uppercase}.empty-history{padding:22px;border:1px dashed var(--line);border-radius:12px;color:var(--dim);font-size:.69rem;text-align:center}.ranking{margin-top:18px;padding:19px}.ranking-list{display:grid;gap:9px}.rank-item{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.018)}.rank-item.is-you{border-color:rgba(241,191,66,.5);background:var(--gold-soft)}.rank-pos{font:800 .7rem/1 "Plus Jakarta Sans",sans-serif;color:var(--dim);text-align:center}.rank-item.is-you .rank-pos{color:var(--gold)}.rank-name{font-size:.72rem;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rank-xp{font-size:.68rem;font-weight:800;color:var(--gold)}.rank-bar{grid-column:2/-1;height:4px;border-radius:99px;background:rgba(255,255,255,.07)}.rank-bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-2));border-radius:inherit;transition:width .5s ease-out}.mobile-action{position:fixed;z-index:35;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));display:none}.mobile-action .primary{box-shadow:0 15px 35px rgba(0,0,0,.45)}footer{padding:23px;border-top:1px solid var(--line);color:var(--dim);font-size:.61rem;text-align:center}
     @media(min-width:760px){.shell{width:min(1160px,calc(100% - 48px))}.topbar-inner{min-height:76px}.welcome{flex-direction:row;align-items:flex-end;justify-content:space-between;margin-bottom:27px}.welcome p{font-size:.93rem}.profile-chip{margin-bottom:4px}.stats{grid-template-columns:repeat(4,1fr);gap:12px}.stat.wide{grid-column:auto}.stat{padding:18px}.quick-access{grid-template-columns:repeat(3,1fr);gap:12px}.dashboard{grid-template-columns:390px minmax(0,1fr);align-items:start}.journey{position:sticky;top:96px;padding:22px}.delivery{padding:27px}.form-grid.two{grid-template-columns:1fr 1fr}.brand strong{font-size:.88rem}.mobile-action{display:none!important}}
-    @media(max-width:759px){.mobile-action.visible{display:block}.top-actions .onboarding-link{display:none}.mission-list{grid-template-columns:1fr}.identity div{display:block}.identity b{margin-top:3px}.history{margin-bottom:24px}}
+    @media(max-width:759px){.mobile-action.visible{display:block}.top-actions .onboarding-link{display:none}.mission-list{grid-template-columns:1fr}.identity div{display:block}.identity b{margin-top:3px}.history,.ranking{margin-bottom:24px}}
   </style>
 </head>
 <body>
-  <header class="topbar"><div class="shell topbar-inner"><div class="brand"><img src="../assets/tata-logo-dog.png" alt=""><div><small>Tata Pereira</small><strong>Operação Sob Controle</strong></div></div><div class="top-actions"><button class="ghost-button" id="logout-button" type="button" hidden>SAIR</button><a class="ghost-button onboarding-link" href="../onboarding/">BOAS-VINDAS</a></div></div></header>
+  <header class="topbar"><div class="shell topbar-inner"><div class="brand"><img src="../assets/tata-logo-dog.png" alt="Logo da Tata Pereira"><div><small>Tata Pereira</small><strong>Operação Sob Controle</strong></div></div><div class="top-actions"><button class="ghost-button" id="logout-button" type="button" hidden>SAIR</button></div></div></header>
 
   <section class="auth-gate shell" id="auth-gate"><div class="auth-card"><div class="auth-mark" aria-hidden="true">⌂</div><h1>Acesse sua construção.</h1><p>Use o e-mail e o telefone informados na compra para abrir sua Central de Entregas.</p><form class="form-grid" id="auth-form"><div class="field"><label for="auth-email">E-mail da compra</label><input id="auth-email" type="email" autocomplete="email" required></div><div class="field"><label for="auth-phone">Telefone da compra</label><input id="auth-phone" autocomplete="tel" inputmode="tel" placeholder="(00) 00000-0000" required></div><button class="primary" id="auth-submit" type="submit">VALIDAR MEU ACESSO</button><div class="status" id="auth-status" role="status" aria-live="polite"></div></form><p class="auth-note">Seus dados são usados apenas para localizar sua inscrição.</p></div></section>
 
@@ -32,7 +33,7 @@
     <section class="welcome"><div><span class="eyebrow">Central de Entregas • Metodologia DOMUS</span><h1>Olá, <span id="welcome-name">Arquiteta</span>.</h1><p>Acompanhe sua construção, envie os desafios e avance um tijolo por vez.</p></div><div class="profile-chip"><span class="avatar" id="avatar">A</span><div><strong id="profile-name">Arquiteta DOMUS</strong><small id="profile-email"></small></div></div></section>
 
     <section class="stats" aria-label="Resumo do progresso"><article class="stat"><span class="stat-label">Progresso</span><strong class="gold" id="progress-percent">0%</strong><small id="progress-label">0 de 8 missões</small><div class="meter"><span id="meter-fill"></span></div></article><article class="stat"><span class="stat-label">XP acumulado</span><strong class="gold" id="xp-total">0 XP</strong><small>de 100 XP disponíveis</small></article><article class="stat"><span class="stat-label">Entregas confirmadas</span><strong id="completed-count">0</strong><small>registradas na construção</small></article><article class="stat wide"><span class="stat-label">Próximo passo</span><strong id="next-code">M0</strong><small id="next-title">Mapa de Avaliação</small></article></section>
-    <nav class="quick-access" aria-label="Acessos rápidos"><a class="quick-link" href="https://consumer.hotmart.com/" target="_blank" rel="noopener noreferrer"><span class="quick-icon" aria-hidden="true">▶</span><span class="quick-copy"><strong>Acessar a Hotmart</strong><small>Aulas e materiais</small></span><span class="quick-arrow" aria-hidden="true">↗</span></a><a class="quick-link" href="https://chat.whatsapp.com/FSLiVsGW3ieLa02jJm5gz1" target="_blank" rel="noopener noreferrer"><span class="quick-icon" aria-hidden="true">●</span><span class="quick-copy"><strong>Comunidade do WhatsApp</strong><small>Avisos e acompanhamento</small></span><span class="quick-arrow" aria-hidden="true">↗</span></a><a class="quick-link" href="https://wa.me/15553786051" target="_blank" rel="noopener noreferrer"><span class="quick-icon" aria-hidden="true">↑</span><span class="quick-copy"><strong>Entregar pelo bot</strong><small>Envie sua missão no WhatsApp</small></span><span class="quick-arrow" aria-hidden="true">↗</span></a></nav>
+    <nav class="quick-access" aria-label="Acessos rápidos"><a class="quick-link" href="https://consumer.hotmart.com/" target="_blank" rel="noopener noreferrer"><span class="quick-icon" aria-hidden="true">▶</span><span class="quick-copy"><strong>Acessar a Hotmart</strong><small>Aulas e materiais</small></span><span class="quick-arrow" aria-hidden="true">↗</span></a><a class="quick-link" href="https://chat.whatsapp.com/FSLiVsGW3ieLa02jJm5gz1" target="_blank" rel="noopener noreferrer"><span class="quick-icon" aria-hidden="true">●</span><span class="quick-copy"><strong>Comunidade do WhatsApp</strong><small>Avisos e acompanhamento</small></span><span class="quick-arrow" aria-hidden="true">↗</span></a><a class="quick-link" href="https://wa.me/15553786051" target="_blank" rel="noopener noreferrer"><span class="quick-icon" aria-hidden="true">↑</span><span class="quick-copy"><strong>Entregar pela DOMMA</strong><small>Envie sua missão no WhatsApp</small></span><span class="quick-arrow" aria-hidden="true">↗</span></a></nav>
 
     <div class="dashboard">
       <aside class="panel journey"><div class="section-head"><div><h2>Sua construção</h2><p>Escolha uma missão para fazer ou reenviar.</p></div><div class="house" aria-hidden="true"><span class="roof"></span><div class="bricks" id="house-bricks"></div></div></div><div class="mission-list" id="missions"></div></aside>
@@ -45,6 +46,7 @@
             <button class="primary" id="submit-button" type="submit" style="margin-top:15px">CONFIRMAR ENTREGA</button><div class="status" id="form-status" role="status" aria-live="polite"></div><p class="privacy">Seu material será encaminhado com segurança ao fluxo de acompanhamento da Operação Sob Controle.</p>
           </form></div></section>
         <section class="panel history"><div class="section-head"><div><h2>Resumo das entregas</h2><p>Missões confirmadas no seu progresso.</p></div></div><div class="history-list" id="history-list"></div></section>
+        <section class="panel ranking"><div class="section-head"><div><h2>Ranking Geral</h2><p>As 10 arquitetas com mais XP na construção.</p></div></div><div class="ranking-list" id="ranking-list"><div class="empty-history">O ranking está sendo calculado...</div></div></section>
       </div>
     </div>
   </main>
@@ -53,37 +55,319 @@
   <footer>© 2026 Tata Pereira • Metodologia DOMUS • Operação Sob Controle</footer>
 
   <script>
-    const challenges=[
-      {id:'missao-zero',code:'M0',xp:10,meta:'Missão Zero • 10 XP',title:'Mapa de Avaliação'},
-      {id:'dia-1',code:'D1',xp:10,meta:'Dia 1 • 10 XP',title:'Fluxo de avaliação'},
-      {id:'dia-2',code:'D2',xp:20,meta:'Dia 2 • 20 XP',title:'Anamnese'},
-      {id:'dia-3',code:'D3',xp:20,meta:'Dia 3 • 20 XP',title:'Observação presencial'},
-      {id:'dia-4',code:'D4',xp:20,meta:'Dia 4 • 20 XP',title:'Matriz de decisão'},
-      {id:'dia-5',code:'D5',xp:10,meta:'Dia 5 • 10 XP',title:'POP escrito'},
-      {id:'dia-6',code:'D6',xp:10,meta:'Dia 6 • 10 XP',title:'Dados e indicadores'},
-      {id:'dia-7',code:'D7',xp:0,meta:'Dia 7 • Grande marco',title:'Entrega das chaves'}
-    ];
-    const $=selector=>document.querySelector(selector);const authGate=$('#auth-gate'),portal=$('#portal'),authForm=$('#auth-form'),authSubmit=$('#auth-submit'),authStatus=$('#auth-status'),logoutButton=$('#logout-button'),missions=$('#missions'),form=$('#delivery-form'),fileInput=$('#delivery-file'),uploadBox=$('#upload-box'),uploadTitle=$('#upload-title'),uploadCopy=$('#upload-copy'),submit=$('#submit-button'),statusBox=$('#form-status'),mobileAction=$('#mobile-action');
-    const storageKey='domus-entregas-concluidas';let completed=new Set(JSON.parse(localStorage.getItem(storageKey)||'[]')),activeMission=null,currentUser=null;
+    (() => {
+      'use strict';
 
-    function message(box,type,text){box.className=`status show ${type}`;box.textContent=text}
-    function firstName(name){return (name||'Arquiteta').trim().split(/\s+/)[0]}
-    function unlockPortal(user){currentUser=user;authGate.hidden=true;portal.hidden=false;logoutButton.hidden=false;const name=user.nome||'Arquiteta DOMUS';$('#welcome-name').textContent=firstName(name);$('#profile-name').textContent=name;$('#profile-email').textContent=user.email||'';$('#avatar').textContent=firstName(name).charAt(0).toUpperCase();$('#identity-name').textContent=name;$('#identity-email').textContent=user.email||'';$('#student-name').value=name;$('#student-email').value=user.email||'';$('#student-whatsapp').value=user.telefone||'';if(Array.isArray(user.desafios_concluidos))user.desafios_concluidos.forEach(id=>completed.add(id));persist();render()}
-    function persist(){localStorage.setItem(storageKey,JSON.stringify([...completed]))}
+      // --- CONFIGURAÇÃO E CONSTANTES ---
+      const CHALLENGES = [
+        { id: 'missao-zero', code: 'M0', xp: 10, meta: 'Missão Zero • 10 XP', title: 'Mapa de Avaliação' },
+        { id: 'dia-1', code: 'D1', xp: 10, meta: 'Dia 1 • 10 XP', title: 'Fluxo de avaliação' },
+        { id: 'dia-2', code: 'D2', xp: 20, meta: 'Dia 2 • 20 XP', title: 'Anamnese' },
+        { id: 'dia-3', code: 'D3', xp: 20, meta: 'Dia 3 • 20 XP', title: 'Observação presencial' },
+        { id: 'dia-4', code: 'D4', xp: 20, meta: 'Dia 4 • 20 XP', title: 'Matriz de decisão' },
+        { id: 'dia-5', code: 'D5', xp: 10, meta: 'Dia 5 • 10 XP', title: 'POP escrito' },
+        { id: 'dia-6', code: 'D6', xp: 10, meta: 'Dia 6 • 10 XP', title: 'Dados e indicadores' },
+        { id: 'dia-7', code: 'D7', xp: 0, meta: 'Dia 7 • Grande marco', title: 'Entrega das chaves' }
+      ];
+      const STORAGE_KEY = 'domus-entregas-concluidas';
+      const MAX_FILE_SIZE = 4.25 * 1024 * 1024; // 4.25 MB para segurança
 
-    async function checkSession(){try{const response=await fetch('/api/autenticacao',{credentials:'same-origin'}),data=await response.json().catch(()=>({}));if(response.ok&&data.ok)unlockPortal(data.usuario)}catch{if(location.protocol==='file:')message(authStatus,'error','A autenticação estará disponível após a publicação na Vercel.')}}
-    authForm.addEventListener('submit',async event=>{event.preventDefault();if(!authForm.reportValidity())return;authSubmit.disabled=true;authSubmit.textContent='VALIDANDO…';authStatus.className='status';try{const response=await fetch('/api/autenticacao',{method:'POST',credentials:'same-origin',headers:{'content-type':'application/json'},body:JSON.stringify({email:$('#auth-email').value,telefone:$('#auth-phone').value})}),data=await response.json().catch(()=>({}));if(!response.ok||!data.ok)throw new Error(data.message||'Compra não localizada.');unlockPortal(data.usuario);scrollTo({top:0,behavior:'smooth'})}catch(error){message(authStatus,'error',error.message)}finally{authSubmit.disabled=false;authSubmit.textContent='VALIDAR MEU ACESSO'}});
-    logoutButton.addEventListener('click',async()=>{await fetch('/api/autenticacao',{method:'DELETE',credentials:'same-origin'}).catch(()=>{});localStorage.removeItem(storageKey);location.reload()});
+      // --- SELETORES DO DOM ---
+      const $ = s => document.querySelector(s);
+      const DOM = {
+        authGate: $('#auth-gate'), portal: $('#portal'), authForm: $('#auth-form'), authSubmit: $('#auth-submit'), authStatus: $('#auth-status'), authPhone: $('#auth-phone'),
+        logoutButton: $('#logout-button'), missions: $('#missions'), form: $('#delivery-form'), fileInput: $('#delivery-file'), uploadBox: $('#upload-box'),
+        uploadTitle: $('#upload-title'), uploadCopy: $('#upload-copy'), submit: $('#submit-button'), statusBox: $('#form-status'), mobileAction: $('#mobile-action'),
+        mobileSubmit: $('#mobile-submit'),
+      };
 
-    challenges.forEach((item,index)=>{const button=document.createElement('button');button.type='button';button.className='mission';button.dataset.id=item.id;button.innerHTML=`<span class="mission-index">${item.code}</span><span class="mission-title"><strong>${item.title}</strong><small>${item.meta}</small></span><span class="mission-status">Disponível</span>`;button.addEventListener('click',()=>selectMission(item));missions.appendChild(button);const brick=document.createElement('span');brick.className='brick';brick.dataset.id=item.id;$('#house-bricks').appendChild(brick)});
-    function selectMission(item){activeMission=item;$('#challenge').value=item.code;$('#selected-code').textContent=item.code;$('#selected-title').textContent=item.title;$('#selected-meta').textContent=completed.has(item.id)?`${item.meta} • reenvio` : item.meta;$('#delivery-empty').hidden=true;$('#delivery-content').hidden=false;mobileAction.classList.add('visible');statusBox.className='status';render();if(innerWidth<760)$('#delivery-card').scrollIntoView({behavior:'smooth',block:'start'})}
-    function render(){const count=completed.size,percent=Math.round(count/challenges.length*100),xp=challenges.reduce((total,item)=>total+(completed.has(item.id)?item.xp:0),0),next=challenges.find(item=>!completed.has(item.id));$('#completed-count').textContent=count;$('#xp-total').textContent=`${xp} XP`;$('#progress-percent').textContent=`${percent}%`;$('#progress-label').textContent=`${count} de ${challenges.length} missões`;$('#meter-fill').style.width=`${percent}%`;$('#next-code').textContent=next?next.code:'✓';$('#next-title').textContent=next?next.title:'Construção concluída';document.querySelectorAll('.mission').forEach(button=>{const done=completed.has(button.dataset.id);button.classList.toggle('done',done);button.classList.toggle('selected',activeMission?.id===button.dataset.id);button.querySelector('.mission-status').textContent=done?'Entregue':'Disponível'});document.querySelectorAll('.brick').forEach(brick=>brick.classList.toggle('done',completed.has(brick.dataset.id)));renderHistory()}
-    function renderHistory(){const list=$('#history-list'),done=challenges.filter(item=>completed.has(item.id));list.innerHTML='';if(!done.length){list.innerHTML='<div class="empty-history">Sua primeira entrega aparecerá aqui.</div>';return}done.forEach(item=>{const row=document.createElement('div');row.className='history-item';row.innerHTML=`<div><b>${item.code} • ${item.title}</b><small>${item.meta}</small></div><span class="history-state">Entregue</span>`;list.appendChild(row)})}
+      // --- ESTADO DA APLICAÇÃO ---
+      const app = {
+        currentUser: null,
+        activeMission: null,
+        completed: new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')),
+      };
 
-    fileInput.addEventListener('change',()=>{const file=fileInput.files[0];uploadBox.classList.toggle('has-file',Boolean(file));uploadTitle.textContent=file?file.name:'Toque para selecionar o arquivo';uploadCopy.textContent=file?`${(file.size/1024/1024).toFixed(2)} MB • toque para substituir`:'ou arraste o documento até aqui'});
-    function showFormStatus(type,text){message(statusBox,type,text);statusBox.scrollIntoView({behavior:'smooth',block:'nearest'})}
-    form.addEventListener('submit',async event=>{event.preventDefault();statusBox.className='status';if(!activeMission){showFormStatus('error','Selecione uma missão.');return}const file=fileInput.files[0],link=$('#delivery-link').value.trim();if(!file&&!link){showFormStatus('error','Anexe um arquivo ou informe o link da entrega.');return}if(file&&file.size>4*1024*1024){showFormStatus('error','O arquivo ultrapassa 4 MB. Comprima-o ou envie um link.');return}submit.disabled=true;submit.textContent='ENVIANDO…';$('#mobile-submit').disabled=true;$('#sent-at').value=new Date().toISOString();try{const payload=new FormData(form);if(!file&&link)payload.set('arquivo',new File([`Link informado pela aluna:\n${link}\n`],`link-${activeMission.code}.txt`,{type:'text/plain'}));const response=await fetch('/api/entregas',{method:'POST',body:payload}),data=await response.json().catch(()=>({}));if(!response.ok||!data.ok)throw new Error(data.message||'Não foi possível confirmar a entrega.');completed.add(activeMission.id);persist();render();showFormStatus('success',`${activeMission.code} recebida com sucesso. Seu tijolo foi assentado.`);fileInput.value='';$('#delivery-link').value='';$('#notes').value='';uploadBox.classList.remove('has-file');uploadTitle.textContent='Toque para selecionar o arquivo';uploadCopy.textContent='ou arraste o documento até aqui'}catch(error){showFormStatus('error',error.message)}finally{submit.disabled=false;submit.textContent='CONFIRMAR ENTREGA';$('#mobile-submit').disabled=false}});
-    $('#mobile-submit').addEventListener('click',()=>form.requestSubmit());render();checkSession();
+      // --- FUNÇÕES UTILITÁRIAS ---
+      const showMessage = (box, type, text) => { box.className = `status show ${type}`; box.textContent = text; };
+      const getFirstName = (name) => (name || 'Arquiteta').trim().split(/\s+/)[0];
+      const formatPhone = (value) => {
+        const digits = value.replace(/\D/g, '');
+        if (digits.length > 11) return digits.slice(0, 11);
+        if (digits.length > 10) return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+        if (digits.length > 6) return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+        if (digits.length > 2) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+        return digits;
+      };
+      const formatRankingName = (name) => {
+        if (!name) return 'Arquiteta';
+        const parts = name.trim().split(/\s+/);
+        if (parts.length < 2) return parts[0];
+        return `${parts[0]} ${parts[parts.length - 1].charAt(0)}.`;
+      };
+
+      // --- LÓGICA DE AUTENTICAÇÃO E SESSÃO ---
+      const persistState = () => localStorage.setItem(STORAGE_KEY, JSON.stringify([...app.completed]));
+
+      const unlockPortal = (user) => {
+        app.currentUser = user;
+        DOM.authGate.hidden = true;
+        DOM.portal.hidden = false;
+        DOM.logoutButton.hidden = false;
+
+        const name = user.nome || 'Arquiteta DOMUS';
+        const firstName = getFirstName(name);
+        $('#welcome-name').textContent = firstName;
+        $('#profile-name').textContent = name;
+        $('#profile-email').textContent = user.email || '';
+        $('#avatar').textContent = firstName.charAt(0).toUpperCase();
+        $('#identity-name').textContent = name;
+        $('#identity-email').textContent = user.email || '';
+        $('#student-name').value = name;
+        $('#student-email').value = user.email || '';
+        $('#student-whatsapp').value = user.telefone || '';
+
+        if (Array.isArray(user.desafios_concluidos)) {
+          user.desafios_concluidos.forEach(id => app.completed.add(id));
+        }
+        persistState();
+        updateDOM();
+        fetchAndRenderRanking();
+      };
+
+      const handleAuthSubmit = async (event) => {
+        event.preventDefault();
+        if (!DOM.authForm.reportValidity()) return;
+        const phoneDigits = DOM.authPhone.value.replace(/\D/g, '');
+        if (phoneDigits.length < 10) {
+          showMessage(DOM.authStatus, 'error', 'O telefone parece inválido. Verifique o DDD e o número.');
+          return;
+        }
+
+        DOM.authSubmit.disabled = true;
+        DOM.authSubmit.textContent = 'VALIDANDO…';
+        DOM.authStatus.className = 'status';
+
+        try {
+          const response = await fetch('/api/autenticacao', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ email: $('#auth-email').value, telefone: phoneDigits })
+          });
+          const data = await response.json().catch(() => ({}));
+          if (!response.ok || !data.ok) throw new Error(data.message || 'Compra não localizada.');
+          unlockPortal(data.usuario);
+          scrollTo({ top: 0, behavior: 'smooth' });
+        } catch (error) {
+          showMessage(DOM.authStatus, 'error', error.message);
+        } finally {
+          DOM.authSubmit.disabled = false;
+          DOM.authSubmit.textContent = 'VALIDAR MEU ACESSO';
+        }
+      };
+
+      const handleLogout = async () => {
+        await fetch('/api/autenticacao', { method: 'DELETE', credentials: 'same-origin' }).catch(() => {});
+        localStorage.removeItem(STORAGE_KEY);
+        location.reload();
+      };
+
+      const checkSession = async () => {
+        try {
+          const response = await fetch('/api/autenticacao', { credentials: 'same-origin' });
+          const data = await response.json().catch(() => ({}));
+          if (response.ok && data.ok) unlockPortal(data.usuario);
+        } catch {
+          if (location.protocol === 'file:') {
+            showMessage(DOM.authStatus, 'error', 'A autenticação estará disponível após a publicação na Vercel.');
+          }
+        }
+      };
+
+      // --- LÓGICA DO RANKING ---
+      const fetchAndRenderRanking = async () => {
+        const rankingList = $('#ranking-list');
+        try {
+          const response = await fetch('/api/ranking');
+          const externalRanking = await response.json();
+          
+          const currentUserXP = CHALLENGES.reduce((total, item) => total + (app.completed.has(item.id) ? item.xp : 0), 0);
+          
+          // Adiciona o usuário atual à lista de ranking para garantir que ele apareça
+          const fullRanking = [
+            ...externalRanking,
+            { nome: app.currentUser?.nome || 'Você', xp: currentUserXP }
+          ];
+
+          // Remove duplicados, mantendo a maior pontuação em caso de nomes iguais
+          const uniqueRanking = Array.from(new Map(fullRanking.map(p => [p.nome.toLowerCase(), p])).values());
+          
+          const sortedRanking = uniqueRanking.sort((a, b) => b.xp - a.xp).slice(0, 10);
+
+          rankingList.innerHTML = '';
+          sortedRanking.forEach((player, index) => {
+            const isCurrentUser = player.nome.toLowerCase() === (app.currentUser?.nome || '').toLowerCase();
+            const item = `<div class="rank-item ${isCurrentUser ? 'is-you' : ''}"><span class="rank-pos">${index + 1}</span><span class="rank-name">${formatRankingName(player.nome)}</span><span class="rank-xp">${player.xp} XP</span><div class="rank-bar"><div class="rank-bar-fill" style="width: ${player.xp}%"></div></div></div>`;
+            rankingList.insertAdjacentHTML('beforeend', item);
+          });
+        } catch (error) {
+          rankingList.innerHTML = '<div class="empty-history">Não foi possível carregar o ranking.</div>';
+          console.error('Ranking Error:', error);
+        }
+      };
+
+      // --- LÓGICA DE UI E RENDERIZAÇÃO ---
+      const createMissionElements = () => {
+        CHALLENGES.forEach((item) => {
+          const button = document.createElement('button');
+          button.type = 'button';
+          button.className = 'mission';
+          button.dataset.id = item.id;
+          button.innerHTML = `<span class="mission-index">${item.code}</span><span class="mission-title"><strong>${item.title}</strong><small>${item.meta}</small></span><span class="mission-status">Disponível</span>`;
+          button.addEventListener('click', () => selectMission(item));
+          DOM.missions.appendChild(button);
+
+          const brick = document.createElement('span');
+          brick.className = 'brick';
+          brick.dataset.id = item.id;
+          $('#house-bricks').appendChild(brick);
+        });
+      };
+
+      const selectMission = (item) => {
+        app.activeMission = item;
+        $('#challenge').value = item.code;
+        $('#selected-code').textContent = item.code;
+        $('#selected-title').textContent = item.title;
+        $('#selected-meta').textContent = app.completed.has(item.id) ? `${item.meta} • reenvio` : item.meta;
+        $('#delivery-empty').hidden = true;
+        $('#delivery-content').hidden = false;
+        DOM.mobileAction.classList.add('visible');
+        DOM.statusBox.className = 'status';
+        updateDOM();
+        if (innerWidth < 760) {
+          $('#delivery-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      };
+
+      const renderHistory = () => {
+        const list = $('#history-list');
+        const done = CHALLENGES.filter(item => app.completed.has(item.id));
+        list.innerHTML = '';
+        if (!done.length) {
+          list.innerHTML = '<div class="empty-history">Sua primeira entrega aparecerá aqui.</div>';
+          return;
+        }
+        done.forEach(item => {
+          const row = document.createElement('div');
+          row.className = 'history-item';
+          row.innerHTML = `<div><b>${item.code} • ${item.title}</b><small>${item.meta}</small></div><span class="history-state">Entregue</span>`;
+          list.appendChild(row);
+        });
+      };
+
+      const updateDOM = () => {
+        const count = app.completed.size;
+        const percent = Math.round(count / CHALLENGES.length * 100);
+        const xp = CHALLENGES.reduce((total, item) => total + (app.completed.has(item.id) ? item.xp : 0), 0);
+        const next = CHALLENGES.find(item => !app.completed.has(item.id));
+
+        $('#completed-count').textContent = count;
+        $('#xp-total').textContent = `${xp} XP`;
+        $('#progress-percent').textContent = `${percent}%`;
+        $('#progress-label').textContent = `${count} de ${CHALLENGES.length} missões`;
+        $('#meter-fill').style.width = `${percent}%`;
+        $('#next-code').textContent = next ? next.code : '✓';
+        $('#next-title').textContent = next ? next.title : 'Construção concluída';
+
+        document.querySelectorAll('.mission').forEach(button => {
+          const done = app.completed.has(button.dataset.id);
+          button.classList.toggle('done', done);
+          button.classList.toggle('selected', app.activeMission?.id === button.dataset.id);
+          button.querySelector('.mission-status').textContent = done ? 'Entregue' : 'Disponível';
+        });
+        document.querySelectorAll('.brick').forEach(brick => brick.classList.toggle('done', app.completed.has(brick.dataset.id)));
+        renderHistory();
+      };
+
+      // --- LÓGICA DE ENVIO DE FORMULÁRIO ---
+      const handleFileInputChange = () => {
+        const file = DOM.fileInput.files[0];
+        DOM.uploadBox.classList.toggle('has-file', !!file);
+        DOM.uploadTitle.textContent = file ? file.name : 'Toque para selecionar o arquivo';
+        DOM.uploadCopy.textContent = file ? `${(file.size / 1024 / 1024).toFixed(2)} MB • toque para substituir` : 'ou arraste o documento até aqui';
+      };
+
+      const showFormStatus = (type, text) => {
+        showMessage(DOM.statusBox, type, text);
+        DOM.statusBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      };
+
+      const handleDeliverySubmit = async (event) => {
+        event.preventDefault();
+        DOM.statusBox.className = 'status';
+
+        if (!app.activeMission) {
+          showFormStatus('error', 'Selecione uma missão.');
+          return;
+        }
+        const file = DOM.fileInput.files[0];
+        const link = $('#delivery-link').value.trim();
+        if (!file && !link) {
+          showFormStatus('error', 'Anexe um arquivo ou informe o link da entrega.');
+          return;
+        }
+        if (file && file.size > MAX_FILE_SIZE) {
+          showFormStatus('error', `O arquivo ultrapassa ${(MAX_FILE_SIZE / 1024 / 1024).toFixed(0)} MB. Comprima-o ou envie um link.`);
+          return;
+        }
+
+        DOM.submit.disabled = true;
+        DOM.submit.textContent = 'ENVIANDO…';
+        DOM.mobileSubmit.disabled = true;
+        $('#sent-at').value = new Date().toISOString();
+
+        try {
+          const payload = new FormData(DOM.form);
+          if (!file && link) {
+            payload.set('arquivo', new File([`Link informado pela aluna:\n${link}\n`], `link-${app.activeMission.code}.txt`, { type: 'text/plain' }));
+          }
+          const response = await fetch('/api/entregas', { method: 'POST', body: payload });
+          const data = await response.json().catch(() => ({}));
+          if (!response.ok || !data.ok) throw new Error(data.message || 'Não foi possível confirmar a entrega.');
+
+          app.completed.add(app.activeMission.id);
+          persistState();
+          updateDOM();
+          showFormStatus('success', `${app.activeMission.code} recebida com sucesso. Seu tijolo foi assentado.`);
+          DOM.form.reset();
+          handleFileInputChange(); // Reseta o visual do input de arquivo
+        } catch (error) {
+          showFormStatus('error', error.message);
+        } finally {
+          DOM.submit.disabled = false;
+          DOM.submit.textContent = 'CONFIRMAR ENTREGA';
+          DOM.mobileSubmit.disabled = false;
+        }
+      };
+
+      // --- INICIALIZAÇÃO ---
+      const init = () => {
+        DOM.authPhone.addEventListener('input', () => DOM.authPhone.value = formatPhone(DOM.authPhone.value));
+        DOM.authForm.addEventListener('submit', handleAuthSubmit);
+        DOM.logoutButton.addEventListener('click', handleLogout);
+        DOM.fileInput.addEventListener('change', handleFileInputChange);
+        DOM.form.addEventListener('submit', handleDeliverySubmit);
+        DOM.mobileSubmit.addEventListener('click', () => DOM.form.requestSubmit());
+
+        createMissionElements();
+        updateDOM();
+        checkSession(); // checkSession irá chamar unlockPortal, que por sua vez chamará o ranking.
+      };
+
+      init();
+    })();
   </script>
 </body>
 </html>
