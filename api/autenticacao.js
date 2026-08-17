@@ -12,14 +12,11 @@ function normalizePhone(value = '') {
   // Remove caracteres não-numéricos
   const digits = String(value).replace(/\D/g, '');
 
-  // Garante que o número tenha o código do país (55) para consistência com o banco de dados.
-  // Se o número já tiver "55" no início, retorna como está para não duplicar.
-  if (digits.startsWith('55')) {
-    return digits;
-  }
+  // Remove o prefixo '55' se já existir para evitar duplicação
+  const withoutPrefix = digits.startsWith('55') ? digits.substring(2) : digits;
 
-  // Caso contrário, adiciona "55" ao início do número.
-  return `55${digits}`;
+  // Garante que o número final tenha o código do país (55) para consistência com o banco de dados.
+  return `55${withoutPrefix}`;
 }
 
 export default async function handler(request, response) {
@@ -34,7 +31,7 @@ export default async function handler(request, response) {
   }
 
   if (request.method !== 'POST') {
-    response.setHeader('Allow', 'GET', POST, DELETE');
+    response.setHeader('Allow', 'GET, POST, DELETE');
     return response.status(405).json({ ok: false, message: 'Método não permitido.' });
   }
 
