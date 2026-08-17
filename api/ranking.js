@@ -1,5 +1,3 @@
-import fetch from 'node-fetch';
-
 const CHALLENGES = [
   { id: 'missao-zero', code: 'M0', xp: 10, meta: 'Missão Zero • 10 XP', title: 'Mapa de Avaliação' },
   { id: 'dia-1', code: 'D1', xp: 10, meta: 'Dia 1 • 10 XP', title: 'Fluxo de avaliação' },
@@ -14,7 +12,13 @@ const CHALLENGES = [
 const MAKE_WEBHOOK_URL = process.env.MAKE_ENTREGAS_WEBHOOK_URL || 'https://hook.eu1.make.com/06vm4be7flav9iz4mjb1pbuqer1krqry';
 
 export default async function handler(req, res) {
-  const isRankingAction = (req.method === 'POST' && req.body.acao === 'ranking') || (req.method === 'GET');
+  let body = req.body;
+  if (typeof body === 'string') {
+    try { body = JSON.parse(body); } catch { body = {}; }
+  }
+  body = body || {};
+
+  const isRankingAction = (req.method === 'POST' && body.acao === 'ranking') || (req.method === 'GET');
 
   if (isRankingAction) {
     try {

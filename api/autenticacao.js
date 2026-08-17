@@ -1,5 +1,4 @@
 import { createSession, verifySession, sessionCookie, clearCookie } from './_lib/auth.js';
-import fetch from 'node-fetch';
 
 const MAKE_WEBHOOK_URL = process.env.MAKE_ENTREGAS_WEBHOOK_URL ||
   'https://hook.eu1.make.com/06vm4be7flav9iz4mjb1pbuqer1krqry';
@@ -36,8 +35,14 @@ export default async function handler(request, response) {
       return response.status(405).json({ ok: false, message: 'Método não permitido.' });
     }
 
-    const email = normalizeEmail(request.body?.email);
-    const telefone = normalizePhone(request.body?.telefone);
+    let body = request.body;
+    if (typeof body === 'string') {
+      try { body = JSON.parse(body); } catch { body = {}; }
+    }
+    body = body || {};
+
+    const email = normalizeEmail(body.email);
+    const telefone = normalizePhone(body.telefone);
     if (!email || !email.includes('@') || telefone.length < 12) {
       return response.status(400).json({ ok: false, message: 'Informe o e-mail e o telefone usados na compra.' });
     }
