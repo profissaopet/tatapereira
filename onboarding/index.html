@@ -138,32 +138,31 @@
       min-width: 0;
     }
 
-    /* VÍDEO FORMATO STORIES (9:16 VERTICAL) FIXO À DIREITA */
+    /* VÍDEO FORMATO STORIES (9:16 VERTICAL) + PLANTA DOMUS FIXO À DIREITA */
     .video-column {
       grid-column: 2;
       position: sticky;
-      top: 68px;
-      /* A coluna se ajusta à largura do vídeo stories */
-      width: fit-content;
-      max-width: 300px;
+      top: 56px;
+      width: 250px;
       display: flex;
       flex-direction: column;
       align-items: center;
+      gap: 10px;
       align-self: start;
       z-index: 40;
     }
     .welcome-video {
       position: relative;
-      /* Derivar largura a partir da altura (stories: 9:16) */
-      height: min(78svh, 520px);
-      width: calc(min(78svh, 520px) * 9 / 16);
-      max-width: 295px;
+      height: 380px;
+      width: calc(380px * 9 / 16);
+      max-width: 220px;
       aspect-ratio: 9/16;
-      border-radius: 22px;
+      border-radius: 20px;
       overflow: hidden;
       border: 1px solid var(--goldline);
       background: #000;
-      box-shadow: 0 20px 60px rgba(0, 0, 0, .7), 0 0 0 1px rgba(241, 191, 66, .12);
+      box-shadow: 0 18px 50px rgba(0, 0, 0, .75), 0 0 0 1px rgba(241, 191, 66, .12);
+      flex-shrink: 0;
     }
     .welcome-video iframe,
     #yt-player,
@@ -561,6 +560,69 @@
       border-radius: 6px;
     }
 
+    /* MAPA DE CONSTRUÇÃO INTEGRADO AO CARD (CAP 1) */
+    .chapter-build-map {
+      margin: 10px 0 12px;
+      padding: 10px 12px 8px;
+      border: 1px solid var(--goldline);
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(241, 191, 66, .06), rgba(12, 13, 24, .5));
+      overflow: hidden;
+    }
+    .chapter-build-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .chapter-build-eyebrow {
+      color: var(--gold);
+      font-size: .55rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .chapter-build-state {
+      color: var(--dim);
+      font-size: .56rem;
+      font-weight: 700;
+      transition: color .3s;
+    }
+    .chapter-blueprint {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 140px;
+      margin: 0 auto;
+    }
+    .chapter-blueprint .line { fill: none; stroke: rgba(255,255,255,.10); stroke-width: 2; stroke-dasharray: 5 7; }
+    .chapter-blueprint .foundation { fill: rgba(255,255,255,.04); stroke: rgba(255,255,255,.14); stroke-width: 1.5; }
+    .chapter-blueprint .brick { fill: rgba(255,255,255,.02); stroke: rgba(255,255,255,.09); stroke-width: 1.5; }
+    .chapter-blueprint .roof, .chapter-blueprint .door { fill: rgba(255,255,255,.02); stroke: rgba(255,255,255,.10); stroke-width: 1.5; opacity: .45; }
+    .chapter-blueprint .crack-line { fill: none; stroke: var(--danger); stroke-width: 2.5; opacity: .55; }
+    .chapter-blueprint .brick-golden { fill: rgba(248,216,121,.08); stroke: var(--gold); stroke-width: 2; stroke-dasharray: 4 4; }
+    /* Quando o mapa é baixado: primeiro tijolo acende */
+    .chapter-build-map.map-placed .chapter-blueprint .brick:first-of-type {
+      fill: rgba(241,191,66,.28) !important;
+      stroke: var(--gold) !important;
+      filter: drop-shadow(0 0 6px rgba(241,191,66,.45));
+    }
+    .chapter-build-map.map-placed .chapter-build-state {
+      color: var(--gold);
+    }
+    .chapter-build-map.map-placed {
+      border-color: var(--gold);
+      background: linear-gradient(135deg, rgba(241,191,66,.11), rgba(12,13,24,.5));
+    }
+    .chapter-build-desc {
+      margin: 4px 0 0;
+      color: var(--dim);
+      font-size: .62rem;
+      line-height: 1.3;
+      text-align: center;
+    }
+    .chapter-build-desc strong { color: var(--gold2); }
+
     /* RACHADURAS (CAP 2) */
     .cracks { display: grid; gap: 6px; margin-top: 10px; }
     .crack {
@@ -663,57 +725,61 @@
     .finish-message { display: none; margin-top: 8px; color: var(--green); font-size: .72rem; font-weight: 700; text-align: center; }
     .finish-message.show { display: block; }
 
-    /* CONSTRUÇÃO POPUP */
+    /* CONSTRUÇÃO COMPACTA EMBUTIDA COM VÍDEO (DESKTOP) */
     .domus-concept { display: none !important; }
-    .build:not(.popup-open) { display: none !important; }
-    .build.popup-open {
-      display: block !important;
-      position: fixed;
-      inset: 50% auto auto 50%;
-      width: min(calc(100% - 24px), 520px);
-      height: min(75svh, 580px);
-      border-radius: 20px;
-      transform: translate(-50%, -50%);
-      pointer-events: auto;
-      z-index: 101;
-      padding: 18px;
-      background: radial-gradient(circle at 50% 57%, rgba(241, 191, 66, .105), transparent 45%), linear-gradient(145deg, rgba(25, 28, 49, .95), rgba(12, 13, 24, .98));
-      border: 1px solid var(--goldline);
-      box-shadow: 0 34px 100px rgba(0, 0, 0, .8);
+    .build {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: stretch !important;
+      justify-content: space-between !important;
+      width: 100% !important;
+      max-width: 220px !important;
+      padding: 10px 12px !important;
+      border-radius: 16px !important;
+      background: linear-gradient(145deg, rgba(25, 28, 49, .95), rgba(12, 13, 24, .98)) !important;
+      border: 1px solid var(--goldline) !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .5) !important;
+      position: relative !important;
+      box-sizing: border-box !important;
     }
-    .build:before {
-      content: "PLANTA • METODOLOGIA DOMUS";
-      position: absolute;
-      top: 14px;
-      right: 16px;
-      color: rgba(255, 255, 255, .18);
+    .build-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 4px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+    }
+    .build-tag {
+      color: var(--gold);
       font-size: .52rem;
       font-weight: 800;
-      letter-spacing: .15em;
+      letter-spacing: .12em;
+      text-transform: uppercase;
     }
-    .build-close {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      width: 32px;
-      height: 32px;
-      display: grid;
-      place-items: center;
-      border: 1px solid var(--line);
-      border-radius: 50%;
-      background: rgba(11, 12, 22, .76);
-      color: var(--white);
-      font-size: 1rem;
-      cursor: pointer;
-      z-index: 3;
+    .build-state-badge {
+      color: var(--gold2);
+      font-size: .52rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      transition: color .3s;
     }
-    .blueprint { width: min(100%, 480px); height: auto; max-height: 52svh; margin: 10px auto 0; display: block; }
-    .blueprint .line { fill: none; stroke: rgba(255, 255, 255, .16); stroke-width: 2; stroke-dasharray: 5 7; }
-    .blueprint .foundation { fill: rgba(255, 255, 255, .05); stroke: rgba(255, 255, 255, .18); }
-    .blueprint .brick { fill: rgba(255, 255, 255, .025); stroke: rgba(255, 255, 255, .13); }
-    .blueprint .roof, .blueprint .door { fill: rgba(255, 255, 255, .02); stroke: rgba(255, 255, 255, .14); opacity: .45; }
-    .blueprint .crack-line { fill: none; stroke: var(--danger); stroke-width: 3; opacity: .7; }
-    .blueprint .key-shape { fill: none; stroke: rgba(255, 255, 255, .18); stroke-width: 4; }
+    .blueprint {
+      width: 100% !important;
+      height: auto !important;
+      max-height: 100px !important;
+      margin: 4px auto !important;
+      display: block !important;
+    }
+    .blueprint .line { fill: none; stroke: rgba(255, 255, 255, .22); stroke-width: 4; stroke-dasharray: 6 8; }
+    .blueprint .foundation { fill: rgba(255, 255, 255, .06); stroke: rgba(255, 255, 255, .32); stroke-width: 4; }
+    .blueprint .brick { fill: rgba(255, 255, 255, .04); stroke: rgba(255, 255, 255, .26); stroke-width: 4; }
+    .blueprint .roof, .blueprint .door { fill: rgba(255, 255, 255, .03); stroke: rgba(255, 255, 255, .28); stroke-width: 4; opacity: .7; }
+    .blueprint .crack-line { fill: none; stroke: #ff6b6b; stroke-width: 6; opacity: .9; }
+    .blueprint .key-shape { fill: none; stroke: rgba(255, 255, 255, .32); stroke-width: 6; }
+    
     .build.foundation-set .foundation,
     .build.bricks-1 .brick:nth-of-type(-n+2),
     .build.bricks-2 .brick:nth-of-type(-n+4),
@@ -722,56 +788,39 @@
     .build.bricks-5 .brick:nth-of-type(-n+10),
     .build.bricks-6 .brick:nth-of-type(-n+12),
     .build.bricks-7 .brick {
-      fill: rgba(241, 191, 66, .2);
+      fill: rgba(241, 191, 66, .26);
       stroke: var(--gold);
-      filter: drop-shadow(0 0 7px rgba(241, 191, 66, .22));
+      stroke-width: 4.5;
+      filter: drop-shadow(0 0 6px rgba(241, 191, 66, .35));
+    }
+    /* Primeiro tijolo acende quando o mapa é baixado */
+    .build.map-ready .brick:first-of-type {
+      fill: rgba(241, 191, 66, .55) !important;
+      stroke: var(--gold) !important;
+      stroke-width: 5.5 !important;
+      filter: drop-shadow(0 0 10px rgba(241, 191, 66, .8)) !important;
     }
     .build.repair-1 .crack-line:nth-of-type(1),
     .build.repair-2 .crack-line:nth-of-type(-n+2),
-    .build.repair-3 .crack-line { stroke: var(--gold); opacity: .2; }
-    .build.bricks-7 .roof, .build.bricks-7 .door { stroke: var(--gold); fill: rgba(241, 191, 66, .09); opacity: 1; }
-    .build.keys-ready .key-shape { stroke: var(--gold); filter: drop-shadow(0 0 6px rgba(241, 191, 66, .3)); }
-    .blueprint .brick-golden { fill: rgba(248, 216, 121, .1); stroke: var(--gold); stroke-width: 2.5; stroke-dasharray: 4 4; opacity: .9; }
-    .build.golden-active .brick-golden { fill: rgba(248, 216, 121, .75) !important; stroke: var(--gold2) !important; stroke-width: 3.5 !important; stroke-dasharray: none !important; filter: drop-shadow(0 0 18px rgba(248, 216, 121, .9)) !important; }
-    .build-caption { position: absolute; bottom: 12px; left: 0; right: 0; text-align: center; color: var(--dim); font-size: .65rem; }
-    .build-caption strong { display: block; margin-bottom: 2px; color: var(--gold); font-size: .74rem; }
-
-    .construction-toggle {
-      display: flex !important;
-      position: fixed;
-      right: 14px;
-      bottom: calc(14px + env(safe-area-inset-bottom));
-      min-height: 42px;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border: 1px solid var(--goldline);
-      border-radius: 999px;
-      background: rgba(21, 23, 40, .94);
-      color: var(--gold);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, .55);
-      z-index: 90;
-      font-size: .65rem;
-      font-weight: 800;
-      cursor: pointer;
-      backdrop-filter: blur(12px);
+    .build.repair-3 .crack-line { stroke: var(--gold); stroke-width: 6; opacity: .3; }
+    .build.bricks-7 .roof, .build.bricks-7 .door { stroke: var(--gold); stroke-width: 4.5; fill: rgba(241, 191, 66, .12); opacity: 1; }
+    .build.keys-ready .key-shape { stroke: var(--gold); stroke-width: 6; filter: drop-shadow(0 0 8px rgba(241, 191, 66, .45)); }
+    .blueprint .brick-golden { fill: rgba(248, 216, 121, .12); stroke: var(--gold); stroke-width: 4; stroke-dasharray: 5 5; opacity: .9; }
+    .build.golden-active .brick-golden { fill: rgba(248, 216, 121, .85) !important; stroke: var(--gold2) !important; stroke-width: 6 !important; stroke-dasharray: none !important; filter: drop-shadow(0 0 18px rgba(248, 216, 121, .9)) !important; }
+    
+    .build-caption {
+      position: relative !important;
+      bottom: auto !important;
+      left: auto !important;
+      right: auto !important;
+      text-align: center !important;
+      color: var(--dim) !important;
+      font-size: .60rem !important;
+      margin-top: 3px !important;
+      line-height: 1.25 !important;
     }
-    .construction-toggle i { width: 8px; height: 8px; border-radius: 2px; background: var(--gold); box-shadow: 0 0 8px var(--gold); }
-    .popup-backdrop {
-      display: block;
-      position: fixed;
-      inset: 0;
-      border: 0;
-      background: rgba(4, 5, 10, .78);
-      backdrop-filter: blur(6px);
-      z-index: 100;
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transition: .25s;
-    }
-    .popup-backdrop.open { opacity: 1; visibility: visible; pointer-events: auto; }
-    body.popup-lock { overflow: hidden; }
+    .build-caption strong { display: block !important; margin-bottom: 1px !important; color: var(--gold); font-size: .70rem !important; }
+    .build-close, .construction-toggle, .popup-backdrop { display: none !important; }
 
     /* MODAL WHATSAPP */
     .whatsapp-modal {
@@ -860,7 +909,7 @@
       }
 
       /* ================================================
-         MOBILE: Vídeo stories fixo no topo + cards abaixo
+         MOBILE: Vídeo stories maior + Planta compacta ao lado
          ================================================ */
 
       /* O main vira coluna: vídeo em cima, card embaixo */
@@ -888,7 +937,7 @@
         overflow: hidden !important;
       }
 
-      /* ---- VÍDEO: fixo no topo, formato stories centralizado ---- */
+      /* ---- VÍDEO CENTRALIZADO + PLANTA À DIREITA NO MOBILE ---- */
       .video-column {
         order: -1 !important;
         flex-shrink: 0 !important;
@@ -899,23 +948,82 @@
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
-        padding: 8px 0 6px !important;
+        padding: 8px 12px !important;
         background: var(--bg) !important;
         border-bottom: 1px solid var(--line) !important;
         max-width: none !important;
       }
 
+      /* Vídeo centralizado na página */
       .welcome-video {
-        /* Stories: 9:16 - cálculo exato para evitar estouro da tela que corta as bordas */
-        height: 40vh !important;
-        width: calc(40vh * 9 / 16) !important;
-        max-width: 85vw !important;
-        max-height: 400px !important;
+        height: 155px !important;
+        width: calc(155px * 9 / 16) !important;
+        max-height: 160px !important;
+        max-width: 92px !important;
         aspect-ratio: 9/16 !important;
-        border-radius: 16px !important;
+        border-radius: 14px !important;
         flex-shrink: 0 !important;
         margin: 0 auto !important;
         align-self: center !important;
+      }
+
+      /* Planta posicionada à direita (largura fixa em 100px) */
+      .build {
+        position: absolute !important;
+        right: 10px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        height: 138px !important;
+        width: 100px !important;
+        min-width: 100px !important;
+        max-width: 100px !important;
+        max-height: 145px !important;
+        padding: 5px 6px !important;
+        border-radius: 12px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        align-items: stretch !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+        z-index: 10 !important;
+      }
+
+      .build-header {
+        margin-bottom: 2px !important;
+        padding-bottom: 2px !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+      }
+      .build-tag { font-size: .42rem !important; }
+      .build-state-badge { font-size: .42rem !important; }
+
+      .blueprint {
+        flex: 1 !important;
+        max-height: 68px !important;
+        width: 100% !important;
+        height: auto !important;
+        margin: 1px auto !important;
+        display: block !important;
+      }
+
+      .build-caption {
+        font-size: .46rem !important;
+        margin-top: 1px !important;
+        line-height: 1.15 !important;
+        text-align: center !important;
+      }
+      .build-caption strong {
+        font-size: .52rem !important;
+        margin-bottom: 0 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        display: block !important;
+      }
+      .build-caption span {
+        display: none !important;
       }
 
       /* ---- CARDS: coluna esquerda ocupa o restante ---- */
@@ -1054,8 +1162,7 @@
                 class="immediate-whatsapp whatsapp-entry" id="step-whatsapp-button" href="#" target="_blank"
                 rel="noopener noreferrer">ENTRAR PARA A COMUNIDADE</a>
             </div>
-            <div class="scroll-hint" id="scroll-hint"><i aria-hidden="true"></i> Entre na comunidade para liberar a 1ª
-              etapa</div><button class="next-step-btn" id="intro-next-btn" type="button" disabled>ENTRE NA COMUNIDADE PARA
+            <button class="next-step-btn" id="intro-next-btn" type="button" disabled>ENTRE NA COMUNIDADE PARA
               LIBERAR A ETAPA 01 →</button>
           </div>
         </div>
@@ -1066,20 +1173,21 @@
               class="chapter-label">Capítulo 01 • A fundação</span>
             <h2>Continue preparando seu primeiro alicerce.</h2>
             <p>Agora conclua os próximos passos para preparar a fundação da sua jornada.</p>
+
             <div class="onboarding-steps">
-              <div class="onboarding-step" id="video-step"><i>02</i>
-                <div><strong>Assista ao vídeo de boas-vindas</strong>
-                  <p>Conheça o ponto de partida da Operação Sob Controle.</p><button class="step-action"
-                    id="step-video-button" type="button" disabled>ASSISTIR AO VÍDEO</button>
-                </div>
-              </div>
-              <div class="onboarding-step" id="map-step"><i>03</i>
+              <div class="onboarding-step" id="map-step"><i>01</i>
                 <div><strong>Baixe o Mapa de Avaliação</strong>
-                  <p>Escolha a versão para imprimir ou a versão editável.</p>
+                  <p>Este é o primeiro tijolo da sua construção. Escolha a versão para imprimir ou editável.</p>
                   <div class="map-download-options"><a class="step-action map-download" id="step-map-download"
                       href="assets/missao-zero-mapa-avaliacao.pdf" download="Missao_Zero_Mapa_Avaliacao.pdf">PDF • IMPRIMIR</a><a class="step-action map-download"
                       href="assets/missao-zero-mapa-avaliacao-editavel.docx"
                       download="Missao_Zero_Mapa_Avaliacao_Editavel.docx">DOCX • EDITÁVEL</a></div>
+                </div>
+              </div>
+              <div class="onboarding-step" id="video-step"><i>02</i>
+                <div><strong>Assista ao vídeo de boas-vindas</strong>
+                  <p>Conheça o ponto de partida da Operação Sob Controle.</p><button class="step-action"
+                    id="step-video-button" type="button" disabled>ASSISTIR AO VÍDEO</button>
                 </div>
               </div>
             </div>
@@ -1154,50 +1262,49 @@
           </div><button class="video-play" id="video-play" type="button"
             aria-label="Reproduzir vídeo de boas-vindas">▶</button>
         </div>
+        <div class="build" id="build" aria-label="Planta da Casa DOMUS">
+          <div class="build-header">
+            <span class="build-tag">PLANTA DOMUS</span>
+            <span class="build-state-badge" id="build-state-badge">A FUNDAÇÃO</span>
+          </div>
+          <svg class="blueprint" viewBox="50 25 500 425" role="img" aria-labelledby="house-title">
+            <title id="house-title">Representação arquitetônica da Metodologia DOMUS</title>
+            <path class="line" d="M55 420H545M78 435H522M92 114L300 32l208 82M63 420V442M537 420V442" />
+            <path class="roof" d="M88 194L300 70l212 124v32L300 102 88 226z" />
+            <rect class="foundation" x="82" y="388" width="436" height="32" rx="4" />
+            <g class="brick-group">
+              <rect class="brick" x="100" y="336" width="94" height="42" rx="3" />
+              <rect class="brick" x="202" y="336" width="94" height="42" rx="3" />
+              <rect class="brick" x="304" y="336" width="94" height="42" rx="3" />
+              <rect class="brick" x="406" y="336" width="94" height="42" rx="3" />
+              <rect class="brick" x="100" y="286" width="94" height="42" rx="3" />
+              <rect class="brick" x="202" y="286" width="94" height="42" rx="3" />
+              <rect class="brick" x="304" y="286" width="94" height="42" rx="3" />
+              <rect class="brick brick-golden" x="406" y="286" width="94" height="42" rx="3" />
+              <rect class="brick" x="100" y="236" width="94" height="42" rx="3" />
+              <rect class="brick" x="202" y="236" width="94" height="42" rx="3" />
+              <rect class="brick" x="304" y="236" width="94" height="42" rx="3" />
+              <rect class="brick" x="406" y="236" width="94" height="42" rx="3" />
+              <rect class="brick" x="100" y="186" width="94" height="42" rx="3" />
+              <rect class="brick" x="202" y="186" width="94" height="42" rx="3" />
+              <rect class="brick" x="304" y="186" width="94" height="42" rx="3" />
+              <rect class="brick" x="406" y="186" width="94" height="42" rx="3" />
+            </g>
+            <path class="door" d="M263 420V294c0-13 10-23 23-23h28c13 0 23 10 23 23v126z" />
+            <path class="crack-line" d="M175 194l-12 21 15 16-14 22" />
+            <path class="crack-line" d="M424 245l14 17-12 19 15 14" />
+            <path class="crack-line" d="M224 320l11 14-13 18" />
+            <g class="key-shape">
+              <circle cx="300" cy="219" r="20" />
+              <path d="M300 239v25h19v14h19" />
+            </g>
+          </svg>
+          <div class="build-caption"><strong id="build-title">Fundação iniciada</strong><span
+              id="build-subtitle">Seu primeiro alicerce começou a tomar forma.</span></div>
+        </div>
       </aside>
-      <div class="build" id="build" role="dialog" aria-modal="true" aria-label="Casa DOMUS sendo construída"><button
-          class="build-close" id="build-close" type="button" aria-label="Fechar construção">×</button>
-        <div class="brick-float" aria-hidden="true"></div><svg class="blueprint" viewBox="0 0 600 470" role="img"
-          aria-labelledby="house-title">
-          <title id="house-title">Representação arquitetônica da Casa DOMUS</title>
-          <path class="line" d="M55 420H545M78 435H522M92 114L300 32l208 82M63 420V442M537 420V442" />
-          <path class="roof" d="M88 194L300 70l212 124v32L300 102 88 226z" />
-          <rect class="foundation" x="82" y="388" width="436" height="32" rx="4" />
-          <g class="brick-group">
-            <rect class="brick" x="100" y="336" width="94" height="42" rx="3" />
-            <rect class="brick" x="202" y="336" width="94" height="42" rx="3" />
-            <rect class="brick" x="304" y="336" width="94" height="42" rx="3" />
-            <rect class="brick" x="406" y="336" width="94" height="42" rx="3" />
-            <rect class="brick" x="100" y="286" width="94" height="42" rx="3" />
-            <rect class="brick" x="202" y="286" width="94" height="42" rx="3" />
-            <rect class="brick" x="304" y="286" width="94" height="42" rx="3" />
-            <rect class="brick brick-golden" x="406" y="286" width="94" height="42" rx="3" />
-            <rect class="brick" x="100" y="236" width="94" height="42" rx="3" />
-            <rect class="brick" x="202" y="236" width="94" height="42" rx="3" />
-            <rect class="brick" x="304" y="236" width="94" height="42" rx="3" />
-            <rect class="brick" x="406" y="236" width="94" height="42" rx="3" />
-            <rect class="brick" x="100" y="186" width="94" height="42" rx="3" />
-            <rect class="brick" x="202" y="186" width="94" height="42" rx="3" />
-            <rect class="brick" x="304" y="186" width="94" height="42" rx="3" />
-            <rect class="brick" x="406" y="186" width="94" height="42" rx="3" />
-          </g>
-          <path class="door" d="M263 420V294c0-13 10-23 23-23h28c13 0 23 10 23 23v126z" />
-          <path class="crack-line" d="M175 194l-12 21 15 16-14 22" />
-          <path class="crack-line" d="M424 245l14 17-12 19 15 14" />
-          <path class="crack-line" d="M224 320l11 14-13 18" />
-          <g class="key-shape">
-            <circle cx="300" cy="219" r="20" />
-            <path d="M300 239v25h19v14h19" />
-          </g>
-        </svg>
-        <div class="build-caption"><strong id="build-title">Projeto aguardando fundação</strong><span
-            id="build-subtitle">Seu primeiro alicerce está pronto.</span></div>
-      </div>
     </section>
   </main>
-  <button class="popup-backdrop" id="popup-backdrop" type="button" aria-label="Fechar construção"></button>
-  <button class="construction-toggle" id="construction-toggle" type="button" aria-haspopup="dialog"
-    aria-controls="build"><i aria-hidden="true"></i><span>VER CONSTRUÇÃO</span></button>
   <div class="whatsapp-modal" id="whatsapp-modal" aria-hidden="true">
     <div class="whatsapp-dialog" role="dialog" aria-modal="true" aria-labelledby="whatsapp-modal-title"><button
         class="whatsapp-close" id="whatsapp-modal-close" type="button" aria-label="Fechar">×</button><small>Passo 01 •
@@ -1251,7 +1358,8 @@
             rel: 0,
             modestbranding: 1,
             playsinline: 1,
-            controls: 1
+            controls: 1,
+            origin: window.location.origin || window.location.href.split('/').slice(0,3).join('/')
           },
           width: '100%',
           height: '100%',
@@ -1289,12 +1397,7 @@
 
       function start() {
         const build = $('#build'), chapters = $$('.chapter'), toggle = $('#construction-toggle'), backdrop = $('#popup-backdrop'), close = $('#build-close');
-        const concept = document.createElement('aside'), conceptBlueprint = build.querySelector('.blueprint').cloneNode(true);
-        concept.className = 'domus-concept'; concept.setAttribute('aria-label', 'Conceito da Construção DOMUS');
-        conceptBlueprint.removeAttribute('aria-labelledby'); conceptBlueprint.setAttribute('aria-hidden', 'true');
-        concept.appendChild(conceptBlueprint); concept.insertAdjacentHTML('beforeend', '<h3>Construção DOMUS</h3><p>Primeiro firmamos o alicerce, depois reparamos as fragilidades e, etapa por etapa, estruturamos uma operação segura e previsível.</p>');
-        chapters[0].querySelector('.onboarding-steps').before(concept);
-
+        
         build.setAttribute('aria-label', 'Metodologia DOMUS sendo construída');
         $('#house-title').textContent = 'Representação arquitetônica da Metodologia DOMUS';
         const titles = ['Fundação iniciada', 'Inspeção das rachaduras', 'Barreira em construção', 'Duas chaves liberadas'];
@@ -1363,17 +1466,19 @@
         }
 
         function resetBuild() {
-          const popupOpen = build.classList.contains('popup-open');
-          build.className = 'build' + (popupOpen ? ' popup-open' : '');
+          build.className = 'build';
           syncFirstBrick();
           $$('.crack').forEach(b => { b.classList.remove('repaired'); b.querySelector('span').textContent = 'reparar +' });
           $$('.day').forEach(b => b.classList.remove('placed'));
           $('#xp-total').textContent = '10 XP';
         }
 
+        const stepBadges = ['A FUNDAÇÃO', 'AS RACHADURAS', 'A CONSTRUÇÃO', 'AS CHAVES'];
+
         function animateScene(chapter) {
           clearTimeout(animationTimer); resetBuild(); activeChapter = chapter;
-          toggle.querySelector('span').textContent = `VER CONSTRUÇÃO • ${chapter}/4`;
+          const badgeEl = $('#build-state-badge');
+          if (badgeEl && chapter >= 1) badgeEl.textContent = stepBadges[chapter - 1];
           $('#build-title').textContent = titles[chapter - 1];
           $('#build-subtitle').textContent = subtitles[chapter - 1];
           build.dataset.progress = chapter === 1 ? '0/2 • PRIMEIRO ALICERCE' : chapter === 2 ? '3 REPAROS' : chapter === 3 ? '0/7 • CONSTRUÇÃO' : 'PROJETO CONCLUÍDO';
@@ -1388,8 +1493,6 @@
           if (button.classList.contains('repaired')) return;
           button.classList.add('repaired'); button.querySelector('span').textContent = '✓ ' + button.dataset.repair;
           build.classList.add('repair-' + (index + 1)); pulseBuild(`REPARO ${index + 1} DE 3 CONCLUÍDO`);
-          const conceptCrack = conceptBlueprint.querySelectorAll('.crack-line')[index];
-          if (conceptCrack) { conceptCrack.style.stroke = 'var(--gold)'; conceptCrack.style.opacity = '.2' }
           const chap2Btn = $('#chap2-next-btn');
           if ($$('.crack.repaired').length === 3) {
             $('#build-title').textContent = 'Rachaduras reparadas';
@@ -1430,7 +1533,7 @@
         whatsappModal.addEventListener('click', event => { if (event.target === whatsappModal) closeWhatsappModal() });
         whatsappModalConfirm.addEventListener('click', () => { completeCommunity(); closeWhatsappModal(); goToStep(1); });
         mapDownloads.forEach(link => link.addEventListener('click', async (event) => {
-          event.preventDefault(); // Impede que o navegador abra ou redirecione para o arquivo
+          event.preventDefault();
           
           try {
             const response = await fetch(link.href);
@@ -1445,7 +1548,6 @@
             window.URL.revokeObjectURL(url);
             a.remove();
           } catch (e) {
-            // Fallback caso dê erro de rede/CORS
             const fallbackLink = document.createElement('a');
             fallbackLink.href = link.href;
             fallbackLink.download = link.getAttribute('download');
@@ -1453,24 +1555,19 @@
             fallbackLink.click();
           }
 
-          mapReady = true; $('#map-step').classList.add('done'); syncFirstBrick(); pulseBuild('MAPA BAIXADO');
+          mapReady = true; $('#map-step').classList.add('done'); syncFirstBrick(); pulseBuild('MAPA BAIXADO • 1º TIJOLO');
         }));
         const goldenBtn = $('#golden-brick-btn');
         if (goldenBtn) {
           goldenBtn.addEventListener('click', () => {
             build.classList.add('golden-active');
             pulseBuild('8º TIJOLO • MENTORIA TATA');
-            openBuild();
           });
         }
         whatsappLinks.filter(link => link.id !== 'step-whatsapp-button').forEach(link => link.addEventListener('click', completeCommunity));
         document.addEventListener('domus:video-started', () => { videoReady = true; syncFirstBrick(); pulseBuild('VÍDEO INICIADO') });
 
-        function openBuild() { build.classList.add('popup-open'); backdrop.classList.add('open'); document.body.classList.add('popup-lock'); toggle.setAttribute('aria-expanded', 'true'); close.focus() }
-        function closeBuild() { if (document.activeElement && build.contains(document.activeElement)) document.activeElement.blur(); build.classList.remove('popup-open'); backdrop.classList.remove('open'); document.body.classList.remove('popup-lock'); toggle.setAttribute('aria-expanded', 'false'); toggle.focus() }
-        toggle.addEventListener('click', openBuild); close.addEventListener('click', closeBuild); backdrop.addEventListener('click', closeBuild);
-        document.addEventListener('keydown', event => { if (event.key === 'Escape' && whatsappModal.classList.contains('open')) closeWhatsappModal(); else if (event.key === 'Escape' && build.classList.contains('popup-open')) closeBuild() });
-        addEventListener('resize', () => { if (innerWidth > 900 && build.classList.contains('popup-open')) { build.classList.remove('popup-open'); backdrop.classList.remove('open'); document.body.classList.remove('popup-lock') } });
+        document.addEventListener('keydown', event => { if (event.key === 'Escape' && whatsappModal.classList.contains('open')) closeWhatsappModal(); });
         function mark(card) { card.classList.add('done'); card.querySelector('.key-status').textContent = 'ACESSO ABERTO'; if ($('#whatsapp-card').classList.contains('done') && $('#hotmart-card').classList.contains('done') && $('#deliveries-card').classList.contains('done')) $('#finish-message').classList.add('show') }
         whatsappLinks.filter(link => link.id !== 'step-whatsapp-button').forEach(link => link.addEventListener('click', event => { if (link.getAttribute('aria-disabled') === 'true') { event.preventDefault(); return } mark($('#whatsapp-card')); whatsapp.textContent = 'ABRIR WHATSAPP NOVAMENTE' }));
         $('#hotmart-button').addEventListener('click', () => mark($('#hotmart-card')));
