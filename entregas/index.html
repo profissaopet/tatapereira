@@ -189,7 +189,12 @@
       const fetchAndRenderRanking = async () => {
         const rankingList = $('#ranking-list');
         try {
-          const response = await fetch('/api/ranking');
+          const response = await fetch('/api/ranking', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ acao: 'ranking' })
+          });
+          if (!response.ok) throw new Error('A resposta da API de ranking não foi bem-sucedida.');
           const externalRanking = await response.json();
           
           const currentUserXP = CHALLENGES.reduce((total, item) => total + (app.completed.has(item.id) ? item.xp : 0), 0);
@@ -207,8 +212,8 @@
 
           rankingList.innerHTML = '';
           sortedRanking.forEach((player, index) => {
-            const isCurrentUser = player.nome.toLowerCase() === (app.currentUser?.nome || '').toLowerCase();
-            const item = `<div class="rank-item ${isCurrentUser ? 'is-you' : ''}"><span class="rank-pos">${index + 1}</span><span class="rank-name">${formatRankingName(player.nome)}</span><span class="rank-xp">${player.xp} XP</span><div class="rank-bar"><div class="rank-bar-fill" style="width: ${player.xp}%"></div></div></div>`;
+            const isCurrentUser = app.currentUser && player.nome.toLowerCase() === app.currentUser.nome.toLowerCase();
+            const item = `<div class="rank-item ${isCurrentUser ? 'is-you' : ''}"><span class="rank-pos">${index + 1}</span><span class="rank-name">${formatRankingName(player.nome)}</span><span class="rank-xp">${player.xp} XP</span><div class="rank-bar"><div class="rank-bar-fill" style="width: ${Math.min(100, player.xp)}%"></div></div>`;
             rankingList.insertAdjacentHTML('beforeend', item);
           });
         } catch (error) {
