@@ -14,45 +14,43 @@ const CHALLENGES = [
 const MAKE_WEBHOOK_URL = process.env.MAKE_ENTREGAS_WEBHOOK_URL || 'https://hook.eu1.make.com/06vm4be7flav9iz4mjb1pbuqer1krqry';
 
 export default async function handler(req, res) {
-  if (req.method === 'POST') {
-    if (req.body.acao === 'ranking') {
-      try {
-        const response = await fetch(MAKE_WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ acao: 'ranking' }) // Sending action to Make.com
-        });
-        const data = await response.json();
+  const isRankingAction = (req.method === 'POST' && req.body.acao === 'ranking') || (req.method === 'GET');
 
-        if (!Array.isArray(data)) {
-          throw new Error('A resposta da API não é um array.');
-        }
+  if (isRankingAction) {
+    try {
+      const response = await fetch(MAKE_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ acao: 'ranking' }) // Sending action to Make.com
+      });
+      const data = await response.json();
 
-        const rankingData = data.map(item => {
-          const progresso = item.progresso || {};
-          const xp = Object.keys(progresso).reduce((total, challengeCode) => {
-            const challenge = CHALLENGES.find(c => c.code === challengeCode);
-            if (challenge && progresso[challengeCode]) {
-              return total + challenge.xp;
-            }
-            return total;
-          }, 0);
-
-          return {
-            nome: item.nome,
-            xp: xp
-          };
-        }).sort((a, b) => b.xp - a.xp);
-
-        res.status(200).json(rankingData);
-      } catch (error) {
-        res.status(500).json({ message: 'Erro ao buscar o ranking.', error: error.message });
+      if (!Array.isArray(data)) {
+        throw new Error('A resposta da API não é um array.');
       }
-    } else {
-      res.status(400).json({ message: 'Ação inválida.' });
+
+      const rankingData = data.map(item => {
+        const progresso = item.progresso || {};
+        const xp = Object.keys(progresso).reduce((total, challengeCode) => {
+          const challenge = CHALLENGES.find(c => c.code === challengeCode);
+          if (challenge && progresso[challengeCode]) {
+            return total + challenge.xp;
+          }
+          return total;
+        }, 0);
+
+        return {
+          nome: item.nome,
+          xp: xp
+        };
+      }).sort((a, b) => b.xp - a.xp);
+
+      res.status(200).json(rankingData);
+    } catch (error) {
+      res.status(500).json({ message: 'Erro ao buscar o ranking.', error: error.message });
     }
   } else {
-    res.setHeader('Allow', ['POST']);
+    res.setHeader('Allow', ['GET', 'POST']);
     res.status(405).end(`Método ${req.method} não permitido.`);
   }
 }

@@ -1,4 +1,5 @@
-const { createSession, verifySession, sessionCookie, clearCookie } = require('./_lib/auth');
+import { createSession, verifySession, sessionCookie, clearCookie } from './_lib/auth.js';
+import fetch from 'node-fetch';
 
 const MAKE_WEBHOOK_URL = process.env.MAKE_ENTREGAS_WEBHOOK_URL ||
   'https://hook.eu1.make.com/06vm4be7flav9iz4mjb1pbuqer1krqry';
@@ -12,7 +13,7 @@ function normalizePhone(value = '') {
   return digits.startsWith('55') ? digits : `55${digits}`;
 }
 
-module.exports = async function handler(request, response) {
+export default async function handler(request, response) {
   if (request.method === 'GET') {
     const session = verifySession(request);
     return session ? response.status(200).json({ ok: true, usuario: session }) : response.status(401).json({ ok: false });
@@ -24,7 +25,7 @@ module.exports = async function handler(request, response) {
   }
 
   if (request.method !== 'POST') {
-    response.setHeader('Allow', 'GET, POST, DELETE');
+    response.setHeader('Allow', 'GET', POST, DELETE');
     return response.status(405).json({ ok: false, message: 'Método não permitido.' });
   }
 
@@ -59,4 +60,4 @@ module.exports = async function handler(request, response) {
     console.error('Authentication error', error);
     return response.status(502).json({ ok: false, message: 'Não foi possível validar agora. Tente novamente em instantes.' });
   }
-};
+}
