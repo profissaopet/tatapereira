@@ -165,7 +165,9 @@
       background: #000;
       box-shadow: 0 20px 60px rgba(0, 0, 0, .7), 0 0 0 1px rgba(241, 191, 66, .12);
     }
-    .welcome-video iframe {
+    .welcome-video iframe,
+    #yt-player,
+    #yt-player iframe {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -1144,9 +1146,9 @@
         </div>
       </div>
       <aside class="video-column">
-        <div class="welcome-video" id="welcome-video"><iframe id="welcome-video-player" src="about:blank"
-            title="Vídeo de boas-vindas da Operação Sob Controle" allow="autoplay; fullscreen"
-            referrerpolicy="no-referrer"></iframe>
+        <div class="welcome-video" id="welcome-video">
+          <!-- Container que a YouTube IFrame API vai transformar em player -->
+          <div id="yt-player"></div>
           <div class="video-poster" aria-hidden="true"><img src="../assets/tata-bracos-cruzados.png" alt="">
             <div class="poster-copy"><small>Operação Sob Controle</small><strong>Vídeo de Boas-vindas</strong></div>
           </div><button class="video-play" id="video-play" type="button"
@@ -1229,14 +1231,58 @@
       if (validUrl(HOTMART_URL, 'hotmart.com')) hotmart.href = HOTMART_URL;
       else { hotmart.removeAttribute('target'); hotmart.setAttribute('aria-disabled', 'true'); hotmart.title = 'Configure HOTMART_URL no HTML'; }
 
-      const videoFrame = $('#welcome-video-player'), videoBox = $('#welcome-video'), videoPlay = $('#video-play'), stepVideo = $('#step-video-button'), mapDownloads = $$('.map-download');
-      const drivePreview = 'https://drive.google.com/file/d/19WfPJF89Bjzvx0FywxaRDYTEAoijbC_U/preview?autoplay=1';
+      // ---- YouTube IFrame Player API (sem necessidade de chave) ----
+      let ytPlayer = null;
+      let ytApiReady = false;
+      let pendingPlay = false;
+
+      // Carrega o script da API do YouTube de forma assíncrona
+      const ytScript = document.createElement('script');
+      ytScript.src = 'https://www.youtube.com/iframe_api';
+      document.head.appendChild(ytScript);
+
+      // Callback global chamado pela API quando estiver pronta
+      window.onYouTubeIframeAPIReady = function() {
+        ytApiReady = true;
+        ytPlayer = new YT.Player('yt-player', {
+          videoId: 'FHfHWrAifPU',
+          playerVars: {
+            autoplay: 0,
+            rel: 0,
+            modestbranding: 1,
+            playsinline: 1,
+            controls: 1
+          },
+          width: '100%',
+          height: '100%',
+          events: {
+            onReady: function() {
+              if (pendingPlay) {
+                ytPlayer.playVideo();
+                pendingPlay = false;
+              }
+            },
+            onStateChange: function(e) {
+              if (e.data === YT.PlayerState.PLAYING) {
+                document.dispatchEvent(new Event('domus:video-started'));
+              }
+            }
+          }
+        });
+      };
+
+      const videoBox = $('#welcome-video'), videoPlay = $('#video-play'), stepVideo = $('#step-video-button'), mapDownloads = $$('.map-download');
+
       function playWelcome() {
-        videoFrame.src = drivePreview + '&start=' + Date.now();
         videoBox.classList.add('playing');
         $('#video-step').classList.add('done');
         if ($('#whatsapp-step').classList.contains('done')) mapDownloads.forEach(link => link.removeAttribute('aria-disabled'));
         document.dispatchEvent(new Event('domus:video-started'));
+        if (ytApiReady && ytPlayer && typeof ytPlayer.playVideo === 'function') {
+          ytPlayer.playVideo();
+        } else {
+          pendingPlay = true; // toca quando a API estiver pronta
+        }
       }
       videoPlay.addEventListener('click', playWelcome);
       stepVideo.addEventListener('click', playWelcome);
