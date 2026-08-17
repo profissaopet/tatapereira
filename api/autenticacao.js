@@ -20,28 +20,28 @@ function normalizePhone(value = '') {
 }
 
 export default async function handler(request, response) {
-  if (request.method === 'GET') {
-    const session = verifySession(request);
-    return session ? response.status(200).json({ ok: true, usuario: session }) : response.status(401).json({ ok: false });
-  }
-
-  if (request.method === 'DELETE') {
-    response.setHeader('Set-Cookie', clearCookie());
-    return response.status(200).json({ ok: true });
-  }
-
-  if (request.method !== 'POST') {
-    response.setHeader('Allow', 'GET, POST, DELETE');
-    return response.status(405).json({ ok: false, message: 'Método não permitido.' });
-  }
-
-  const email = normalizeEmail(request.body?.email);
-  const telefone = normalizePhone(request.body?.telefone);
-  if (!email || !email.includes('@') || telefone.length < 12) {
-    return response.status(400).json({ ok: false, message: 'Informe o e-mail e o telefone usados na compra.' });
-  }
-
   try {
+    if (request.method === 'GET') {
+      const session = verifySession(request);
+      return session ? response.status(200).json({ ok: true, usuario: session }) : response.status(401).json({ ok: false });
+    }
+
+    if (request.method === 'DELETE') {
+      response.setHeader('Set-Cookie', clearCookie());
+      return response.status(200).json({ ok: true });
+    }
+
+    if (request.method !== 'POST') {
+      response.setHeader('Allow', 'GET, POST, DELETE');
+      return response.status(405).json({ ok: false, message: 'Método não permitido.' });
+    }
+
+    const email = normalizeEmail(request.body?.email);
+    const telefone = normalizePhone(request.body?.telefone);
+    if (!email || !email.includes('@') || telefone.length < 12) {
+      return response.status(400).json({ ok: false, message: 'Informe o e-mail e o telefone usados na compra.' });
+    }
+
     const makeResponse = await fetch(MAKE_WEBHOOK_URL, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },

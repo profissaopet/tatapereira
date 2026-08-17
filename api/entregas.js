@@ -1,10 +1,11 @@
+import { verifySession } from './_lib/auth.js';
+
 const MAKE_WEBHOOK_URL = process.env.MAKE_ENTREGAS_WEBHOOK_URL ||
   'https://hook.eu1.make.com/06vm4be7flav9iz4mjb1pbuqer1krqry';
-const { verifySession } = require('./_lib/auth');
 
 const MAX_BODY_BYTES = 4.25 * 1024 * 1024;
 
-module.exports = async function handler(request, response) {
+export default async function handler(request, response) {
   if (request.method !== 'POST') {
     response.setHeader('Allow', 'POST');
     return response.status(405).json({ ok: false, message: 'Método não permitido.' });
