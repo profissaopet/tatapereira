@@ -266,22 +266,38 @@
       background: rgba(255, 255, 255, .15);
       overflow: hidden;
       position: relative;
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: segment-in .4s cubic-bezier(.2,.8,.2,1) forwards;
     }
+    @keyframes segment-in {
+      to { transform: scaleX(1); }
+    }
+    .stories-progress .story-segment:nth-child(2) { animation-delay: .05s; }
+    .stories-progress .story-segment:nth-child(3) { animation-delay: .1s; }
+    .stories-progress .story-segment:nth-child(4) { animation-delay: .15s; }
+    .stories-progress .story-segment:nth-child(5) { animation-delay: .2s; }
+
     .story-segment .story-fill {
       height: 100%;
       width: 0%;
       background: var(--gold);
       border-radius: 99px;
-      transition: width .3s ease;
+      transition: width .4s cubic-bezier(.4, 0, .2, 1);
     }
     .story-segment.done .story-fill {
       width: 100%;
       background: var(--gold);
     }
     .story-segment.active .story-fill {
-      width: 100%;
+      width: 50%; /* Inicia com 50% para dar a sensação de progresso */
       background: linear-gradient(90deg, var(--gold2), var(--gold));
       box-shadow: 0 0 8px rgba(241, 191, 66, .8);
+      animation: story-load 1.2s cubic-bezier(.4, 0, .2, 1) .3s forwards;
+    }
+    @keyframes story-load {
+      from { width: 50%; }
+      to { width: 100%; }
     }
 
     /* SISTEMA DE CARDS ENCADICADOS (PASSO A PASSO): APENAS O ATIVO APARECE */
@@ -545,8 +561,7 @@
     }
     .step-action[aria-disabled="true"] { opacity: .4; pointer-events: none; }
     .onboarding-step.done { border-color: rgba(71, 213, 138, .28); background: rgba(71, 213, 138, .055); }
-    .onboarding-step.done>i { border-color: var(--green); background: rgba(71, 213, 138, .12); color: var(--green); font-size: 0; }
-    .onboarding-step.done>i:before { content: "✓"; font-size: .78rem; }
+    .onboarding-step.done>i { border-color: var(--green); background: rgba(71, 213, 138, .12); color: transparent; }
     .onboarding-step.done .step-action { display: none; }
     .map-download-options { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
     .mission-note {
@@ -596,7 +611,11 @@
       margin: 0 auto;
     }
     .chapter-blueprint .line { fill: none; stroke: rgba(255,255,255,.10); stroke-width: 2; stroke-dasharray: 5 7; }
-    .chapter-blueprint .foundation { fill: rgba(255,255,255,.04); stroke: rgba(255,255,255,.14); stroke-width: 1.5; }
+    .chapter-blueprint .foundation,
+    .chapter-blueprint .brick,
+    .chapter-blueprint .crack-line {
+      transition: all .4s cubic-bezier(.2,.8,.2,1);
+    }
     .chapter-blueprint .brick { fill: rgba(255,255,255,.02); stroke: rgba(255,255,255,.09); stroke-width: 1.5; }
     .chapter-blueprint .roof, .chapter-blueprint .door { fill: rgba(255,255,255,.02); stroke: rgba(255,255,255,.10); stroke-width: 1.5; opacity: .45; }
     .chapter-blueprint .crack-line { fill: none; stroke: var(--danger); stroke-width: 2.5; opacity: .55; }
@@ -659,7 +678,6 @@
     .day b { display: block; color: var(--gold); font-size: .56rem; text-transform: uppercase; }
     .day span { font-size: .62rem; line-height: 1.25; display: block; }
     .day.placed { border-color: var(--goldline); background: rgba(241, 191, 66, .075); color: #e8e9f2; }
-    .day:last-child { grid-column: 1/-1; }
     .golden-brick-card {
       margin-top: 8px;
       padding: 10px 12px;
@@ -774,20 +792,31 @@
       display: block !important;
     }
     .blueprint .line { fill: none; stroke: rgba(255, 255, 255, .22); stroke-width: 4; stroke-dasharray: 6 8; }
+    .blueprint .foundation,
+    .blueprint .brick,
+    .blueprint .roof, 
+    .blueprint .pillar,
+    .blueprint .door,
+    .blueprint .crack-line,
+    .blueprint .key-shape,
+    .blueprint .brick-golden {
+        transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .blueprint .pillar { fill: rgba(255, 255, 255, .04); stroke: rgba(255, 255, 255, .1); stroke-width: 2; }
     .blueprint .foundation { fill: rgba(255, 255, 255, .06); stroke: rgba(255, 255, 255, .32); stroke-width: 4; }
     .blueprint .brick { fill: rgba(255, 255, 255, .04); stroke: rgba(255, 255, 255, .26); stroke-width: 4; }
-    .blueprint .roof, .blueprint .door { fill: rgba(255, 255, 255, .03); stroke: rgba(255, 255, 255, .28); stroke-width: 4; opacity: .7; }
+    .blueprint .roof, .blueprint .door { fill: rgba(255, 255, 255, .03); stroke: rgba(255, 255, 255, .28); stroke-width: 4; opacity: .85; }
     .blueprint .crack-line { fill: none; stroke: #ff6b6b; stroke-width: 6; opacity: .9; }
     .blueprint .key-shape { fill: none; stroke: rgba(255, 255, 255, .32); stroke-width: 6; }
     
     .build.foundation-set .foundation,
-    .build.bricks-1 .brick:nth-of-type(-n+2),
-    .build.bricks-2 .brick:nth-of-type(-n+4),
-    .build.bricks-3 .brick:nth-of-type(-n+6),
-    .build.bricks-4 .brick:nth-of-type(-n+8),
-    .build.bricks-5 .brick:nth-of-type(-n+10),
-    .build.bricks-6 .brick:nth-of-type(-n+12),
-    .build.bricks-7 .brick {
+    .build.bricks-1 .brick:nth-of-type(-n+1),
+    .build.bricks-2 .brick:nth-of-type(-n+2),
+    .build.bricks-3 .brick:nth-of-type(-n+3), /* D1 */
+    .build.bricks-4 .brick:nth-of-type(-n+4), /* D2 */
+    .build.bricks-5 .brick:nth-of-type(-n+5), /* D3 */
+    .build.bricks-6 .brick:nth-of-type(-n+6), /* D4 */
+    .build.bricks-7 .brick:nth-of-type(-n+7) { /* D5 */
       fill: rgba(241, 191, 66, .26);
       stroke: var(--gold);
       stroke-width: 4.5;
@@ -803,7 +832,20 @@
     .build.repair-1 .crack-line:nth-of-type(1),
     .build.repair-2 .crack-line:nth-of-type(-n+2),
     .build.repair-3 .crack-line { stroke: var(--gold); stroke-width: 6; opacity: .3; }
-    .build.bricks-7 .roof, .build.bricks-7 .door { stroke: var(--gold); stroke-width: 4.5; fill: rgba(241, 191, 66, .12); opacity: 1; }
+    .build.bricks-8 .brick:nth-of-type(8) {
+      fill: rgba(241, 191, 66, .55) !important;
+      stroke: var(--gold) !important;
+      stroke-width: 5.5 !important;
+      filter: drop-shadow(0 0 10px rgba(241, 191, 66, .8)) !important;
+    }
+    .build.roof-ready .roof, .build.door-ready .door { 
+      stroke: var(--gold); 
+      stroke-width: 4.5; 
+      fill: rgba(241, 191, 66, .12); 
+      fill: rgba(241, 191, 66, .26); 
+      opacity: 1; 
+      filter: drop-shadow(0 0 8px rgba(241, 191, 66, .45));
+    }
     .build.keys-ready .key-shape { stroke: var(--gold); stroke-width: 6; filter: drop-shadow(0 0 8px rgba(241, 191, 66, .45)); }
     .blueprint .brick-golden { fill: rgba(248, 216, 121, .12); stroke: var(--gold); stroke-width: 4; stroke-dasharray: 5 5; opacity: .9; }
     .build.golden-active .brick-golden { fill: rgba(248, 216, 121, .85) !important; stroke: var(--gold2) !important; stroke-width: 6 !important; stroke-dasharray: none !important; filter: drop-shadow(0 0 18px rgba(248, 216, 121, .9)) !important; }
@@ -956,10 +998,10 @@
 
       /* Vídeo centralizado na página */
       .welcome-video {
-        height: 155px !important;
-        width: calc(155px * 9 / 16) !important;
-        max-height: 160px !important;
-        max-width: 92px !important;
+        height: 180px !important;
+        width: calc(180px * 9 / 16) !important;
+        max-height: 185px !important;
+        max-width: 102px !important;
         aspect-ratio: 9/16 !important;
         border-radius: 14px !important;
         flex-shrink: 0 !important;
@@ -973,11 +1015,11 @@
         right: 10px !important;
         top: 50% !important;
         transform: translateY(-50%) !important;
-        height: 138px !important;
-        width: 100px !important;
-        min-width: 100px !important;
-        max-width: 100px !important;
-        max-height: 145px !important;
+        height: 120px !important;
+        width: 90px !important;
+        min-width: 90px !important;
+        max-width: 90px !important;
+        max-height: 125px !important;
         padding: 5px 6px !important;
         border-radius: 12px !important;
         display: flex !important;
@@ -1125,6 +1167,39 @@
       footer { display: none !important; }
     }
 
+    /* SISTEMA DE NOTIFICAÇÕES (TOAST) */
+    .toast-container {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      pointer-events: none;
+    }
+    .toast {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--gold2), #dda72b);
+      color: var(--bg);
+      font-size: .75rem;
+      font-weight: 800;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255,255,255,.1);
+      animation: toast-in .3s cubic-bezier(.2,.8,.2,1) both;
+    }
+    @keyframes toast-in {
+      from { opacity: 0; transform: translateY(20px) scale(.9); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .toast.fade-out {
+      animation: toast-in .3s cubic-bezier(.2,.8,.2,1) reverse both;
+    }
   </style>
 
 </head>
@@ -1162,15 +1237,15 @@
                 class="immediate-whatsapp whatsapp-entry" id="step-whatsapp-button" href="#" target="_blank"
                 rel="noopener noreferrer">ENTRAR PARA A COMUNIDADE</a>
             </div>
-            <button class="next-step-btn" id="intro-next-btn" type="button" disabled>ENTRE NA COMUNIDADE PARA
-              LIBERAR A ETAPA 01 →</button>
+            <button class="next-step-btn" id="intro-next-btn" type="button" disabled>ENTRE NA COMUNIDADE PARA LIBERAR A
+              FUNDAÇÃO →</button>
           </div>
         </div>
         <div class="story">
           <article class="chapter" data-chapter="1">
-            <div class="card-step-header"><button class="prev-step-btn" data-goto="0" type="button">←
-                Voltar</button><span class="card-step-badge">ETAPA 1 DE 4</span></div><span
-              class="chapter-label">Capítulo 01 • A fundação</span>
+            <div class="card-step-header" style="justify-content: flex-start;"><button class="prev-step-btn"
+                data-goto="0" type="button">← Voltar</button></div><span
+              class="chapter-label">Projeto 01 • A Fundação</span>
             <h2>Continue preparando seu primeiro alicerce.</h2>
             <p>Agora conclua os próximos passos para preparar a fundação da sua jornada.</p>
 
@@ -1193,11 +1268,11 @@
             </div>
             <div class="mission-note">O primeiro alicerce estrutural é concluído com o mapa e sua entrada na Comunidade
               do WhatsApp.</div><button class="next-step-btn" id="chap1-next-btn" type="button" disabled>BAIXE O MAPA DE
-              AVALIAÇÃO PARA AVANÇAR →</button>
+              AVALIAÇÃO PARA AVANÇAR</button>
           </article>
           <article class="chapter" data-chapter="2">
-            <div class="card-step-header"><button class="prev-step-btn" data-goto="1" type="button">←
-                Voltar</button><span class="card-step-badge">ETAPA 2 DE 4</span></div>
+            <div class="card-step-header" style="justify-content: flex-start;"><button class="prev-step-btn"
+                data-goto="1" type="button">← Voltar</button></div>
             <h2>Identifique as rachaduras do improviso.</h2>
             <p>Toque em cada rachadura para descobrir como ela será reparada durante o desafio.</p>
             <div class="cracks"><button class="crack" data-repair="Fluxo de avaliação"><b>Decisões sob
@@ -1205,26 +1280,22 @@
                 data-repair="Matriz de decisão"><b>Falta de critérios objetivos</b><span>reparar
                   +</span></button><button class="crack" data-repair="POP e indicadores"><b>Processos sem
                   registro</b><span>reparar +</span></button></div><button class="next-step-btn" id="chap2-next-btn"
-              type="button" disabled>REPARE AS 3 RACHADURAS PARA AVANÇAR →</button>
+              type="button" disabled>REPARE AS 3 RACHADURAS PARA AVANÇAR</button>
           </article>
           <article class="chapter" data-chapter="3">
-            <div class="card-step-header"><button class="prev-step-btn" data-goto="2" type="button">←
-                Voltar</button><span class="card-step-badge">ETAPA 3 DE 4</span></div>
-            <h2>Erga sua barreira em sete etapas.</h2>
+            <div class="card-step-header" style="justify-content: flex-start;"><button class="prev-step-btn"
+                data-goto="2" type="button">← Voltar</button></div>
+            <h2>Erga sua barreira em oito etapas.</h2>
             <p>Construa a estrutura da sua operação com as 7 missões do desafio.</p>
-            <div class="days"><button class="day"><b>Dia 1 • 10 XP</b><span>Fluxo de avaliação</span></button><button
-                class="day"><b>Dia 2 • 20 XP</b><span>Anamnese</span></button><button class="day"><b>Dia 3 • 20
-                  XP</b><span>Observação presencial</span></button><button class="day"><b>Dia 4 • 20 XP</b><span>Matriz
-                  de decisão</span></button><button class="day"><b>Dia 5 • 10 XP</b><span>POP
-                  escrito</span></button><button class="day"><b>Dia 6 • 10 XP</b><span>Dados e
-                  indicadores</span></button><button class="day"><b>Dia 7 • Grande marco</b><span>Entrega das
-                  chaves</span></button></div>
+            <div class="days"><button class="day"><b>M0 • 10 XP</b><span>Mapa de Avaliação</span></button><button
+                class="day"><b>D1 • 10 XP</b><span>Fluxo de avaliação</span></button><button class="day"><b>D2 • 20
+                  XP</b><span>Anamnese</span></button><button class="day"><b>D3 • 20 XP</b><span>Observação presencial</span></button><button class="day"><b>D4 • 20 XP</b><span>Matriz de decisão</span></button><button class="day"><b>D5 • 10 XP</b><span>POP escrito</span></button><button class="day"><b>D6 • 10 XP</b><span>Dados e indicadores</span></button><button class="day"><b>D7 • Grande marco</b><span>Entrega das chaves</span></button></div>
             <div class="xp-total">Experiência acumulada: <strong id="xp-total">10 XP</strong></div><button
-              class="next-step-btn" id="chap3-next-btn" type="button">AVANÇAR PARA A PRÓXIMA ETAPA →</button>
+              class="next-step-btn" id="chap3-next-btn" type="button">AVANÇAR PARA A FINALIZAÇÃO →</button>
           </article>
           <article class="chapter" data-chapter="4">
-            <div class="card-step-header"><button class="prev-step-btn" data-goto="3" type="button">←
-                Voltar</button><span class="card-step-badge">ETAPA 4 DE 4</span></div>
+            <div class="card-step-header" style="justify-content: flex-start;"><button class="prev-step-btn"
+                data-goto="3" type="button">← Voltar</button></div>
             <h2>Confirme seus três ambientes.</h2>
             <p>Abra os canais que vão acompanhar sua jornada: comunidade, aulas e entregas.</p>
             <div class="keys">
@@ -1267,36 +1338,29 @@
             <span class="build-tag">PLANTA DOMUS</span>
             <span class="build-state-badge" id="build-state-badge">A FUNDAÇÃO</span>
           </div>
-          <svg class="blueprint" viewBox="50 25 500 425" role="img" aria-labelledby="house-title">
+          <svg class="blueprint" viewBox="50 25 550 425" role="img" aria-labelledby="house-title">
             <title id="house-title">Representação arquitetônica da Metodologia DOMUS</title>
-            <path class="line" d="M55 420H545M78 435H522M92 114L300 32l208 82M63 420V442M537 420V442" />
-            <path class="roof" d="M88 194L300 70l212 124v32L300 102 88 226z" />
-            <rect class="foundation" x="82" y="388" width="436" height="32" rx="4" />
+            <path class="line" d="M55 420H498M78 435H475M63 420V442M480 420V442"/>
+            <path class="roof" d="M88 154L300 50l212 104v28L300 82 88 182z" />
+            <rect class="foundation" x="82" y="388" width="398" height="32" rx="4"/>
+            <rect class="pillar" x="100" y="186" width="180" height="194" rx="3"/>
+            <rect class="pillar" x="290" y="186" width="180" height="194" rx="3"/>
             <g class="brick-group">
-              <rect class="brick" x="100" y="336" width="94" height="42" rx="3" />
-              <rect class="brick" x="202" y="336" width="94" height="42" rx="3" />
-              <rect class="brick" x="304" y="336" width="94" height="42" rx="3" />
-              <rect class="brick" x="406" y="336" width="94" height="42" rx="3" />
-              <rect class="brick" x="100" y="286" width="94" height="42" rx="3" />
-              <rect class="brick" x="202" y="286" width="94" height="42" rx="3" />
-              <rect class="brick" x="304" y="286" width="94" height="42" rx="3" />
-              <rect class="brick brick-golden" x="406" y="286" width="94" height="42" rx="3" />
-              <rect class="brick" x="100" y="236" width="94" height="42" rx="3" />
-              <rect class="brick" x="202" y="236" width="94" height="42" rx="3" />
-              <rect class="brick" x="304" y="236" width="94" height="42" rx="3" />
-              <rect class="brick" x="406" y="236" width="94" height="42" rx="3" />
-              <rect class="brick" x="100" y="186" width="94" height="42" rx="3" />
-              <rect class="brick" x="202" y="186" width="94" height="42" rx="3" />
-              <rect class="brick" x="304" y="186" width="94" height="42" rx="3" />
-              <rect class="brick" x="406" y="186" width="94" height="42" rx="3" />
+              <rect class="brick" x="108" y="336" width="164" height="42" rx="3"/>
+              <rect class="brick" x="298" y="336" width="164" height="42" rx="3"/>
+              <rect class="brick" x="108" y="286" width="164" height="42" rx="3"/>
+              <rect class="brick" x="298" y="286" width="164" height="42" rx="3"/>
+              <rect class="brick" x="108" y="236" width="164" height="42" rx="3"/>
+              <rect class="brick" x="298" y="236" width="164" height="42" rx="3"/>
+              <rect class="brick" x="108" y="186" width="164" height="42" rx="3"/>
+              <rect class="brick" x="298" y="186" width="164" height="42" rx="3"/>
             </g>
-            <path class="door" d="M263 420V294c0-13 10-23 23-23h28c13 0 23 10 23 23v126z" />
-            <path class="crack-line" d="M175 194l-12 21 15 16-14 22" />
-            <path class="crack-line" d="M424 245l14 17-12 19 15 14" />
-            <path class="crack-line" d="M224 320l11 14-13 18" />
-            <g class="key-shape">
-              <circle cx="300" cy="219" r="20" />
-              <path d="M300 239v25h19v14h19" />
+            <path class="crack-line" d="M175 204c-5 8 5 13 -5 22s5 15 -5 24" />
+            <path class="crack-line" d="M384 255c5 8 -5 13 5 22s-5 15 5 24" />
+            <path class="crack-line" d="M204 330c5 8 -5 13 5 22" />
+            <path class="door" d="M240 380V254c0-13 10-23 23-23h34c13 0 23 10 23 23v126z" />
+            <g class="key-shape" transform="translate(255, -10)">
+              <path d="M300,195 a25,25 0 1,0 0,50 a25,25 0 1,0 0,-50 Z M300,205 a15,15 0 1,1 0,30 a15,15 0 1,1 0,-30 Z M296,245 v40 h8 v-40 Z M304,260 h20 v-8 h-20 Z M304,275 h28 v-8 h-28 Z" />
             </g>
           </svg>
           <div class="build-caption"><strong id="build-title">Fundação iniciada</strong><span
@@ -1319,6 +1383,9 @@
           id="whatsapp-modal-confirm" type="button">JÁ ENTREI • CONTINUAR</button></div>
     </div>
   </div>
+  <!-- Contêiner para as Notificações Toast -->
+  <div id="toast-container" class="toast-container"></div>
+
   <footer>© 2026 Tata Pereira • Metodologia DOMUS • <a href="../entregas/" target="_blank" rel="noopener noreferrer"
       style="color:var(--gold);text-decoration:none">Central de Entregas</a></footer>
   <script>
@@ -1329,7 +1396,49 @@
     (() => {
       'use strict';
       const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
-      function validUrl(value, domain) { try { const url = new URL(value); return url.protocol === 'https:' && (url.hostname === domain || url.hostname.endsWith('.' + domain)) } catch { return false } }
+
+      // --- SISTEMA DE ÁUDIO ---
+      // 1. Crie uma pasta /assets/sounds/ e adicione seus arquivos de áudio (ex: build.mp3, click.mp3, etc.)
+      const audioClips = {
+        build: new Audio('assets/sounds/build.mp3'),      // Som para construção (fundação, telhado)
+        click: new Audio('assets/sounds/click.mp3'),      // Som para ações pequenas (colocar tijolo)
+        repair: new Audio('assets/sounds/repair.mp3'),    // Som para reparar rachaduras
+        success: new Audio('assets/sounds/success.mp3'),  // Som para grandes conquistas (chaves)
+        complete: new Audio('assets/sounds/complete.mp3') // Som para a conclusão final
+      };
+      // Pré-carrega os áudios e define um volume padrão
+      Object.values(audioClips).forEach(audio => { audio.preload = 'auto'; audio.volume = 0.4; });
+      function playSound(soundName) {
+        if (audioClips[soundName]) {
+          const audio = audioClips[soundName];
+          audio.currentTime = 0; // Permite que o som toque novamente mesmo se já estiver tocando
+          // A primeira interação do usuário com a página (um clique) é necessária para que o áudio funcione.
+          audio.play().catch(e => console.warn("A interação do usuário é necessária para reproduzir o áudio."));
+        }
+      }
+      // --- FIM DO SISTEMA DE ÁUDIO ---
+
+      // --- SISTEMA DE NOTIFICAÇÃO (TOAST) ---
+      const toastContainer = $('#toast-container');
+      function showToast(message, duration = 3000) {
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.textContent = message;
+        toastContainer.appendChild(toast);
+        setTimeout(() => {
+          toast.classList.add('fade-out');
+          toast.addEventListener('animationend', () => toast.remove());
+        }, duration);
+      }
+      // --- FIM DO SISTEMA DE NOTIFICAÇÃO ---
+
+      function validUrl(value, domain) {
+        try {
+          const url = new URL(value);
+          // Permite o domínio exato ou qualquer subdomínio dele.
+          return url.protocol === 'https:' && (url.hostname === domain || url.hostname.endsWith('.' + domain));
+        } catch { return false; }
+      }
       const whatsappLinks = $$('.whatsapp-entry'), whatsapp = $('#whatsapp-button'), hotmart = $('#hotmart-button');
       whatsappLinks.forEach(link => {
         if (validUrl(WHATSAPP_BOT_URL, 'wa.me') || validUrl(WHATSAPP_BOT_URL, 'whatsapp.com')) link.href = WHATSAPP_BOT_URL;
@@ -1425,7 +1534,7 @@
           });
 
           // Atualiza os segmentos da barra de Stories
-          $$('.story-segment').forEach((seg, idx) => {
+          $$('#stories-progress .story-segment').forEach((seg, idx) => {
             seg.classList.toggle('done', idx < stepIndex);
             seg.classList.toggle('active', idx === stepIndex);
           });
@@ -1433,6 +1542,15 @@
           if (stepIndex >= 1) animateScene(stepIndex);
           else animateScene(1);
 
+          // Mensagens de notificação temáticas para cada etapa
+          const toastMessages = [
+            "", // Posição 0, não usada
+            "FUNDAÇÃO LIBERADA!",
+            "INSPEÇÃO DAS RACHADURAS INICIADA!",
+            "CONSTRUÇÃO DA BARREIRA LIBERADA!",
+            "ENTREGA DAS CHAVES LIBERADA!"
+          ];
+          if (stepIndex > 0 && toastMessages[stepIndex]) showToast(toastMessages[stepIndex]);
           const target = isIntro ? intro : $(`.chapter[data-chapter="${stepIndex}"]`);
           if (target) {
             setTimeout(() => scrollToCard(target), 80);
@@ -1446,7 +1564,7 @@
           const chap1Btn = $('#chap1-next-btn');
           if (mapReady) {
             chap1Btn.disabled = false;
-            chap1Btn.textContent = 'AVANÇAR PARA A ETAPA 02 • A INSPEÇÃO →';
+            chap1Btn.textContent = 'AVANÇAR PARA A INSPEÇÃO →';
           }
           if (activeChapter === 1) {
             const completed = Number(mapReady) + Number(communityReady);
@@ -1466,7 +1584,7 @@
         }
 
         function resetBuild() {
-          build.className = 'build';
+          build.className = 'build'; // Reseta todas as classes de progresso
           syncFirstBrick();
           $$('.crack').forEach(b => { b.classList.remove('repaired'); b.querySelector('span').textContent = 'reparar +' });
           $$('.day').forEach(b => b.classList.remove('placed'));
@@ -1481,11 +1599,24 @@
           if (badgeEl && chapter >= 1) badgeEl.textContent = stepBadges[chapter - 1];
           $('#build-title').textContent = titles[chapter - 1];
           $('#build-subtitle').textContent = subtitles[chapter - 1];
-          build.dataset.progress = chapter === 1 ? '0/2 • PRIMEIRO ALICERCE' : chapter === 2 ? '3 REPAROS' : chapter === 3 ? '0/7 • CONSTRUÇÃO' : 'PROJETO CONCLUÍDO';
-          if (chapter >= 1) build.classList.add('foundation-set');
+          build.dataset.progress = chapter === 1 ? '0/2 • PRIMEIRO ALICERCE' : chapter === 2 ? '3 REPAROS' : chapter === 3 ? '0/8 • CONSTRUÇÃO' : 'PROJETO CONCLUÍDO';
+          if (communityReady) build.classList.add('foundation-set');
           if (chapter > 2) { $$('.crack').forEach((b, i) => { b.classList.add('repaired'); b.querySelector('span').textContent = '✓ ' + b.dataset.repair; build.classList.add('repair-' + (i + 1)) }) }
-          if (chapter >= 3) { $$('.day').forEach((b, i) => { setTimeout(() => { if (activeChapter !== chapter) return; b.classList.add('placed'); build.classList.add('bricks-' + (i + 1)); build.dataset.progress = `${i + 1}/7 • CONSTRUÇÃO`; $('#xp-total').textContent = i === 6 ? '100 XP + Grande Marco' : totals[i] + ' XP' }, 130 * (i + 1)) }) }
-          if (chapter >= 4) animationTimer = setTimeout(() => { if (activeChapter === chapter) build.classList.add('keys-ready') }, 950);
+          if (chapter === 3) {
+            // Anima a construção dos tijolos apenas na etapa 3
+            const dayButtons = $$('.days .day');
+            dayButtons.forEach((b, i) => {
+              setTimeout(() => {
+                if (activeChapter !== chapter) return;
+                b.classList.add('placed');
+                build.classList.add('bricks-' + (i + 1)); build.dataset.progress = `${i + 1}/8 • CONSTRUÇÃO`; $('#xp-total').textContent = i === 7 ? '100 XP + Grande Marco' : totals[i] + ' XP'; playSound('click');
+              }, 130 * (i + 1));
+            });
+          } else if (chapter > 3) {
+            // Para etapas posteriores (como a 4), apenas marca os tijolos como construídos, sem animar
+            for (let i = 1; i <= 8; i++) { build.classList.add('bricks-' + i); }
+          }
+          if (chapter >= 4) { animationTimer = setTimeout(() => { if (activeChapter === chapter) { build.classList.add('keys-ready'); build.classList.add('roof-ready'); build.classList.add('door-ready'); playSound('success'); } }, 950); }
           if (chapter === 1) syncFirstBrick();
         }
 
@@ -1493,7 +1624,8 @@
           if (button.classList.contains('repaired')) return;
           button.classList.add('repaired'); button.querySelector('span').textContent = '✓ ' + button.dataset.repair;
           build.classList.add('repair-' + (index + 1)); pulseBuild(`REPARO ${index + 1} DE 3 CONCLUÍDO`);
-          const chap2Btn = $('#chap2-next-btn');
+          playSound('repair'); const chap2Btn = $('#chap2-next-btn');
+          showToast(`Rachadura "${button.dataset.repair}" reparada!`);
           if ($$('.crack.repaired').length === 3) {
             $('#build-title').textContent = 'Rachaduras reparadas';
             $('#build-subtitle').textContent = 'A estrutura está pronta para avançar.';
@@ -1512,6 +1644,8 @@
         const whatsappModal = $('#whatsapp-modal'), whatsappModalClose = $('#whatsapp-modal-close'), whatsappModalConfirm = $('#whatsapp-modal-confirm');
         function completeCommunity() {
           communityReady = true;
+          playSound('build');
+          build.classList.add('foundation-set');
           document.documentElement.classList.remove('community-locked');
           document.body.classList.remove('community-locked');
           $('#whatsapp-step').classList.add('done');
@@ -1521,6 +1655,7 @@
           introNext.textContent = 'AVANÇAR PARA A ETAPA 01 • A FUNDAÇÃO →';
           if ($('#video-step').classList.contains('done')) mapDownloads.forEach(mapLink => mapLink.removeAttribute('aria-disabled'));
           syncFirstBrick();
+          showToast('Comunidade conectada! ✅');
           pulseBuild('COMUNIDADE CONECTADA');
         }
         function openWhatsappModal() { whatsappModal.classList.add('open'); whatsappModal.setAttribute('aria-hidden', 'false'); document.body.classList.add('modal-lock'); whatsappModalClose.focus() }
@@ -1533,47 +1668,28 @@
         whatsappModal.addEventListener('click', event => { if (event.target === whatsappModal) closeWhatsappModal() });
         whatsappModalConfirm.addEventListener('click', () => { completeCommunity(); closeWhatsappModal(); goToStep(1); });
         mapDownloads.forEach(link => link.addEventListener('click', async (event) => {
-          event.preventDefault();
-          
-          try {
-            const response = await fetch(link.href);
-            const blob = await response.blob();
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.style.display = 'none';
-            a.href = url;
-            a.download = link.getAttribute('download') || 'download';
-            document.body.appendChild(a);
-            a.click();
-            window.URL.revokeObjectURL(url);
-            a.remove();
-          } catch (e) {
-            const fallbackLink = document.createElement('a');
-            fallbackLink.href = link.href;
-            fallbackLink.download = link.getAttribute('download');
-            fallbackLink.target = '_blank';
-            fallbackLink.click();
-          }
-
-          mapReady = true; $('#map-step').classList.add('done'); syncFirstBrick(); pulseBuild('MAPA BAIXADO • 1º TIJOLO');
+          // O atributo 'download' no HTML já instrui o navegador a baixar o arquivo.
+          // A lógica de prevenção e fetch foi removida para simplificar e melhorar a compatibilidade.
+          // Apenas marcamos o passo como concluído e tocamos o som.
+          mapReady = true; $('#map-step').classList.add('done'); syncFirstBrick(); pulseBuild('MAPA BAIXADO • 1º TIJOLO'); showToast('Mapa de Avaliação baixado!');
+          playSound('click');
         }));
         const goldenBtn = $('#golden-brick-btn');
         if (goldenBtn) {
           goldenBtn.addEventListener('click', () => {
             build.classList.add('golden-active');
-            pulseBuild('8º TIJOLO • MENTORIA TATA');
+            pulseBuild('8º TIJOLO • MENTORIA TATA'); playSound('success');
           });
         }
-        whatsappLinks.filter(link => link.id !== 'step-whatsapp-button').forEach(link => link.addEventListener('click', completeCommunity));
-        document.addEventListener('domus:video-started', () => { videoReady = true; syncFirstBrick(); pulseBuild('VÍDEO INICIADO') });
+        document.addEventListener('domus:video-started', () => { videoReady = true; syncFirstBrick(); pulseBuild('VÍDEO INICIADO'); showToast('Vídeo de boas-vindas iniciado!'); });
 
         document.addEventListener('keydown', event => { if (event.key === 'Escape' && whatsappModal.classList.contains('open')) closeWhatsappModal(); });
         function mark(card) { card.classList.add('done'); card.querySelector('.key-status').textContent = 'ACESSO ABERTO'; if ($('#whatsapp-card').classList.contains('done') && $('#hotmart-card').classList.contains('done') && $('#deliveries-card').classList.contains('done')) $('#finish-message').classList.add('show') }
-        whatsappLinks.filter(link => link.id !== 'step-whatsapp-button').forEach(link => link.addEventListener('click', event => { if (link.getAttribute('aria-disabled') === 'true') { event.preventDefault(); return } mark($('#whatsapp-card')); whatsapp.textContent = 'ABRIR WHATSAPP NOVAMENTE' }));
-        $('#hotmart-button').addEventListener('click', () => mark($('#hotmart-card')));
-        $$('.deliveries-entry').forEach(link => link.addEventListener('click', () => mark($('#deliveries-card'))));
+        whatsappLinks.filter(link => link.id !== 'step-whatsapp-button').forEach(link => link.addEventListener('click', event => { if (link.getAttribute('aria-disabled') === 'true') { event.preventDefault(); return } mark($('#whatsapp-card')); }));
+        $('#hotmart-button').addEventListener('click', () => { mark($('#hotmart-card')); build.classList.add('roof-ready'); });
+        $$('.deliveries-entry').forEach(link => link.addEventListener('click', () => { mark($('#deliveries-card')); build.classList.add('door-ready'); }));
 
-        goToStep(0);
+        animateScene(0); // Inicia a cena sem nada construído
       } start();
     })();
   </script>
