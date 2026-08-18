@@ -688,7 +688,6 @@
       color: #fff;
       position: relative;
       overflow: hidden;
-      grid-column: 1 / -1;
     }
     .day.day-d7 b {
       color: #f8d879;
@@ -1362,10 +1361,10 @@
                 data-goto="2" type="button">← Voltar</button></div>
             <h2>Erga sua barreira em oito etapas.</h2>
             <p>Construa a estrutura da sua operação com as 7 missões do desafio.</p>
-            <div class="days"><button class="day"><b>M0 • 10 XP</b><span>Mapa de Avaliação</span></button><button
-                class="day"><b>D1 • 10 XP</b><span>Fluxo de avaliação</span></button><button class="day"><b>D2 • 20
-                  XP</b><span>Anamnese</span></button><button class="day"><b>D3 • 20 XP</b><span>Observação presencial</span></button><button class="day"><b>D4 • 20 XP</b><span>Matriz de decisão</span></button><button class="day"><b>D5 • 10 XP</b><span>POP escrito</span></button><button class="day"><b>D6 • 10 XP</b><span>Dados e indicadores</span></button><button class="day day-d7"><b>🔑 D7 • GRANDE MARCO DA OPERAÇÃO</b><span>Entrega das chaves</span></button></div>
-            <div class="xp-total">Experiência acumulada: <strong id="xp-total">10 XP</strong></div><button
+            <div class="days"><button class="day"><b>M0 • 10 Tijolos</b><span>Mapa de Avaliação</span></button><button
+                class="day"><b>D1 • 10 Tijolos</b><span>Fluxo de avaliação</span></button><button class="day"><b>D2 • 20
+                  Tijolos</b><span>Anamnese</span></button><button class="day"><b>D3 • 20 Tijolos</b><span>Observação presencial</span></button><button class="day"><b>D4 • 20 Tijolos</b><span>Matriz de decisão</span></button><button class="day"><b>D5 • 10 Tijolos</b><span>POP escrito</span></button><button class="day"><b>D6 • 10 Tijolos</b><span>Dados e indicadores</span></button><button class="day day-d7"><b>🔑 D7 • GRANDE MARCO</b><span>Entrega das chaves</span></button></div>
+            <div class="xp-total">Tijolos acumulados: <strong id="xp-total">10 Tijolos</strong></div><button
               class="next-step-btn" id="chap3-next-btn" type="button">AVANÇAR PARA A FINALIZAÇÃO →</button>
           </article>
           <article class="chapter" data-chapter="4">
@@ -1672,7 +1671,7 @@
           syncFirstBrick();
           $$('.crack').forEach(b => { b.classList.remove('repaired'); b.querySelector('span').textContent = 'reparar +' });
           $$('.day').forEach(b => b.classList.remove('placed'));
-          $('#xp-total').textContent = '10 XP';
+          $('#xp-total').textContent = '10 Tijolos';
         }
 
         const stepBadges = ['A FUNDAÇÃO', 'AS RACHADURAS', 'A CONSTRUÇÃO', 'AS CHAVES'];
@@ -1693,7 +1692,7 @@
               setTimeout(() => {
                 if (activeChapter !== chapter) return;
                 b.classList.add('placed');
-                build.classList.add('bricks-' + (i + 1)); build.dataset.progress = `${i + 1}/8 • CONSTRUÇÃO`; $('#xp-total').textContent = i === 7 ? '100 XP + Grande Marco' : totals[i] + ' XP'; playSound('click');
+                build.classList.add('bricks-' + (i + 1)); build.dataset.progress = `${i + 1}/8 • CONSTRUÇÃO`; $('#xp-total').textContent = i === 7 ? '100 Tijolos + Grande Marco' : totals[i] + ' Tijolos'; playSound('click');
               }, 130 * (i + 1));
             });
           } else if (chapter > 3) {
