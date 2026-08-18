@@ -138,7 +138,7 @@
       min-width: 0;
     }
 
-    /* VÍDEO FORMATO STORIES (9:16 VERTICAL) + PLANTA DOMUS FIXO À DIREITA */
+    /* VÍDEO FORMATO STORIES (9:16 VERTICAL) + DOMUS FIXO À DIREITA */
     .video-column {
       grid-column: 2;
       position: sticky;
@@ -780,11 +780,13 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, .5) !important;
       position: relative !important;
       box-sizing: border-box !important;
+      transition: all .3s ease !important;
     }
     .build-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 6px;
       width: 100%;
       margin-bottom: 4px;
       padding-bottom: 4px;
@@ -792,24 +794,28 @@
     }
     .build-tag {
       color: var(--gold);
-      font-size: .52rem;
+      font-size: .54rem;
       font-weight: 800;
-      letter-spacing: .12em;
+      letter-spacing: .08em;
       text-transform: uppercase;
+      white-space: nowrap;
     }
     .build-state-badge {
       color: var(--gold2);
-      font-size: .52rem;
+      font-size: .54rem;
       font-weight: 800;
-      letter-spacing: .06em;
+      letter-spacing: .04em;
       text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       transition: color .3s;
     }
     .blueprint {
       width: 100% !important;
       height: auto !important;
-      max-height: 100px !important;
-      margin: 4px auto !important;
+      max-height: 95px !important;
+      margin: 3px auto !important;
       display: block !important;
     }
     .blueprint .line { fill: none; stroke: rgba(255, 255, 255, .22); stroke-width: 4; stroke-dasharray: 6 8; }
@@ -971,7 +977,7 @@
       }
 
       /* ================================================
-         MOBILE: Vídeo stories maior + Planta compacta ao lado
+         MOBILE: Vídeo stories + Construção DOMUS responsiva
          ================================================ */
 
       /* O main vira coluna: vídeo em cima, card embaixo */
@@ -999,7 +1005,7 @@
         overflow: hidden !important;
       }
 
-      /* ---- VÍDEO CENTRALIZADO + PLANTA À DIREITA NO MOBILE ---- */
+      /* ---- VÍDEO + DOMUS LADO A LADO RESPONSIVO NO MOBILE ---- */
       .video-column {
         order: -1 !important;
         flex-shrink: 0 !important;
@@ -1008,39 +1014,40 @@
         position: relative !important;
         top: auto !important;
         display: flex !important;
+        flex-direction: row !important;
         justify-content: center !important;
         align-items: center !important;
-        padding: 8px 12px !important;
+        gap: 10px !important;
+        padding: 8px 10px !important;
         background: var(--bg) !important;
         border-bottom: 1px solid var(--line) !important;
         max-width: none !important;
+        box-sizing: border-box !important;
       }
 
-      /* Vídeo centralizado na página */
+      /* Vídeo stories proporcional */
       .welcome-video {
-        height: 180px !important;
-        width: calc(180px * 9 / 16) !important;
-        max-height: 185px !important;
-        max-width: 102px !important;
+        height: 148px !important;
+        width: calc(148px * 9 / 16) !important;
+        max-height: 152px !important;
+        max-width: 86px !important;
         aspect-ratio: 9/16 !important;
-        border-radius: 14px !important;
+        border-radius: 12px !important;
         flex-shrink: 0 !important;
-        margin: 0 auto !important;
+        margin: 0 !important;
         align-self: center !important;
       }
 
-      /* Planta posicionada à direita (largura fixa em 100px) */
+      /* DOMUS posicionado com flexibilidade proporcional */
       .build {
-        position: absolute !important;
-        right: 10px !important;
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        height: 120px !important;
-        width: 90px !important;
-        min-width: 90px !important;
-        max-width: 90px !important;
-        max-height: 125px !important;
-        padding: 5px 6px !important;
+        position: static !important;
+        transform: none !important;
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+        max-width: 200px !important;
+        height: 148px !important;
+        max-height: 152px !important;
+        padding: 7px 9px !important;
         border-radius: 12px !important;
         display: flex !important;
         flex-direction: column !important;
@@ -1056,14 +1063,16 @@
         padding-bottom: 2px !important;
         display: flex !important;
         justify-content: space-between !important;
+        align-items: center !important;
+        gap: 4px !important;
         width: 100% !important;
       }
-      .build-tag { font-size: .42rem !important; }
-      .build-state-badge { font-size: .42rem !important; }
+      .build-tag { font-size: .46rem !important; white-space: nowrap !important; }
+      .build-state-badge { font-size: .46rem !important; white-space: nowrap !important; overflow: hidden !important; text-overflow: ellipsis !important; }
 
       .blueprint {
         flex: 1 !important;
-        max-height: 68px !important;
+        max-height: 72px !important;
         width: 100% !important;
         height: auto !important;
         margin: 1px auto !important;
@@ -1071,21 +1080,26 @@
       }
 
       .build-caption {
-        font-size: .46rem !important;
+        font-size: .48rem !important;
         margin-top: 1px !important;
         line-height: 1.15 !important;
         text-align: center !important;
       }
       .build-caption strong {
-        font-size: .52rem !important;
-        margin-bottom: 0 !important;
+        font-size: .54rem !important;
+        margin-bottom: 1px !important;
         white-space: nowrap !important;
         overflow: hidden !important;
         text-overflow: ellipsis !important;
         display: block !important;
       }
       .build-caption span {
-        display: none !important;
+        font-size: .46rem !important;
+        display: block !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        color: var(--dim) !important;
       }
 
       /* ---- CARDS: coluna esquerda ocupa o restante ---- */
@@ -1394,9 +1408,9 @@
           </div><button class="video-play" id="video-play" type="button"
             aria-label="Reproduzir vídeo de boas-vindas">▶</button>
         </div>
-        <div class="build" id="build" aria-label="Planta da Casa DOMUS">
+        <div class="build" id="build" aria-label="Construção DOMUS">
           <div class="build-header">
-            <span class="build-tag">PLANTA DOMUS</span>
+            <span class="build-tag">DOMUS:</span>
             <span class="build-state-badge" id="build-state-badge">A FUNDAÇÃO</span>
           </div>
           <svg class="blueprint" viewBox="50 25 550 425" role="img" aria-labelledby="house-title">
@@ -1420,17 +1434,12 @@
             <path class="crack-line" d="M384 255c5 8 -5 13 5 22s-5 15 5 24" />
             <path class="crack-line" d="M204 330c5 8 -5 13 5 22" />
             <path class="door" d="M240 380V254c0-13 10-23 23-23h34c13 0 23 10 23 23v126z" />
-            <path class="crack-line" d="M175 204c-5 8 5 13 -5 22s5 15 -5 24"/>
-            <path class="crack-line" d="M384 255c5 8 -5 13 5 22s-5 15 5 24"/>
-            <path class="crack-line" d="M204 330c5 8 -5 13 5 22"/>
-            <path class="door" d="M240 380V254c0-13 10-23 23-23h34c13 0 23 10 23 23v126z"/>
             <g class="key-shape" transform="translate(255, -10)">
               <path d="M300,195 a25,25 0 1,0 0,50 a25,25 0 1,0 0,-50 Z M300,205 a15,15 0 1,1 0,30 a15,15 0 1,1 0,-30 Z M296,245 v40 h8 v-40 Z M304,260 h20 v-8 h-20 Z M304,275 h28 v-8 h-28 Z" />
-              <path d="M300,195 a25,25 0 1,0 0,50 a25,25 0 1,0 0,-50 Z M300,205 a15,15 0 1,1 0,30 a15,15 0 1,1 0,-30 Z M296,245 v40 h8 v-40 Z M304,260 h20 v-8 h-20 Z M304,275 h28 v-8 h-28 Z"/>
             </g>
           </svg>
-          <div class="build-caption"><strong id="build-title">Fundação iniciada</strong><span
-              id="build-subtitle">Seu primeiro alicerce começou a tomar forma.</span></div>
+          <div class="build-caption"><strong id="build-title">A Fundação</strong><span
+              id="build-subtitle">Primeiro alicerce da sua operação.</span></div>
         </div>
       </aside>
     </section>
@@ -1584,8 +1593,8 @@
         
         build.setAttribute('aria-label', 'Metodologia DOMUS sendo construída');
         $('#house-title').textContent = 'Representação arquitetônica da Metodologia DOMUS';
-        const titles = ['Fundação iniciada', 'Inspeção das rachaduras', 'Barreira em construção', 'Duas chaves liberadas'];
-        const subtitles = ['O primeiro alicerce começou a tomar forma.', 'Os pontos frágeis estão sendo reparados.', 'Cada etapa fortalece sua operação.', 'Abra a Comunidade do WhatsApp e a Sala de Projetos.'];
+        const titles = ['A Fundação', 'As Rachaduras', 'A Construção', 'As Chaves'];
+        const subtitles = ['Primeiro alicerce da sua operação.', 'Identificação e reparo das falhas.', 'Erguendo os 8 pilares da rotina.', 'Acessos e canais liberados.'];
         const totals = [20, 40, 60, 80, 90, 100, 100];
         let activeChapter = 0, animationTimer, feedbackTimer, mapReady = false, communityReady = false, videoReady = false, currentStep = 0;
 
@@ -1644,8 +1653,8 @@
           if (activeChapter === 1) {
             const completed = Number(mapReady) + Number(communityReady);
             build.dataset.progress = `${completed}/2 • PRIMEIRO ALICERCE`;
-            $('#build-title').textContent = completed === 2 ? 'Primeiro alicerce concluído' : 'Fundação iniciada';
-            $('#build-subtitle').textContent = completed === 0 ? 'Baixe o mapa e entre na comunidade.' : completed === 1 ? 'Falta apenas uma ação para completar o alicerce.' : 'Mapa e comunidade conectados.';
+            $('#build-title').textContent = completed === 2 ? 'Fundação concluída' : 'A Fundação';
+            $('#build-subtitle').textContent = completed === 0 ? 'Baixe o mapa e entre na comunidade.' : completed === 1 ? 'Conclua a última ação do alicerce.' : 'Alicerce pronto para avançar.';
           }
         }
 
@@ -1703,7 +1712,7 @@
           showToast(`Rachadura "${button.dataset.repair}" reparada!`);
           if ($$('.crack.repaired').length === 3) {
             $('#build-title').textContent = 'Rachaduras reparadas';
-            $('#build-subtitle').textContent = 'A estrutura está pronta para avançar.';
+            $('#build-subtitle').textContent = 'Estrutura pronta para a construção.';
             chap2Btn.disabled = false;
             chap2Btn.textContent = 'AVANÇAR PARA A ETAPA 03 • A CONSTRUÇÃO →';
           }
