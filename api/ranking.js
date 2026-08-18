@@ -52,18 +52,28 @@ export default async function handler(req, res) {
 
     const rankingData = (Array.isArray(data) ? data : []).map(item => {
       if (!item || typeof item !== 'object') return null;
-      const progresso = item.progresso || {};
-      const xp = Object.keys(progresso).reduce((total, challengeCode) => {
-        const challenge = CHALLENGES.find(c => c.code === challengeCode);
-        if (challenge && progresso[challengeCode]) {
-          return total + challenge.xp;
-        }
-        return total;
-      }, (typeof item.xp === 'number' ? item.xp : 0));
+      
+      // Se a planilha já enviar o xp_total ou xp pronto:
+      const directXP = item.xp_total !== undefined ? Number(item.xp_total) : (item.xp !== undefined ? Number(item.xp) : null);
+      
+      let finalXP = 0;
+      if (directXP !== null && !isNaN(directXP)) {
+        finalXP = directXP;
+      } else {
+        // Caso contrário, calcula a partir dos desafios entregues (M0..D7)
+        const progresso = (item.progresso && typeof item.progresso === 'object') ? item.progresso : item;
+        finalXP = Object.keys(progresso).reduce((total, challengeCode) => {
+          const challenge = CHALLENGES.find(c => c.code.toLowerCase() === challengeCode.toLowerCase());
+          if (challenge && String(progresso[challengeCode] || '').trim() !== '') {
+            return total + challenge.xp;
+          }
+          return total;
+        }, 0);
+      }
 
       return {
         nome: String(item.nome || 'Participante').trim(),
-        xp: xp
+        xp: finalXP
       };
     }).filter(Boolean).sort((a, b) => b.xp - a.xp);
 
