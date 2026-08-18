@@ -20,41 +20,56 @@ export default async function handler(req, res) {
 
   const isRankingAction = (req.method === 'POST' && body.acao === 'ranking') || (req.method === 'GET');
 
-  if (isRankingAction) {
-    try {
-      const response = await fetch(MAKE_WEBHOOK_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ acao: 'ranking' }) // Sending action to Make.com
-      });
-      const data = await response.json();
-
-      if (!Array.isArray(data)) {
-        throw new Error('A resposta da API não é um array.');
-      }
-
-      const rankingData = data.map(item => {
-        const progresso = item.progresso || {};
-        const xp = Object.keys(progresso).reduce((total, challengeCode) => {
-          const challenge = CHALLENGES.find(c => c.code === challengeCode);
-          if (challenge && progresso[challengeCode]) {
-            return total + challenge.xp;
-          }
-          return total;
-        }, 0);
-
-        return {
-          nome: item.nome,
-          xp: xp
-        };
-      }).sort((a, b) => b.xp - a.xp);
-
-      res.status(200).json(rankingData);
-    } catch (error) {
-      res.status(500).json({ message: 'Erro ao buscar o ranking.', error: error.message });
-    }
-  } else {
+  if (!isRankingAction) {
     res.setHeader('Allow', ['GET', 'POST']);
-    res.status(405).end(`Método ${req.method} não permitido.`);
+    return res.status(405).json({ message: `Método ${req.method} não permitido.` });
+  }
+
+  try {
+    const response = await fetch(MAKE_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ acao: 'ranking' }),
+      signal: AbortSignal.timeout(15000)
+    });
+
+    const rawText = await response.text();
+    let data = [];
+
+    try {
+      const parsed = JSON.parse(rawText);
+      if (Array.isArray(parsed)) {
+        data = parsed;
+      } else if (parsed && Array.isArray(parsed.ranking)) {
+        data = parsed.ranking;
+      } else if (parsed && Array.isArray(parsed.data)) {
+        data = parsed.data;
+      }
+    } catch {
+      // Se o Make retornar texto puro como "Accepted", trata como lista vazia
+      data = [];
+    }
+
+    const rankingData = (Array.isArray(data) ? data : []).map(item => {
+      if (!item || typeof item !== 'object') return null;
+      const progresso = item.progresso || {};
+      const xp = Object.keys(progresso).reduce((total, challengeCode) => {
+        const challenge = CHALLENGES.find(c => c.code === challengeCode);
+        if (challenge && progresso[challengeCode]) {
+          return total + challenge.xp;
+        }
+        return total;
+      }, (typeof item.xp === 'number' ? item.xp : 0));
+
+      return {
+        nome: String(item.nome || 'Participante').trim(),
+        xp: xp
+      };
+    }).filter(Boolean).sort((a, b) => b.xp - a.xp);
+
+    return res.status(200).json(rankingData);
+  } catch (error) {
+    console.error('Erro ao buscar o ranking:', error);
+    return res.status(200).json([]);
   }
 }
