@@ -33,8 +33,23 @@
     .brick.brick-d7.done{background:linear-gradient(135deg,#fff2a3,#f1bf42);box-shadow:0 0 10px #f1bf42}
     .d7-banner{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:14px;padding:10px 14px;border:1px solid rgba(241,191,66,.7);border-radius:12px;background:linear-gradient(135deg,rgba(241,191,66,.25),rgba(248,216,120,.08));color:#f8d878;font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 0 25px rgba(241,191,66,.25);animation:d7Breath 3s infinite ease-in-out}
     .mobile-action{position:fixed;z-index:35;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));display:none}.mobile-action .primary{box-shadow:0 15px 35px rgba(0,0,0,.45)}footer{padding:23px;border-top:1px solid var(--line);color:var(--dim);font-size:.61rem;text-align:center}
+    /* --- MATERIAIS / MODELOS DE DOWNLOAD DA MISSÃO --- */
+    .mission-materials{margin-bottom:16px;padding:14px;border:1px solid rgba(241,191,66,.25);border-radius:14px;background:rgba(241,191,66,.035)}
+    .materials-header{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:10px}
+    .materials-label{display:flex;align-items:center;gap:6px;color:var(--gold);font-size:.65rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+    .materials-badge{font-size:.56rem;color:var(--dim);font-weight:700}
+    .materials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px}
+    .material-btn{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;border:1px solid rgba(241,191,66,.35);border-radius:10px;background:linear-gradient(145deg,rgba(25,28,49,.9),rgba(13,14,25,.95));color:var(--text);text-decoration:none;font-size:.68rem;font-weight:700;transition:.2s}
+    .material-btn:hover{border-color:var(--gold);background:var(--gold-soft);transform:translateY(-1px);color:var(--gold-2)}
+    .material-btn .mat-info{display:flex;align-items:center;gap:8px;min-width:0;overflow:hidden}
+    .material-btn .mat-icon{display:grid;width:26px;height:26px;flex:0 0 26px;place-items:center;border-radius:6px;background:var(--gold-soft);color:var(--gold);font-size:.75rem}
+    .material-btn .mat-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .material-btn .mat-ext{padding:3px 6px;border-radius:6px;background:rgba(241,191,66,.12);color:var(--gold);font-size:.55rem;font-weight:800;flex-shrink:0}
+    .material-btn.disabled{opacity:.55;cursor:not-allowed;border-color:var(--line);background:rgba(255,255,255,.02);pointer-events:none}
+    .material-btn.disabled .mat-icon{background:rgba(255,255,255,.04);color:var(--dim)}
+    .material-btn.disabled .mat-ext{background:rgba(255,255,255,.06);color:var(--dim)}
     @media(min-width:760px){.shell{width:min(1160px,calc(100% - 48px))}.topbar-inner{min-height:76px}.welcome{flex-direction:row;align-items:flex-end;justify-content:space-between;margin-bottom:27px}.welcome p{font-size:.93rem}.profile-chip{margin-bottom:4px}.stats{grid-template-columns:repeat(4,1fr);gap:12px}.stat.wide{grid-column:auto}.stat{padding:18px}.quick-access{grid-template-columns:repeat(3,1fr);gap:12px}.dashboard{grid-template-columns:390px minmax(0,1fr);align-items:start}.journey{position:sticky;top:96px;padding:22px}.delivery{padding:27px}.form-grid.two{grid-template-columns:1fr 1fr}.brand strong{font-size:.88rem}.mobile-action{display:none!important}}
-    @media(max-width:759px){.mobile-action.visible{display:block}.top-actions .onboarding-link{display:none}.mission-list{grid-template-columns:1fr}.identity div{display:block}.identity b{margin-top:3px}.history,.ranking{margin-bottom:24px}}
+    @media(max-width:759px){.mobile-action.visible{display:block}.top-actions .onboarding-link{display:none}.mission-list{grid-template-columns:1fr}.identity div{display:block}.identity b{margin-top:3px}.history,.ranking{margin-bottom:24px}.materials-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -52,7 +67,7 @@
       <aside class="panel journey"><div class="section-head"><div><h2>Sua construção</h2><p>Escolha uma missão para fazer ou reenviar.</p></div><div class="house" aria-hidden="true"><span class="roof"></span><div class="bricks" id="house-bricks"></div></div></div><div class="mission-list" id="missions"></div></aside>
 
       <div>
-        <section class="panel delivery" id="delivery-card"><div class="delivery-empty" id="delivery-empty"><div><span aria-hidden="true">＋</span><h2>Selecione uma missão</h2><p>Toque em uma etapa da sua construção para abrir a área de envio.</p></div></div><div id="delivery-content" hidden><div class="d7-banner" id="d7-banner" hidden>🔑 Grande Marco da Operação • Entrega das Chaves</div><div class="section-head"><div><h2>Entregar desafio</h2><p>Revise o material antes de confirmar.</p></div></div><div class="selected-mission"><span class="selected-badge" id="selected-code">M0</span><div><b id="selected-title">Mapa de Avaliação</b><small id="selected-meta">Missão Zero</small></div></div><div class="identity"><div><span>Aluna</span><b id="identity-name"></b></div><div><span>E-mail validado</span><b id="identity-email"></b></div></div>
+        <section class="panel delivery" id="delivery-card"><div class="delivery-empty" id="delivery-empty"><div><span aria-hidden="true">＋</span><h2>Selecione uma missão</h2><p>Toque em uma etapa da sua construção para abrir a área de envio.</p></div></div><div id="delivery-content" hidden><div class="d7-banner" id="d7-banner" hidden>🔑 Grande Marco da Operação • Entrega das Chaves</div><div class="section-head"><div><h2>Entregar desafio</h2><p>Revise o material antes de confirmar.</p></div></div><div class="selected-mission"><span class="selected-badge" id="selected-code">M0</span><div><b id="selected-title">Mapa de Avaliação</b><small id="selected-meta">Missão Zero</small></div></div><div class="mission-materials" id="mission-materials" hidden><div class="materials-header"><span class="materials-label">📥 Material de Apoio da Missão</span><span class="materials-badge" id="materials-badge"></span></div><div class="materials-grid" id="materials-grid"></div></div><div class="identity"><div><span>Aluna</span><b id="identity-name"></b></div><div><span>E-mail validado</span><b id="identity-email"></b></div></div>
           <form id="delivery-form" novalidate><input type="hidden" id="student-name" name="nome"><input type="hidden" id="student-whatsapp" name="whatsapp"><input type="hidden" id="student-email" name="email"><input type="hidden" id="challenge" name="desafio"><input type="hidden" name="acao" value="entregar_desafio"><input type="hidden" name="origem" value="portal-entregas-domus"><input type="hidden" id="sent-at" name="enviado_em">
             <div class="field"><label>Arquivo <span>PDF, DOCX, XLSX, JPG ou PNG • até 4 MB</span></label><label class="upload" id="upload-box"><input id="delivery-file" name="arquivo" type="file" accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png"><span><strong id="upload-title">Toque para selecionar o arquivo</strong><small id="upload-copy">ou arraste o documento até aqui</small></span></label></div>
             <div class="form-grid two" style="margin-top:13px"><div class="field"><label for="delivery-link">Link da entrega <span>opcional com arquivo</span></label><input id="delivery-link" name="link" type="url" inputmode="url" placeholder="https://..."></div><div class="field"><label for="notes">Observações <span>opcional</span></label><input id="notes" name="observacoes" placeholder="Algum detalhe importante?"></div></div>
@@ -73,14 +88,97 @@
 
       // --- CONFIGURAÇÃO E CONSTANTES ---
       const CHALLENGES = [
-        { id: 'missao-zero', code: 'M0', xp: 10, meta: 'Missão Zero • 10 XP', title: 'Mapa de Avaliação' },
-        { id: 'dia-1', code: 'D1', xp: 10, meta: 'Dia 1 • 10 XP', title: 'Fluxo de avaliação' },
-        { id: 'dia-2', code: 'D2', xp: 20, meta: 'Dia 2 • 20 XP', title: 'Anamnese' },
-        { id: 'dia-3', code: 'D3', xp: 20, meta: 'Dia 3 • 20 XP', title: 'Observação presencial' },
-        { id: 'dia-4', code: 'D4', xp: 20, meta: 'Dia 4 • 20 XP', title: 'Matriz de decisão' },
-        { id: 'dia-5', code: 'D5', xp: 10, meta: 'Dia 5 • 10 XP', title: 'POP escrito' },
-        { id: 'dia-6', code: 'D6', xp: 10, meta: 'Dia 6 • 10 XP', title: 'Dados e indicadores' },
-        { id: 'dia-7', code: 'D7', xp: 0, meta: 'Dia 7 • Grande marco', title: 'Entrega das chaves' }
+        {
+          id: 'missao-zero',
+          code: 'M0',
+          xp: 10,
+          meta: 'Missão Zero • 10 XP',
+          title: 'Mapa de Avaliação',
+          downloads: [
+            {
+              label: 'Mapa de Avaliação (PDF)',
+              url: 'https://github.com/profissaopet/tatapereira/raw/ee0caf7a4bf6937727682a656b11fb08a688f048/onboarding/assets/missao-zero-mapa-avaliacao.pdf',
+              filename: 'Missao_Zero_Mapa_Avaliacao.pdf',
+              ext: 'PDF'
+            },
+            {
+              label: 'Mapa de Avaliação (DOCX)',
+              url: 'https://github.com/profissaopet/tatapereira/raw/ee0caf7a4bf6937727682a656b11fb08a688f048/onboarding/assets/missao-zero-mapa-avaliacao-editavel.docx',
+              filename: 'Missao_Zero_Mapa_Avaliacao_Editavel.docx',
+              ext: 'DOCX'
+            }
+          ]
+        },
+        {
+          id: 'dia-1',
+          code: 'D1',
+          xp: 10,
+          meta: 'Dia 1 • 10 XP',
+          title: 'Fluxo de avaliação',
+          downloads: [
+            { label: 'Ferramenta de Fluxo', url: null, filename: 'Dia_1_Fluxo_Avaliacao.pdf', ext: 'PDF' }
+          ]
+        },
+        {
+          id: 'dia-2',
+          code: 'D2',
+          xp: 20,
+          meta: 'Dia 2 • 20 XP',
+          title: 'Anamnese',
+          downloads: [
+            { label: 'Modelo de Anamnese', url: null, filename: 'Dia_2_Modelo_Anamnese.docx', ext: 'DOCX' }
+          ]
+        },
+        {
+          id: 'dia-3',
+          code: 'D3',
+          xp: 20,
+          meta: 'Dia 3 • 20 XP',
+          title: 'Observação presencial',
+          downloads: [
+            { label: 'Roteiro de Observação', url: null, filename: 'Dia_3_Roteiro_Observacao.pdf', ext: 'PDF' }
+          ]
+        },
+        {
+          id: 'dia-4',
+          code: 'D4',
+          xp: 20,
+          meta: 'Dia 4 • 20 XP',
+          title: 'Matriz de decisão',
+          downloads: [
+            { label: 'Planilha / Matriz', url: null, filename: 'Dia_4_Matriz_Decisao.xlsx', ext: 'XLSX' }
+          ]
+        },
+        {
+          id: 'dia-5',
+          code: 'D5',
+          xp: 10,
+          meta: 'Dia 5 • 10 XP',
+          title: 'POP escrito',
+          downloads: [
+            { label: 'Modelo de POP Escrito', url: null, filename: 'Dia_5_Modelo_POP.docx', ext: 'DOCX' }
+          ]
+        },
+        {
+          id: 'dia-6',
+          code: 'D6',
+          xp: 10,
+          meta: 'Dia 6 • 10 XP',
+          title: 'Dados e indicadores',
+          downloads: [
+            { label: 'Quadro de Indicadores', url: null, filename: 'Dia_6_Indicadores.xlsx', ext: 'XLSX' }
+          ]
+        },
+        {
+          id: 'dia-7',
+          code: 'D7',
+          xp: 0,
+          meta: 'Dia 7 • Grande marco',
+          title: 'Entrega das chaves',
+          downloads: [
+            { label: 'Guia de Finalização', url: null, filename: 'Dia_7_Entrega_Chaves.pdf', ext: 'PDF' }
+          ]
+        }
       ];
       const STORAGE_KEY = 'domus-entregas-concluidas';
       const MAX_FILE_SIZE = 4.25 * 1024 * 1024; // 4.25 MB para segurança
@@ -269,6 +367,46 @@
         });
       };
 
+      const extIcons = { PDF: '📄', DOCX: '📝', XLSX: '📊', PNG: '🖼', JPG: '🖼', default: '📎' };
+
+      const renderMaterials = (item) => {
+        const box = $('#mission-materials');
+        const grid = $('#materials-grid');
+        const badge = $('#materials-badge');
+        const downloads = item.downloads || [];
+
+        if (!downloads.length) { box.hidden = true; return; }
+
+        const available = downloads.filter(d => d.url);
+        badge.textContent = available.length
+          ? `${available.length} de ${downloads.length} disponíve${available.length === 1 ? 'l' : 'is'}`
+          : 'Em breve';
+
+        grid.innerHTML = '';
+        downloads.forEach(dl => {
+          const icon = extIcons[dl.ext] || extIcons.default;
+          if (dl.url) {
+            const a = document.createElement('a');
+            a.className = 'material-btn';
+            a.href = dl.url;
+            a.download = dl.filename || '';
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            a.innerHTML = `<span class="mat-info"><span class="mat-icon">${icon}</span><span class="mat-name">${dl.label}</span></span><span class="mat-ext">${dl.ext} ↓</span>`;
+            grid.appendChild(a);
+          } else {
+            const div = document.createElement('div');
+            div.className = 'material-btn disabled';
+            div.setAttribute('aria-disabled', 'true');
+            div.setAttribute('title', 'Material será disponibilizado no dia da missão');
+            div.innerHTML = `<span class="mat-info"><span class="mat-icon">${icon}</span><span class="mat-name">${dl.label}</span></span><span class="mat-ext">Em breve</span>`;
+            grid.appendChild(div);
+          }
+        });
+
+        box.hidden = false;
+      };
+
       const selectMission = (item) => {
         app.activeMission = item;
         const isD7 = item.id === 'dia-7';
@@ -281,6 +419,7 @@
         $('#delivery-content').hidden = false;
         DOM.mobileAction.classList.add('visible');
         DOM.statusBox.className = 'status';
+        renderMaterials(item);
         updateDOM();
         if (innerWidth < 760) {
           $('#delivery-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
