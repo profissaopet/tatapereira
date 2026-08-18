@@ -681,6 +681,24 @@
     .day b { display: block; color: var(--gold); font-size: .56rem; text-transform: uppercase; }
     .day span { font-size: .62rem; line-height: 1.25; display: block; }
     .day.placed { border-color: var(--goldline); background: rgba(241, 191, 66, .075); color: #e8e9f2; }
+    .day.day-d7 {
+      border: 1.5px solid rgba(241, 191, 66, .85);
+      background: linear-gradient(135deg, rgba(241, 191, 66, .22), rgba(248, 216, 120, .08), rgba(25, 27, 47, .95));
+      box-shadow: 0 0 16px rgba(241, 191, 66, .28);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      grid-column: 1 / -1;
+    }
+    .day.day-d7 b {
+      color: #f8d879;
+      font-weight: 800;
+      letter-spacing: .05em;
+    }
+    .day.day-d7 span {
+      color: #ffffff;
+      font-weight: 600;
+    }
     .golden-brick-card {
       margin-top: 8px;
       padding: 10px 12px;
@@ -1332,7 +1350,7 @@
             <p>Construa a estrutura da sua operação com as 7 missões do desafio.</p>
             <div class="days"><button class="day"><b>M0 • 10 XP</b><span>Mapa de Avaliação</span></button><button
                 class="day"><b>D1 • 10 XP</b><span>Fluxo de avaliação</span></button><button class="day"><b>D2 • 20
-                  XP</b><span>Anamnese</span></button><button class="day"><b>D3 • 20 XP</b><span>Observação presencial</span></button><button class="day"><b>D4 • 20 XP</b><span>Matriz de decisão</span></button><button class="day"><b>D5 • 10 XP</b><span>POP escrito</span></button><button class="day"><b>D6 • 10 XP</b><span>Dados e indicadores</span></button><button class="day"><b>D7 • Grande marco</b><span>Entrega das chaves</span></button></div>
+                  XP</b><span>Anamnese</span></button><button class="day"><b>D3 • 20 XP</b><span>Observação presencial</span></button><button class="day"><b>D4 • 20 XP</b><span>Matriz de decisão</span></button><button class="day"><b>D5 • 10 XP</b><span>POP escrito</span></button><button class="day"><b>D6 • 10 XP</b><span>Dados e indicadores</span></button><button class="day day-d7"><b>🔑 D7 • GRANDE MARCO DA OPERAÇÃO</b><span>Entrega das chaves</span></button></div>
             <div class="xp-total">Experiência acumulada: <strong id="xp-total">10 XP</strong></div><button
               class="next-step-btn" id="chap3-next-btn" type="button">AVANÇAR PARA A FINALIZAÇÃO →</button>
           </article>
