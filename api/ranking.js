@@ -11,6 +11,44 @@ const CHALLENGES = [
 
 const MAKE_WEBHOOK_URL = process.env.MAKE_ENTREGAS_WEBHOOK_URL || 'https://hook.eu1.make.com/06vm4be7flav9iz4mjb1pbuqer1krqry';
 
+function parseMakeResponse(rawText) {
+  if (!rawText || typeof rawText !== 'string') return [];
+  const text = rawText.trim();
+
+  // 1. Tenta JSON.parse padrão
+  try {
+    const parsed = JSON.parse(text);
+    if (Array.isArray(parsed)) return parsed;
+    if (parsed && Array.isArray(parsed.ranking)) return parsed.ranking;
+    if (parsed && Array.isArray(parsed.data)) return parsed.data;
+    if (parsed && Array.isArray(parsed.participantes)) return parsed.participantes;
+    if (parsed && Array.isArray(parsed.alunos)) return parsed.alunos;
+    if (parsed && typeof parsed === 'object') return [parsed];
+  } catch (e) {}
+
+  // 2. Corrige resposta do Make onde objetos foram agregados sem vírgulas
+  try {
+    const sanitized = text.replace(/}\s*\{/g, '},{');
+    const parsed = JSON.parse(sanitized);
+    if (Array.isArray(parsed)) return parsed;
+  } catch (e) {}
+
+  // 3. Fallback regex para extrair todos os objetos individuais {...}
+  try {
+    const matches = text.match(/\{[^{}]+\}/g) || [];
+    const items = [];
+    for (const m of matches) {
+      try {
+        const item = JSON.parse(m);
+        if (item && typeof item === 'object') items.push(item);
+      } catch (e) {}
+    }
+    if (items.length > 0) return items;
+  } catch (e) {}
+
+  return [];
+}
+
 export default async function handler(req, res) {
   let body = req.body;
   if (typeof body === 'string') {
@@ -34,23 +72,9 @@ export default async function handler(req, res) {
     });
 
     const rawText = await response.text();
-    let data = [];
+    const data = parseMakeResponse(rawText);
 
-    try {
-      const parsed = JSON.parse(rawText);
-      if (Array.isArray(parsed)) {
-        data = parsed;
-      } else if (parsed && Array.isArray(parsed.ranking)) {
-        data = parsed.ranking;
-      } else if (parsed && Array.isArray(parsed.data)) {
-        data = parsed.data;
-      }
-    } catch {
-      // Se o Make retornar texto puro como "Accepted", trata como lista vazia
-      data = [];
-    }
-
-    const rankingData = (Array.isArray(data) ? data : []).map(item => {
+    const rankingData = data.map(item => {
       if (!item || typeof item !== 'object') return null;
       
       // Se a planilha já enviar o xp_total ou xp pronto:
