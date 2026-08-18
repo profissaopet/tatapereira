@@ -59,7 +59,7 @@
             <button class="primary" id="submit-button" type="submit" style="margin-top:15px">CONFIRMAR ENTREGA</button><div class="status" id="form-status" role="status" aria-live="polite"></div><p class="privacy">Seu material será encaminhado com segurança ao fluxo de acompanhamento da Operação Sob Controle.</p>
           </form></div></section>
         <section class="panel history"><div class="section-head"><div><h2>Resumo das entregas</h2><p>Missões confirmadas no seu progresso.</p></div></div><div class="history-list" id="history-list"></div></section>
-        <section class="panel ranking"><div class="section-head"><div><h2>Ranking Geral</h2><p>As 10 arquitetas com mais XP na construção.</p></div></div><div class="ranking-list" id="ranking-list"><div class="empty-history">O ranking está sendo calculado...</div></div></section>
+        <section class="panel ranking"><div class="section-head"><div><h2>Ranking Geral</h2><p>Todos os participantes na construção.</p></div></div><div class="ranking-list" id="ranking-list"><div class="empty-history">O ranking está sendo calculado...</div></div></section>
       </div>
     </div>
   </main>
@@ -211,26 +211,41 @@
           const externalRanking = await response.json();
           
           const currentUserXP = CHALLENGES.reduce((total, item) => total + (app.completed.has(item.id) ? item.xp : 0), 0);
+          const currentUserName = app.currentUser?.nome || 'Você';
           
-          // Adiciona o usuário atual à lista de ranking para garantir que ele apareça
-          const fullRanking = [
-            ...externalRanking,
-            { nome: app.currentUser?.nome || 'Você', xp: currentUserXP }
-          ];
+          // Mapeia todos os participantes recebidos do banco/webhook
+          const map = new Map();
+          if (Array.isArray(externalRanking)) {
+            externalRanking.forEach(p => {
+              if (!p || !p.nome) return;
+              map.set(p.nome.trim().toLowerCase(), { nome: p.nome.trim(), xp: Number(p.xp) || 0 });
+            });
+          }
 
-          // Remove duplicados, mantendo a maior pontuação em caso de nomes iguais
-          const uniqueRanking = Array.from(new Map(fullRanking.map(p => [p.nome.toLowerCase(), p])).values());
-          
-          const sortedRanking = uniqueRanking.sort((a, b) => b.xp - a.xp).slice(0, 10);
+          // Garante a presença do usuário atual e atualiza sua pontuação caso a local seja maior
+          const currentKey = currentUserName.trim().toLowerCase();
+          if (map.has(currentKey)) {
+            const existing = map.get(currentKey);
+            existing.xp = Math.max(existing.xp, currentUserXP);
+          } else {
+            map.set(currentKey, { nome: currentUserName, xp: currentUserXP });
+          }
+
+          const sortedRanking = Array.from(map.values()).sort((a, b) => b.xp - a.xp);
 
           rankingList.innerHTML = '';
+          if (sortedRanking.length === 0) {
+            rankingList.innerHTML = '<div class="empty-history">Nenhum participante pontuado ainda.</div>';
+            return;
+          }
+
           sortedRanking.forEach((player, index) => {
             const isCurrentUser = app.currentUser && player.nome.toLowerCase() === app.currentUser.nome.toLowerCase();
-            const item = `<div class="rank-item ${isCurrentUser ? 'is-you' : ''}"><span class="rank-pos">${index + 1}</span><span class="rank-name">${formatRankingName(player.nome)}</span><span class="rank-xp">${player.xp} XP</span><div class="rank-bar"><div class="rank-bar-fill" style="width: ${Math.min(100, player.xp)}%"></div></div>`;
+            const item = `<div class="rank-item ${isCurrentUser ? 'is-you' : ''}"><span class="rank-pos">${index + 1}</span><span class="rank-name">${formatRankingName(player.nome)}</span><span class="rank-xp">${player.xp} XP</span><div class="rank-bar"><div class="rank-bar-fill" style="width: ${Math.min(100, player.xp)}%"></div></div></div>`;
             rankingList.insertAdjacentHTML('beforeend', item);
           });
         } catch (error) {
-          rankingList.innerHTML = '<div class="empty-history">Não foi possível carregar o ranking.</div>';
+          rankingList.innerHTML = '<div class="empty-history">Não foi possível carregar o ranking no momento.</div>';
           console.error('Ranking Error:', error);
         }
       };
@@ -362,6 +377,7 @@
           app.completed.add(app.activeMission.id);
           persistState();
           updateDOM();
+          fetchAndRenderRanking();
           showFormStatus('success', `${app.activeMission.code} recebida com sucesso. Seu tijolo foi assentado.`);
           DOM.form.reset();
           handleFileInputChange(); // Reseta o visual do input de arquivo
