@@ -13,7 +13,11 @@ const MAKE_WEBHOOK_URL = process.env.MAKE_ENTREGAS_WEBHOOK_URL || 'https://hook.
 
 function parseMakeResponse(rawText) {
   if (!rawText || typeof rawText !== 'string') return [];
-  const text = rawText.trim();
+  let text = rawText.trim();
+
+  if (text.startsWith('BodyLong String')) {
+    text = text.replace(/^BodyLong String\s*/i, '').trim();
+  }
 
   // 1. Tenta JSON.parse padrão
   try {
@@ -95,8 +99,10 @@ export default async function handler(req, res) {
         }, 0);
       }
 
+      const nome = String(item.nome || item.Nome || item.name || item.aluna || 'Participante').trim();
+
       return {
-        nome: String(item.nome || 'Participante').trim(),
+        nome,
         xp: finalXP
       };
     }).filter(Boolean).sort((a, b) => b.xp - a.xp);
