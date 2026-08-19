@@ -61,7 +61,10 @@
         <img class="logo-nome" src="../assets/tata-logo-nome.png" alt="Tata Pereira">
         <div class="brand-badge"><strong>Operação Sob Controle</strong></div>
       </div>
-      
+      <div class="top-actions">
+        <div class="confirmed"><i></i> Inscrição confirmada</div>
+        <button class="ghost-button" id="logout-button" type="button" hidden>SAIR</button>
+      </div>
     </div>
   </header>
 
@@ -231,34 +234,49 @@
       };
 
       // --- LÓGICA DE AUTENTICAÇÃO E SESSÃO ---
+      const missionMap = {
+        m0: 'missao-zero', 'missao-zero': 'missao-zero', 'missão-zero': 'missao-zero',
+        d1: 'dia-1', 'dia-1': 'dia-1',
+        d2: 'dia-2', 'dia-2': 'dia-2',
+        d3: 'dia-3', 'dia-3': 'dia-3',
+        d4: 'dia-4', 'dia-4': 'dia-4',
+        d5: 'dia-5', 'dia-5': 'dia-5',
+        d6: 'dia-6', 'dia-6': 'dia-6',
+        d7: 'dia-7', 'dia-7': 'dia-7'
+      };
+
       const persistState = () => localStorage.setItem(STORAGE_KEY, JSON.stringify([...app.completed]));
 
       const unlockPortal = (user) => {
-        app.currentUser = user;
+        app.currentUser = user || {};
         DOM.authGate.hidden = true;
         DOM.portal.hidden = false;
         DOM.logoutButton.hidden = false;
 
-        const name = user.nome || 'Engenheira DOMUS';
+        const name = (user?.nome || '').trim() || 'Engenheira DOMUS';
         const firstName = getFirstName(name);
         $('#welcome-name').textContent = firstName;
         $('#profile-name').textContent = name;
-        $('#profile-email').textContent = user.email || '';
+        $('#profile-email').textContent = user?.email || '';
         $('#avatar').textContent = firstName.charAt(0).toUpperCase();
         $('#identity-name').textContent = name;
-        $('#identity-email').textContent = user.email || '';
+        $('#identity-email').textContent = user?.email || '';
         $('#student-name').value = name;
-        $('#student-email').value = user.email || '';
-        $('#student-whatsapp').value = user.telefone || '';
+        $('#student-email').value = user?.email || '';
+        $('#student-whatsapp').value = user?.telefone || '';
 
-        if (Array.isArray(user.desafios_concluidos)) {
-          user.desafios_concluidos.forEach(id => app.completed.add(id));
+        if (Array.isArray(user?.desafios_concluidos)) {
+          user.desafios_concluidos.forEach(rawId => {
+            const k = String(rawId || '').trim().toLowerCase();
+            const normalized = missionMap[k] || rawId;
+            if (normalized) app.completed.add(normalized);
+          });
         }
         persistState();
         updateDOM();
         fetchAndRenderRanking();
 
-        if (user.desafio_pendente) {
+        if (user?.desafio_pendente) {
           const pendingCode = String(user.desafio_pendente).trim();
           const pendingMission = CHALLENGES.find(c => c.code.toLowerCase() === pendingCode.toLowerCase() || c.id.toLowerCase() === pendingCode.toLowerCase());
           if (pendingMission && !app.completed.has(pendingMission.id)) {
@@ -360,7 +378,8 @@
           }
 
           sortedRanking.forEach((player, index) => {
-            const isCurrentUser = app.currentUser && player.nome.toLowerCase() === app.currentUser.nome.toLowerCase();
+            const currentName = (app.currentUser?.nome || '').trim().toLowerCase();
+            const isCurrentUser = currentName && player.nome && player.nome.trim().toLowerCase() === currentName;
             const item = `<div class="rank-item ${isCurrentUser ? 'is-you' : ''}"><span class="rank-pos">${index + 1}</span><span class="rank-name">${formatRankingName(player.nome)}</span><span class="rank-xp">${player.xp} TJ</span><div class="rank-bar"><div class="rank-bar-fill" style="width: ${Math.min(100, player.xp)}%"></div></div></div>`;
             rankingList.insertAdjacentHTML('beforeend', item);
           });
