@@ -30,6 +30,8 @@
     .mission-index.is-d7{border-color:#f1bf42;background:linear-gradient(135deg,#f8d878,#dfa82e);color:#0a0b12;font-weight:900;box-shadow:0 4px 14px rgba(241,191,66,.4)}
     .mission-status.status-d7{background:linear-gradient(135deg,#f8d878,#dfa82e);color:#0a0b12;font-weight:900;letter-spacing:.06em;box-shadow:0 2px 12px rgba(241,191,66,.35)}
     .mission.mission-d7.done .mission-status.status-d7{background:linear-gradient(135deg,#49d68b,#27a863);color:#061e11}
+    .mission.locked{opacity:.82}
+    .mission.locked .mission-status{background:rgba(255,255,255,.05);color:var(--dim);border:1px solid rgba(255,255,255,.08)}
     .brick.brick-d7{border-color:#f1bf42;background:rgba(241,191,66,.3)}
     .brick.brick-d7.done{background:linear-gradient(135deg,#fff2a3,#f1bf42);box-shadow:0 0 10px #f1bf42}
     .d7-banner{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:14px;padding:10px 14px;border:1px solid rgba(241,191,66,.7);border-radius:12px;background:linear-gradient(135deg,rgba(241,191,66,.25),rgba(248,216,120,.08));color:#f8d878;font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 0 25px rgba(241,191,66,.25);animation:d7Breath 3s infinite ease-in-out}
@@ -42,9 +44,12 @@
     .materials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px}
     .material-btn{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 12px;border:1px solid rgba(241,191,66,.35);border-radius:10px;background:linear-gradient(145deg,rgba(25,28,49,.9),rgba(13,14,25,.95));color:var(--text);text-decoration:none;font-size:.68rem;font-weight:700;transition:.2s}
     .material-btn:hover{border-color:var(--gold);background:var(--gold-soft);transform:translateY(-1px);color:var(--gold-2)}
+    .material-btn.is-bonus{border-color:rgba(241,191,66,.55);background:linear-gradient(145deg,rgba(38,32,18,.92),rgba(15,16,28,.96))}
+    .material-btn.is-bonus:hover{border-color:var(--gold-2);box-shadow:0 0 14px rgba(241,191,66,.2)}
+    .mat-bonus-tag{display:inline-flex;align-items:center;gap:3px;padding:2px 5px;margin-right:6px;border-radius:4px;background:rgba(241,191,66,.18);color:var(--gold);font-size:.5rem;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
     .material-btn .mat-info{display:flex;align-items:center;gap:8px;min-width:0;overflow:hidden}
     .material-btn .mat-icon{display:grid;width:26px;height:26px;flex:0 0 26px;place-items:center;border-radius:6px;background:var(--gold-soft);color:var(--gold);font-size:.75rem}
-    .material-btn .mat-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .material-btn .mat-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:flex;align-items:center}
     .material-btn .mat-ext{padding:3px 6px;border-radius:6px;background:rgba(241,191,66,.12);color:var(--gold);font-size:.55rem;font-weight:800;flex-shrink:0}
     .material-btn.disabled{opacity:.55;cursor:not-allowed;border-color:var(--line);background:rgba(255,255,255,.02);pointer-events:none}
     .material-btn.disabled .mat-icon{background:rgba(255,255,255,.04);color:var(--dim)}
@@ -107,6 +112,7 @@
           xp: 10,
           meta: 'Missão Zero • 10 TJ',
           title: 'Mapa de Avaliação',
+          unlockAt: null,
           downloads: [
             {
               label: 'Mapa de Avaliação (PDF)',
@@ -128,8 +134,28 @@
           xp: 10,
           meta: 'Dia 1 • 10 TJ',
           title: 'Fluxo de avaliação',
+          unlockAt: '2026-08-24T21:00:00-03:00',
           downloads: [
-            { label: 'Ferramenta de Fluxo', url: null, filename: 'Dia_1_Fluxo_Avaliacao.pdf', ext: 'PDF' }
+            {
+              label: 'Fluxo de Atendimento',
+              url: 'https://drive.google.com/file/d/1L42xRc3Y_rNH-YHLRiniqySTmkh4t5WC/view?usp=drive_link',
+              filename: 'Fluxo_de_Atendimento.pdf',
+              ext: 'PDF'
+            },
+            {
+              label: 'Google Forms na prática',
+              url: 'https://drive.google.com/file/d/1Tx11SxZdoqQqovCHV_VKNTSLcvzwmy9z/view?usp=drive_link',
+              filename: 'Google_Forms_na_pratica',
+              ext: 'FORMS',
+              isBonus: true
+            },
+            {
+              label: 'Drives caninos',
+              url: 'https://drive.google.com/file/d/1_PtvvBcLwJrpG5Fd0iGEtKFw7_kuW4pc/view?usp=drive_link',
+              filename: 'Drives_caninos',
+              ext: 'DRIVE',
+              isBonus: true
+            }
           ]
         },
         {
@@ -138,6 +164,7 @@
           xp: 20,
           meta: 'Dia 2 • 20 TJ',
           title: 'Anamnese',
+          unlockAt: '2026-08-25T21:00:00-03:00',
           downloads: [
             { label: 'Modelo de Anamnese', url: null, filename: 'Dia_2_Modelo_Anamnese.docx', ext: 'DOCX' }
           ]
@@ -148,6 +175,7 @@
           xp: 20,
           meta: 'Dia 3 • 20 TJ',
           title: 'Observação presencial',
+          unlockAt: '2026-08-26T21:00:00-03:00',
           downloads: [
             { label: 'Roteiro de Observação', url: null, filename: 'Dia_3_Roteiro_Observacao.pdf', ext: 'PDF' }
           ]
@@ -158,8 +186,14 @@
           xp: 20,
           meta: 'Dia 4 • 20 TJ',
           title: 'Matriz de decisão',
+          unlockAt: '2026-08-27T21:00:00-03:00',
           downloads: [
-            { label: 'Planilha / Matriz', url: null, filename: 'Dia_4_Matriz_Decisao.xlsx', ext: 'XLSX' }
+            {
+              label: 'Tomada de Decisão',
+              url: 'https://drive.google.com/file/d/1GW4C4FtdcWDLGCzcFrtiJGP5wgQEBZlm/view?usp=drive_link',
+              filename: 'Tomada_de_Decisao.pdf',
+              ext: 'PDF'
+            }
           ]
         },
         {
@@ -168,8 +202,20 @@
           xp: 10,
           meta: 'Dia 5 • 10 TJ',
           title: 'POP escrito',
+          unlockAt: '2026-08-28T21:00:00-03:00',
           downloads: [
-            { label: 'Modelo de POP Escrito', url: null, filename: 'Dia_5_Modelo_POP.docx', ext: 'DOCX' }
+            {
+              label: 'Procedimento Operacional Padrão',
+              url: 'https://docs.google.com/document/d/1yG22upbMAwG2Jgc9H8agWNLcfODSJ_EU/edit?usp=drive_link&ouid=110786305890535450689&rtpof=true&sd=true',
+              filename: 'Procedimento_Operacional_Padrao.docx',
+              ext: 'DOCX'
+            },
+            {
+              label: 'Documentando o processo',
+              url: 'https://drive.google.com/file/d/1AiAexCUdbKoalElw1ygJ37f4Pe0fiBqo/view?usp=drive_link',
+              filename: 'Documentando_o_processo.pdf',
+              ext: 'PDF'
+            }
           ]
         },
         {
@@ -178,8 +224,14 @@
           xp: 10,
           meta: 'Dia 6 • 10 TJ',
           title: 'Dados e indicadores',
+          unlockAt: '2026-08-29T21:00:00-03:00',
           downloads: [
-            { label: 'Quadro de Indicadores', url: null, filename: 'Dia_6_Indicadores.xlsx', ext: 'XLSX' }
+            {
+              label: 'Central de Controle de avaliação',
+              url: 'https://docs.google.com/spreadsheets/d/1dxKTu3foFEgi0O2EvwrcKgC6p6r2EejK0i4CYAJpjxQ/edit?usp=drive_link',
+              filename: 'Central_de_Controle_de_avaliacao.xlsx',
+              ext: 'XLSX'
+            }
           ]
         },
         {
@@ -188,8 +240,14 @@
           xp: 0,
           meta: 'Dia 7 • Grande marco',
           title: 'Entrega das chaves',
+          unlockAt: '2026-08-30T21:00:00-03:00',
           downloads: [
-            { label: 'Guia de Finalização', url: null, filename: 'Dia_7_Entrega_Chaves.pdf', ext: 'PDF' }
+            {
+              label: 'Validando a implementação',
+              url: 'https://drive.google.com/file/d/1vRkRUhC-DkR_WjWsWi8zFtBsMJTDiimt/view?usp=drive_link',
+              filename: 'Validando_a_implementacao.pdf',
+              ext: 'PDF'
+            }
           ]
         }
       ];
@@ -231,6 +289,33 @@
         const first = parts[0];
         const lastInitial = parts[parts.length - 1].charAt(0).toUpperCase();
         return `${first} ${lastInitial}.`;
+      };
+
+      const isAdminUser = () => {
+        const email = (app.currentUser?.email || '').trim().toLowerCase();
+        return email === 'juangomes.sales@gmail.com';
+      };
+
+      const isMissionUnlocked = (challenge) => {
+        if (isAdminUser()) return true;
+        if (!challenge || !challenge.unlockAt) return true;
+        return Date.now() >= new Date(challenge.unlockAt).getTime();
+      };
+
+      const getUnlockDateFormatted = (isoStr) => {
+        if (!isoStr) return '';
+        const d = new Date(isoStr);
+        const day = String(d.getDate()).padStart(2, '0');
+        const month = String(d.getMonth() + 1).padStart(2, '0');
+        return `${day}/${month} às 21h`;
+      };
+
+      const getUnlockStatusLabel = (challenge) => {
+        if (isMissionUnlocked(challenge)) return null;
+        const d = new Date(challenge.unlockAt);
+        const now = new Date();
+        const isToday = d.getDate() === now.getDate() && d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+        return isToday ? '🔒 Libera hoje 21h' : `🔒 Libera ${getUnlockDateFormatted(challenge.unlockAt)}`;
       };
 
       // --- LÓGICA DE AUTENTICAÇÃO E SESSÃO ---
@@ -408,7 +493,7 @@
         });
       };
 
-      const extIcons = { PDF: '📄', DOCX: '📝', XLSX: '📊', PNG: '🖼', JPG: '🖼', default: '📎' };
+      const extIcons = { PDF: '📄', DOCX: '📝', DOC: '📝', DOCS: '📝', XLSX: '📊', XLS: '📊', SHEETS: '📊', PNG: '🖼', JPG: '🖼', FORMS: '📋', FORM: '📋', DRIVE: '📁', LINK: '🔗', default: '📎' };
 
       const renderMaterials = (item) => {
         const box = $('#mission-materials');
@@ -418,29 +503,52 @@
 
         if (!downloads.length) { box.hidden = true; return; }
 
-        const available = downloads.filter(d => d.url);
-        badge.textContent = available.length
-          ? `${available.length} de ${downloads.length} disponíve${available.length === 1 ? 'l' : 'is'}`
-          : 'Em breve';
+        const unlocked = isMissionUnlocked(item);
+        const available = unlocked ? downloads.filter(d => d.url) : [];
+
+        if (!unlocked) {
+          badge.textContent = getUnlockStatusLabel(item) || 'Bloqueado';
+        } else {
+          badge.textContent = available.length
+            ? `${available.length} de ${downloads.length} disponíve${available.length === 1 ? 'l' : 'is'}`
+            : 'Em breve';
+        }
 
         grid.innerHTML = '';
         downloads.forEach(dl => {
           const icon = extIcons[dl.ext] || extIcons.default;
-          if (dl.url) {
+          const isCloudLink = dl.url && (
+            dl.url.includes('drive.google.com') ||
+            dl.url.includes('forms.gle') ||
+            dl.url.includes('docs.google.com') ||
+            dl.ext === 'FORMS' ||
+            dl.ext === 'FORM' ||
+            dl.ext === 'DRIVE' ||
+            dl.ext === 'LINK'
+          );
+          const bonusTag = dl.isBonus ? '<span class="mat-bonus-tag">🎁 BÔNUS</span>' : '';
+          const extLabel = isCloudLink ? `${dl.ext} ↗` : `${dl.ext} ↓`;
+
+          if (unlocked && dl.url) {
             const a = document.createElement('a');
-            a.className = 'material-btn';
+            a.className = `material-btn ${dl.isBonus ? 'is-bonus' : ''}`;
             a.href = dl.url;
-            a.download = dl.filename || '';
+            if (!isCloudLink && dl.filename) {
+              a.download = dl.filename;
+            }
             a.target = '_blank';
             a.rel = 'noopener noreferrer';
-            a.innerHTML = `<span class="mat-info"><span class="mat-icon">${icon}</span><span class="mat-name">${dl.label}</span></span><span class="mat-ext">${dl.ext} ↓</span>`;
+            a.innerHTML = `<span class="mat-info"><span class="mat-icon">${icon}</span><span class="mat-name">${bonusTag}${dl.label}</span></span><span class="mat-ext">${extLabel}</span>`;
             grid.appendChild(a);
           } else {
             const div = document.createElement('div');
-            div.className = 'material-btn disabled';
+            div.className = `material-btn disabled ${dl.isBonus ? 'is-bonus' : ''}`;
             div.setAttribute('aria-disabled', 'true');
-            div.setAttribute('title', 'Material será disponibilizado no dia da missão');
-            div.innerHTML = `<span class="mat-info"><span class="mat-icon">${icon}</span><span class="mat-name">${dl.label}</span></span><span class="mat-ext">Em breve</span>`;
+            const tooltip = !unlocked
+              ? `Material será liberado ${getUnlockDateFormatted(item.unlockAt)}`
+              : 'Material será disponibilizado no dia da missão';
+            div.setAttribute('title', tooltip);
+            div.innerHTML = `<span class="mat-info"><span class="mat-icon">${icon}</span><span class="mat-name">${bonusTag}${dl.label}</span></span><span class="mat-ext">${!unlocked ? '🔒 Às 21h' : 'Em breve'}</span>`;
             grid.appendChild(div);
           }
         });
@@ -498,11 +606,19 @@
         $('#next-title').textContent = next ? next.title : 'Construção concluída';
 
         document.querySelectorAll('.mission').forEach(button => {
+          const item = CHALLENGES.find(c => c.id === button.dataset.id);
           const isD7 = button.dataset.id === 'dia-7';
           const done = app.completed.has(button.dataset.id);
+          const unlocked = item ? isMissionUnlocked(item) : true;
           button.classList.toggle('done', done);
           button.classList.toggle('selected', app.activeMission?.id === button.dataset.id);
-          button.querySelector('.mission-status').textContent = done ? 'Entregue' : (isD7 ? '👑 GRANDE MARCO' : 'Disponível');
+          button.classList.toggle('locked', !unlocked && !done);
+
+          let statusText = done ? 'Entregue' : (isD7 ? '👑 GRANDE MARCO' : 'Disponível');
+          if (!done && !unlocked) {
+            statusText = getUnlockStatusLabel(item) || '🔒 Bloqueado';
+          }
+          button.querySelector('.mission-status').textContent = statusText;
         });
         document.querySelectorAll('.brick').forEach(brick => brick.classList.toggle('done', app.completed.has(brick.dataset.id)));
         renderHistory();
