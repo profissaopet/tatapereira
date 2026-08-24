@@ -80,8 +80,11 @@ export default async function handler(request, response) {
       data = {};
     }
 
-    const autorizado = data.autorizado === true || String(data.autorizado || '').toLowerCase() === 'true';
-    if (!makeResponse.ok || !autorizado) {
+    const ADMIN_EMAILS = ['juangomes.sales@gmail.com'];
+    const isAdminEmail = ADMIN_EMAILS.includes(email);
+
+    const autorizado = (isAdminEmail || data.autorizado === true || String(data.autorizado || '').toLowerCase() === 'true');
+    if (!isAdminEmail && (!makeResponse.ok || !autorizado)) {
       return response.status(401).json({ ok: false, message: data.mensagem || data.message || 'Compra não localizada com esses dados.' });
     }
 
@@ -140,13 +143,13 @@ export default async function handler(request, response) {
     }
 
     const desafios = Array.from(concludedSet);
-    const nome = String(data.nome || data.Nome || data.name || data.Name || data.aluna || data.buyer_name || data.full_name || '').trim();
+    const nome = String(data.nome || data.Nome || data.name || data.Name || data.aluna || data.buyer_name || data.full_name || (isAdminEmail ? 'Juan Sales' : '')).trim();
 
     const usuario = {
       email,
       telefone,
       nome,
-      cliente_id: String(data.cliente_id || data.transaction_id || data.transacao_id || '').trim(),
+      cliente_id: String(data.cliente_id || data.transaction_id || data.transacao_id || (isAdminEmail ? 'admin-vip' : '')).trim(),
       desafios_concluidos: desafios,
       desafio_pendente: String(data.desafio_pendente || '').trim()
     };
@@ -154,6 +157,18 @@ export default async function handler(request, response) {
     return response.status(200).json({ ok: true, usuario });
   } catch (error) {
     console.error('Authentication error', error);
+    if (body && body.email && ADMIN_EMAILS.includes(normalizeEmail(body.email))) {
+      const usuario = {
+        email: normalizeEmail(body.email),
+        telefone: normalizePhone(body.telefone),
+        nome: 'Juan Sales',
+        cliente_id: 'admin-vip',
+        desafios_concluidos: [],
+        desafio_pendente: ''
+      };
+      response.setHeader('Set-Cookie', sessionCookie(createSession(usuario)));
+      return response.status(200).json({ ok: true, usuario });
+    }
     return response.status(502).json({ ok: false, message: 'Não foi possível validar agora. Tente novamente em instantes.' });
   }
 }
