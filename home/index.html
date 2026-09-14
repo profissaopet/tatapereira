@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tata Pereira | Estruturação de Creches e Hospedagens Pet</title>
+    
+    <!-- Meta Tags SEO -->
+    <meta name="description" content="Tata Pereira ajuda empresárias do mercado pet a estruturar processos, orientar equipes e trazer clareza para a rotina de creches e hospedagens caninas.">
+    <meta name="keywords" content="creche pet, hospedagem pet, comportamento canino, Método Domus, Tata Pereira, gestão pet, processos pet">
+    <meta name="author" content="Tata Pereira">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#0f101d">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Variables & Reset */
+        :root {
+            --bg-dark: #0f101d;
+            --bg-card: #191b2f;
+            --bg-card-hover: #1f223b;
+            --accent-yellow: #f1bf42;
+            --accent-yellow-hover: #dfb03a;
+            --text-white: #ffffff;
+            --text-muted: #9fa4c4;
+            --accent-red: #ff5252;
+            --accent-green: #2ecc71;
+            --font-family: 'Inter', sans-serif;
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            font-family: var(--font-family);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Animações */
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 5px 15px rgba(241, 191, 66, 0.2); transform: translateY(0); }
+            50% { box-shadow: 0 12px 28px rgba(241, 191, 66, 0.45); transform: translateY(-2px); }
+            100% { box-shadow: 0 5px 15px rgba(241, 191, 66, 0.2); transform: translateY(0); }
+        }
+
+        /* Botões */
+        .cta-btn {
+            animation: pulseGlow 3s ease-in-out infinite;
+            transition: var(--transition);
+            background-color: var(--accent-yellow);
+            color: var(--bg-dark);
+            font-weight: 800;
+            font-size: 0.95rem;
+            padding: 14px 28px;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .cta-btn:hover {
+            animation: none;
+            transform: translateY(-2px);
+            background-color: var(--accent-yellow-hover);
+            box-shadow: 0 12px 25px rgba(241, 191, 66, 0.25);
+        }
+
+        .btn-outline {
+            border: 1px solid rgba(241, 191, 66, 0.4);
+            color: var(--accent-yellow);
+            background: transparent;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 12px 20px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(241, 191, 66, 0.1);
+            border-color: var(--accent-yellow);
+            transform: translateY(-2px);
+        }
+
+        .badge {
+            background-color: rgba(241, 191, 66, 0.12);
+            color: var(--accent-yellow);
+            border: 1px solid rgba(241, 191, 66, 0.3);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        /* 1. Header */
+        .main-header {
+            position: sticky;
+            top: 0;
+            background-color: rgba(15, 16, 29, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            z-index: 999;
+            padding: 16px 0;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text-white);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--accent-yellow);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 24px;
+        }
+
+        .nav-menu a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-yellow);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-icons a {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            color: var(--accent-yellow);
+        }
+
+        .header-wsp-btn {
+            background-color: var(--accent-yellow);
+            color: var(--bg-dark);
+            font-weight: 700;
+            font-size: 0.82rem;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: var(--transition);
+            text-transform: uppercase;
+        }
+
+        .header-wsp-btn:hover {
+            background-color: var(--accent-yellow-hover);
+        }
+
+        /* Global Sections */
+        section {
+            padding: 70px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 16px;
+        }
+
+        /* 2. Hero Section */
+        .hero {
+            padding: 80px 0 60px 0;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-content .tagline {
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            color: var(--accent-yellow);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .hero-content h1 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-bottom: 30px;
+        }
+
+        .hero-authority {
+            margin-top: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 16px;
+        }
+
+        .hero-media {
+            width: 100%;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            background-color: var(--bg-card);
+        }
+
+        .hero-media img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* 3. Posicionamento */
+        .positioning-box {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            max-width: 850px;
+            margin: 0 auto;
+            border-left: 5px solid var(--accent-yellow);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .positioning-box h2 {
+            font-size: 1.6rem;
+            margin-bottom: 16px;
+        }
+
+        .positioning-box p {
+            color: var(--text-muted);
+            font-size: 1.02rem;
+            margin-bottom: 14px;
+        }
+
+        .positioning-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 4. Soluções (Cards Grid) */
+        .solutions-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 45px auto;
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .solution-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition);
+        }
+
+        .solution-card:hover {
+            transform: translateY(-4px);
+            background-color: var(--bg-card-hover);
+            border-color: rgba(241, 191, 66, 0.25);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .solution-card h3 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--text-white);
+        }
+
+        .solution-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        /* 5. Sobre a Tata */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-img {
+            width: 100%;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .about-content p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+        }
+
+        .highlights-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 24px 0;
+        }
+
+        .highlight-item {
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-yellow);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 6. Método Domus */
+        .domus-section {
+            background: radial-gradient(circle at center, #16182c 0%, var(--bg-dark) 100%);
+            text-align: center;
+        }
+
+        .domus-content {
+            max-width: 750px;
+            margin: 0 auto 35px auto;
+        }
+
+        .domus-content p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-top: 12px;
+        }
+
+        .domus-media {
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid rgba(241, 191, 66, 0.2);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            background-color: var(--bg-card);
+        }
+
+        .domus-media img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* 7 e 8. Redes & Contato */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .contact-box, .social-box {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 36px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .contact-box p, .social-box p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+        }
+
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .contact-item span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .contact-item strong {
+            font-size: 1rem;
+            color: var(--text-white);
+        }
+
+        /* 9. Footer */
+        .footer {
+            background-color: #080911;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .footer-brand h4 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--text-white);
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-nav a {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .footer-nav a:hover {
+            color: var(--accent-yellow);
+        }
+
+        /* Responsividade (Mobile) */
+        @media (max-width: 768px) {
+            .hero-grid, 
+            .solutions-grid, 
+            .about-grid, 
+            .contact-grid {
+                grid-template-columns: 1fr !important;
+                gap: 24px;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            h1 {
+                font-size: 1.8rem !important;
+            }
+
+            h2 {
+                font-size: 1.45rem !important;
+            }
+
+            section {
+                padding: 45px 0;
+            }
+
+            .highlights-list {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+
+            .positioning-box {
+                padding: 24px;
+            }
+
+            .contact-box, .social-box, .solution-card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1) Header -->
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="#" class="logo">Tata <span>Pereira</span></a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#solucoes">Soluções</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <div class="social-icons">
+                    <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a>
+                    <a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
+                </div>
+                <a href="https://wa.me/5500000000000" class="header-wsp-btn" target="_blank" rel="noopener">Falar no WhatsApp</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="inicio">
+        <!-- 2) Hero — Primeira Dobra -->
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <span class="tagline">Estruturação de Creches e Hospedagens Pet</span>
+                    <h1>Transforme sua experiência em uma operação mais organizada, segura e menos dependente do improviso.</h1>
+                    <p>Tata Pereira ajuda empresárias do mercado pet a estruturar processos, orientar melhor suas equipes e trazer mais clareza para a rotina da empresa.</p>
+                    
+                    <a href="#solucoes" class="cta-btn">Quero Estruturar Minha Empresa</a>
+                    
+                    <div class="hero-authority">
+                        8 anos no mercado pet • +100 profissionais capacitados • +1.000 famílias atendidas
+                    </div>
+                </div>
+
+                <div class="hero-media">
+                    <img src="https://via.placeholder.com/600x650/191b2f/f1bf42?text=Foto+Principal+Tata+Pereira" alt="Tata Pereira - Estruturação de Creches Pet">
+                </div>
+            </div>
+        </section>
+
+        <!-- 3) Seção Curta de Posicionamento -->
+        <section class="positioning">
+            <div class="container">
+                <div class="positioning-box">
+                    <h2>Experiência é fundamental.<br>Mas experiência precisa virar processo.</h2>
+                    <p>Quando a empresa cresce, a operação não pode depender apenas da memória, da percepção ou da presença da dona.</p>
+                    <p>Tata une comportamento canino, vivência prática e estruturação de processos para ajudar creches e hospedagens a funcionarem com mais clareza e consistência.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4) Soluções -->
+        <section id="solucoes" class="solutions">
+            <div class="container">
+                <div class="solutions-header">
+                    <h2>Como a Tata pode ajudar você hoje</h2>
+                </div>
+
+                <div class="solutions-grid">
+                    <!-- CARD 1 — EMPRESAS -->
+                    <article class="solution-card">
+                        <div>
+                            <span class="badge">Desafio de Implementação</span>
+                            <h3>Operação Sob Controle</h3>
+                            <p>Estruture o Processo de Avaliação de Cães da sua empresa com mais critérios, segurança e previsibilidade.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="#" class="cta-btn">Conhecer o Desafio</a>
+                        </div>
+                    </article>
+
+                    <!-- CARD 2 — EMPRESAS -->
+                    <article class="solution-card">
+                        <div>
+                            <span class="badge">Programa de Implementação</span>
+                            <h3>Minha Creche Estruturada</h3>
+                            <p>Organize os processos da sua creche ou hospedagem para crescer com mais estrutura e menos caos na operação.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="#" class="cta-btn">Conhecer o Programa</a>
+                        </div>
+                    </article>
+
+                    <!-- CARD 3 — PROFISSIONAIS -->
+                    <article class="solution-card">
+                        <div>
+                            <span class="badge">Formação Profissional</span>
+                            <h3>Profissão Dog Walker</h3>
+                            <p>Formação para quem quer atuar com passeios de forma mais profissional e segura.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="#" class="btn-outline">Conhecer a Formação</a>
+                            <a href="#" class="cta-btn">Comprar pela Hotmart</a>
+                        </div>
+                    </article>
+
+                    <!-- CARD 4 — PROFISSIONAIS -->
+                    <article class="solution-card">
+                        <div>
+                            <span class="badge">Formação Profissional</span>
+                            <h3>Monitor de Creche Canina</h3>
+                            <p>Formação para quem deseja atuar com mais preparo técnico na rotina de creches e hospedagens.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="#" class="btn-outline">Conhecer a Formação</a>
+                            <a href="#" class="cta-btn">Comprar pela Hotmart</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5) Sobre a Tata -->
+        <section id="sobre" class="about">
+            <div class="container about-grid">
+                <div class="about-img">
+                    <img src="https://via.placeholder.com/500x650/191b2f/9fa4c4?text=Foto+Secundaria+Tata+Pereira" alt="Quem é Tata Pereira">
+                </div>
+
+                <div class="about-content">
+                    <span class="badge">Quem está por trás desse trabalho</span>
+                    <h2>Tata Pereira</h2>
+                    <p>Especialista em comportamento canino, formação de profissionais e estruturação de negócios pet. Fundadora da Tata EducaCão e criadora do Método Domus, reúne experiência prática na operação e visão de processos para ajudar empresas e profissionais do mercado pet a atuarem com mais organização e clareza.</p>
+                    <p>Sua trajetória reúne experiência prática dentro da operação e visão de processos. Ao longo de oito anos no mercado pet, já atuou como pet sitter, dog walker, adestradora, monitora, supervisora e consultora de creches. Antes disso, acumulou 13 anos de experiência no mercado corporativo.</p>
+                    <p>É fundadora da Tata EducaCão, empresa de educação, comportamento e cuidados caninos que oferece adestramento, escola para cães, passeios e pet sitter de forma integrada e personalizada.</p>
+                    <p>Hoje, une comportamento, operação e processos para ajudar empresas e profissionais a construírem uma atuação mais organizada e profissional.</p>
+
+                    <div class="highlights-list">
+                        <div class="highlight-item">✓ 8 anos no mercado pet</div>
+                        <div class="highlight-item">✓ 13 anos no corporativo</div>
+                        <div class="highlight-item">✓ Vivência operacional completa</div>
+                        <div class="highlight-item">✓ +100 alunos capacitados</div>
+                        <div class="highlight-item">✓ +1.000 famílias atendidas</div>
+                    </div>
+
+                    <a href="#contato" class="cta-btn">Falar com a Equipe</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6) Bloco sobre o Método Domus -->
+        <section class="domus-section">
+            <div class="container">
+                <div class="domus-content">
+                    <span class="badge">Metodologia Exclusiva</span>
+                    <h2>Método Domus</h2>
+                    <p>Uma empresa pet funciona melhor quando sua estrutura acompanha o crescimento.</p>
+                    <p>O Método Domus é a linha de raciocínio que orienta o trabalho da Tata: olhar para a empresa como uma estrutura que precisa de processos, rotina, equipe e gestão funcionando em conjunto.</p>
+                </div>
+
+                <div class="domus-media">
+                    <img src="https://via.placeholder.com/800x450/191b2f/f1bf42?text=Diagrama+do+Metodo+Domus" alt="Diagrama do Método Domus">
+                </div>
+            </div>
+        </section>
+
+        <!-- 7 e 8) Redes sociais & Contato -->
+        <section id="contato" class="contact">
+            <div class="container contact-grid">
+                <!-- Redes Sociais -->
+                <div class="social-box">
+                    <div>
+                        <h2>Acompanhe a Tata</h2>
+                        <p>Conteúdos sobre comportamento canino, rotina operacional, gestão e profissionalização do mercado pet.</p>
+                    </div>
+                    <div class="card-actions">
+                        <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-outline">Instagram</a>
+                        <a href="https://tiktok.com" target="_blank" rel="noopener" class="btn-outline">TikTok</a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener" class="btn-outline">YouTube</a>
+                    </div>
+                </div>
+
+                <!-- Contato -->
+                <div class="contact-box">
+                    <div>
+                        <h2>Vamos conversar?</h2>
+                        <p>Se você quer estruturar sua empresa, conhecer uma formação ou falar com a equipe, entre em contato.</p>
+                        
+                        <div class="contact-methods">
+                            <div class="contact-item">
+                                <span>E-mail</span>
+                                <strong>contato@tatapereira.com</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-actions" style="margin-top: 24px;">
+                        <a href="mailto:contato@tatapereira.com" class="btn-outline">Enviar E-mail</a>
+                        <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="cta-btn">Falar no WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 9) Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <h4>Tata Pereira</h4>
+                <p>Estruturação de creches e hospedagens pet</p>
+            </div>
+
+            <nav>
+                <ul class="footer-nav">
+                    <li><a href="#inicio">Início</a></li>
+                    <li><a href="#solucoes">Soluções</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+
+            <div class="social-icons">
+                <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+                <a href="https://tiktok.com" target="_blank" rel="noopener">TikTok</a>
+                <a href="https://youtube.com" target="_blank" rel="noopener">YouTube</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
