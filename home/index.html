@@ -162,15 +162,27 @@
             gap: 20px;
         }
 
-        .logo {
-            font-size: 1.35rem;
-            font-weight: 900;
-            color: var(--text-white);
-            letter-spacing: -0.5px;
+        .logo-link {
+            display: inline-flex;
+            align-items: center;
         }
 
-        .logo span {
-            color: var(--accent-yellow);
+        .shell {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-nome {
+            height: 38px;
+            width: auto;
+            display: block;
+            object-fit: contain;
+            transition: var(--transition-smooth);
+        }
+
+        .logo-link:hover .logo-nome {
+            opacity: 0.9;
+            transform: scale(1.02);
         }
 
         .nav-menu {
@@ -624,6 +636,10 @@
                 display: none;
             }
 
+            .logo-nome {
+                height: 32px;
+            }
+
             .hero-content h1 {
                 font-size: 2rem !important;
             }
@@ -658,10 +674,14 @@
 </head>
 <body>
 
-    <!-- 1) Header -->
+    <!-- 1) Header com Logo Imagem -->
     <header class="main-header">
         <div class="container header-container">
-            <a href="#" class="logo">Tata <span>Pereira</span></a>
+            <a href="#" class="logo-link" aria-label="Tata Pereira - Página Inicial">
+                <div class="shell">
+                    <img class="logo-nome" src="../assets/tata-logo-nome.png" alt="Tata Pereira">
+                </div>
+            </a>
             
             <nav>
                 <ul class="nav-menu">
@@ -884,7 +904,7 @@
         </section>
     </main>
 
-    <!-- 9) Footer -->
+    <!-- 9) Footer Pro -->
     <footer class="footer">
         <div class="container footer-container">
             <div class="footer-brand">
