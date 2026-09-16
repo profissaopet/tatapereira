@@ -9,6 +9,18 @@
     })(window,document,'script','dataLayer','GTM-W4MNGWDW');</script>
     <!-- End Google Tag Manager -->
 
+    <!-- Google Tag (gtag.js) - Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7Y6MYXW5X3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-7Y6MYXW5X3', {
+        'send_page_view': true
+      });
+    </script>
+
     <!-- Hotmart Checkout Widget (Popup/Modal) -->
     <script type="text/javascript">
         function importHotmart(){ 
@@ -1014,7 +1026,7 @@
             <div class="container">
                 <div class="positioning-box">
                     <h2>Experiência é fundamental.<br>Mas experiência precisa virar processo.</h2>
-                    <p>Quando a empresa cresce, a operação não pode depender apenas da memória, da perception ou da presença da dona.</p>
+                    <p>Quando a empresa cresce, a operação não pode depender apenas da memória, da percepção ou da presença da dona.</p>
                     <p>Tata une comportamento canino, vivência prática e estruturação de processos para ajudar creches e hospedagens a funcionarem com mais clareza e consistência.</p>
                 </div>
             </div>
@@ -1046,7 +1058,7 @@
                             <p>Estruture o Processo de Avaliação de Cães da sua empresa com mais critérios, segurança e previsibilidade.</p>
                         </div>
                         <div class="card-actions">
-                            <a href="https://tatapereira.com/" target="_blank" rel="noopener" class="cta-btn btn-full">Conhecer o Desafio</a>
+                            <a href="http://tatapereira.com/" target="_blank" rel="noopener" class="cta-btn btn-full">Conhecer o Desafio</a>
                         </div>
                     </article>
 
@@ -1286,7 +1298,7 @@
         </div>
     </footer>
 
-    <!-- Scripts de Tecnologia de Interface Avançada -->
+    <!-- Scripts de Tecnologia de Interface e Rastreamento GA4/GTM -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // 1. Mobile Menu Toggle
@@ -1391,6 +1403,32 @@
                     link.classList.remove('active');
                     if (link.getAttribute('href') === `#${current}`) {
                         link.classList.add('active');
+                    }
+                });
+            });
+
+            // 7. Rastreamento Automático de Eventos GA4/GTM
+            document.querySelectorAll('a[href*="hotmart.com"], a[href*="pay.hotmart.com"]').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    const card = this.closest('.solution-card');
+                    const productName = card ? card.querySelector('h3')?.innerText : 'Produto Hotmart';
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'begin_checkout', {
+                            'event_category': 'Ecommerce',
+                            'event_label': productName,
+                            'link_url': this.href
+                        });
+                    }
+                });
+            });
+
+            document.querySelectorAll('a[href*="wa.me"]').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'click_whatsapp', {
+                            'event_category': 'Lead',
+                            'link_url': this.href
+                        });
                     }
                 });
             });
