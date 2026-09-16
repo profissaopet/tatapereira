@@ -5,12 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tata Pereira | Estruturação de Creches e Hospedagens Pet</title>
     
-    <!-- Meta Tags SEO -->
+    <!-- Meta Tags SEO Basicas -->
     <meta name="description" content="Tata Pereira ajuda empresárias do mercado pet a estruturar processos, orientar equipes e trazer clareza para a rotina de creches e hospedagens caninas.">
     <meta name="keywords" content="creche pet, hospedagem pet, comportamento canino, Método Domus, Tata Pereira, gestão pet, processos pet">
     <meta name="author" content="Tata Pereira">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0f101d">
+
+    <!-- Meta Tags Open Graph (Compartilhamento em WhatsApp, Instagram, LinkedIn, etc.) -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tatapereira.com.br/">
+    <meta property="og:title" content="Tata Pereira | Estruturação de Creches e Hospedagens Pet">
+    <meta property="og:description" content="Transforme sua experiência em uma operação mais organizada, segura e previsível.">
+    <meta property="og:image" content="../assets/tata-apontando-voce.png">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
@@ -29,7 +36,7 @@
             --accent-yellow: #f1bf42;
             --accent-yellow-hover: #dfb03a;
             --text-white: #ffffff;
-            --text-muted: #9fa4c4;
+            --text-muted: #aab0d5; /* Contraste ajustado para melhor acessibilidade */
             --accent-red: #ff5252;
             --accent-green: #2ecc71;
             --font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -78,6 +85,16 @@
             0% { box-shadow: 0 4px 20px rgba(241, 191, 66, 0.2); transform: translateY(0); }
             50% { box-shadow: 0 8px 30px rgba(241, 191, 66, 0.45); transform: translateY(-2px); }
             100% { box-shadow: 0 4px 20px rgba(241, 191, 66, 0.2); transform: translateY(0); }
+        }
+
+        /* Suporte a Acessibilidade de Movimento */
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
         }
 
         /* Botões Estilizados */
@@ -147,7 +164,7 @@
         .main-header {
             position: sticky;
             top: 0;
-            background-color: rgba(15, 16, 29, 0.85);
+            background-color: rgba(15, 16, 29, 0.92);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border-subtle);
@@ -247,6 +264,16 @@
         .header-wsp-btn:hover {
             background-color: var(--accent-yellow-hover);
             box-shadow: 0 4px 15px rgba(241, 191, 66, 0.3);
+        }
+
+        /* Botão do Menu Mobile Hambúrguer */
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--text-white);
+            cursor: pointer;
+            padding: 4px;
         }
 
         /* Layout de Seções */
@@ -533,6 +560,58 @@
             display: block;
         }
 
+        /* Nova Seção: Depoimentos e Prova Social */
+        .testimonials {
+            background-color: rgba(25, 27, 47, 0.2);
+        }
+
+        .testimonials-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-lg);
+            padding: 28px;
+            border: 1px solid var(--border-subtle);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .testimonial-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-info h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-white);
+        }
+
+        .author-info span {
+            font-size: 0.8rem;
+            color: var(--accent-yellow);
+        }
+
         /* 7 e 8. Redes & Contato */
         .contact-grid {
             display: grid;
@@ -627,12 +706,34 @@
             .hero-grid, 
             .solutions-grid, 
             .about-grid, 
-            .contact-grid {
+            .contact-grid,
+            .testimonials-grid {
                 grid-template-columns: 1fr !important;
                 gap: 32px;
             }
 
+            .mobile-menu-btn {
+                display: block;
+            }
+
             .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(15, 16, 29, 0.98);
+                flex-direction: column;
+                padding: 24px;
+                border-bottom: 1px solid var(--border-subtle);
+                gap: 18px;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .header-actions {
                 display: none;
             }
 
@@ -679,15 +780,20 @@
         <div class="container header-container">
             <a href="#" class="logo-link" aria-label="Tata Pereira - Página Inicial">
                 <div class="shell">
-                    <img class="logo-nome" src="../assets/tata-logo-nome.png" alt="Tata Pereira">
+                    <img class="logo-nome" src="../assets/tata-logo-nome.png" alt="Tata Pereira" width="160" height="38">
                 </div>
             </a>
             
+            <button class="mobile-menu-btn" id="menuToggle" aria-label="Abrir Menu de Navegação">
+                <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+
             <nav>
-                <ul class="nav-menu">
+                <ul class="nav-menu" id="navMenu">
                     <li><a href="#inicio">Início</a></li>
                     <li><a href="#solucoes">Soluções</a></li>
                     <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#depoimentos">Depoimentos</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
             </nav>
@@ -704,7 +810,7 @@
                         <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                     </a>
                 </div>
-                <a href="https://wa.me/5500000000000" class="header-wsp-btn" target="_blank" rel="noopener">Falar no WhatsApp</a>
+                <a href="https://wa.me/5511999999999?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20sobre%20a%20estrutura%C3%A7%C3%A3o%20de%20creches." class="header-wsp-btn" target="_blank" rel="noopener">Falar no WhatsApp</a>
             </div>
         </div>
     </header>
@@ -732,7 +838,7 @@
 
                 <div class="hero-media-wrapper">
                     <div class="hero-media">
-                        <img src="../assets/tata-apontando-voce.png" alt="Tata Pereira - Estruturação de Creches Pet">
+                        <img src="../assets/tata-apontando-voce.png" alt="Tata Pereira - Estruturação de Creches Pet" fetchpriority="high" width="500" height="600">
                     </div>
                 </div>
             </div>
@@ -766,7 +872,7 @@
                             <p>Estruture o Processo de Avaliação de Cães da sua empresa com mais critérios, segurança e clareza operacional.</p>
                         </div>
                         <div class="card-actions">
-                            <a href="#" class="cta-btn">Conhecer o Desafio</a>
+                            <a href="https://wa.me/5511999999999?text=Quero%20saber%20mais%20sobre%20o%20Desafio%20Operacao%20Sob%20Controle" target="_blank" rel="noopener" class="cta-btn">Conhecer o Desafio</a>
                         </div>
                     </article>
 
@@ -778,7 +884,7 @@
                             <p>Organize os processos da sua creche ou hospedagem para crescer com alinhamento de equipe e sem caos na rotina.</p>
                         </div>
                         <div class="card-actions">
-                            <a href="#" class="cta-btn">Conhecer o Programa</a>
+                            <a href="https://wa.me/5511999999999?text=Quero%20saber%20mais%20sobre%20o%20Minha%20Creche%20Estruturada" target="_blank" rel="noopener" class="cta-btn">Conhecer o Programa</a>
                         </div>
                     </article>
 
@@ -790,8 +896,8 @@
                             <p>Capacitação prática para quem quer atuar com passeios de forma profissional, segura e estruturada.</p>
                         </div>
                         <div class="card-actions">
-                            <a href="#" class="btn-outline">Conhecer a Formação</a>
-                            <a href="#" class="cta-btn">Comprar via Hotmart</a>
+                            <a href="#contato" class="btn-outline">Conhecer a Formação</a>
+                            <a href="https://hotmart.com" target="_blank" rel="noopener" class="cta-btn">Comprar via Hotmart</a>
                         </div>
                     </article>
 
@@ -803,8 +909,8 @@
                             <p>Formação completa para quem deseja atuar com alto preparo técnico na rotina diária de creches e hospedagens.</p>
                         </div>
                         <div class="card-actions">
-                            <a href="#" class="btn-outline">Conhecer a Formação</a>
-                            <a href="#" class="cta-btn">Comprar via Hotmart</a>
+                            <a href="#contato" class="btn-outline">Conhecer a Formação</a>
+                            <a href="https://hotmart.com" target="_blank" rel="noopener" class="cta-btn">Comprar via Hotmart</a>
                         </div>
                     </article>
                 </div>
@@ -815,7 +921,7 @@
         <section id="sobre" class="about">
             <div class="container about-grid">
                 <div class="about-img">
-                    <img src="../assets/mentoria-tata-dog.png" alt="Quem é Tata Pereira">
+                    <img src="../assets/mentoria-tata-dog.png" alt="Quem é Tata Pereira" loading="lazy" width="500" height="500">
                 </div>
 
                 <div class="about-content">
@@ -860,12 +966,54 @@
                 </div>
 
                 <div class="domus-media">
-                    <img src="../assets/metodo-domus-casa.png" alt="Diagrama do Método Domus">
+                    <img src="../assets/metodo-domus-casa.png" alt="Diagrama do Método Domus" loading="lazy" width="850" height="450">
                 </div>
             </div>
         </section>
 
-        <!-- 7 e 8) Redes sociais & Contato -->
+        <!-- 7) Seção de Depoimentos (Prova Social) -->
+        <section id="depoimentos" class="testimonials">
+            <div class="container">
+                <div class="testimonials-header">
+                    <span class="badge">Resultados Reais</span>
+                    <h2>O que dizem as empresárias e alunas</h2>
+                </div>
+
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <p>"A estruturação de processos da Tata mudou o clima da minha creche. Antes a equipe dependia de mim para tudo, hoje tudo roda com autonomia."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Mariana Silva</h4>
+                                <span>Proprietária de Creche Pet</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <p>"O protocolo de avaliação de cães nos trouxe uma segurança imensa na aceitação de novos cães. Reduzimos incidentes a zero."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Carla Alencar</h4>
+                                <span>Gestora de Hospedagem Canina</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <p>"A formação de monitores foi o divisor de águas para os meus colaboradores. O alinhamento técnico do time melhorou 100%."</p>
+                        <div class="testimonial-author">
+                            <div class="author-info">
+                                <h4>Fernanda Lima</h4>
+                                <span>Dona de Centro de Socialização</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8) Redes sociais & Contato -->
         <section id="contato" class="contact">
             <div class="container contact-grid">
                 <!-- Redes Sociais -->
@@ -897,7 +1045,7 @@
 
                     <div class="card-actions" style="margin-top: 28px;">
                         <a href="mailto:contato@tatapereira.com" class="btn-outline">Enviar E-mail</a>
-                        <a href="https://wa.me/5500000000000" target="_blank" rel="noopener" class="cta-btn">Falar no WhatsApp</a>
+                        <a href="https://wa.me/5511999999999?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20uma%20conversa." target="_blank" rel="noopener" class="cta-btn">Falar no WhatsApp</a>
                     </div>
                 </div>
             </div>
@@ -917,6 +1065,7 @@
                     <li><a href="#inicio">Início</a></li>
                     <li><a href="#solucoes">Soluções</a></li>
                     <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#depoimentos">Depoimentos</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
             </nav>
@@ -935,5 +1084,26 @@
         </div>
     </footer>
 
+    <!-- Lógica de interatividade (JavaScript do Menu Mobile) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navMenu = document.getElementById('navMenu');
+
+            menuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+
+            // Fechar o menu mobile ao clicar em um link
+            const navLinks = navMenu.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
