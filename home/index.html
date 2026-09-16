@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tata Pereira | Estruturação de Creches e Hospedagens Pet</title>
+    <title>Tata Pereira | Estruturação de Creches, Consultorias e Mentorias Pet</title>
     
-    <!-- Meta Tags SEO Basicas -->
+    <!-- Meta Tags SEO -->
     <meta name="description" content="Tata Pereira ajuda empresárias do mercado pet a estruturar processos, orientar equipes e trazer clareza para a rotina de creches e hospedagens caninas.">
-    <meta name="keywords" content="creche pet, hospedagem pet, comportamento canino, Método Domus, Tata Pereira, gestão pet, processos pet">
+    <meta name="keywords" content="creche pet, hospedagem pet, comportamento canino, Método Domus, Tata Pereira, gestão pet, processos pet, consultoria pet">
     <meta name="author" content="Tata Pereira">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0f101d">
 
-    <!-- Meta Tags Open Graph (Compartilhamento em WhatsApp, Instagram, LinkedIn, etc.) -->
+    <!-- Meta Tags Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tatapereira.com.br/">
-    <meta property="og:title" content="Tata Pereira | Estruturação de Creches e Hospedagens Pet">
+    <meta property="og:title" content="Tata Pereira | Consultorias, Mentorias e Cursos Pet">
     <meta property="og:description" content="Transforme sua experiência em uma operação mais organizada, segura e previsível.">
     <meta property="og:image" content="../assets/tata-apontando-voce.png">
 
@@ -28,7 +28,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
     <style>
-        /* Variables & Reset High-End Theme */
         :root {
             --bg-dark: #0f101d;
             --bg-card: #191b2f;
@@ -36,9 +35,7 @@
             --accent-yellow: #f1bf42;
             --accent-yellow-hover: #dfb03a;
             --text-white: #ffffff;
-            --text-muted: #aab0d5; /* Contraste ajustado para melhor acessibilidade */
-            --accent-red: #ff5252;
-            --accent-green: #2ecc71;
+            --text-muted: #aab0d5;
             --font-family: 'Inter', system-ui, -apple-system, sans-serif;
             --border-radius-lg: 16px;
             --border-radius-md: 10px;
@@ -80,14 +77,12 @@
             list-style: none;
         }
 
-        /* Animações Premium */
         @keyframes pulseGlow {
             0% { box-shadow: 0 4px 20px rgba(241, 191, 66, 0.2); transform: translateY(0); }
             50% { box-shadow: 0 8px 30px rgba(241, 191, 66, 0.45); transform: translateY(-2px); }
             100% { box-shadow: 0 4px 20px rgba(241, 191, 66, 0.2); transform: translateY(0); }
         }
 
-        /* Suporte a Acessibilidade de Movimento */
         @media (prefers-reduced-motion: reduce) {
             *, ::before, ::after {
                 animation-duration: 0.01ms !important;
@@ -104,8 +99,8 @@
             background: linear-gradient(135deg, var(--accent-yellow) 0%, var(--accent-yellow-hover) 100%);
             color: var(--bg-dark);
             font-weight: 800;
-            font-size: 0.9rem;
-            padding: 14px 28px;
+            font-size: 0.88rem;
+            padding: 14px 24px;
             border: none;
             border-radius: var(--border-radius-md);
             cursor: pointer;
@@ -197,11 +192,6 @@
             transition: var(--transition-smooth);
         }
 
-        .logo-link:hover .logo-nome {
-            opacity: 0.9;
-            transform: scale(1.02);
-        }
-
         .nav-menu {
             display: flex;
             gap: 28px;
@@ -261,12 +251,6 @@
             letter-spacing: 0.5px;
         }
 
-        .header-wsp-btn:hover {
-            background-color: var(--accent-yellow-hover);
-            box-shadow: 0 4px 15px rgba(241, 191, 66, 0.3);
-        }
-
-        /* Botão do Menu Mobile Hambúrguer */
         .mobile-menu-btn {
             display: none;
             background: transparent;
@@ -324,8 +308,34 @@
         .hero-content p {
             color: var(--text-muted);
             font-size: 1.08rem;
-            margin-bottom: 32px;
+            margin-bottom: 28px;
             line-height: 1.65;
+        }
+
+        /* Seletor Rápido de Perfil no Hero */
+        .hero-profiles {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 32px;
+        }
+
+        .profile-chip {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-subtle);
+            padding: 8px 14px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .profile-chip:hover {
+            border-color: var(--accent-yellow);
+            color: var(--accent-yellow);
+            background: rgba(241, 191, 66, 0.05);
         }
 
         .hero-authority {
@@ -340,23 +350,8 @@
             flex-wrap: wrap;
         }
 
-        .hero-authority span {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
         .hero-media-wrapper {
             position: relative;
-        }
-
-        .hero-media-wrapper::before {
-            content: '';
-            position: absolute;
-            inset: -10px;
-            background: radial-gradient(circle, rgba(241, 191, 66, 0.15) 0%, rgba(15, 16, 29, 0) 70%);
-            z-index: -1;
-            border-radius: 50%;
         }
 
         .hero-media {
@@ -387,29 +382,50 @@
             box-shadow: 0 16px 32px rgba(0,0,0,0.3);
         }
 
-        .positioning-box h2 {
-            font-size: 1.7rem;
-            margin-bottom: 18px;
-        }
-
-        .positioning-box p {
-            color: var(--text-muted);
-            font-size: 1.05rem;
-            margin-bottom: 16px;
-        }
-
-        .positioning-box p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* 4. Soluções */
+        /* 4. Soluções e Abas */
         .solutions-header {
             text-align: center;
             max-width: 700px;
-            margin: 0 auto 50px auto;
+            margin: 0 auto 36px auto;
         }
 
-        .solutions-grid {
+        .solutions-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .tab-btn {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .tab-btn:hover {
+            color: var(--text-white);
+            border-color: rgba(241, 191, 66, 0.4);
+        }
+
+        .tab-btn.active {
+            background: var(--accent-yellow);
+            color: var(--bg-dark);
+            border-color: var(--accent-yellow);
+            box-shadow: 0 4px 15px rgba(241, 191, 66, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 28px;
@@ -425,19 +441,6 @@
             justify-content: space-between;
             transition: var(--transition-smooth);
             position: relative;
-            overflow: hidden;
-        }
-
-        .solution-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, rgba(241, 191, 66, 0.3), transparent);
-            opacity: 0;
-            transition: var(--transition-smooth);
         }
 
         .solution-card:hover {
@@ -445,10 +448,6 @@
             background-color: var(--bg-card-hover);
             border-color: rgba(241, 191, 66, 0.25);
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }
-
-        .solution-card:hover::before {
-            opacity: 1;
         }
 
         .solution-card h3 {
@@ -462,7 +461,6 @@
             color: var(--text-muted);
             font-size: 0.95rem;
             margin-bottom: 28px;
-            flex-grow: 1;
             line-height: 1.6;
         }
 
@@ -485,21 +483,12 @@
             border-radius: var(--border-radius-lg);
             overflow: hidden;
             border: 1px solid var(--border-subtle);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
 
         .about-img img {
             width: 100%;
             height: auto;
             display: block;
-            object-fit: cover;
-        }
-
-        .about-content p {
-            color: var(--text-muted);
-            font-size: 0.98rem;
-            margin-bottom: 16px;
-            line-height: 1.65;
         }
 
         .highlights-list {
@@ -516,7 +505,6 @@
             border-radius: var(--border-radius-md);
             font-size: 0.88rem;
             font-weight: 600;
-            color: var(--text-white);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -524,10 +512,9 @@
 
         .highlight-item svg {
             color: var(--accent-yellow);
-            flex-shrink: 0;
         }
 
-        /* 6. Método Domus */
+        /* 6. Método Domus e Vídeo */
         .domus-section {
             background: radial-gradient(circle at center, #171930 0%, var(--bg-dark) 100%);
             text-align: center;
@@ -538,81 +525,28 @@
             margin: 0 auto 40px auto;
         }
 
-        .domus-content p {
-            color: var(--text-muted);
-            font-size: 1.08rem;
-            margin-top: 14px;
-        }
-
-        .domus-media {
+        .video-container {
             max-width: 850px;
             margin: 0 auto;
             border-radius: var(--border-radius-lg);
             overflow: hidden;
-            border: 1px solid rgba(241, 191, 66, 0.2);
+            border: 1px solid rgba(241, 191, 66, 0.25);
             box-shadow: 0 24px 48px rgba(0,0,0,0.6);
-            background-color: var(--bg-card);
+            position: relative;
+            padding-bottom: 56.25%; /* Ratio 16:9 */
+            height: 0;
         }
 
-        .domus-media img {
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
+            border: 0;
         }
 
-        /* Nova Seção: Depoimentos e Prova Social */
-        .testimonials {
-            background-color: rgba(25, 27, 47, 0.2);
-        }
-
-        .testimonials-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 50px auto;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .testimonial-card {
-            background-color: var(--bg-card);
-            border-radius: var(--border-radius-lg);
-            padding: 28px;
-            border: 1px solid var(--border-subtle);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .testimonial-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            font-style: italic;
-            margin-bottom: 20px;
-            line-height: 1.6;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .author-info h4 {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: var(--text-white);
-        }
-
-        .author-info span {
-            font-size: 0.8rem;
-            color: var(--accent-yellow);
-        }
-
-        /* 7 e 8. Redes & Contato */
+        /* 7. Contato e Redes */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -629,38 +563,7 @@
             justify-content: space-between;
         }
 
-        .contact-box p, .social-box p {
-            color: var(--text-muted);
-            font-size: 0.98rem;
-            margin-bottom: 28px;
-        }
-
-        .contact-methods {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .contact-item {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .contact-item span {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-muted);
-            font-weight: 700;
-        }
-
-        .contact-item strong {
-            font-size: 1.05rem;
-            color: var(--text-white);
-        }
-
-        /* 9. Footer Pro */
+        /* 8. Footer */
         .footer {
             background-color: #080911;
             padding: 48px 0;
@@ -674,40 +577,9 @@
             gap: 24px;
         }
 
-        .footer-brand h4 {
-            font-size: 1.25rem;
-            font-weight: 900;
-            color: var(--text-white);
-        }
-
-        .footer-brand p {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-top: 4px;
-        }
-
-        .footer-nav {
-            display: flex;
-            gap: 24px;
-        }
-
-        .footer-nav a {
-            color: var(--text-muted);
-            font-size: 0.88rem;
-            transition: var(--transition-smooth);
-        }
-
-        .footer-nav a:hover {
-            color: var(--accent-yellow);
-        }
-
-        /* Responsividade Responsiva Avançada */
+        /* Responsividade */
         @media (max-width: 900px) {
-            .hero-grid, 
-            .solutions-grid, 
-            .about-grid, 
-            .contact-grid,
-            .testimonials-grid {
+            .hero-grid, .about-grid, .contact-grid, .tab-content.active {
                 grid-template-columns: 1fr !important;
                 gap: 32px;
             }
@@ -737,54 +609,25 @@
                 display: none;
             }
 
-            .logo-nome {
-                height: 32px;
-            }
-
-            .hero-content h1 {
-                font-size: 2rem !important;
-            }
-
-            h2 {
-                font-size: 1.55rem !important;
-            }
-
-            section {
-                padding: 55px 0;
-            }
-
-            .highlights-list {
-                grid-template-columns: 1fr;
-            }
-
             .footer-container {
                 flex-direction: column;
                 text-align: center;
-                gap: 24px;
-            }
-
-            .positioning-box {
-                padding: 28px;
-            }
-
-            .contact-box, .social-box, .solution-card {
-                padding: 28px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1) Header com Logo Imagem -->
+    <!-- 1) Header -->
     <header class="main-header">
         <div class="container header-container">
-            <a href="#" class="logo-link" aria-label="Tata Pereira - Página Inicial">
+            <a href="#" class="logo-link" aria-label="Tata Pereira - Home">
                 <div class="shell">
                     <img class="logo-nome" src="../assets/tata-logo-nome.png" alt="Tata Pereira" width="160" height="38">
                 </div>
             </a>
             
-            <button class="mobile-menu-btn" id="menuToggle" aria-label="Abrir Menu de Navegação">
+            <button class="mobile-menu-btn" id="menuToggle" aria-label="Abrir Menu">
                 <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
 
@@ -793,39 +636,35 @@
                     <li><a href="#inicio">Início</a></li>
                     <li><a href="#solucoes">Soluções</a></li>
                     <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#depoimentos">Depoimentos</a></li>
+                    <li><a href="#metodo">Método Domus</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
             </nav>
 
             <div class="header-actions">
-                <div class="social-icons-header">
-                    <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
-                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    </a>
-                    <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok">
-                        <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.56-1.31 1.55-1.3 2.53-.02 1.06.52 2.1 1.43 2.64.99.59 2.27.63 3.27.09.83-.43 1.39-1.27 1.48-2.2.02-.37.01-.74.01-1.11V.02z"/></svg>
-                    </a>
-                    <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube">
-                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                    </a>
-                </div>
-                <a href="https://wa.me/5511999999999?text=Ol%C3%A1%21%20Gostaria%20de%20saber%20mais%20sobre%20a%20estrutura%C3%A7%C3%A3o%20de%20creches." class="header-wsp-btn" target="_blank" rel="noopener">Falar no WhatsApp</a>
+                <a href="https://wa.me/5511999999999?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20informa%C3%A7%C3%B5es." class="header-wsp-btn" target="_blank" rel="noopener">Falar no WhatsApp</a>
             </div>
         </div>
     </header>
 
     <main id="inicio">
-        <!-- 2) Hero — Primeira Dobra -->
+        <!-- 2) Hero -->
         <section class="hero">
             <div class="container hero-grid">
                 <div class="hero-content">
-                    <span class="tagline">Estruturação de Creches e Hospedagens Pet</span>
-                    <h1>Transforme sua experiência em uma operação mais organizada, segura e previsível.</h1>
-                    <p>Tata Pereira ajuda empresárias do mercado pet a estruturar processos operacionais, orientar melhor suas equipes e trazer clareza para a rotina do negócio.</p>
-                    
+                    <span class="tagline">Mentoria & Consultoria para o Mercado Pet</span>
+                    <h1>Transforme sua experiência em uma operação mais organizada, segura e lucrativa.</h1>
+                    <p>Tata Pereira ajuda empresárias e profissionais a estruturarem processos operacionais, orientarem equipes e conquistarem previsibilidade no mercado pet.</p>
+
+                    <!-- Seleção rápida de perfil -->
+                    <div class="hero-profiles">
+                        <span class="profile-chip" onclick="switchTab('programas')">🏢 Tenho uma Creche/Hospedagem</span>
+                        <span class="profile-chip" onclick="switchTab('consultorias')">💼 Preciso de Consultoria</span>
+                        <span class="profile-chip" onclick="switchTab('formacoes')">🎓 Quero me Capacitar</span>
+                    </div>
+
                     <a href="#solucoes" class="cta-btn">
-                        <span>Quero Estruturar Minha Empresa</span>
+                        <span>Ver Nossas Soluções</span>
                         <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
                     
@@ -838,82 +677,139 @@
 
                 <div class="hero-media-wrapper">
                     <div class="hero-media">
-                        <img src="../assets/tata-apontando-voce.png" alt="Tata Pereira - Estruturação de Creches Pet" fetchpriority="high" width="500" height="600">
+                        <img src="../assets/tata-apontando-voce.png" alt="Tata Pereira - Mentora Pet" fetchpriority="high" width="500" height="600">
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 3) Seção Curta de Posicionamento -->
+        <!-- 3) Posicionamento -->
         <section class="positioning">
             <div class="container">
                 <div class="positioning-box">
                     <h2>Experiência é fundamental.<br>Mas experiência precisa virar processo.</h2>
                     <p>Quando a empresa cresce, a operação não pode depender apenas da memória, da percepção ou da presença constante da dona.</p>
-                    <p>Tata une comportamento canino, vivência prática no chão de fábrica e estruturação de processos para ajudar creches e hospedagens a funcionarem com consistência e autonomia.</p>
+                    <p>Tata une comportamento canino, vivência prática e gestão de processos para ajudar creches e hospedagens a funcionarem com autonomia e eficiência.</p>
                 </div>
             </div>
         </section>
 
-        <!-- 4) Soluções -->
+        <!-- 4) Ecossistema de Soluções com Abas Interativas -->
         <section id="solucoes" class="solutions">
             <div class="container">
                 <div class="solutions-header">
-                    <span class="badge">Programas & Formações</span>
-                    <h2>Como a Tata pode ajudar você hoje</h2>
+                    <span class="badge">Nossos Serviços e Cursos</span>
+                    <h2>Escolha o melhor caminho para o seu momento</h2>
                 </div>
 
-                <div class="solutions-grid">
-                    <!-- CARD 1 — EMPRESAS -->
+                <!-- Botoes de Seleção das Abas -->
+                <div class="solutions-tabs">
+                    <button class="tab-btn active" onclick="openTab(event, 'consultorias')">Consultorias</button>
+                    <button class="tab-btn" onclick="openTab(event, 'estruturacao')">Estruturação de Processos</button>
+                    <button class="tab-btn" onclick="openTab(event, 'programas')">Programas & Treinamentos</button>
+                    <button class="tab-btn" onclick="openTab(event, 'formacoes')">Formações Profissionais</button>
+                </div>
+
+                <!-- ABA 1: CONSULTORIAS -->
+                <div id="consultorias" class="tab-content active">
                     <article class="solution-card">
                         <div>
-                            <span class="badge">Desafio de Implementação</span>
-                            <h3>Operação Sob Controle</h3>
-                            <p>Estruture o Processo de Avaliação de Cães da sua empresa com mais critérios, segurança e clareza operacional.</p>
+                            <span class="badge">Atendimento Personalizado</span>
+                            <h3>Consultoria Individual (Online)</h3>
+                            <p>Diagnóstico direcionado e plano de ação estratégico exclusivo para os desafios da sua empresa, realizado 100% online.</p>
                         </div>
                         <div class="card-actions">
-                            <a href="https://wa.me/5511999999999?text=Quero%20saber%20mais%20sobre%20o%20Desafio%20Operacao%20Sob%20Controle" target="_blank" rel="noopener" class="cta-btn">Conhecer o Desafio</a>
+                            <a href="https://pay.hotmart.com/S107610154J" target="_blank" rel="noopener" class="cta-btn">Contratar Online</a>
                         </div>
                     </article>
 
-                    <!-- CARD 2 — EMPRESAS -->
                     <article class="solution-card">
                         <div>
-                            <span class="badge">Programa de Implementação</span>
+                            <span class="badge">Acompanhamento In Loco</span>
+                            <h3>Consultoria Individual (Presencial)</h3>
+                            <p>Análise prática e presencial no chão de fábrica do seu negócio, identificando gargalos na rotina da sua equipe.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://pay.hotmart.com/S107611031F" target="_blank" rel="noopener" class="cta-btn">Contratar Presencial</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- ABA 2: ESTRUTURAÇÃO DE PROCESSOS -->
+                <div id="estruturacao" class="tab-content">
+                    <article class="solution-card">
+                        <div>
+                            <span class="badge">Orientação Prática</span>
+                            <h3>Estruturação de Processos (Online)</h3>
+                            <p>Mapeamento e criação dos Procedimentos Operacionais Padrão (POP) da sua creche ou hospedagem de forma remota.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://pay.hotmart.com/C107610321P" target="_blank" rel="noopener" class="cta-btn">Acessar Online</a>
+                        </div>
+                    </article>
+
+                    <article class="solution-card">
+                        <div>
+                            <span class="badge">Imersão com a Equipe</span>
+                            <h3>Estruturação de Processos (Presencial)</h3>
+                            <p>Implementação presencial da rotina operacional diretamente com o seu time no seu espaço físico.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://pay.hotmart.com/Y107610675W" target="_blank" rel="noopener" class="cta-btn">Acessar Presencial</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- ABA 3: PROGRAMAS & TREINAMENTOS -->
+                <div id="programas" class="tab-content">
+                    <article class="solution-card">
+                        <div>
+                            <span class="badge">Programa de Gestão</span>
                             <h3>Minha Creche Estruturada</h3>
                             <p>Organize os processos da sua creche ou hospedagem para crescer com alinhamento de equipe e sem caos na rotina.</p>
                         </div>
                         <div class="card-actions">
-                            <a href="https://wa.me/5511999999999?text=Quero%20saber%20mais%20sobre%20o%20Minha%20Creche%20Estruturada" target="_blank" rel="noopener" class="cta-btn">Conhecer o Programa</a>
+                            <a href="https://pay.hotmart.com/G107383618L" target="_blank" rel="noopener" class="cta-btn">Garanta sua Vaga</a>
                         </div>
                     </article>
 
-                    <!-- CARD 3 — PROFISSIONAIS -->
                     <article class="solution-card">
                         <div>
-                            <span class="badge">Formação Profissional</span>
+                            <span class="badge">Treinamento de Time</span>
+                            <h3>Programa Equipe Preparada</h3>
+                            <p>Alinhe os monitores e colaboradores da sua empresa com padrões claros de conduta, segurança e atendimento.</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="https://pay.hotmart.com/H107610415C?checkoutMode=10" target="_blank" rel="noopener" class="cta-btn">Comprar para Minha Equipe</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- ABA 4: FORMAÇÕES PROFISSIONAIS -->
+                <div id="formacoes" class="tab-content">
+                    <article class="solution-card">
+                        <div>
+                            <span class="badge">Formação de Entrada</span>
                             <h3>Profissão Dog Walker</h3>
                             <p>Capacitação prática para quem quer atuar com passeios de forma profissional, segura e estruturada.</p>
                         </div>
                         <div class="card-actions">
-                            <a href="#contato" class="btn-outline">Conhecer a Formação</a>
-                            <a href="https://hotmart.com" target="_blank" rel="noopener" class="cta-btn">Comprar via Hotmart</a>
+                            <a href="https://hotmart.com" target="_blank" rel="noopener" class="cta-btn">Comprar no Hotmart</a>
                         </div>
                     </article>
 
-                    <!-- CARD 4 — PROFISSIONAIS -->
                     <article class="solution-card">
                         <div>
-                            <span class="badge">Formação Profissional</span>
+                            <span class="badge">Especialização Técnica</span>
                             <h3>Monitor de Creche Canina</h3>
                             <p>Formação completa para quem deseja atuar com alto preparo técnico na rotina diária de creches e hospedagens.</p>
                         </div>
                         <div class="card-actions">
-                            <a href="#contato" class="btn-outline">Conhecer a Formação</a>
-                            <a href="https://hotmart.com" target="_blank" rel="noopener" class="cta-btn">Comprar via Hotmart</a>
+                            <a href="https://hotmart.com" target="_blank" rel="noopener" class="cta-btn">Comprar no Hotmart</a>
                         </div>
                     </article>
                 </div>
+
             </div>
         </section>
 
@@ -927,9 +823,8 @@
                 <div class="about-content">
                     <span class="badge">Liderança e Trajetória</span>
                     <h2>Quem está por trás desse trabalho</h2>
-                    <p>Tata Pereira é especialista em comportamento canino, formação de equipes e estruturação de negócios no mercado pet. Fundadora da Tata EducaCão e criadora do Método Domus, conecta a vivência da operação à gestão por processos.</p>
-                    <p>Ao longo de oito anos no setor pet, atuou ativamente como pet sitter, dog walker, adestradora, monitora, supervisora e consultora corporativa de creches. Essa trajetória é complementada por 13 anos de bagagem prévia no mercado corporativo.</p>
-                    <p>Como fundadora da Tata EducaCão, desenvolveu modelos integrados de adestramento, escola para cães e passeios personalizados. Hoje, dedica-se a transformar negócios pet amadores em estruturas profissionais e organizadas.</p>
+                    <p>Tata Pereira é especialista em comportamento canino, formação de equipes e estruturação de negócios no mercado pet. Criadora do Método Domus, conecta a vivência operacional à gestão por processos.</p>
+                    <p>Ao longo de 8 anos no setor pet, atuou ativamente como pet sitter, dog walker, adestradora, monitora e consultora corporativa. Possui também 13 anos de bagagem prévia no mercado corporativo.</p>
 
                     <div class="highlights-list">
                         <div class="highlight-item">
@@ -938,15 +833,7 @@
                         </div>
                         <div class="highlight-item">
                             <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                            <span>13 anos no mundo corporativo</span>
-                        </div>
-                        <div class="highlight-item">
-                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                            <span>Atuação operacional completa</span>
-                        </div>
-                        <div class="highlight-item">
-                            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                            <span>+100 alunos capacitados</span>
+                            <span>13 anos corporativo</span>
                         </div>
                     </div>
 
@@ -955,68 +842,25 @@
             </div>
         </section>
 
-        <!-- 6) Bloco sobre o Método Domus -->
-        <section class="domus-section">
+        <!-- 6) Método Domus com Vídeo Embed do YouTube -->
+        <section id="metodo" class="domus-section">
             <div class="container">
                 <div class="domus-content">
                     <span class="badge">Metodologia Exclusiva</span>
-                    <h2>Método Domus</h2>
-                    <p>Uma empresa pet funciona melhor quando sua estrutura acompanha o crescimento do negócio.</p>
-                    <p>O Método Domus é o pilar estratégico que orienta o trabalho da Tata: analisar a empresa como um ecossistema vivo que exige processos claros, rotinas bem definidas, equipe alinhada e gestão integrada.</p>
+                    <h2>Conheça o Método Domus</h2>
+                    <p>Assista ao vídeo abaixo e entenda como a estrutura e a gestão por processos podem transformar sua creche ou hospedagem.</p>
                 </div>
 
-                <div class="domus-media">
-                    <img src="../assets/metodo-domus-casa.png" alt="Diagrama do Método Domus" loading="lazy" width="850" height="450">
-                </div>
-            </div>
-        </section>
-
-        <!-- 7) Seção de Depoimentos (Prova Social) -->
-        <section id="depoimentos" class="testimonials">
-            <div class="container">
-                <div class="testimonials-header">
-                    <span class="badge">Resultados Reais</span>
-                    <h2>O que dizem as empresárias e alunas</h2>
-                </div>
-
-                <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <p>"A estruturação de processos da Tata mudou o clima da minha creche. Antes a equipe dependia de mim para tudo, hoje tudo roda com autonomia."</p>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <h4>Mariana Silva</h4>
-                                <span>Proprietária de Creche Pet</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card">
-                        <p>"O protocolo de avaliação de cães nos trouxe uma segurança imensa na aceitação de novos cães. Reduzimos incidentes a zero."</p>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <h4>Carla Alencar</h4>
-                                <span>Gestora de Hospedagem Canina</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="testimonial-card">
-                        <p>"A formação de monitores foi o divisor de águas para os meus colaboradores. O alinhamento técnico do time melhorou 100%."</p>
-                        <div class="testimonial-author">
-                            <div class="author-info">
-                                <h4>Fernanda Lima</h4>
-                                <span>Dona de Centro de Socialização</span>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Container Responsivo para Vídeo do YouTube -->
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vídeo Explicativo Método Domus" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
         </section>
 
-        <!-- 8) Redes sociais & Contato -->
+        <!-- 7) Contato -->
         <section id="contato" class="contact">
             <div class="container contact-grid">
-                <!-- Redes Sociais -->
                 <div class="social-box">
                     <div>
                         <h2>Acompanhe a Tata</h2>
@@ -1024,35 +868,25 @@
                     </div>
                     <div class="card-actions">
                         <a href="https://instagram.com" target="_blank" rel="noopener" class="btn-outline">Instagram</a>
-                        <a href="https://tiktok.com" target="_blank" rel="noopener" class="btn-outline">TikTok</a>
                         <a href="https://youtube.com" target="_blank" rel="noopener" class="btn-outline">YouTube</a>
                     </div>
                 </div>
 
-                <!-- Contato -->
                 <div class="contact-box">
                     <div>
-                        <h2>Vamos conversar?</h2>
-                        <p>Se você quer estruturar sua empresa, conhecer um programa de formação ou falar diretamente com a nossa equipe comercial.</p>
-                        
-                        <div class="contact-methods">
-                            <div class="contact-item">
-                                <span>Canal de Atendimento Direct</span>
-                                <strong>contato@tatapereira.com</strong>
-                            </div>
-                        </div>
+                        <h2>Dúvidas sobre o programa ideal?</h2>
+                        <p>Fale diretamente com nossa equipe comercial no WhatsApp para receber uma indicação de acordo com as necessidades da sua empresa.</p>
                     </div>
 
-                    <div class="card-actions" style="margin-top: 28px;">
-                        <a href="mailto:contato@tatapereira.com" class="btn-outline">Enviar E-mail</a>
-                        <a href="https://wa.me/5511999999999?text=Ol%C3%A1%21%20Gostaria%20de%20agendar%20uma%20conversa." target="_blank" rel="noopener" class="cta-btn">Falar no WhatsApp</a>
+                    <div class="card-actions">
+                        <a href="https://wa.me/5511999999999?text=Ol%C3%A1%21%20Preciso%20de%20ajuda%20para%20escolher%20a%20melhor%20solu%C3%A7%C3%A3o." target="_blank" rel="noopener" class="cta-btn">Falar com a Equipe</a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- 9) Footer Pro -->
+    <!-- 8) Footer -->
     <footer class="footer">
         <div class="container footer-container">
             <div class="footer-brand">
@@ -1065,45 +899,46 @@
                     <li><a href="#inicio">Início</a></li>
                     <li><a href="#solucoes">Soluções</a></li>
                     <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#depoimentos">Depoimentos</a></li>
                     <li><a href="#contato">Contato</a></li>
                 </ul>
             </nav>
-
-            <div class="social-icons-header">
-                <a href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
-                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                </a>
-                <a href="https://tiktok.com" target="_blank" rel="noopener" aria-label="TikTok">
-                    <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.56-1.31 1.55-1.3 2.53-.02 1.06.52 2.1 1.43 2.64.99.59 2.27.63 3.27.09.83-.43 1.39-1.27 1.48-2.2.02-.37.01-.74.01-1.11V.02z"/></svg>
-                </a>
-                <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube">
-                    <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                </a>
-            </div>
         </div>
     </footer>
 
-    <!-- Lógica de interatividade (JavaScript do Menu Mobile) -->
+    <!-- Scripts de Interatividade -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.getElementById('menuToggle');
-            const navMenu = document.getElementById('navMenu');
-
-            menuToggle.addEventListener('click', function() {
-                navMenu.classList.toggle('active');
-            });
-
-            // Fechar o menu mobile ao clicar em um link
-            const navLinks = navMenu.querySelectorAll('a');
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (navMenu.classList.contains('active')) {
-                        navMenu.classList.remove('active');
-                    }
-                });
-            });
+        // Menu Mobile
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            document.getElementById('navMenu').classList.toggle('active');
         });
+
+        // Troca de Abas
+        function openTab(evt, tabName) {
+            let tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+
+            let tabBtns = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < tabBtns.length; i++) {
+                tabBtns[i].classList.remove("active");
+            }
+
+            document.getElementById(tabName).classList.add("active");
+            if(evt) evt.currentTarget.classList.add("active");
+        }
+
+        // Função de atalho pelos chips do Hero
+        function switchTab(tabName) {
+            let tabBtns = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < tabBtns.length; i++) {
+                if(tabBtns[i].getAttribute('onclick').includes(tabName)) {
+                    tabBtns[i].click();
+                    break;
+                }
+            }
+            document.getElementById('solucoes').scrollIntoView({ behavior: 'smooth' });
+        }
     </script>
 </body>
 </html>
