@@ -9,6 +9,21 @@
     })(window,document,'script','dataLayer','GTM-W4MNGWDW');</script>
     <!-- End Google Tag Manager -->
 
+    <!-- Hotmart Checkout Widget (Popup/Modal) -->
+    <script type="text/javascript">
+        function importHotmart(){ 
+            var imported = document.createElement('script'); 
+            imported.src = 'https://static.hotmart.com/checkout/widget.min.js'; 
+            document.head.appendChild(imported); 
+            var link = document.createElement('link'); 
+            link.rel = 'stylesheet'; 
+            link.type = 'text/css'; 
+            link.href = 'https://static.hotmart.com/css/hotmart-fb.min.css'; 
+            document.head.appendChild(link); 
+        } 
+        importHotmart(); 
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tata Pereira | Estruturação de Creches e Hospedagens Pet</title>
@@ -123,7 +138,7 @@
             animation: pulseGlow 3.5s ease-in-out infinite;
             transition: var(--transition-smooth);
             background: linear-gradient(135deg, var(--accent-yellow) 0%, var(--accent-yellow-hover) 100%);
-            color: var(--bg-dark);
+            color: var(--bg-dark) !important;
             font-weight: 800;
             font-size: 0.88rem;
             padding: 16px 30px;
@@ -147,7 +162,7 @@
 
         .btn-outline {
             border: 1px solid rgba(241, 191, 66, 0.35);
-            color: var(--accent-yellow);
+            color: var(--accent-yellow) !important;
             background: rgba(241, 191, 66, 0.03);
             font-weight: 700;
             font-size: 0.88rem;
@@ -444,12 +459,45 @@
         }
 
         /* ==========================================================================
-           4) SOLUÇÕES
+           4) SOLUÇÕES (FILTRO DO CATÁLOGO & WIDGET MODAL HOTMART)
            ========================================================================== */
         .solutions-header {
             text-align: center;
             max-width: 720px;
-            margin: 0 auto 60px auto;
+            margin: 0 auto 36px auto;
+        }
+
+        .catalog-filter {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 48px;
+        }
+
+        .filter-chip {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-subtle);
+            color: var(--text-muted);
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .filter-chip:hover {
+            color: var(--text-white);
+            border-color: rgba(241, 191, 66, 0.4);
+            background: rgba(241, 191, 66, 0.05);
+        }
+
+        .filter-chip.active {
+            background: var(--accent-yellow);
+            color: var(--bg-dark);
+            border-color: var(--accent-yellow);
+            box-shadow: 0 4px 18px rgba(241, 191, 66, 0.35);
         }
 
         .solutions-grid {
@@ -471,6 +519,10 @@
             position: relative;
             transform-style: preserve-3d;
             perspective: 1000px;
+        }
+
+        .solution-card.is-hidden {
+            display: none !important;
         }
 
         .solution-card::before {
@@ -919,16 +971,26 @@
             </div>
         </section>
 
-        <!-- 4) Soluções -->
+        <!-- 4) Soluções com Filtro do Catálogo Integrado -->
         <section id="solucoes" class="solutions fade-in-up">
             <div class="container">
                 <div class="solutions-header">
                     <h2>Como a Tata pode ajudar você hoje</h2>
                 </div>
 
+                <!-- Filtro Dinâmico de Categorias do Catálogo -->
+                <div class="catalog-filter">
+                    <button class="filter-chip active" data-filter="all">Todas as Ofertas</button>
+                    <button class="filter-chip" data-filter="empresas">Empresas & Gestão</button>
+                    <button class="filter-chip" data-filter="consultoria">Consultoria</button>
+                    <button class="filter-chip" data-filter="processos">Processos</button>
+                    <button class="filter-chip" data-filter="equipe">Treinamento de Equipe</button>
+                    <button class="filter-chip" data-filter="profissionais">Profissionais Pet</button>
+                </div>
+
                 <div class="solutions-grid">
-                    <!-- CARD 1 — EMPRESAS -->
-                    <article class="solution-card">
+                    <!-- CARD 1 — EMPRESAS (WHATSAPP COMERCIAL) -->
+                    <article class="solution-card" data-category="empresas">
                         <div>
                             <span class="badge">Desafio de Implementação</span>
                             <h3>Operação Sob Controle</h3>
@@ -939,58 +1001,58 @@
                         </div>
                     </article>
 
-                    <!-- CARD 2 — EMPRESAS -->
-                    <article class="solution-card">
+                    <!-- CARD 2 — EMPRESAS (HOTMART WIDGET) -->
+                    <article class="solution-card" data-category="empresas">
                         <div>
                             <span class="badge">Programa de Implementação</span>
                             <h3>Minha Creche Estruturada</h3>
                             <p>Organize os processos da sua creche ou hospedagem para crescer com mais estrutura e menos caos na operação.</p>
                         </div>
                         <div class="card-actions">
-                            <a href="https://pay.hotmart.com/G107383618L" target="_blank" rel="noopener" class="cta-btn btn-full">Conhecer o Programa</a>
+                            <a onclick="return false;" href="https://pay.hotmart.com/G107383618L?checkoutMode=2" class="hotmart-fb hotmart__button-checkout cta-btn btn-full">Conhecer o Programa</a>
                         </div>
                     </article>
 
-                    <!-- CARD 3 — CONSULTORIA -->
-                    <article class="solution-card">
+                    <!-- CARD 3 — CONSULTORIA (HOTMART WIDGET) -->
+                    <article class="solution-card" data-category="consultoria">
                         <div>
                             <span class="badge">Atendimento Individual</span>
                             <h3>Consultoria Estratégica</h3>
                             <p>Diagnóstico individual e plano de ação personalizado para alinhar a operação e acelerar o crescimento do seu negócio.</p>
                         </div>
                         <div class="card-actions actions-stacked">
-                            <a href="https://pay.hotmart.com/S107610154J" target="_blank" rel="noopener" class="cta-btn btn-full">Contratar Online</a>
-                            <a href="https://pay.hotmart.com/S107611031F" target="_blank" rel="noopener" class="btn-outline btn-full">Contratar Presencial</a>
+                            <a onclick="return false;" href="https://pay.hotmart.com/S107610154J?checkoutMode=2" class="hotmart-fb hotmart__button-checkout cta-btn btn-full">Contratar Online</a>
+                            <a onclick="return false;" href="https://pay.hotmart.com/S107611031F?checkoutMode=2" class="hotmart-fb hotmart__button-checkout btn-outline btn-full">Contratar Presencial</a>
                         </div>
                     </article>
 
-                    <!-- CARD 4 — ESTRUTURAÇÃO DE PROCESSOS -->
-                    <article class="solution-card">
+                    <!-- CARD 4 — ESTRUTURAÇÃO DE PROCESSOS (HOTMART WIDGET) -->
+                    <article class="solution-card" data-category="processos">
                         <div>
                             <span class="badge">Implementação de Processos</span>
                             <h3>Estruturação de Processos</h3>
                             <p>Mapeamento e padronização completa das rotinas operacionais (POP) para garantir a autonomia da sua equipe.</p>
                         </div>
                         <div class="card-actions actions-stacked">
-                            <a href="https://pay.hotmart.com/C107610321P" target="_blank" rel="noopener" class="cta-btn btn-full">Adquirir Online</a>
-                            <a href="https://pay.hotmart.com/Y107610675W" target="_blank" rel="noopener" class="btn-outline btn-full">Adquirir Presencial</a>
+                            <a onclick="return false;" href="https://pay.hotmart.com/C107610321P?checkoutMode=2" class="hotmart-fb hotmart__button-checkout cta-btn btn-full">Adquirir Online</a>
+                            <a onclick="return false;" href="https://pay.hotmart.com/Y107610675W?checkoutMode=2" class="hotmart-fb hotmart__button-checkout btn-outline btn-full">Adquirir Presencial</a>
                         </div>
                     </article>
 
-                    <!-- CARD 5 — PROGRAMA EQUIPE PREPARADA -->
-                    <article class="solution-card">
+                    <!-- CARD 5 — PROGRAMA EQUIPE PREPARADA (HOTMART WIDGET) -->
+                    <article class="solution-card" data-category="equipe">
                         <div>
                             <span class="badge">Treinamento de Time</span>
                             <h3>Programa Equipe Preparada</h3>
                             <p>Formação e alinhamento do seu time operacional para garantirem padrão de atendimento, segurança e rotina.</p>
                         </div>
                         <div class="card-actions">
-                            <a href="https://pay.hotmart.com/H107610415C?checkoutMode=10" target="_blank" rel="noopener" class="cta-btn btn-full">Comprar para Minha Equipe</a>
+                            <a onclick="return false;" href="https://pay.hotmart.com/H107610415C?checkoutMode=2" class="hotmart-fb hotmart__button-checkout cta-btn btn-full">Comprar para Minha Equipe</a>
                         </div>
                     </article>
 
-                    <!-- CARD 6 — PROFISSIONAIS: DOG WALKER -->
-                    <article class="solution-card">
+                    <!-- CARD 6 — PROFISSIONAIS: DOG WALKER (HOTMART WIDGET) -->
+                    <article class="solution-card" data-category="profissionais">
                         <div>
                             <span class="badge">Formação Profissional</span>
                             <h3>Profissão Dog Walker</h3>
@@ -998,12 +1060,12 @@
                         </div>
                         <div class="card-actions">
                             <a href="#contato" class="btn-outline">Conhecer a Formação</a>
-                            <a href="https://hotmart.com" target="_blank" rel="noopener" class="cta-btn">Comprar pela Hotmart</a>
+                            <a onclick="return false;" href="https://pay.hotmart.com/S107610154J?checkoutMode=2" class="hotmart-fb hotmart__button-checkout cta-btn">Comprar pela Hotmart</a>
                         </div>
                     </article>
 
-                    <!-- CARD 7 — PROFISSIONAIS: MONITOR DE CRECHE -->
-                    <article class="solution-card">
+                    <!-- CARD 7 — PROFISSIONAIS: MONITOR DE CRECHE (HOTMART WIDGET) -->
+                    <article class="solution-card" data-category="profissionais">
                         <div>
                             <span class="badge">Formação Profissional</span>
                             <h3>Monitor de Creche Canina</h3>
@@ -1011,7 +1073,7 @@
                         </div>
                         <div class="card-actions">
                             <a href="#contato" class="btn-outline">Conhecer a Formação</a>
-                            <a href="https://hotmart.com" target="_blank" rel="noopener" class="cta-btn">Comprar pela Hotmart</a>
+                            <a onclick="return false;" href="https://pay.hotmart.com/S107610154J?checkoutMode=2" class="hotmart-fb hotmart__button-checkout cta-btn">Comprar pela Hotmart</a>
                         </div>
                     </article>
                 </div>
@@ -1200,7 +1262,29 @@
                 lastScroll = currentScroll;
             });
 
-            // 3. Scroll Reveal Animation (Intersection Observer API)
+            // 3. Filter Catálogo de Ofertas Interativo
+            const filterChips = document.querySelectorAll('.filter-chip');
+            const solutionCards = document.querySelectorAll('.solution-card');
+
+            filterChips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    filterChips.forEach(c => c.classList.remove('active'));
+                    chip.classList.add('active');
+
+                    const targetFilter = chip.getAttribute('data-filter');
+
+                    solutionCards.forEach(card => {
+                        const cardCategory = card.getAttribute('data-category');
+                        if (targetFilter === 'all' || cardCategory === targetFilter) {
+                            card.classList.remove('is-hidden');
+                        } else {
+                            card.classList.add('is-hidden');
+                        }
+                    });
+                });
+            });
+
+            // 4. Scroll Reveal Animation (Intersection Observer API)
             const fadeElements = document.querySelectorAll('.fade-in-up');
             const observerOptions = {
                 threshold: 0.15,
@@ -1217,7 +1301,7 @@
 
             fadeElements.forEach(el => observer.observe(el));
 
-            // 4. Highlight Nav Link on Scroll (Intersection Observer API)
+            // 5. Highlight Nav Link on Scroll (Intersection Observer API)
             const sections = document.querySelectorAll('main section, main#inicio');
             const navLinks = document.querySelectorAll('.nav-menu a');
 
@@ -1238,7 +1322,7 @@
                 });
             });
 
-            // 5. 3D Card Tilt Effect on Mouseover
+            // 6. 3D Card Tilt Effect on Mouseover
             const cards = document.querySelectorAll('.solution-card');
             cards.forEach(card => {
                 card.addEventListener('mousemove', (e) => {
