@@ -577,6 +577,49 @@
             width: 100%;
         }
 
+        /* Spotlight Effect para os Cards */
+        .solution-card::after {
+            content: '';
+            position: absolute;
+            top: var(--mouse-y, 0);
+            left: var(--mouse-x, 0);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(241, 191, 66, 0.12) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .solution-card:hover::after {
+            opacity: 1;
+        }
+
+        /* Botão Flutuante de Contato Rápido */
+        .quick-contact-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--accent-yellow), var(--accent-yellow-hover));
+            color: var(--bg-dark);
+            padding: 14px 20px;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 0.85rem;
+            box-shadow: 0 10px 25px rgba(241, 191, 66, 0.4);
+            transition: var(--transition-smooth);
+        }
+
+        .quick-contact-float:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 14px 30px rgba(241, 191, 66, 0.5);
+        }
+
         /* ==========================================================================
            5) SOBRE A TATA
            ========================================================================== */
@@ -892,6 +935,12 @@
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
+    <!-- Botão Flutuante de Contato Rápido -->
+    <a href="https://wa.me/5511999999999?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida." target="_blank" rel="noopener" class="quick-contact-float" aria-label="Falar no WhatsApp">
+        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+        <span>Falar com a Tata</span>
+    </a>
+
     <!-- 1) Header -->
     <header class="main-header" id="mainHeader">
         <div class="container header-container">
@@ -965,7 +1014,7 @@
             <div class="container">
                 <div class="positioning-box">
                     <h2>Experiência é fundamental.<br>Mas experiência precisa virar processo.</h2>
-                    <p>Quando a empresa cresce, a operação não pode depender apenas da memória, da percepção ou da presença da dona.</p>
+                    <p>Quando a empresa cresce, a operação não pode depender apenas da memória, da perception ou da presença da dona.</p>
                     <p>Tata une comportamento canino, vivência prática e estruturação de processos para ajudar creches e hospedagens a funcionarem com mais clareza e consistência.</p>
                 </div>
             </div>
@@ -1001,7 +1050,7 @@
                         </div>
                     </article>
 
-                    <!-- CARD 2 — EMPRESAS (HOTMART WIDGET) -->
+                    <!-- CARD 2 — EMPRESAS (HOTMART CHECKOUT MODAL: G107383618L) -->
                     <article class="solution-card" data-category="empresas">
                         <div>
                             <span class="badge">Programa de Implementação</span>
@@ -1013,7 +1062,7 @@
                         </div>
                     </article>
 
-                    <!-- CARD 3 — CONSULTORIA (HOTMART WIDGET) -->
+                    <!-- CARD 3 — CONSULTORIA (HOTMART CHECKOUT MODAL: S107610154J / S107611031F) -->
                     <article class="solution-card" data-category="consultoria">
                         <div>
                             <span class="badge">Atendimento Individual</span>
@@ -1026,7 +1075,7 @@
                         </div>
                     </article>
 
-                    <!-- CARD 4 — ESTRUTURAÇÃO DE PROCESSOS (HOTMART WIDGET) -->
+                    <!-- CARD 4 — ESTRUTURAÇÃO DE PROCESSOS (HOTMART CHECKOUT MODAL: C107610321P / Y107610675W) -->
                     <article class="solution-card" data-category="processos">
                         <div>
                             <span class="badge">Implementação de Processos</span>
@@ -1039,7 +1088,7 @@
                         </div>
                     </article>
 
-                    <!-- CARD 5 — PROGRAMA EQUIPE PREPARADA (HOTMART WIDGET) -->
+                    <!-- CARD 5 — PROGRAMA EQUIPE PREPARADA (HOTMART CHECKOUT MODAL: H107610415C) -->
                     <article class="solution-card" data-category="equipe">
                         <div>
                             <span class="badge">Treinamento de Time</span>
@@ -1051,7 +1100,7 @@
                         </div>
                     </article>
 
-                    <!-- CARD 6 — PROFISSIONAIS: DOG WALKER (HOTMART WIDGET) -->
+                    <!-- CARD 6 — PROFISSIONAIS: DOG WALKER (HOTMART CHECKOUT MODAL) -->
                     <article class="solution-card" data-category="profissionais">
                         <div>
                             <span class="badge">Formação Profissional</span>
@@ -1064,7 +1113,7 @@
                         </div>
                     </article>
 
-                    <!-- CARD 7 — PROFISSIONAIS: MONITOR DE CRECHE (HOTMART WIDGET) -->
+                    <!-- CARD 7 — PROFISSIONAIS: MONITOR DE CRECHE (HOTMART CHECKOUT MODAL) -->
                     <article class="solution-card" data-category="profissionais">
                         <div>
                             <span class="badge">Formação Profissional</span>
@@ -1284,7 +1333,31 @@
                 });
             });
 
-            // 4. Scroll Reveal Animation (Intersection Observer API)
+            // 4. Spotlight & Mouse Tracking nos Cards
+            const cards = document.querySelectorAll('.solution-card');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    const rotateX = (y - centerY) / 25;
+                    const rotateY = (centerX - x) / 25;
+
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
+                });
+            });
+
+            // 5. Scroll Reveal Animation (Intersection Observer API)
             const fadeElements = document.querySelectorAll('.fade-in-up');
             const observerOptions = {
                 threshold: 0.15,
@@ -1301,7 +1374,7 @@
 
             fadeElements.forEach(el => observer.observe(el));
 
-            // 5. Highlight Nav Link on Scroll (Intersection Observer API)
+            // 6. Highlight Nav Link on Scroll
             const sections = document.querySelectorAll('main section, main#inicio');
             const navLinks = document.querySelectorAll('.nav-menu a');
 
@@ -1319,26 +1392,6 @@
                     if (link.getAttribute('href') === `#${current}`) {
                         link.classList.add('active');
                     }
-                });
-            });
-
-            // 6. 3D Card Tilt Effect on Mouseover
-            const cards = document.querySelectorAll('.solution-card');
-            cards.forEach(card => {
-                card.addEventListener('mousemove', (e) => {
-                    const rect = card.getBoundingClientRect();
-                    const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    const rotateX = (y - centerY) / 20;
-                    const rotateY = (centerX - x) / 20;
-
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
-                });
-
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)`;
                 });
             });
         });
