@@ -15,7 +15,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
 
-    <!-- Google Fonts: Playfair Display, Inter & Satisfy -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Satisfy&display=swap" rel="stylesheet">
@@ -46,6 +46,7 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 90px; /* Evita que o topo da seção fique coberto pelo header */
         }
 
         body {
@@ -105,7 +106,7 @@
             background: rgba(184, 139, 32, 0.05);
         }
 
-        /* 1) Header Bar de Home Page */
+        /* Header Bar */
         .header-bar {
             position: fixed;
             top: 0;
@@ -135,6 +136,7 @@
         .shell {
             display: flex;
             align-items: center;
+            gap: 10px;
         }
 
         .logo-nome {
@@ -262,7 +264,7 @@
             padding-top: 80px;
         }
 
-        /* 2) Hero Section da Home */
+        /* Hero Section */
         .home-hero-section {
             min-height: calc(100vh - 80px);
             padding: 80px 40px;
@@ -285,24 +287,6 @@
 
         .reversed-layout .editorial-container {
             grid-template-columns: 0.85fr 1.15fr;
-        }
-
-        .intro-cursive-pretitle {
-            font-family: 'Satisfy', cursive;
-            font-size: 2.2rem;
-            color: var(--gold-primary);
-            margin-bottom: 6px;
-            display: block;
-        }
-
-        .intro-large-name {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.6rem;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 22px;
-            letter-spacing: -1px;
-            color: var(--text-dark);
         }
 
         .intro-tagline {
@@ -398,7 +382,7 @@
             letter-spacing: -2px;
         }
 
-        /* Portais Artísticos para Imagens */
+        /* Portais Artísticos */
         .fine-art-portal-box {
             position: relative;
             display: flex;
@@ -407,42 +391,24 @@
             z-index: 10;
         }
 
-        .portal-arch-frame {
+        .portal-arch-frame, .portal-leaf-frame {
             width: 320px;
             height: 440px;
-            border-radius: 160px 160px 24px 24px;
             overflow: hidden;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
             border: 4px solid var(--bg-cream);
             position: relative;
-            background-size: cover;
-            background-position: center;
             transition: var(--transition-slow);
         }
+
+        .portal-arch-frame { border-radius: 160px 160px 24px 24px; }
+        .portal-leaf-frame { border-radius: 120px 20px 120px 20px; }
 
         .portal-arch-frame img, .portal-leaf-frame img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
-        }
-
-        .content-section:nth-child(even) .portal-arch-frame,
-        .content-section:nth-child(even) .portal-leaf-frame {
-            border-color: var(--sand-light);
-        }
-
-        .portal-leaf-frame {
-            width: 320px;
-            height: 440px;
-            border-radius: 120px 20px 120px 20px;
-            overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
-            border: 4px solid var(--bg-cream);
-            position: relative;
-            background-size: cover;
-            background-position: center;
-            transition: var(--transition-slow);
         }
 
         .editorial-floating-tag {
@@ -466,7 +432,7 @@
             color: var(--gold-primary);
         }
 
-        /* 3) Posicionamento Editorial Box */
+        /* Posicionamento Editorial Box */
         .positioning-editorial-box {
             background: #ffffff;
             border: 1px solid var(--sand-medium);
@@ -478,7 +444,7 @@
             margin: 0 auto;
         }
 
-        /* 4) Filtros de Oferta & Cards de Soluções */
+        /* Cards e Filtros de Solução */
         .filter-tabs-container {
             display: flex;
             justify-content: center;
@@ -525,6 +491,12 @@
             justify-content: space-between;
             box-shadow: 0 12px 30px rgba(0,0,0,0.03);
             position: relative;
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .solution-card-editorial.hidden-card {
@@ -557,7 +529,7 @@
             gap: 12px;
         }
 
-        /* 5) Destaques da Tata */
+        /* Destaques da Mentora */
         .highlights-grid-editorial {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -583,7 +555,7 @@
             flex-shrink: 0;
         }
 
-        /* 6) Método Domus Section */
+        /* Método Domus */
         .domus-section-editorial {
             text-align: center;
             background: var(--sand-light);
@@ -605,7 +577,7 @@
             display: block;
         }
 
-        /* 7) Formulário de Contato Estilo Instituto */
+        /* Formulário de Contato */
         .contact-form-section {
             width: 100%;
             max-width: 800px;
@@ -662,7 +634,7 @@
             min-height: 130px;
         }
 
-        /* 9) Footer de Home Page */
+        /* Footer */
         .champagne-footer {
             background-color: var(--text-dark);
             color: var(--bg-cream);
@@ -679,17 +651,11 @@
             gap: 40px;
         }
 
-        .footer-logo-title {
-            font-family: 'Satisfy', cursive;
-            font-size: 2.2rem;
-            color: var(--gold-light);
-            margin-bottom: 10px;
-        }
-
         .footer-about {
             color: #a8aac0;
             line-height: 1.6;
             max-width: 300px;
+            margin-top: 12px;
         }
 
         .footer-column-title {
@@ -733,84 +699,25 @@
 
         /* Responsividade */
         @media (max-width: 900px) {
-            .header-bar {
-                padding: 0 30px;
-            }
-
-            .content-section {
-                padding: 80px 30px;
-            }
-
-            .editorial-container {
-                grid-template-columns: 1fr !important;
-                gap: 50px;
-            }
-
-            .solutions-grid-editorial,
-            .form-grid,
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .form-group-full {
-                grid-column: span 1;
-            }
-
-            .serif-title {
-                font-size: 2.5rem;
-            }
-
-            .intro-large-name {
-                font-size: 2.6rem;
-            }
+            .header-bar { padding: 0 30px; }
+            .content-section { padding: 80px 30px; }
+            .editorial-container { grid-template-columns: 1fr !important; gap: 50px; }
+            .solutions-grid-editorial, .form-grid, .footer-grid { grid-template-columns: 1fr; }
+            .form-group-full { grid-column: span 1; }
+            .serif-title { font-size: 2.5rem; }
         }
 
         @media (max-width: 768px) {
-            .header-bar {
-                padding: 0 20px;
-                height: 65px;
-            }
-
-            .header-menu {
-                display: none !important;
-            }
-
-            .logo-nome {
-                height: 30px;
-            }
-
-            .serif-title {
-                font-size: 2.1rem;
-                text-align: center;
-            }
-
-            .editorial-paragraph {
-                font-size: 0.95rem;
-                text-align: center;
-            }
-
-            .section-subtitle, .badge-editorial {
-                text-align: center;
-                display: block;
-            }
-
-            .hero-actions-home {
-                justify-content: center;
-            }
-
-            .contact-form-section {
-                padding: 28px;
-            }
-
-            .champagne-footer {
-                padding: 40px 20px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                gap: 15px;
-                text-align: center;
-            }
+            .header-bar { padding: 0 20px; height: 65px; }
+            .header-menu { display: none !important; }
+            .logo-nome { height: 30px; }
+            .serif-title { font-size: 2.1rem; text-align: center; }
+            .editorial-paragraph { font-size: 0.95rem; text-align: center; }
+            .section-subtitle, .badge-editorial { text-align: center; display: block; }
+            .hero-actions-home { justify-content: center; }
+            .contact-form-section { padding: 28px; }
+            .champagne-footer { padding: 40px 20px; }
+            .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
         }
     </style>
 </head>
@@ -820,11 +727,11 @@
     <div id="organic-cursor"></div>
     <div id="organic-cursor-ring"></div>
 
-    <!-- 1) Navigation Header (Portal Central) -->
+    <!-- Navigation Header -->
     <header class="header-bar">
         <a href="#" class="header-logo-box" aria-label="Tata Pereira - Portal Oficial">
             <div class="shell">
-                <img class="logo-nome" src="../assets/tata-logo-dog.png" alt="Tata Pereira">
+                <img class="logo-nome" src="../assets/tata-logo-dog.png" alt="Tata Pereira Logo">
                 <img class="logo-nome" src="../assets/logo-nome-dourado.png" alt="Tata Pereira">
             </div>
         </a>
@@ -858,12 +765,12 @@
 
     <div class="page-wrapper">
 
-        <!-- 2) Hero Section da Home -->
+        <!-- Hero Section -->
         <section class="home-hero-section" id="inicio">
             <div class="bg-watermark-text" style="top: 12%; left: 4%;">MATILHAS</div>
             <div class="editorial-container">
                 <div class="section-left-info" style="text-align: left;">
-                    <img class="logo-nome" src="../assets/logo-nome-preto.png" alt="Tata Pereira">
+                    <img class="logo-nome" src="../assets/logo-nome-preto.png" alt="Tata Pereira" style="margin-bottom: 8px;">
                     <span class="intro-tagline">Comportamento, Gestão e Formação no Mercado Pet</span>
                     <h2 class="serif-title" style="font-size: 2.1rem; margin-bottom: 20px;">
                         Transforme sua vivência operacional em uma estrutura <span class="italic">organizada, segura e autônoma</span>.
@@ -899,7 +806,7 @@
             </div>
         </section>
 
-        <!-- 3) Seção de Filosofia / Posicionamento -->
+        <!-- Filosofia -->
         <section class="content-section" id="posicionamento">
             <div class="bg-watermark-text" style="bottom: 10%; right: 5%;">FILOSOFIA</div>
             <div class="positioning-editorial-box">
@@ -916,7 +823,7 @@
             </div>
         </section>
 
-        <!-- 4) Ecossistema de Soluções com Filtros Solicitados -->
+        <!-- Ecossistema de Soluções -->
         <section class="content-section" id="solucoes">
             <div class="bg-watermark-text" style="top: 10%; left: 5%;">ECOSSISTEMA</div>
             <div style="width: 100%; max-width: 1200px; margin: 0 auto;">
@@ -925,11 +832,11 @@
                     <h2 class="serif-title">O Ecossistema de <span class="italic">Soluções da Tata</span></h2>
                 </div>
 
-                <!-- Filtros Interativos de Produtos -->
+                <!-- Filtros Interativos com Evento Seguro -->
                 <div class="filter-tabs-container">
-                    <button class="filter-btn active" onclick="filterSolutions('todos')">Todas as Ofertas</button>
-                    <button class="filter-btn" onclick="filterSolutions('empresas')">Para Empresas</button>
-                    <button class="filter-btn" onclick="filterSolutions('profissionais')">Para Profissionais</button>
+                    <button class="filter-btn active" onclick="filterSolutions('todos', event)">Todas as Ofertas</button>
+                    <button class="filter-btn" onclick="filterSolutions('empresas', event)">Para Empresas</button>
+                    <button class="filter-btn" onclick="filterSolutions('profissionais', event)">Para Profissionais</button>
                 </div>
 
                 <div class="solutions-grid-editorial">
@@ -941,7 +848,7 @@
                             <p>Estruture o Processo de Avaliação e Triagem de Cães da sua empresa com critérios científicos, segurança e clareza operacional.</p>
                         </div>
                         <div class="card-actions-editorial">
-                            <a href="#" class="btn-header" style="width: 100%;">Conhecer</a>
+                            <a href="#contato" class="btn-header" style="width: 100%;">Conhecer</a>
                         </div>
                     </article>
 
@@ -965,7 +872,7 @@
                             <p>Capacitação prática para quem quer atuar no mercado de passeios de forma profissional, com técnicas de manejo e segurança.</p>
                         </div>
                         <div class="card-actions-editorial">
-                            <a href="#" class="btn-header" style="width: 100%;">Conhecer</a>
+                            <a href="#contato" class="btn-header" style="width: 100%;">Conhecer</a>
                         </div>
                     </article>
 
@@ -977,14 +884,14 @@
                             <p>Formação completa para quem deseja atuar com alto preparo técnico e comportamento animal na rotina operacional diária.</p>
                         </div>
                         <div class="card-actions-editorial">
-                            <a href="#" class="btn-header" style="width: 100%;">Conhecer</a>
+                            <a href="#contato" class="btn-header" style="width: 100%;">Conhecer</a>
                         </div>
                     </article>
                 </div>
             </div>
         </section>
 
-        <!-- 5) Método Domus -->
+        <!-- Método Domus -->
         <section class="content-section domus-section-editorial" id="metodo">
             <div class="bg-watermark-text" style="top: 15%; left: 5%;">MÉTODO</div>
             <div style="width: 100%; max-width: 900px; margin: 0 auto;">
@@ -1003,7 +910,7 @@
             </div>
         </section>
 
-        <!-- 6) Sobre a Mentora -->
+        <!-- Sobre a Mentora -->
         <section class="content-section reversed-layout" id="sobre">
             <div class="bg-watermark-text" style="bottom: 5%; right: 5%;">BIOGRAFIA</div>
             <div class="editorial-container">
@@ -1050,7 +957,7 @@
             </div>
         </section>
 
-        <!-- 7) Formulário de Contato Direto (Padrão Instituto) -->
+        <!-- Formulário de Contato -->
         <section class="content-section" id="contato">
             <div class="bg-watermark-text" style="bottom: 10%; right: 5%;">CONTATO</div>
             <div style="width: 100%;">
@@ -1092,11 +999,11 @@
 
     </div>
 
-    <!-- 9) Footer Estruturado -->
+    <!-- Footer -->
     <footer class="champagne-footer">
         <div class="footer-grid">
             <div>
-               <img class="logo-nome" src="../assets/logo-nome-dourado.png" alt="Tata Pereira">
+                <img class="logo-nome" src="../assets/logo-nome-dourado.png" alt="Tata Pereira">
                 <p class="footer-about">
                     Portal institucional de Tata Pereira. Consultoria, formação técnica e estruturação de processos para creches e hospedagens pet.
                 </p>
@@ -1140,9 +1047,9 @@
         </div>
     </footer>
 
-    <!-- Scripts de Interatividade -->
+    <!-- JavaScripts Integrados e Otimizados -->
     <script>
-        // Smooth Cursor
+        // Cursor suave e responsivo
         const cursor = document.getElementById('organic-cursor');
         const ring = document.getElementById('organic-cursor-ring');
 
@@ -1168,18 +1075,34 @@
         }
         renderRing();
 
-        document.querySelectorAll('a, button, input, textarea, .solution-card-editorial').forEach(element => {
-            element.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-            element.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+        // Esconde o cursor customizado se o usuário tocar na tela
+        window.addEventListener('touchstart', function() {
+            if (cursor) cursor.style.display = 'none';
+            if (ring) ring.style.display = 'none';
+        }, { once: true });
+
+        // Hover dinâmico no Cursor usando delegação de eventos
+        document.addEventListener('mouseover', (e) => {
+            if (e.target.closest('a, button, input, textarea, .solution-card-editorial, .filter-btn')) {
+                document.body.classList.add('hovering');
+            }
         });
 
-        // Lógica de Filtro dos Produtos
-        function filterSolutions(category) {
+        document.addEventListener('mouseout', (e) => {
+            if (e.target.closest('a, button, input, textarea, .solution-card-editorial, .filter-btn')) {
+                document.body.classList.remove('hovering');
+            }
+        });
+
+        // Otimização do Filtro de Soluções com parâmetro e Evento seguro
+        function filterSolutions(category, evt) {
             const buttons = document.querySelectorAll('.filter-btn');
             const cards = document.querySelectorAll('.solution-card-editorial');
 
             buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            if (evt && evt.target) {
+                evt.target.classList.add('active');
+            }
 
             cards.forEach(card => {
                 if (category === 'todos' || card.getAttribute('data-category') === category) {
