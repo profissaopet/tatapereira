@@ -1,291 +1,789 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="community-locked">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tata Pereira | Portal Oficial — Gestão, Formação e Comportamento Canino</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#0b0c16">
+  <title>Tata Pereira | Portal Oficial — Gestão e Comportamento Canino</title>
+  <link rel="icon" type="image/png" href="../assets/tata-logo-dog.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #0b0c16;
+      --panel: #151728;
+      --panel2: #1a1d32;
+      --gold: #f1bf42;
+      --gold2: #f8d879;
+      --green: #47d58a;
+      --white: #fff;
+      --muted: #a8adc8;
+      --dim: #737995;
+      --line: rgba(255, 255, 255, .09);
+      --goldline: rgba(241, 191, 66, .34);
+      --danger: #ff8585;
+      --radius: 18px;
+      --shadow: 0 24px 70px rgba(0, 0, 0, .45);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--white);
+      font-family: Inter, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    body {
+      background: radial-gradient(circle at 15% 4%, rgba(241, 191, 66, .12), transparent 28rem),
+                  radial-gradient(circle at 90% 90%, rgba(83, 89, 158, .14), transparent 30rem),
+                  var(--bg);
+    }
+    body:before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .26;
+      background-image: linear-gradient(rgba(255, 255, 255, .025) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255, 255, 255, .025) 1px, transparent 1px);
+      background-size: 38px 38px;
+      mask-image: linear-gradient(to bottom, #000, transparent 85%);
+      z-index: 1;
+    }
+
+    button, a { font: inherit; }
+    .shell {
+      position: relative;
+      width: min(100% - 32px, 1080px);
+      margin: auto;
+    }
+
+    /* TOPBAR FIXO */
+    .topbar {
+      position: sticky;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      background: rgba(11, 12, 22, .96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+      z-index: 100;
+    }
+    .topbar .shell {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: min(100% - 32px, 1080px);
+    }
+    .brand { display: flex; align-items: center; gap: 8px; }
+    .brand .logo-dog { width: 28px; height: 28px; object-fit: contain; }
+    .brand .logo-nome { height: 18px; width: auto; object-fit: contain; }
+    .brand .brand-badge { border-left: 1px solid var(--line); padding-left: 8px; margin-left: 2px; }
+    .brand .brand-badge strong { font-family: "Plus Jakarta Sans", sans-serif; font-size: .74rem; color: var(--gold); display: block; }
     
-    <!-- Meta Tags SEO -->
-    <meta name="description" content="Portal oficial de Tata Pereira. Consultoria, formação profissional e estruturação de processos para creches, hospedagens e profissionais do mercado pet.">
-    <meta name="keywords" content="Tata Pereira, Home Page, Método Domus, creche pet, hospedagem canina, dog walker, monitor de creche, gestão pet">
-    <meta name="author" content="Tata Pereira">
-    <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#020422">
+    .confirmed {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      border: 1px solid var(--goldline);
+      border-radius: 99px;
+      background: rgba(241, 191, 66, .08);
+      color: var(--gold2);
+      font-size: .65rem;
+      font-weight: 800;
+      text-decoration: none;
+      transition: .2s ease;
+    }
+    .confirmed:hover {
+      background: var(--gold);
+      color: #0b0c16;
+    }
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
+    /* LAYOUT EM DUAS COLUNAS */
+    main.shell {
+      padding-top: 28px;
+      padding-bottom: 60px;
+    }
+    .state { display: none; }
+    .state.active { display: block; }
+    .state.active.onboarding-split { display: grid; }
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Satisfy&display=swap" rel="stylesheet">
+    .onboarding-split {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: start;
+      max-width: 1020px;
+      margin: 0 auto;
+    }
 
-    <style>
-        :root {
-            --bg-cream: #ffffff;
-            --bg-sand-light: #fbf9f4;
-            --bg-dark-navy: rgba(2, 4, 34, 0.85);
-            --bg-dark-solid: #020422;
-            --text-dark: #020422;
-            --text-muted: #535662;
-            --text-light: #ffffff;
-            --gold-primary: #b88b20;
-            --gold-dark: #916a12;
-            --gold-light: #f5dfa8;
-            --sand-medium: #e0d9cc;
-            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        }
+    .cards-column {
+      grid-column: 1;
+      width: 100%;
+      min-width: 0;
+    }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    /* COLUNA DO VÍDEO STORIES (9:16) & MÉTODO DOMUS */
+    .video-column {
+      grid-column: 2;
+      position: sticky;
+      top: 64px;
+      width: 250px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      align-self: start;
+      z-index: 40;
+    }
+    .welcome-video {
+      position: relative;
+      height: 380px;
+      width: calc(380px * 9 / 16);
+      max-width: 220px;
+      aspect-ratio: 9/16;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid var(--goldline);
+      background: #000;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, .75), 0 0 0 1px rgba(241, 191, 66, .12);
+      flex-shrink: 0;
+    }
+    .welcome-video iframe,
+    #yt-player,
+    #yt-player iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      background: transparent;
+    }
+    .video-poster {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+      background: radial-gradient(circle at 50% 28%, rgba(241, 191, 66, .2), transparent 35%), linear-gradient(180deg, #181a2e 0%, #0b0c16 76%);
+      transition: opacity .3s ease, visibility .3s;
+    }
+    .video-poster img {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 108%;
+      height: 88%;
+      object-fit: contain;
+      object-position: center bottom;
+      transform: translateX(-50%);
+      filter: drop-shadow(0 18px 30px rgba(0, 0, 0, .35));
+    }
+    .poster-copy {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      background: linear-gradient(to top, rgba(5, 6, 12, .95) 0%, transparent 100%);
+      padding: 6px;
+      border-radius: 0 0 12px 12px;
+      text-align: center;
+      z-index: 2;
+    }
+    .poster-copy small {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--gold);
+      font-size: .55rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .poster-copy strong {
+      font-size: .78rem;
+      line-height: 1.15;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, .8);
+      font-family: "Plus Jakarta Sans", sans-serif;
+      display: block;
+    }
+    .video-play {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      transform: translate(-50%, -50%);
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      padding-left: 3px;
+      border: 1px solid rgba(241, 191, 66, .85);
+      border-radius: 50%;
+      background: rgba(11, 12, 22, .88);
+      color: var(--gold);
+      font-size: 1.25rem;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, .7);
+      z-index: 3;
+      transition: .2s ease;
+    }
+    .video-play:hover { transform: translate(-50%, -50%) scale(1.08); }
+    .welcome-video.playing .video-play,
+    .welcome-video.playing .video-poster {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
 
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 90px;
-        }
+    /* BARRA DE PROGRESSO EM STORIES */
+    .stories-progress {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      width: 100%;
+      margin-bottom: 14px;
+      padding: 0 2px;
+    }
+    .story-segment {
+      flex: 1;
+      height: 4px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, .15);
+      overflow: hidden;
+      position: relative;
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: segment-in .4s cubic-bezier(.2,.8,.2,1) forwards;
+    }
+    @keyframes segment-in { to { transform: scaleX(1); } }
+    .story-segment .story-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--gold);
+      border-radius: 99px;
+      transition: width .4s cubic-bezier(.4, 0, .2, 1);
+    }
+    .story-segment.done .story-fill { width: 100%; background: var(--gold); }
+    .story-segment.active .story-fill {
+      width: 100%;
+      background: linear-gradient(90deg, var(--gold2), var(--gold));
+      box-shadow: 0 0 8px rgba(241, 191, 66, .8);
+    }
 
-        body {
-            background-color: var(--bg-cream);
-            color: var(--text-dark);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
+    /* CARDS ENCADICADOS DA HOME PAGE */
+    .intro, .chapter { display: none !important; }
+    .intro.active, .chapter.active {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: flex-start !important;
+      width: 100% !important;
+      padding: 28px 26px !important;
+      border-radius: 20px !important;
+      background: linear-gradient(145deg, rgba(25, 28, 49, .95), rgba(12, 13, 24, .98)) !important;
+      border: 1px solid var(--goldline) !important;
+      box-shadow: 0 16px 45px rgba(241, 191, 66, .18), 0 10px 30px rgba(0, 0, 0, .7) !important;
+      animation: cardFadeIn .32s cubic-bezier(.2,.8,.2,1) both;
+    }
+    @keyframes cardFadeIn {
+      from { opacity: 0; transform: translateY(10px) scale(.985); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
 
-        /* --- STICKY NAVBAR PERSONALIZADA --- */
-        .sticky-navbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 75px;
-            background: var(--bg-dark-navy);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
+    .intro-copy { width: 100%; text-align: left; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--gold);
+      font-size: .64rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .eyebrow:before { content: ""; width: 16px; height: 1px; background: currentColor; }
+    .intro h1 {
+      font: 800 clamp(1.4rem, 3.5vw, 1.95rem)/1.15 "Plus Jakarta Sans", sans-serif;
+      margin: 4px 0 8px;
+      letter-spacing: -.03em;
+    }
+    .intro h1 span { color: var(--gold); }
+    .intro p {
+      color: var(--muted);
+      font-size: .84rem;
+      line-height: 1.45;
+      margin: 0 0 14px;
+    }
 
-        .sticky-navbar-container {
-            width: 100%;
-            max-width: 1200px;
-            padding: 0 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .card-step-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+    }
+    .prev-step-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: transparent;
+      border: 0;
+      color: var(--muted);
+      font-size: .68rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: color .2s;
+    }
+    .prev-step-btn:hover { color: var(--gold2); }
 
-        .sticky-logo-container {
-            display: flex;
-            align-items: center;
-        }
+    .next-step-btn {
+      display: flex;
+      width: 100%;
+      min-height: 44px;
+      margin-top: 14px;
+      padding: 8px 14px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--goldline);
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--gold2), #dda72b);
+      color: #0b0c16;
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .03em;
+      cursor: pointer;
+      box-shadow: 0 10px 28px rgba(241, 191, 66, .28);
+      transition: all .2s ease;
+      text-decoration: none;
+    }
+    .next-step-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 34px rgba(241, 191, 66, .38);
+    }
 
-        .sticky-logo-stack {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+    /* ESTILOS DOS CARDS DAS OFERTAS DA HOME */
+    .home-solutions-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .home-solution-card {
+      background: rgba(255, 255, 255, .03);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: .2s ease;
+    }
+    .home-solution-card:hover {
+      border-color: var(--goldline);
+      background: rgba(241, 191, 66, .05);
+    }
+    .home-solution-card h3 {
+      font-size: .88rem;
+      color: var(--white);
+      margin-bottom: 4px;
+      font-family: "Plus Jakarta Sans", sans-serif;
+    }
+    .home-solution-card p {
+      font-size: .68rem;
+      color: var(--muted);
+      line-height: 1.35;
+      margin-bottom: 12px;
+    }
 
-        .sticky-logo-dog {
-            height: 36px;
-            width: auto;
-        }
+    /* MÓDULO VISUAL SVG DO MÉTODO DOMUS */
+    .build {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: stretch !important;
+      justify-content: space-between !important;
+      width: 100% !important;
+      max-width: 220px !important;
+      padding: 10px 12px !important;
+      border-radius: 16px !important;
+      background: linear-gradient(145deg, rgba(25, 28, 49, .95), rgba(12, 13, 24, .98)) !important;
+      border: 1px solid var(--goldline) !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, .5) !important;
+      position: relative !important;
+      box-sizing: border-box !important;
+    }
+    .build-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      width: 100%;
+      margin-bottom: 4px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid rgba(255, 255, 255, .08);
+    }
+    .build-tag { color: var(--gold); font-size: .54rem; font-weight: 800; text-transform: uppercase; }
+    .build-state-badge { color: var(--gold2); font-size: .54rem; font-weight: 800; text-transform: uppercase; }
+    
+    .blueprint {
+      width: 100% !important;
+      height: auto !important;
+      max-height: 95px !important;
+      margin: 3px auto !important;
+      display: block !important;
+    }
+    .blueprint .line { fill: none; stroke: rgba(255, 255, 255, .22); stroke-width: 4; stroke-dasharray: 6 8; }
+    .blueprint .foundation { fill: rgba(241, 191, 66, .26); stroke: var(--gold); stroke-width: 4; }
+    .blueprint .pillar { fill: rgba(255, 255, 255, .04); stroke: rgba(255, 255, 255, .1); stroke-width: 2; }
+    .blueprint .brick { fill: rgba(241, 191, 66, .26); stroke: var(--gold); stroke-width: 4; }
+    .blueprint .roof { fill: rgba(241, 191, 66, .26); stroke: var(--gold); stroke-width: 4; }
+    .blueprint .door { fill: rgba(241, 191, 66, .26); stroke: var(--gold); stroke-width: 4; }
+    
+    .build-caption { text-align: center; color: var(--dim); font-size: .60rem; margin-top: 3px; }
+    .build-caption strong { display: block; color: var(--gold); font-size: .70rem; }
 
-        .sticky-logo-nome {
-            height: 28px;
-            width: auto;
-        }
+    /* FORMULÁRIO COMPACTO */
+    .contact-form-dark {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .form-group-dark {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .form-group-dark label {
+      font-size: .62rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    .form-input-dark {
+      padding: 10px 12px;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: #fff;
+      font-size: .78rem;
+      outline: none;
+    }
+    .form-input-dark:focus {
+      border-color: var(--gold);
+      background: rgba(255, 255, 255, .08);
+    }
 
-        .sticky-cta-btn {
-            background: var(--gold-primary);
-            color: #ffffff;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            padding: 10px 22px;
-            border-radius: 40px;
-            text-decoration: none;
-            transition: var(--transition);
-            box-shadow: 0 4px 15px rgba(184, 139, 32, 0.25);
-        }
+    footer { padding: 24px 0; border-top: 1px solid var(--line); color: var(--dim); font-size: .70rem; text-align: center; }
 
-        .sticky-cta-btn:hover {
-            background: var(--gold-light);
-            color: var(--text-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(184, 139, 32, 0.4);
-        }
+    /* RESPONSIVIDADE MOBILE FULLSCREEN */
+    @media (max-width: 768px) {
+      .topbar { position: fixed !important; height: 44px !important; z-index: 200 !important; }
+      .brand .logo-dog { width: 22px; height: 22px; }
+      .brand .logo-nome { height: 13px; }
+      .brand .brand-badge { display: none; }
+      .confirmed { font-size: .55rem; padding: 2px 8px; }
 
-        .page-wrapper {
-            padding-top: 75px;
-        }
+      main.shell {
+        position: fixed !important;
+        top: 44px !important;
+        left: 0 !important; right: 0 !important; bottom: 0 !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 0 !important;
+        width: 100% !important;
+      }
 
-        /* --- SEÇÕES E CORES COMBINADAS --- */
-        .home-hero-section {
-            min-height: calc(100vh - 75px);
-            padding: 80px 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            background: var(--bg-cream);
-        }
+      #authorized.onboarding-split {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important; height: 100% !important;
+        gap: 0 !important;
+      }
 
-        .editorial-container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
-            gap: 70px;
-            align-items: center;
-        }
+      .video-column {
+        order: -1 !important;
+        width: 100% !important;
+        height: auto !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        padding: 8px 10px !important;
+        background: var(--bg) !important;
+        border-bottom: 1px solid var(--line) !important;
+        position: relative !important;
+        top: auto !important;
+      }
 
-        .intro-tagline {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            color: var(--text-muted);
-            font-weight: 600;
-            margin-bottom: 24px;
-            display: block;
-        }
+      .welcome-video {
+        height: 130px !important;
+        width: calc(130px * 9 / 16) !important;
+        border-radius: 12px !important;
+      }
 
-        .serif-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.1rem;
-            font-weight: 400;
-            line-height: 1.15;
-            margin-bottom: 24px;
-            color: var(--text-dark);
-        }
+      .build {
+        flex: 1 1 0 !important;
+        max-width: 180px !important;
+        height: 130px !important;
+        padding: 6px 8px !important;
+        border-radius: 12px !important;
+      }
 
-        .serif-title span.italic {
-            font-style: italic;
-            color: var(--gold-primary);
-        }
+      .cards-column {
+        flex: 1 !important;
+        overflow-y: auto !important;
+        padding: 12px !important;
+      }
 
-        .editorial-paragraph {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: var(--text-muted);
-            margin-bottom: 32px;
-            font-weight: 300;
-        }
-
-        .btn-header {
-            background: var(--text-dark);
-            color: #ffffff;
-            font-size: 0.72rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            padding: 12px 24px;
-            border-radius: 40px;
-            border: none;
-            transition: var(--transition);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .btn-header:hover {
-            background: var(--gold-primary);
-            color: #ffffff;
-            transform: translateY(-2px);
-        }
-
-        /* Seções Alternadas */
-        .content-section {
-            padding: 100px 40px;
-            position: relative;
-            background-color: var(--bg-cream);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-        }
-
-        .content-section.dark-theme {
-            background-color: var(--bg-dark-navy);
-            color: var(--text-light);
-        }
-
-        .content-section.dark-theme .serif-title {
-            color: #ffffff;
-        }
-
-        .content-section.dark-theme .editorial-paragraph {
-            color: #c0c2d0;
-        }
-
-        .content-section:nth-child(even):not(.dark-theme) {
-            background-color: var(--bg-sand-light);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .sticky-navbar-container { padding: 0 20px; }
-            .sticky-logo-nome { display: none; }
-            .editorial-container { grid-template-columns: 1fr; gap: 40px; }
-            .serif-title { font-size: 2.2rem; }
-        }
-    </style>
+      .home-solutions-grid { grid-template-columns: 1fr !important; }
+      footer { display: none !important; }
+    }
+  </style>
 </head>
+
 <body>
 
-    <!-- STICKY HEADER -->
-    <nav class="sticky-navbar visible">
-        <div class="container sticky-navbar-container">
-            <div class="sticky-logo-container">
-                <div class="sticky-logo-stack">
-                    <img class="sticky-logo-dog" src="../assets/tata-logo-dog.png" alt="Tata Pereira">
-                    <img class="sticky-logo-nome" src="../assets/tata-logo-nome.png" alt="Tata Pereira">
-                </div>
-            </div>
-            <a href="#contato" class="sticky-cta-btn open-app-modal">Quero Estruturar</a>
-        </div>
-    </nav>
-
-    <div class="page-wrapper">
-
-        <!-- Hero Section (Clara: Branco) -->
-        <section class="home-hero-section" id="inicio">
-            <div class="editorial-container">
-                <div class="section-left-info">
-                    <span class="intro-tagline">Comportamento, Gestão e Formação no Mercado Pet</span>
-                    <h1 class="serif-title">
-                        Transforme sua vivência operacional em uma estrutura <span class="italic">organizada, segura e autônoma</span>.
-                    </h1>
-                    <p class="editorial-paragraph">
-                        Conectamos a prática do pátio à gestão inteligente para creches, hospedagens e profissionais do setor.
-                    </p>
-                    <a href="#solucoes" class="btn-header">Explorar Soluções</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Filosofia (Escura: rgba(2, 4, 34, 0.85)) -->
-        <section class="content-section dark-theme" id="posicionamento">
-            <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-                <h2 class="serif-title">
-                    Experiência é fundamental. <br>Mas experiência precisa virar <span class="italic">processo</span>.
-                </h2>
-                <p class="editorial-paragraph">
-                    Tata Pereira une o domínio do comportamento canino a anos de bagagem corporativa para transformar a rotina do pátio em uma engrenagem previsível e autônoma.
-                </p>
-            </div>
-        </section>
-
+  <!-- HEADER / TOPBAR -->
+  <header class="topbar">
+    <div class="shell">
+      <div class="brand">
+        <img class="logo-dog" src="../assets/tata-logo-dog.png" alt="Tata Pereira Logo">
+        <img class="logo-nome" src="../assets/logo-nome-dourado.png" alt="Tata Pereira">
+        <div class="brand-badge"><strong>Portal Oficial</strong></div>
+      </div>
+      <a href="#contato-anchor" class="confirmed">Atendimento Direto</a>
     </div>
+  </header>
 
+  <!-- MAIN CONTAINER -->
+  <main class="shell">
+    <section id="authorized" class="state active onboarding-split">
+      
+      <!-- COLUNA DA ESQUERDA: NAVEGAÇÃO E SEÇÕES -->
+      <div class="cards-column">
+        
+        <!-- STORIES PROGRESS BAR -->
+        <div class="stories-progress" id="stories-progress">
+          <div class="story-segment active" data-step="0"><div class="story-fill"></div></div>
+          <div class="story-segment" data-step="1"><div class="story-fill"></div></div>
+          <div class="story-segment" data-step="2"><div class="story-fill"></div></div>
+          <div class="story-segment" data-step="3"><div class="story-fill"></div></div>
+        </div>
+
+        <!-- ETAPA 0: VISÃO GERAL (HERO) -->
+        <div class="intro active">
+          <div class="intro-copy">
+            <span class="eyebrow">Gestão, Formação & Comportamento Canino</span>
+            <h1>Transforme sua operação em uma estrutura <span>segura e autônoma.</span></h1>
+            <p>Unimos o domínio do comportamento canino com anos de bagagem corporativa para transformar a rotina do pátio em uma engrenagem previsível.</p>
+
+            <button class="next-step-btn" id="go-to-step1" type="button">CONHECER A FILOSOFIA DOMUS →</button>
+          </div>
+        </div>
+
+        <!-- ETAPA 1: FILOSOFIA DE TRABALHO -->
+        <article class="chapter" data-chapter="1">
+          <div class="card-step-header">
+            <button class="prev-step-btn" data-goto="0" type="button">← Voltar</button>
+            <span class="eyebrow" style="margin:0;">Pilar 01 • Filosofia</span>
+          </div>
+          <h2>Experiência precisa virar processo.</h2>
+          <p>Quando um negócio pet cresce, a operação não pode depender da intuição ou da presença física constante da proprietária.</p>
+          <p style="color:var(--muted); font-size:.78rem;">O Método Domus analisa a empresa como um ecossistema vivo que exige rotinas claras, equipe alinhada e gestão integrada.</p>
+
+          <button class="next-step-btn" id="go-to-step2" type="button">EXPLORAR ECOSSISTEMA DE SOLUÇÕES →</button>
+        </article>
+
+        <!-- ETAPA 2: ECOSSISTEMA DE SOLUÇÕES -->
+        <article class="chapter" data-chapter="2">
+          <div class="card-step-header">
+            <button class="prev-step-btn" data-goto="1" type="button">← Voltar</button>
+            <span class="eyebrow" style="margin:0;">Pilar 02 • Programas</span>
+          </div>
+          <h2>Soluções para Empresas e Profissionais</h2>
+          <p>Escolha o programa ideal para o seu momento atual:</p>
+
+          <div class="home-solutions-grid">
+            <div class="home-solution-card">
+              <div>
+                <h3>Operação Sob Controle</h3>
+                <p>Estruture o processo de triagem e avaliação de cães na sua empresa com segurança.</p>
+              </div>
+              <a href="#contato-anchor" class="next-step-btn" style="min-height:30px; font-size:.62rem; margin-top:0;">Saber Mais</a>
+            </div>
+
+            <div class="home-solution-card">
+              <div>
+                <h3>Minha Creche Estruturada</h3>
+                <p>Organize todos os processos operacionais da sua creche ou hospedagem.</p>
+              </div>
+              <a href="#contato-anchor" class="next-step-btn" style="min-height:30px; font-size:.62rem; margin-top:0;">Saber Mais</a>
+            </div>
+
+            <div class="home-solution-card">
+              <div>
+                <h3>Profissão Dog Walker</h3>
+                <p>Capacitação prática para atuação profissional no mercado de passeios.</p>
+              </div>
+              <a href="#contato-anchor" class="next-step-btn" style="min-height:30px; font-size:.62rem; margin-top:0;">Saber Mais</a>
+            </div>
+
+            <div class="home-solution-card">
+              <div>
+                <h3>Monitor de Creche</h3>
+                <p>Formação completa em comportamento animal e rotina operacional.</p>
+              </div>
+              <a href="#contato-anchor" class="next-step-btn" style="min-height:30px; font-size:.62rem; margin-top:0;">Saber Mais</a>
+            </div>
+          </div>
+
+          <button class="next-step-btn" id="go-to-step3" type="button" style="margin-top:16px;">FALAR COM A EQUIPE →</button>
+        </article>
+
+        <!-- ETAPA 3: CONTATO E ATENDIMENTO -->
+        <article class="chapter" data-chapter="3" id="contato-anchor">
+          <div class="card-step-header">
+            <button class="prev-step-btn" data-goto="2" type="button">← Voltar</button>
+            <span class="eyebrow" style="margin:0;">Pilar 03 • Contato</span>
+          </div>
+          <h2>Atendimento Institucional</h2>
+          <p>Preencha os campos abaixo para entender como estruturar sua empresa:</p>
+
+          <form class="contact-form-dark" onsubmit="handleFormSubmit(event)">
+            <div class="form-group-dark">
+              <label>Nome Completo</label>
+              <input type="text" class="form-input-dark" placeholder="Seu nome" required>
+            </div>
+            <div class="form-group-dark">
+              <label>WhatsApp com DDD</label>
+              <input type="tel" class="form-input-dark" placeholder="(00) 00000-0000" required>
+            </div>
+            <div class="form-group-dark">
+              <label>Como podemos ajudar?</label>
+              <input type="text" class="form-input-dark" placeholder="Descreva brevemente sua necessidade" required>
+            </div>
+
+            <button type="submit" class="next-step-btn" style="margin-top:8px;">ENVIAR MENSAGEM</button>
+          </form>
+        </article>
+
+      </div>
+
+      <!-- COLUNA DA DIREITA: VÍDEO STORIES + ILUSTRAÇÃO DOMUS -->
+      <aside class="video-column">
+        
+        <!-- VÍDEO STORIES (9:16) -->
+        <div class="welcome-video" id="welcome-video">
+          <div id="yt-player"></div>
+          <div class="video-poster" aria-hidden="true">
+            <img src="../assets/1.png" alt="Tata Pereira">
+            <div class="poster-copy">
+              <small>Apresentação</small>
+              <strong>Conheça Tata Pereira</strong>
+            </div>
+          </div>
+          <button class="video-play" id="video-play" type="button" aria-label="Reproduzir">▶</button>
+        </div>
+
+        <!-- MÓDULO DOMUS INTERATIVO -->
+        <div class="build" id="build">
+          <div class="build-header">
+            <span class="build-tag">DOMUS:</span>
+            <span class="build-state-badge" id="build-state-badge">ESTRUTURA</span>
+          </div>
+
+          <svg class="blueprint" viewBox="50 25 550 425" role="img">
+            <path class="line" d="M55 420H498M78 435H475M63 420V442M480 420V442"/>
+            <path class="roof" d="M88 154L290 50l202 104v28L290 82 88 182z" />
+            <rect class="foundation" x="82" y="388" width="398" height="32" rx="4"/>
+            <rect class="pillar" x="100" y="186" width="180" height="194" rx="3"/>
+            <rect class="pillar" x="290" y="186" width="180" height="194" rx="3"/>
+            <g class="brick-group">
+              <rect class="brick" x="108" y="336" width="164" height="42" rx="3"/>
+              <rect class="brick" x="298" y="336" width="164" height="42" rx="3"/>
+              <rect class="brick" x="108" y="286" width="164" height="42" rx="3"/>
+              <rect class="brick" x="298" y="286" width="164" height="42" rx="3"/>
+            </g>
+            <path class="door" d="M240 380V254c0-13 10-23 23-23h34c13 0 23 10 23 23v126z" />
+          </svg>
+
+          <div class="build-caption">
+            <strong id="build-title">Método Domus</strong>
+            <span>Estruturação por processos</span>
+          </div>
+        </div>
+
+      </aside>
+
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Tata Pereira • Metodologia DOMUS • Todos os direitos reservados.
+  </footer>
+
+  <!-- JAVASCRIPT DE NAVEGAÇÃO E INTERATIVIDADE -->
+  <script>
+    (() => {
+      'use strict';
+      const $ = s => document.querySelector(s);
+      const $$ = s => [...document.querySelectorAll(s)];
+
+      let currentStep = 0;
+      const chapters = $$('.chapter');
+      const intro = $('.intro');
+      const segments = $$('.story-segment');
+
+      function goToStep(stepIndex) {
+        currentStep = stepIndex;
+
+        intro.classList.toggle('active', stepIndex === 0);
+        chapters.forEach((ch, idx) => {
+          ch.classList.toggle('active', idx + 1 === stepIndex);
+        });
+
+        segments.forEach((seg, idx) => {
+          seg.classList.toggle('done', idx < stepIndex);
+          seg.classList.toggle('active', idx === stepIndex);
+        });
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      $('#go-to-step1').addEventListener('click', () => goToStep(1));
+      $('#go-to-step2').addEventListener('click', () => goToStep(2));
+      $('#go-to-step3').addEventListener('click', () => goToStep(3));
+
+      $$('.prev-step-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          goToStep(Number(btn.dataset.goto));
+        });
+      });
+
+      // VÍDEO
+      const videoBox = $('#welcome-video');
+      const videoPlay = $('#video-play');
+      videoPlay.addEventListener('click', () => {
+        videoBox.classList.add('playing');
+      });
+
+      window.handleFormSubmit = function(e) {
+        e.preventDefault();
+        alert('Obrigado pelo contato! Nossa equipe responderá em breve.');
+      };
+    })();
+  </script>
 </body>
 </html>
