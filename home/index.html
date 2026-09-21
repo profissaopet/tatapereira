@@ -201,63 +201,56 @@
     }
 
     /* =========================================================
-       EFEITO BOAS-VINDAS (WELCOME BANNER)
+       EFEITO BOAS-VINDAS (WELCOME BANNER AJUSTADO)
        ========================================================= */
     .welcome-bar {
-      background: linear-gradient(90deg, rgba(241, 191, 66, 0.18), rgba(10, 14, 40, 0.95), rgba(241, 191, 66, 0.18));
+      background: linear-gradient(90deg, rgba(241, 191, 66, 0.25), rgba(10, 14, 40, 0.98), rgba(241, 191, 66, 0.25));
       border-bottom: 1px solid var(--gold-border);
       color: #fff;
-      padding: 10px 24px;
-      font-size: 13.5px;
+      padding: 8px 16px;
+      font-size: 12.5px;
       font-weight: 600;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1001;
+      position: relative;
+      z-index: 1002;
       backdrop-filter: blur(12px);
-      transition: transform 0.4s ease, opacity 0.4s ease;
+      transition: all 0.3s ease;
     }
 
     .welcome-bar.closed {
-      transform: translateY(-100%);
-      opacity: 0;
-      pointer-events: none;
+      display: none;
     }
 
     .welcome-content {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       margin: 0 auto;
+      text-align: center;
     }
 
     .welcome-badge {
       background: var(--gold-primary);
       color: #050717;
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 900;
       text-transform: uppercase;
-      padding: 2px 8px;
+      padding: 2px 7px;
       border-radius: var(--radius-full);
       letter-spacing: 0.5px;
+      flex-shrink: 0;
     }
 
     .welcome-close {
       background: none;
       border: none;
       color: var(--navy-text-muted);
-      font-size: 18px;
+      font-size: 16px;
       cursor: pointer;
-      padding: 0 8px;
-      transition: color 0.2s ease;
-    }
-
-    .welcome-close:hover {
-      color: var(--gold-primary);
+      padding: 0 4px;
+      line-height: 1;
     }
 
     /* =========================================================
@@ -283,6 +276,7 @@
       position: relative;
       overflow: hidden;
       transition: var(--transition);
+      text-align: center;
     }
 
     .primary::after {
@@ -310,8 +304,8 @@
        1. HEADER
        ========================================================= */
     header {
-      position: fixed;
-      top: 38px; /* Espaço para o banner de boas-vindas */
+      position: sticky;
+      top: 0;
       left: 0;
       width: 100%;
       z-index: 1000;
@@ -319,32 +313,40 @@
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--navy-border-subtle);
-      transition: transform 0.35s ease, top 0.35s ease;
-    }
-
-    body.no-welcome header {
-      top: 0;
+      transition: transform 0.35s ease;
     }
 
     header.hidden {
-      transform: translateY(-130%);
+      transform: translateY(-100%);
     }
 
     .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 82px;
-    }
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 90px; /* Aumentado ligeiramente para acomodar a logo empilhada */
+}
+   .logo {
+  display: flex;
+  flex-direction: column; /* Organiza os elementos em coluna (um em cima do outro) */
+  align-items: center;     /* Centraliza o ícone e o texto horizontalmente */
+  justify-content: center;
+  gap: 4px;                /* Espaço reduzido entre a logo-dog e a logo-nome */
+}
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+/* Opcional: Ajuste da altura das imagens para garantir proporção adequada no Header */
+.logo img:first-child {
+  height: 28px;            /* Altura para a logo-dog */
+  width: auto;
+}
+
+.logo img:last-child {
+  height: 18px;            /* Altura para a logo-nome */
+  width: auto;
+}
 
     .logo img {
-      height: 38px;
+      height: 34px;
       width: auto;
       object-fit: contain;
     }
@@ -391,7 +393,6 @@
       gap: 8px;
     }
 
-    /* ÍCONES PREMIUM DE REDES SOCIAIS */
     .social-icon-btn {
       width: 36px;
       height: 36px;
@@ -409,7 +410,6 @@
       width: 18px;
       height: 18px;
       fill: currentColor;
-      transition: transform 0.2s ease;
     }
 
     .social-icon-btn:hover {
@@ -419,16 +419,12 @@
       transform: translateY(-2px);
     }
 
-    .social-icon-btn:hover svg {
-      transform: scale(1.1);
-    }
-
     .btn-header-wa {
       width: auto;
-      min-height: 42px;
-      padding: 0 20px;
+      min-height: 40px;
+      padding: 0 18px;
       border-radius: var(--radius-full);
-      font-size: 0.78rem;
+      font-size: 0.74rem;
     }
 
     .menu-toggle {
@@ -442,37 +438,17 @@
     }
 
     /* =========================================================
-       2. HERO (PRIMEIRA DOBRA — AZUL ESCURO COM GLOW E PARTÍCULAS)
+       2. HERO (PRIMEIRA DOBRA)
        ========================================================= */
     .hero {
-      padding-top: 180px;
-      padding-bottom: 105px;
+      padding-top: 80px;
+      padding-bottom: 90px;
       background:
         radial-gradient(circle at 75% 35%, rgba(241, 191, 66, 0.15) 0%, rgba(5, 7, 23, 0) 55%),
         radial-gradient(circle at 20% 80%, rgba(16, 21, 56, 0.9) 0%, rgba(5, 7, 23, 0) 65%),
         var(--navy-base);
       overflow: hidden;
       position: relative;
-    }
-
-    /* PARTÍCULAS SUTIS DE LUZ NO HERO */
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 20%;
-      left: 10%;
-      width: 4px;
-      height: 4px;
-      background: var(--gold-primary);
-      border-radius: 50%;
-      box-shadow: 120px 80px 12px var(--gold-primary), 300px 250px 18px var(--gold-primary), 600px 50px 10px var(--gold-primary);
-      opacity: 0.3;
-      animation: pulseGlow 4s infinite alternate ease-in-out;
-    }
-
-    @keyframes pulseGlow {
-      0% { opacity: 0.2; transform: scale(1); }
-      100% { opacity: 0.5; transform: scale(1.3); }
     }
 
     .hero-grid {
@@ -483,46 +459,45 @@
     }
 
     .hero-tag {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 800;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       color: var(--gold-primary);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       display: inline-block;
     }
 
     .hero h1 {
-      font-size: clamp(34px, 4.3vw, 52px);
+      font-size: clamp(28px, 4vw, 50px);
       font-weight: 900;
-      line-height: 1.18;
-      letter-spacing: -1.2px;
+      line-height: 1.2;
+      letter-spacing: -1px;
       color: var(--navy-text-main);
-      margin-bottom: 22px;
+      margin-bottom: 20px;
     }
 
     .hero-subheadline {
-      font-size: 17px;
-      line-height: 1.75;
+      font-size: 16px;
+      line-height: 1.7;
       color: var(--navy-text-muted);
       max-width: 580px;
-      margin-bottom: 34px;
+      margin-bottom: 30px;
     }
 
     .btn-hero {
       width: fit-content;
-      padding: 0 32px;
-      min-height: 54px;
+      padding: 0 30px;
+      min-height: 52px;
       border-radius: var(--radius-full);
-      font-size: 0.82rem;
+      font-size: 0.8rem;
     }
 
-    /* CARDS PROFISSIONAIS DE AUTORIDADE NO HERO */
     .hero-authority-grid {
-      margin-top: 36px;
+      margin-top: 32px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      gap: 12px;
       max-width: 600px;
     }
 
@@ -530,9 +505,10 @@
       background: rgba(16, 21, 56, 0.6);
       border: 1px solid var(--navy-border-card);
       border-radius: var(--radius-md);
-      padding: 14px 16px;
+      padding: 12px 14px;
       backdrop-filter: blur(10px);
       transition: var(--transition);
+      text-align: center;
     }
 
     .hero-stat-card:hover {
@@ -542,7 +518,7 @@
     }
 
     .hero-stat-number {
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 900;
       color: var(--gold-primary);
       line-height: 1.1;
@@ -550,11 +526,11 @@
     }
 
     .hero-stat-label {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
       color: var(--navy-text-muted);
       margin-top: 4px;
-      line-height: 1.3;
+      line-height: 1.25;
     }
 
     .hero-image-wrap {
@@ -562,13 +538,13 @@
       display: flex;
       justify-content: center;
       align-items: flex-end;
-      padding: 20px;
+      padding: 10px;
     }
 
     .hero-image-glow {
       position: absolute;
-      width: 480px;
-      height: 480px;
+      width: 400px;
+      height: 400px;
       border-radius: 50%;
       background: radial-gradient(circle, rgba(241, 191, 66, 0.18) 0%, rgba(241, 191, 66, 0.02) 60%, transparent 70%);
       top: 50%;
@@ -581,31 +557,31 @@
     .hero-image-wrap img {
       position: relative;
       z-index: 2;
-      max-height: 610px;
+      max-height: 550px;
       object-fit: contain;
-      filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.65));
+      filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.65));
     }
 
     /* =========================================================
-       3. SEÇÃO CURTA DE POSICIONAMENTO (BRANCO / CREME)
+       3. SEÇÃO CURTA DE POSICIONAMENTO
        ========================================================= */
     .positioning {
       background-color: var(--cream-base);
       color: var(--cream-text-main);
       border-top: 1px solid var(--cream-border-card);
       border-bottom: 1px solid var(--cream-border-card);
-      padding: 100px 0;
+      padding: 90px 0;
     }
 
     .positioning-panel {
       background: var(--cream-card);
       border: 1.5px solid var(--cream-border-card);
       border-radius: var(--radius-lg);
-      padding: 55px 60px;
+      padding: 45px 50px;
       box-shadow: var(--shadow-cream);
       display: grid;
       grid-template-columns: 1fr 1.25fr;
-      gap: 60px;
+      gap: 50px;
       align-items: center;
       position: relative;
       overflow: hidden;
@@ -622,7 +598,7 @@
     }
 
     .positioning-title {
-      font-size: clamp(26px, 3.2vw, 36px);
+      font-size: clamp(24px, 3vw, 34px);
       font-weight: 900;
       line-height: 1.28;
       color: var(--cream-text-main);
@@ -635,10 +611,10 @@
     }
 
     .positioning-content p {
-      font-size: 16.5px;
+      font-size: 15.5px;
       line-height: 1.8;
       color: var(--cream-text-body);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .positioning-content p:last-child {
@@ -646,7 +622,7 @@
     }
 
     /* =========================================================
-       4. SOLUÇÕES (2 EMPRESAS + 2 PROFISSIONAIS — AZUL ESCURO)
+       4. SOLUÇÕES
        ========================================================= */
     .solutions {
       background:
@@ -654,17 +630,17 @@
         radial-gradient(circle at 85% 75%, rgba(241, 191, 66, 0.08) 0%, rgba(5, 7, 23, 0) 45%),
         var(--navy-base);
       color: var(--navy-text-main);
-      padding: 110px 0;
+      padding: 100px 0;
     }
 
     .solutions-header-wrap {
       text-align: center;
       max-width: 760px;
-      margin: 0 auto 55px auto;
+      margin: 0 auto 50px auto;
     }
 
     .section-title-navy {
-      font-size: clamp(28px, 3.4vw, 42px);
+      font-size: clamp(26px, 3.2vw, 40px);
       font-weight: 900;
       letter-spacing: -1px;
       color: var(--navy-text-main);
@@ -672,7 +648,7 @@
     }
 
     .solutions-group {
-      margin-bottom: 50px;
+      margin-bottom: 45px;
     }
 
     .solutions-group:last-child {
@@ -683,26 +659,26 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 800;
       letter-spacing: 1px;
       text-transform: uppercase;
       color: var(--gold-primary);
-      margin-bottom: 22px;
+      margin-bottom: 20px;
       padding-left: 4px;
     }
 
     .solutions-grid-2x2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 32px;
+      gap: 28px;
     }
 
     .solution-card {
       background: var(--navy-card);
       border: 1.5px solid var(--navy-border-card);
       border-radius: var(--radius-lg);
-      padding: 36px;
+      padding: 32px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -718,33 +694,33 @@
     }
 
     .card-tag {
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.8px;
       color: var(--gold-primary);
       background: var(--gold-muted);
       border: 1px solid var(--gold-border);
-      padding: 5px 12px;
+      padding: 4px 10px;
       border-radius: var(--radius-full);
       display: inline-block;
       width: fit-content;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .solution-card h3 {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 900;
       color: var(--navy-text-main);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       line-height: 1.25;
     }
 
     .solution-card p {
-      font-size: 15px;
-      line-height: 1.7;
+      font-size: 14.5px;
+      line-height: 1.65;
       color: var(--navy-text-muted);
-      margin-bottom: 28px;
+      margin-bottom: 24px;
     }
 
     .solution-card .primary {
@@ -752,14 +728,14 @@
     }
 
     /* =========================================================
-       5. MÉTODO DOMUS COM A CASA DOMUS (BRANCO / CREME)
+       5. MÉTODO DOMUS COM A CASA DOMUS
        ========================================================= */
     .domus-section {
       background-color: var(--cream-base);
       color: var(--cream-text-main);
       border-top: 1px solid var(--cream-border-card);
       border-bottom: 1px solid var(--cream-border-card);
-      padding: 110px 0;
+      padding: 100px 0;
       position: relative;
       overflow: hidden;
     }
@@ -767,27 +743,27 @@
     .domus-header-wrap {
       text-align: center;
       max-width: 820px;
-      margin: 0 auto 50px auto;
+      margin: 0 auto 45px auto;
     }
 
     .section-tag-cream {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 6px 14px;
+      padding: 5px 12px;
       background: rgba(207, 164, 38, 0.12);
       border: 1px solid rgba(207, 164, 38, 0.3);
       border-radius: var(--radius-full);
       color: var(--gold-dark);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 800;
       letter-spacing: 0.8px;
       text-transform: uppercase;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .section-title-cream {
-      font-size: clamp(28px, 3.4vw, 42px);
+      font-size: clamp(26px, 3.2vw, 40px);
       font-weight: 900;
       letter-spacing: -1px;
       color: var(--cream-text-main);
@@ -795,10 +771,10 @@
     }
 
     .domus-intro-p {
-      font-size: 16.5px;
-      line-height: 1.8;
+      font-size: 15.5px;
+      line-height: 1.75;
       color: var(--cream-text-body);
-      margin-top: 18px;
+      margin-top: 16px;
     }
 
     .domus-house-diagram {
@@ -1124,14 +1100,14 @@
         radial-gradient(circle at 80% 30%, rgba(241, 191, 66, 0.08) 0%, rgba(5, 7, 23, 0) 50%),
         var(--navy-surface-1);
       color: var(--navy-text-main);
-      padding: 110px 0;
+      padding: 100px 0;
     }
 
     .about-grid {
       display: grid;
       grid-template-columns: 0.85fr 1.15fr;
       align-items: center;
-      gap: 65px;
+      gap: 60px;
     }
 
     .about-image-wrap {
@@ -1152,53 +1128,53 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 800;
       letter-spacing: 1px;
       text-transform: uppercase;
       color: var(--gold-primary);
       background: var(--gold-muted);
       border: 1px solid var(--gold-border);
-      padding: 6px 14px;
+      padding: 5px 12px;
       border-radius: var(--radius-full);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
     .about-lead {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 600;
       line-height: 1.6;
       color: #f1f5f9;
-      margin-top: 14px;
-      margin-bottom: 18px;
+      margin-top: 12px;
+      margin-bottom: 16px;
     }
 
     .about-story {
-      font-size: 15.5px;
-      line-height: 1.8;
+      font-size: 15px;
+      line-height: 1.75;
       color: var(--navy-text-muted);
     }
 
     .about-story p {
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .about-highlights-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 28px;
-      margin-bottom: 34px;
+      gap: 12px;
+      margin-top: 24px;
+      margin-bottom: 30px;
     }
 
     .about-highlight-card {
       background: rgba(5, 7, 23, 0.55);
       border: 1px solid var(--navy-border-subtle);
-      padding: 16px;
+      padding: 14px;
       border-radius: var(--radius-md);
       display: flex;
       align-items: flex-start;
-      gap: 12px;
+      gap: 10px;
       transition: var(--transition);
     }
 
@@ -1208,8 +1184,8 @@
     }
 
     .about-highlight-icon {
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
       background: var(--gold-muted);
       border: 1px solid var(--gold-border);
@@ -1218,47 +1194,47 @@
       align-items: center;
       justify-content: center;
       font-weight: 900;
-      font-size: 13px;
+      font-size: 12px;
       flex-shrink: 0;
     }
 
     .about-highlight-text {
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 600;
       color: #e2e8f0;
-      line-height: 1.45;
+      line-height: 1.4;
     }
 
     /* =========================================================
-       7. REDES SOCIAIS & 8. CONTATO (BRANCO / CREME)
+       7. REDES SOCIAIS & 8. CONTATO
        ========================================================= */
     .social-section {
       background-color: var(--cream-base);
       color: var(--cream-text-main);
       border-top: 1px solid var(--cream-border-card);
-      padding: 85px 0 40px 0;
+      padding: 80px 0 35px 0;
       text-align: center;
     }
 
     .social-title {
-      font-size: clamp(26px, 3.2vw, 36px);
+      font-size: clamp(24px, 3vw, 34px);
       font-weight: 900;
       color: var(--cream-text-main);
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .social-desc {
-      font-size: 16px;
+      font-size: 15.5px;
       color: var(--cream-text-body);
       max-width: 620px;
-      margin: 0 auto 30px auto;
+      margin: 0 auto 28px auto;
     }
 
     .social-buttons-row {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
       flex-wrap: wrap;
     }
 
@@ -1266,20 +1242,20 @@
       background: #ffffff;
       border: 1.5px solid var(--cream-border-card);
       color: var(--cream-text-main);
-      font-size: 14.5px;
+      font-size: 14px;
       font-weight: 700;
-      padding: 12px 26px;
+      padding: 10px 22px;
       border-radius: var(--radius-full);
       box-shadow: 0 4px 14px rgba(10, 14, 40, 0.04);
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       transition: var(--transition);
     }
 
     .btn-social-pill svg {
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
       fill: currentColor;
     }
 
@@ -1287,43 +1263,42 @@
       background: var(--cream-text-main);
       color: #fff;
       border-color: var(--cream-text-main);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(10, 14, 40, 0.12);
+      transform: translateY(-2px);
     }
 
     .contact {
       background-color: var(--cream-base);
       color: var(--cream-text-main);
-      padding: 40px 0 110px 0;
+      padding: 35px 0 100px 0;
     }
 
     .contact-grid {
       display: grid;
       grid-template-columns: 0.95fr 1.05fr;
       align-items: flex-start;
-      gap: 60px;
+      gap: 50px;
     }
 
     .contact-direct-boxes {
       display: flex;
       flex-direction: column;
       gap: 16px;
-      margin-top: 26px;
+      margin-top: 24px;
     }
 
     .contact-card-box {
       background: #ffffff;
       border: 1.5px solid var(--cream-border-card);
       border-radius: var(--radius-md);
-      padding: 22px;
+      padding: 20px;
       box-shadow: 0 4px 16px rgba(10, 14, 40, 0.03);
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
     }
 
     .contact-card-box span {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.8px;
@@ -1331,49 +1306,48 @@
     }
 
     .contact-card-box strong {
-      font-size: 17px;
+      font-size: 16px;
       color: var(--cream-text-main);
     }
 
-    /* Formulário de Contato */
     .contact-form-card {
       background: #ffffff;
       border: 1.5px solid var(--cream-border-card);
       border-radius: var(--radius-lg);
-      padding: 40px;
+      padding: 36px;
       box-shadow: var(--shadow-cream);
     }
 
     .contact-form-card h3 {
-      font-size: 24px;
+      font-size: 22px;
       font-weight: 900;
       color: var(--cream-text-main);
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .contact-form-card p {
-      font-size: 14px;
+      font-size: 13.5px;
       color: var(--cream-text-muted);
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     .form-group {
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .form-group label {
       display: block;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 700;
       color: var(--cream-text-main);
-      margin-bottom: 7px;
+      margin-bottom: 6px;
     }
 
     .form-control {
       width: 100%;
-      padding: 12px 16px;
+      padding: 11px 14px;
       font-family: inherit;
-      font-size: 14.5px;
+      font-size: 14px;
       color: var(--cream-text-main);
       background: var(--cream-surface-2);
       border: 1.5px solid var(--cream-border-input);
@@ -1389,22 +1363,22 @@
     }
 
     textarea.form-control {
-      min-height: 100px;
+      min-height: 90px;
       resize: vertical;
     }
 
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      gap: 14px;
     }
 
     .form-feedback {
       display: none;
-      margin-top: 18px;
-      padding: 12px 16px;
+      margin-top: 16px;
+      padding: 10px 14px;
       border-radius: var(--radius-sm);
-      font-size: 13.5px;
+      font-size: 13px;
     }
 
     .form-feedback.success {
@@ -1415,12 +1389,12 @@
     }
 
     /* =========================================================
-       9. FOOTER (AZUL ESCURO)
+       9. FOOTER
        ========================================================= */
     footer {
       background: var(--navy-base);
       color: var(--navy-text-muted);
-      padding: 60px 0 40px;
+      padding: 50px 0 35px;
       border-top: 1px solid var(--navy-border-subtle);
     }
 
@@ -1428,7 +1402,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 24px;
+      gap: 20px;
       flex-wrap: wrap;
     }
 
@@ -1445,22 +1419,22 @@
     }
 
     .footer-logo img {
-      height: 32px;
+      height: 30px;
       width: auto;
     }
 
     .footer-tagline {
-      font-size: 12.5px;
+      font-size: 12px;
       color: var(--navy-text-muted);
     }
 
     .footer-links {
       display: flex;
-      gap: 28px;
+      gap: 24px;
     }
 
     .footer-links a {
-      font-size: 14px;
+      font-size: 13.5px;
       color: var(--navy-text-muted);
     }
 
@@ -1476,11 +1450,11 @@
     /* WHATSAPP FLUTUANTE */
     .whatsapp-float {
       position: fixed;
-      bottom: 24px;
-      right: 24px;
+      bottom: 20px;
+      right: 20px;
       z-index: 999;
-      width: 58px;
-      height: 58px;
+      width: 54px;
+      height: 54px;
       border-radius: 50%;
       background: #25d366;
       color: #fff;
@@ -1496,8 +1470,8 @@
     }
 
     .whatsapp-float svg {
-      width: 30px;
-      height: 30px;
+      width: 28px;
+      height: 28px;
       fill: currentColor;
     }
 
@@ -1512,16 +1486,18 @@
       transform: translateY(0);
     }
 
-    /* Responsividade */
+    /* =========================================================
+       RESPONSIVIDADE AJUSTADA PARA ECRÃS PEQUENOS (IPHONE SE)
+       ========================================================= */
     @media (max-width: 1024px) {
       .hero-grid {
         grid-template-columns: 1fr;
         text-align: center;
-        gap: 40px;
+        gap: 35px;
       }
 
       .hero-subheadline {
-        margin: 0 auto 34px;
+        margin: 0 auto 28px;
       }
 
       .btn-hero {
@@ -1529,43 +1505,72 @@
       }
 
       .hero-authority-grid {
-        margin: 36px auto 0 auto;
+        margin: 28px auto 0 auto;
       }
 
       .positioning-panel {
         grid-template-columns: 1fr;
-        padding: 40px 30px;
-        gap: 25px;
+        padding: 35px 25px;
+        gap: 20px;
       }
 
       .solutions-grid-2x2 {
         grid-template-columns: 1fr;
-        gap: 24px;
+        gap: 20px;
       }
 
       .about-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 35px;
       }
 
       .contact-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 35px;
       }
     }
 
+    /* FORMATO HORIZONTAL COMPACTO PARA STATS NO MOBILE */
+    @media (max-width: 600px) {
+      .hero-authority-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+        width: 100%;
+      }
+
+      .hero-stat-card {
+        padding: 8px 4px;
+      }
+
+      .hero-stat-number {
+        font-size: 15px;
+      }
+
+      .hero-stat-label {
+        font-size: 9.5px;
+      }
+
+      .primary {
+        font-size: 0.68rem;
+        min-height: 44px;
+        padding: 0 10px;
+      }
+    }
+
+    /* MANTER ESTRUTURA COMPLETA DA CASA DOMUS NO MOBILE COM ROLAR SUAVE */
     @media (max-width: 860px) {
       .domus-house-diagram {
         overflow-x: auto;
-        padding-bottom: 15px;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 10px;
       }
 
       .infographic-wrapper {
-        min-width: 700px;
+        min-width: 680px;
       }
 
       .infographic-wrapper .house-content-layer {
-        padding: 75px 24px 0 24px;
+        padding: 70px 20px 0 20px;
       }
 
       .about-highlights-grid {
@@ -1575,19 +1580,19 @@
 
     @media (max-width: 768px) {
       section {
-        padding: 75px 0;
+        padding: 60px 0;
       }
 
       nav {
         position: fixed;
-        top: 82px;
+        top: 76px;
         left: 0;
         width: 100%;
         background: rgba(5, 7, 23, 0.98);
         backdrop-filter: blur(20px);
         flex-direction: column;
-        padding: 30px 24px;
-        gap: 20px;
+        padding: 24px 20px;
+        gap: 16px;
         border-bottom: 1px solid var(--navy-border-card);
         transform: translateY(-130%);
         transition: transform 0.3s ease;
@@ -1605,11 +1610,6 @@
         display: none;
       }
 
-      .hero-authority-grid {
-        grid-template-columns: 1fr;
-        max-width: 320px;
-      }
-
       .form-row {
         grid-template-columns: 1fr;
       }
@@ -1617,7 +1617,7 @@
       .footer-inner {
         flex-direction: column;
         text-align: center;
-        gap: 20px;
+        gap: 18px;
       }
     }
   </style>
@@ -1705,12 +1705,12 @@
 
           <a href="#solucoes" class="primary btn-hero">
             <span>QUERO ESTRUTURAR MINHA EMPRESA</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </a>
 
-          <!-- ESTRUTURA PROFISSIONALIZADA DOS NÚMEROS DE AUTORIDADE -->
+          <!-- CARDS DE ESTATÍSTICAS COMPACTOS PARA QUALQUER ECRÃ -->
           <div class="hero-authority-grid">
             <div class="hero-stat-card">
               <div class="hero-stat-number">8 Anos</div>
@@ -1763,7 +1763,7 @@
     </section>
 
     <!-- =====================================================
-         4. SOLUÇÕES (2 EMPRESAS + 2 PROFISSIONAIS)
+         4. SOLUÇÕES
     ====================================================== -->
     <section class="solutions" id="solucoes">
       <div class="container">
@@ -1820,7 +1820,7 @@
         </div>
 
         <!-- GRUPO: PROFISSIONAIS -->
-        <div class="solutions-group fade-in" style="margin-top: 40px;">
+        <div class="solutions-group fade-in" style="margin-top: 35px;">
           <div class="group-label">✦ Formações para Profissionais</div>
           <div class="solutions-grid-2x2">
             <!-- CARD 3 — PROFISSIONAIS -->
@@ -1866,7 +1866,7 @@
     </section>
 
     <!-- =====================================================
-         5. BLOCO SOBRE O MÉTODO DOMUS (CASA DOMUS MANTIDA)
+         5. BLOCO SOBRE O MÉTODO DOMUS (CASA DOMUS)
     ====================================================== -->
     <section class="domus-section" id="metodo">
       <div class="container">
@@ -1893,7 +1893,7 @@
               <path d="M 70 260 C 120 180, 180 140, 220 60" stroke="#E0A020" stroke-width="1.2" />
             </svg>
 
-            <!-- DESENHO VETORIAL DA CASA -->
+            <!-- DESENHO VETORIAL DA CASA MANTIDO INTEGRO -->
             <svg class="full-house-svg" viewBox="0 0 940 640" fill="none" preserveAspectRatio="none">
               <path d="M 30 230 L 470 20 L 910 230" stroke="#0A192F" stroke-width="16" stroke-linecap="round"
                 stroke-linejoin="round" />
@@ -2064,7 +2064,7 @@
     </section>
 
     <!-- =====================================================
-         6. SOBRE A TATA (AZUL ESCURO — DESIGN REFINADO)
+         6. SOBRE A TATA
     ====================================================== -->
     <section class="about" id="sobre">
       <div class="container about-grid">
@@ -2116,7 +2116,7 @@
             href="https://wa.me/5511999999999?text=Ol%C3%A1%20Tata!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20sua%20equipe."
             target="_blank" rel="noopener noreferrer" onclick="trackWhatsApp('about_button')">
             <span>FALAR COM A EQUIPE</span>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </a>
@@ -2125,7 +2125,7 @@
     </section>
 
     <!-- =====================================================
-         7. REDES SOCIAIS (ACOMPANHE A TATA — ÍCONES PREMIUM)
+         7. REDES SOCIAIS (ACOMPANHE A TATA)
     ====================================================== -->
     <section class="social-section" id="redes">
       <div class="container fade-in">
@@ -2152,7 +2152,7 @@
     </section>
 
     <!-- =====================================================
-         8. CONTATO (VAMOS CONVERSAR?)
+         8. CONTATO
     ====================================================== -->
     <section class="contact" id="contato">
       <div class="container contact-grid">
@@ -2237,7 +2237,7 @@
 
             <button type="submit" id="btn-submit-form" class="primary" style="margin-top: 10px;">
               <span>Enviar Mensagem</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
             </button>
@@ -2303,7 +2303,6 @@
       const welcomeBar = document.getElementById("welcome-bar");
       if (welcomeBar) {
         welcomeBar.classList.add("closed");
-        document.body.classList.add("no-welcome");
       }
     }
 
