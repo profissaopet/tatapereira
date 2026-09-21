@@ -28,7 +28,7 @@
   <meta name="twitter:image" content="https://tatapereira.com/assets/tata-apontando-voce.png" />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="../assets/tata-logo-dog.png" />
+  <link rel="icon" type="image/png" href="./assets/tata-logo-dog.png" />
 
   <!-- Google Fonts: Inter & Montserrat -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -131,6 +131,7 @@
 
       /* ACENTOS E IDENTIDADE */
       --gold-primary: #f1bf42;
+      --gold-2: #f1bf42;
       --gold-hover: #e0ac2b;
       --gold-muted: rgba(241, 191, 66, 0.14);
       --gold-border: rgba(241, 191, 66, 0.35);
@@ -184,8 +185,7 @@
     a {
       text-decoration: none;
       color: inherit;
-      display: flex;
-    flex-direction: column;
+      transition: var(--transition);
     }
 
     .container {
@@ -201,11 +201,117 @@
     }
 
     /* =========================================================
+       EFEITO BOAS-VINDAS (WELCOME BANNER)
+       ========================================================= */
+    .welcome-bar {
+      background: linear-gradient(90deg, rgba(241, 191, 66, 0.18), rgba(10, 14, 40, 0.95), rgba(241, 191, 66, 0.18));
+      border-bottom: 1px solid var(--gold-border);
+      color: #fff;
+      padding: 10px 24px;
+      font-size: 13.5px;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1001;
+      backdrop-filter: blur(12px);
+      transition: transform 0.4s ease, opacity 0.4s ease;
+    }
+
+    .welcome-bar.closed {
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .welcome-content {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 auto;
+    }
+
+    .welcome-badge {
+      background: var(--gold-primary);
+      color: #050717;
+      font-size: 10.5px;
+      font-weight: 900;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.5px;
+    }
+
+    .welcome-close {
+      background: none;
+      border: none;
+      color: var(--navy-text-muted);
+      font-size: 18px;
+      cursor: pointer;
+      padding: 0 8px;
+      transition: color 0.2s ease;
+    }
+
+    .welcome-close:hover {
+      color: var(--gold-primary);
+    }
+
+    /* =========================================================
+       CLASSE BOTÃO PRINCIPAL COM SHIMMER EFFECT
+       ========================================================= */
+    .primary {
+      display: flex;
+      width: 100%;
+      min-height: 49px;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 11px;
+      background: linear-gradient(135deg, var(--gold-2), #dfa82e);
+      color: #10111a;
+      cursor: pointer;
+      font-size: .74rem;
+      font-weight: 800;
+      box-shadow: 0 12px 30px rgba(241, 191, 66, .16);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .primary::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .primary:hover::after {
+      left: 140%;
+    }
+
+    .primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 36px rgba(241, 191, 66, .35);
+      filter: brightness(1.05);
+    }
+
+    /* =========================================================
        1. HEADER
        ========================================================= */
     header {
       position: fixed;
-      top: 0;
+      top: 38px; /* Espaço para o banner de boas-vindas */
       left: 0;
       width: 100%;
       z-index: 1000;
@@ -213,11 +319,15 @@
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--navy-border-subtle);
-      transition: transform 0.35s ease;
+      transition: transform 0.35s ease, top 0.35s ease;
+    }
+
+    body.no-welcome header {
+      top: 0;
     }
 
     header.hidden {
-      transform: translateY(-100%);
+      transform: translateY(-130%);
     }
 
     .header-inner {
@@ -225,6 +335,12 @@
       align-items: center;
       justify-content: space-between;
       height: 82px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
 
     .logo img {
@@ -243,7 +359,6 @@
       font-size: 14.5px;
       font-weight: 500;
       color: var(--navy-text-muted);
-      transition: var(--transition);
       position: relative;
       padding: 4px 0;
     }
@@ -273,43 +388,47 @@
     .header-social {
       display: flex;
       align-items: center;
-      gap: 10px;
-    }
-
-    .header-social a {
-      color: var(--navy-text-muted);
-      font-size: 13px;
-      font-weight: 600;
-      padding: 6px 11px;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--navy-border-subtle);
-      transition: var(--transition);
-    }
-
-    .header-social a:hover {
-      color: var(--gold-primary);
-      border-color: var(--gold-border);
-      background: var(--gold-muted);
-    }
-
-    .btn-header-wa {
-      background: var(--gold-primary);
-      color: var(--text-contrast);
-      font-size: 13.5px;
-      font-weight: 700;
-      padding: 10px 20px;
-      border-radius: var(--radius-full);
-      box-shadow: 0 4px 18px var(--gold-glow);
-      transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
       gap: 8px;
     }
 
-    .btn-header-wa:hover {
-      background: var(--gold-hover);
+    /* ÍCONES PREMIUM DE REDES SOCIAIS */
+    .social-icon-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--navy-border-subtle);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--navy-text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .social-icon-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+      transition: transform 0.2s ease;
+    }
+
+    .social-icon-btn:hover {
+      color: var(--gold-primary);
+      border-color: var(--gold-border);
+      background: var(--gold-muted);
       transform: translateY(-2px);
-      box-shadow: 0 6px 24px rgba(241, 191, 66, 0.45);
+    }
+
+    .social-icon-btn:hover svg {
+      transform: scale(1.1);
+    }
+
+    .btn-header-wa {
+      width: auto;
+      min-height: 42px;
+      padding: 0 20px;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
     }
 
     .menu-toggle {
@@ -323,16 +442,37 @@
     }
 
     /* =========================================================
-       2. HERO (PRIMEIRA DOBRA — AZUL ESCURO)
+       2. HERO (PRIMEIRA DOBRA — AZUL ESCURO COM GLOW E PARTÍCULAS)
        ========================================================= */
     .hero {
-      padding-top: 165px;
+      padding-top: 180px;
       padding-bottom: 105px;
       background:
-        radial-gradient(circle at 75% 35%, rgba(241, 191, 66, 0.12) 0%, rgba(5, 7, 23, 0) 55%),
-        radial-gradient(circle at 20% 80%, rgba(16, 21, 56, 0.8) 0%, rgba(5, 7, 23, 0) 65%),
+        radial-gradient(circle at 75% 35%, rgba(241, 191, 66, 0.15) 0%, rgba(5, 7, 23, 0) 55%),
+        radial-gradient(circle at 20% 80%, rgba(16, 21, 56, 0.9) 0%, rgba(5, 7, 23, 0) 65%),
         var(--navy-base);
       overflow: hidden;
+      position: relative;
+    }
+
+    /* PARTÍCULAS SUTIS DE LUZ NO HERO */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 20%;
+      left: 10%;
+      width: 4px;
+      height: 4px;
+      background: var(--gold-primary);
+      border-radius: 50%;
+      box-shadow: 120px 80px 12px var(--gold-primary), 300px 250px 18px var(--gold-primary), 600px 50px 10px var(--gold-primary);
+      opacity: 0.3;
+      animation: pulseGlow 4s infinite alternate ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+      0% { opacity: 0.2; transform: scale(1); }
+      100% { opacity: 0.5; transform: scale(1.3); }
     }
 
     .hero-grid {
@@ -370,38 +510,51 @@
     }
 
     .btn-hero {
-      background: var(--gold-primary);
-      color: var(--text-contrast);
-      font-size: 15.5px;
-      font-weight: 800;
-      padding: 16px 32px;
+      width: fit-content;
+      padding: 0 32px;
+      min-height: 54px;
       border-radius: var(--radius-full);
-      box-shadow: 0 8px 26px var(--gold-glow);
+      font-size: 0.82rem;
+    }
+
+    /* CARDS PROFISSIONAIS DE AUTORIDADE NO HERO */
+    .hero-authority-grid {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 600px;
+    }
+
+    .hero-stat-card {
+      background: rgba(16, 21, 56, 0.6);
+      border: 1px solid var(--navy-border-card);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      backdrop-filter: blur(10px);
       transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
     }
 
-    .btn-hero:hover {
-      background: var(--gold-hover);
+    .hero-stat-card:hover {
+      border-color: var(--gold-border);
+      background: rgba(24, 31, 78, 0.8);
       transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(241, 191, 66, 0.45);
     }
 
-    .hero-authority-line {
-      margin-top: 24px;
-      font-size: 13.5px;
+    .hero-stat-number {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--gold-primary);
+      line-height: 1.1;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .hero-stat-label {
+      font-size: 12px;
       font-weight: 600;
       color: var(--navy-text-muted);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .hero-authority-line span {
-      color: var(--gold-primary);
+      margin-top: 4px;
+      line-height: 1.3;
     }
 
     .hero-image-wrap {
@@ -542,20 +695,20 @@
     .solutions-grid-2x2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 36px;
+      gap: 32px;
     }
 
     .solution-card {
       background: var(--navy-card);
       border: 1.5px solid var(--navy-border-card);
       border-radius: var(--radius-lg);
-      padding: 40px;
+      padding: 36px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: var(--transition);
       backdrop-filter: blur(14px);
       position: relative;
+      transition: var(--transition);
     }
 
     .solution-card:hover {
@@ -565,7 +718,7 @@
     }
 
     .card-tag {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.8px;
@@ -576,58 +729,26 @@
       border-radius: var(--radius-full);
       display: inline-block;
       width: fit-content;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .solution-card h3 {
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 900;
       color: var(--navy-text-main);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
       line-height: 1.25;
     }
 
     .solution-card p {
-      font-size: 15.5px;
-      line-height: 1.75;
-      color: var(--navy-text-muted);
-      margin-bottom: 30px;
-    }
-
-    .card-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 14.5px;
-      font-weight: 800;
-      color: var(--gold-primary);
-      transition: gap 0.2s ease, color 0.2s ease;
-      width: fit-content;
-    }
-
-    .card-btn:hover {
-      color: #fff;
-      gap: 14px;
-    }
-
-    .card-btn-arrow {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: rgba(241, 191, 66, 0.12);
-      border: 1px solid var(--gold-border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gold-primary);
       font-size: 15px;
-      transition: var(--transition);
+      line-height: 1.7;
+      color: var(--navy-text-muted);
+      margin-bottom: 28px;
     }
 
-    .solution-card:hover .card-btn-arrow {
-      background: var(--gold-primary);
-      color: var(--text-contrast);
-      transform: translate(2px, -2px);
+    .solution-card .primary {
+      margin-top: auto;
     }
 
     /* =========================================================
@@ -680,7 +801,6 @@
       margin-top: 18px;
     }
 
-    /* Diagrama da Casa DOMUS */
     .domus-house-diagram {
       max-width: 940px;
       margin: 0 auto;
@@ -741,12 +861,12 @@
       height: 101%;
       pointer-events: none;
       z-index: 5;
+      display: block !important;
     }
 
     .infographic-wrapper:hover .full-house-svg path {
       stroke: #0c2343;
       filter: drop-shadow(0 2px 5px rgba(10, 25, 47, 0.1));
-      transition: all 0.3s ease;
     }
 
     .infographic-wrapper .house-content-layer {
@@ -956,7 +1076,6 @@
 
     .infographic-wrapper .card-item:hover .card-icon-wrap svg {
       transform: scale(1.1);
-      transition: transform 0.3s ease;
     }
 
     .infographic-wrapper .card-info h4 {
@@ -1029,9 +1148,33 @@
       display: block;
     }
 
+    .about-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gold-primary);
+      background: var(--gold-muted);
+      border: 1px solid var(--gold-border);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      margin-bottom: 16px;
+    }
+
+    .about-lead {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.6;
+      color: #f1f5f9;
+      margin-top: 14px;
+      margin-bottom: 18px;
+    }
+
     .about-story {
-      margin-top: 20px;
-      font-size: 16px;
+      font-size: 15.5px;
       line-height: 1.8;
       color: var(--navy-text-muted);
     }
@@ -1040,34 +1183,50 @@
       margin-bottom: 14px;
     }
 
-    .about-highlights-list {
-      list-style: none;
+    .about-highlights-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-top: 26px;
-      margin-bottom: 32px;
-      background: rgba(5, 7, 23, 0.45);
-      padding: 22px;
-      border-radius: var(--radius-md);
-      border: 1px solid var(--navy-border-subtle);
+      gap: 14px;
+      margin-top: 28px;
+      margin-bottom: 34px;
     }
 
-    .about-highlights-list li {
+    .about-highlight-card {
+      background: rgba(5, 7, 23, 0.55);
+      border: 1px solid var(--navy-border-subtle);
+      padding: 16px;
+      border-radius: var(--radius-md);
       display: flex;
       align-items: flex-start;
-      gap: 10px;
-      font-size: 13.5px;
-      font-weight: 600;
-      color: #cbd5e1;
-      line-height: 1.5;
+      gap: 12px;
+      transition: var(--transition);
     }
 
-    .about-highlights-list li::before {
-      content: '✓';
+    .about-highlight-card:hover {
+      border-color: var(--gold-border);
+      background: rgba(16, 21, 56, 0.7);
+    }
+
+    .about-highlight-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--gold-muted);
+      border: 1px solid var(--gold-border);
       color: var(--gold-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-weight: 900;
+      font-size: 13px;
       flex-shrink: 0;
+    }
+
+    .about-highlight-text {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: #e2e8f0;
+      line-height: 1.45;
     }
 
     /* =========================================================
@@ -1099,7 +1258,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
       flex-wrap: wrap;
     }
 
@@ -1109,20 +1268,27 @@
       color: var(--cream-text-main);
       font-size: 14.5px;
       font-weight: 700;
-      padding: 12px 24px;
+      padding: 12px 26px;
       border-radius: var(--radius-full);
       box-shadow: 0 4px 14px rgba(10, 14, 40, 0.04);
-      transition: var(--transition);
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      transition: var(--transition);
+    }
+
+    .btn-social-pill svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
     }
 
     .btn-social-pill:hover {
       background: var(--cream-text-main);
       color: #fff;
       border-color: var(--cream-text-main);
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(10, 14, 40, 0.12);
     }
 
     .contact {
@@ -1167,26 +1333,6 @@
     .contact-card-box strong {
       font-size: 17px;
       color: var(--cream-text-main);
-    }
-
-    .btn-contact-action {
-      background: var(--cream-text-main);
-      color: #fff;
-      font-size: 13.5px;
-      font-weight: 700;
-      padding: 10px 18px;
-      border-radius: var(--radius-full);
-      width: fit-content;
-      transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 4px;
-    }
-
-    .btn-contact-action:hover {
-      background: var(--gold-dark);
-      transform: translateY(-2px);
     }
 
     /* Formulário de Contato */
@@ -1253,30 +1399,6 @@
       gap: 16px;
     }
 
-    .btn-form-submit {
-      width: 100%;
-      background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-hover) 100%);
-      color: var(--text-contrast);
-      border: none;
-      padding: 15px 24px;
-      border-radius: var(--radius-md);
-      font-size: 15.5px;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 8px 24px rgba(241, 191, 66, 0.35);
-      transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .btn-form-submit:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px rgba(241, 191, 66, 0.45);
-    }
-
     .form-feedback {
       display: none;
       margin-top: 18px;
@@ -1316,6 +1438,12 @@
       gap: 6px;
     }
 
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
     .footer-logo img {
       height: 32px;
       width: auto;
@@ -1334,7 +1462,6 @@
     .footer-links a {
       font-size: 14px;
       color: var(--navy-text-muted);
-      transition: var(--transition);
     }
 
     .footer-links a:hover {
@@ -1343,27 +1470,10 @@
 
     .footer-social-icons {
       display: flex;
-      gap: 12px;
+      gap: 10px;
     }
 
-    .footer-social-icons a {
-      color: var(--navy-text-muted);
-      font-size: 13px;
-      font-weight: 600;
-      padding: 4px 10px;
-      border-radius: var(--radius-sm);
-      border: 1px solid var(--navy-border-subtle);
-      transition: var(--transition);
-    }
-
-    .footer-social-icons a:hover {
-      color: var(--gold-primary);
-      border-color: var(--gold-border);
-    }
-
-    /* =========================================================
-       WHATSAPP FLUTUANTE
-       ========================================================= */
+    /* WHATSAPP FLUTUANTE */
     .whatsapp-float {
       position: fixed;
       bottom: 24px;
@@ -1378,7 +1488,6 @@
       align-items: center;
       justify-content: center;
       box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-      transition: var(--transition);
     }
 
     .whatsapp-float:hover {
@@ -1415,8 +1524,12 @@
         margin: 0 auto 34px;
       }
 
-      .hero-authority-line {
-        justify-content: center;
+      .btn-hero {
+        margin: 0 auto;
+      }
+
+      .hero-authority-grid {
+        margin: 36px auto 0 auto;
       }
 
       .positioning-panel {
@@ -1442,27 +1555,21 @@
     }
 
     @media (max-width: 860px) {
-      .infographic-wrapper .full-house-svg {
-        display: none !important;
+      .domus-house-diagram {
+        overflow-x: auto;
+        padding-bottom: 15px;
       }
 
-      .infographic-wrapper .columns-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-
-      .infographic-wrapper .central-divider,
-      .infographic-wrapper .dots-pattern,
-      .infographic-wrapper .golden-lines-bg {
-        display: none;
+      .infographic-wrapper {
+        min-width: 700px;
       }
 
       .infographic-wrapper .house-content-layer {
-        padding: 24px 16px 0 16px;
+        padding: 75px 24px 0 24px;
       }
 
-      .infographic-wrapper .foundation-banner {
-        font-size: 0.76rem;
+      .about-highlights-grid {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -1498,8 +1605,9 @@
         display: none;
       }
 
-      .about-highlights-list {
+      .hero-authority-grid {
         grid-template-columns: 1fr;
+        max-width: 320px;
       }
 
       .form-row {
@@ -1516,6 +1624,15 @@
 </head>
 
 <body>
+  <!-- BANNER DE BOAS-VINDAS FLUTUANTE -->
+  <div class="welcome-bar" id="welcome-bar">
+    <div class="welcome-content">
+      <span class="welcome-badge">Bem-vinda</span>
+      <span>Transforme a gestão da sua creche ou hospedagem pet hoje mesmo!</span>
+    </div>
+    <button class="welcome-close" onclick="closeWelcome()" aria-label="Fechar aviso">✕</button>
+  </div>
+
   <!-- Google Tag Manager (noscript) -->
   <noscript>
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W4MNGWDW" height="0" width="0"
@@ -1528,8 +1645,8 @@
   <header id="site-header">
     <div class="container header-inner">
       <a href="#inicio" class="logo" aria-label="Tata Pereira - Início">
-        <img src="../assets/tata-logo-dog.png" alt="Tata Pereira Logo" />
-        <img src="../assets/tata-logo-nome.png" alt="Tata Pereira Logo" />
+        <img src="./assets/tata-logo-dog.png" alt="Tata Pereira Logo Ícone" />
+        <img src="./assets/tata-logo-nome.png" alt="Tata Pereira Logo Nome" />
       </a>
 
       <nav id="main-nav">
@@ -1540,13 +1657,20 @@
       </nav>
 
       <div class="header-actions">
+        <!-- ÍCONES SVG PREMIUM NO HEADER -->
         <div class="header-social">
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
-          <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">TT</a>
-          <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">YT</a>
+          <a class="social-icon-btn" href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a class="social-icon-btn" href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+            <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.56-1.36 1.48-1.45 2.47-.11 1.25.4 2.5 1.39 3.21.94.7 2.21.87 3.3.49 1.03-.34 1.87-1.19 2.22-2.22.1-.38.16-.78.16-1.18.02-3.78.01-7.57.01-11.35z"/></svg>
+          </a>
+          <a class="social-icon-btn" href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
         </div>
 
-        <a class="btn-header-wa"
+        <a class="primary btn-header-wa"
           href="https://wa.me/5511999999999?text=Ol%C3%A1%20Tata!%20Vim%20pelo%20site%20e%20gostaria%20de%20conversar."
           target="_blank" rel="noopener noreferrer" onclick="trackWhatsApp('header_button')">
           Falar no WhatsApp
@@ -1579,21 +1703,33 @@
             mais clareza para a rotina da empresa.
           </p>
 
-          <a href="#solucoes" class="btn-hero">
-            QUERO ESTRUTURAR MINHA EMPRESA
+          <a href="#solucoes" class="primary btn-hero">
+            <span>QUERO ESTRUTURAR MINHA EMPRESA</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </a>
 
-          <div class="hero-authority-line">
-            8 anos no mercado pet <span>•</span> +100 profissionais capacitados <span>•</span> +1.000 famílias atendidas
+          <!-- ESTRUTURA PROFISSIONALIZADA DOS NÚMEROS DE AUTORIDADE -->
+          <div class="hero-authority-grid">
+            <div class="hero-stat-card">
+              <div class="hero-stat-number">8 Anos</div>
+              <div class="hero-stat-label">no Mercado Pet</div>
+            </div>
+            <div class="hero-stat-card">
+              <div class="hero-stat-number">+100</div>
+              <div class="hero-stat-label">Profissionais Capacitados</div>
+            </div>
+            <div class="hero-stat-card">
+              <div class="hero-stat-number">+1.000</div>
+              <div class="hero-stat-label">Famílias Atendidas</div>
+            </div>
           </div>
         </div>
 
         <div class="hero-image-wrap fade-in">
           <div class="hero-image-glow"></div>
-          <img src="../assets/tata-apontando-voce.png"
+          <img src="./assets/tata-apontando-voce.png"
             alt="Tata Pereira especialista em estruturação de creches e hospedagens pet" />
         </div>
       </div>
@@ -1652,10 +1788,12 @@
                 </p>
               </div>
 
-              <a class="card-btn" href="../operacao-sob-controle/index.html"
+              <a class="primary" href="./operacao-sob-controle/index.html"
                 onclick="trackProduct('operacao_sob_controle')">
-                CONHECER O DESAFIO
-                <span class="card-btn-arrow">→</span>
+                <span>CONHECER O DESAFIO</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
               </a>
             </article>
 
@@ -1670,10 +1808,12 @@
                 </p>
               </div>
 
-              <a class="card-btn" href="../minha-creche-estruturada/index.html"
+              <a class="primary" href="./minha-creche-estruturada/index.html"
                 onclick="trackProduct('minha_creche_estruturada')">
-                CONHECER O PROGRAMA
-                <span class="card-btn-arrow">→</span>
+                <span>CONHECER O PROGRAMA</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
               </a>
             </article>
           </div>
@@ -1693,10 +1833,12 @@
                 </p>
               </div>
 
-              <a class="card-btn" href="../profissao-dog-walker/index.html"
+              <a class="primary" href="./profissao-dog-walker/index.html"
                 onclick="trackProduct('profissao_dog_walker')">
-                CONHECER A FORMAÇÃO
-                <span class="card-btn-arrow">→</span>
+                <span>CONHECER A FORMAÇÃO</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
               </a>
             </article>
 
@@ -1710,10 +1852,12 @@
                 </p>
               </div>
 
-              <a class="card-btn" href="../monitor-creche-canina/index.html"
+              <a class="primary" href="./monitor-creche-canina/index.html"
                 onclick="trackProduct('monitor_creche_canina')">
-                CONHECER A FORMAÇÃO
-                <span class="card-btn-arrow">→</span>
+                <span>CONHECER A FORMAÇÃO</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
               </a>
             </article>
           </div>
@@ -1722,7 +1866,7 @@
     </section>
 
     <!-- =====================================================
-         5. BLOCO SOBRE O MÉTODO DOMUS (CASA DOMUS)
+         5. BLOCO SOBRE O MÉTODO DOMUS (CASA DOMUS MANTIDA)
     ====================================================== -->
     <section class="domus-section" id="metodo">
       <div class="container">
@@ -1738,7 +1882,6 @@
           </p>
         </div>
 
-        <!-- CASA DOMUS INTERATIVA -->
         <div class="domus-house-diagram fade-in">
           <div class="infographic-wrapper">
 
@@ -1921,56 +2064,58 @@
     </section>
 
     <!-- =====================================================
-         6. SOBRE A TATA (AZUL ESCURO)
+         6. SOBRE A TATA (AZUL ESCURO — DESIGN REFINADO)
     ====================================================== -->
     <section class="about" id="sobre">
       <div class="container about-grid">
         <div class="about-image-wrap fade-in">
-          <img src="../assets/mentoria-tata-dog.png"
+          <img src="./assets/mentoria-tata-dog.png"
             alt="Tata Pereira especialista em comportamento e negócios pet com cão" />
         </div>
 
         <div class="about-content fade-in">
+          <span class="about-badge">Especialista & Fundadora</span>
+
           <h2 class="section-title-navy">
             Quem está por trás desse trabalho
           </h2>
 
+          <p class="about-lead">
+            Especialista em comportamento canino, formação de profissionais e engenharia de processos para o mercado pet.
+          </p>
+
           <div class="about-story">
             <p>
-              Tata Pereira é especialista em comportamento canino, formação de profissionais e estruturação de negócios
-              pet.
+              Fundadora da <strong>Tata EducaCão</strong> e criadora do <strong>Método Domus</strong>, reúne vivência prática de chão de fábrica e visão estratégica para fazer creches e hospedagens operarem com máxima clareza e previsibilidade.
             </p>
             <p>
-              Fundadora da Tata EducaCão e criadora do Método Domus, reúne experiência prática na operação e visão de
-              processos para ajudar empresas e profissionais do mercado pet a atuarem com mais organização e clareza.
-            </p>
-            <p>
-              Sua trajetória reúne experiência prática dentro da operação e visão de processos. Ao longo de oito anos no
-              mercado pet, já atuou como pet sitter, dog walker, adestradora, monitora, supervisora e consultora de
-              creches. Antes disso, acumulou 13 anos de experiência no mercado corporativo.
-            </p>
-            <p>
-              É fundadora da Tata EducaCão, empresa de educação, comportamento e cuidados caninos que oferece
-              adestramento, escola para cães, passeios e pet sitter de forma integrada e personalizada.
-            </p>
-            <p>
-              Hoje, une comportamento, operação e processos para ajudar empresas e profissionais a construírem uma
-              atuação mais organizada e profissional.
+              Com mais de oito anos dedicados ao mercado pet, construiu sua jornada atuando diretamente como pet sitter, dog walker, adestradora, monitora, supervisora e consultora de creches. Antes dessa imersão, acumulou 13 anos de bagagem no ambiente corporativo, bagagem crucial para a criação de processos sólidos.
             </p>
           </div>
 
-          <ul class="about-highlights-list">
-            <li>8 anos no mercado pet</li>
-            <li>13 anos de experiência no mundo corporativo</li>
-            <li>Atuação como pet sitter, dog walker, adestradora, monitora, supervisora e consultora</li>
-            <li>+100 profissionais capacitados</li>
-            <li>+1.000 famílias atendidas</li>
-          </ul>
+          <div class="about-highlights-grid">
+            <div class="about-highlight-card">
+              <div class="about-highlight-icon">✓</div>
+              <div class="about-highlight-text">8 anos de atuação prática no mercado pet</div>
+            </div>
+            <div class="about-highlight-card">
+              <div class="about-highlight-icon">✓</div>
+              <div class="about-highlight-text">13 anos de bagagem no mundo corporativo</div>
+            </div>
+            <div class="about-highlight-card">
+              <div class="about-highlight-icon">✓</div>
+              <div class="about-highlight-text">Vivência completa: Pet Sitter, Walker, Monitora e Consultora</div>
+            </div>
+            <div class="about-highlight-card">
+              <div class="about-highlight-icon">✓</div>
+              <div class="about-highlight-text">+100 profissionais capacitados e +1.000 famílias atendidas</div>
+            </div>
+          </div>
 
-          <a class="btn-hero"
+          <a class="primary btn-hero"
             href="https://wa.me/5511999999999?text=Ol%C3%A1%20Tata!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20sua%20equipe."
             target="_blank" rel="noopener noreferrer" onclick="trackWhatsApp('about_button')">
-            FALAR COM A EQUIPE
+            <span>FALAR COM A EQUIPE</span>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
@@ -1980,24 +2125,27 @@
     </section>
 
     <!-- =====================================================
-         7. REDES SOCIAIS (ACOMPANHE A TATA)
+         7. REDES SOCIAIS (ACOMPANHE A TATA — ÍCONES PREMIUM)
     ====================================================== -->
     <section class="social-section" id="redes">
       <div class="container fade-in">
         <h2 class="social-title">Acompanhe a Tata</h2>
         <p class="social-desc">
-          Conteúdos sobre comportamento canino, rotina operacional, gestão e profissionalização do mercado pet.
+          Conteúdos diários sobre comportamento canino, rotina operacional, gestão e profissionalização do mercado pet.
         </p>
 
         <div class="social-buttons-row">
           <a class="btn-social-pill" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-            <span>📷</span> Instagram
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            <span>Instagram</span>
           </a>
           <a class="btn-social-pill" href="https://tiktok.com" target="_blank" rel="noopener noreferrer">
-            <span>🎵</span> TikTok
+            <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.56-1.36 1.48-1.45 2.47-.11 1.25.4 2.5 1.39 3.21.94.7 2.21.87 3.3.49 1.03-.34 1.87-1.19 2.22-2.22.1-.38.16-.78.16-1.18.02-3.78.01-7.57.01-11.35z"/></svg>
+            <span>TikTok</span>
           </a>
           <a class="btn-social-pill" href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-            <span>▶</span> YouTube
+            <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            <span>YouTube</span>
           </a>
         </div>
       </div>
@@ -2021,8 +2169,8 @@
             <div class="contact-card-box">
               <span>E-mail</span>
               <strong>contato@tatapereira.com</strong>
-              <a class="btn-contact-action" href="mailto:contato@tatapereira.com">
-                ENVIAR E-MAIL
+              <a class="primary" href="mailto:contato@tatapereira.com" style="min-height: 40px; font-size: 0.7rem;">
+                <span>ENVIAR E-MAIL</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
@@ -2032,10 +2180,10 @@
             <div class="contact-card-box">
               <span>WhatsApp Corporativo</span>
               <strong>Atendimento com a Equipe</strong>
-              <a class="btn-contact-action"
+              <a class="primary"
                 href="https://wa.me/5511999999999?text=Ol%C3%A1%20Tata!%20Vim%20pelo%20site%20e%20gostaria%20de%20conversar."
-                target="_blank" rel="noopener noreferrer" onclick="trackWhatsApp('contact_card')">
-                FALAR NO WHATSAPP
+                target="_blank" rel="noopener noreferrer" onclick="trackWhatsApp('contact_card')" style="min-height: 40px; font-size: 0.7rem;">
+                <span>FALAR NO WHATSAPP</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
@@ -2087,7 +2235,7 @@
                 placeholder="Como podemos te ajudar?"></textarea>
             </div>
 
-            <button type="submit" id="btn-submit-form" class="btn-form-submit">
+            <button type="submit" id="btn-submit-form" class="primary" style="margin-top: 10px;">
               <span>Enviar Mensagem</span>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M5 12h14M12 5l7 7-7 7" />
@@ -2107,10 +2255,10 @@
   <footer>
     <div class="container footer-inner">
       <div class="footer-brand">
-         <a href="#inicio" class="logo" aria-label="Tata Pereira - Início">
-        <img src="../assets/tata-logo-dog.png" alt="Tata Pereira Logo" />
-        <img src="../assets/tata-logo-nome.png" alt="Tata Pereira Logo" />
-      </a>
+        <a href="#inicio" class="footer-logo" aria-label="Tata Pereira - Início">
+          <img src="./assets/tata-logo-dog.png" alt="Tata Pereira Logo Ícone" />
+          <img src="./assets/tata-logo-nome.png" alt="Tata Pereira Logo Nome" />
+        </a>
         <span class="footer-tagline">Estruturação de creches e hospedagens pet</span>
       </div>
 
@@ -2122,9 +2270,15 @@
       </div>
 
       <div class="footer-social-icons">
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
-        <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">TikTok</a>
-        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">YouTube</a>
+        <a class="social-icon-btn" href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a class="social-icon-btn" href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.56-1.36 1.48-1.45 2.47-.11 1.25.4 2.5 1.39 3.21.94.7 2.21.87 3.3.49 1.03-.34 1.87-1.19 2.22-2.22.1-.38.16-.78.16-1.18.02-3.78.01-7.57.01-11.35z"/></svg>
+        </a>
+        <a class="social-icon-btn" href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
       </div>
     </div>
   </footer>
@@ -2144,18 +2298,31 @@
        JAVASCRIPT FUNCIONAL E RASTREAMENTO
   ======================================================== -->
   <script>
-    // --- Menu Mobile Hamburger ---
+    // --- Controle do Banner de Boas-Vindas ---
+    function closeWelcome() {
+      const welcomeBar = document.getElementById("welcome-bar");
+      if (welcomeBar) {
+        welcomeBar.classList.add("closed");
+        document.body.classList.add("no-welcome");
+      }
+    }
+
+    // --- Menu Mobile Hamburger e Acessibilidade ---
     const menuToggle = document.getElementById("menu-toggle");
     const mainNav = document.getElementById("main-nav");
     if (menuToggle && mainNav) {
       menuToggle.addEventListener("click", () => {
         const isOpen = mainNav.classList.toggle("mobile-open");
         menuToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        menuToggle.setAttribute("aria-label", isOpen ? "Fechar menu" : "Abrir menu");
+        menuToggle.innerHTML = isOpen ? "✕" : "☰";
       });
       mainNav.querySelectorAll("a").forEach(link => {
         link.addEventListener("click", () => {
           mainNav.classList.remove("mobile-open");
           menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.setAttribute("aria-label", "Abrir menu");
+          menuToggle.innerHTML = "☰";
         });
       });
     }
