@@ -201,7 +201,7 @@
     }
 
     /* =========================================================
-       EFEITO BOAS-VINDAS (WELCOME BANNER AJUSTADO)
+       EFEITO BOAS-VINDAS
        ========================================================= */
     .welcome-bar {
       background: linear-gradient(90deg, rgba(241, 191, 66, 0.25), rgba(10, 14, 40, 0.98), rgba(241, 191, 66, 0.25));
@@ -321,32 +321,29 @@
     }
 
     .header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 90px; /* Aumentado ligeiramente para acomodar a logo empilhada */
-}
-   .logo {
-  display: flex;
-  flex-direction: column; /* Organiza os elementos em coluna (um em cima do outro) */
-  align-items: center;     /* Centraliza o ícone e o texto horizontalmente */
-  justify-content: center;
-  gap: 4px;                /* Espaço reduzido entre a logo-dog e a logo-nome */
-}
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 84px;
+    }
 
-/* Opcional: Ajuste da altura das imagens para garantir proporção adequada no Header */
-.logo img:first-child {
-  height: 28px;            /* Altura para a logo-dog */
-  width: auto;
-}
+    /* LOGO COM ÍCONE EM CIMA DO NOME (CONFIGURADO) */
+    .logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2px;
+    }
 
-.logo img:last-child {
-  height: 18px;            /* Altura para a logo-nome */
-  width: auto;
-}
+    .logo img:first-child {
+      height: 26px;
+      width: auto;
+      object-fit: contain;
+    }
 
-    .logo img {
-      height: 34px;
+    .logo img:last-child {
+      height: 16px;
       width: auto;
       object-fit: contain;
     }
@@ -728,7 +725,7 @@
     }
 
     /* =========================================================
-       5. MÉTODO DOMUS COM A CASA DOMUS
+       5. MÉTODO DOMUS - REFACTOR RESPONSIVO MOBILE
        ========================================================= */
     .domus-section {
       background-color: var(--cream-base);
@@ -837,7 +834,7 @@
       height: 101%;
       pointer-events: none;
       z-index: 5;
-      display: block !important;
+      display: block;
     }
 
     .infographic-wrapper:hover .full-house-svg path {
@@ -1093,7 +1090,7 @@
     }
 
     /* =========================================================
-       6. SOBRE A TATA (AZUL ESCURO)
+       6. SOBRE A TATA
        ========================================================= */
     .about {
       background:
@@ -1414,12 +1411,18 @@
 
     .footer-logo {
       display: flex;
-      align-items: center;
-      gap: 10px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2px;
     }
 
-    .footer-logo img {
-      height: 30px;
+    .footer-logo img:first-child {
+      height: 24px;
+      width: auto;
+    }
+
+    .footer-logo img:last-child {
+      height: 14px;
       width: auto;
     }
 
@@ -1487,7 +1490,7 @@
     }
 
     /* =========================================================
-       RESPONSIVIDADE AJUSTADA PARA ECRÃS PEQUENOS (IPHONE SE)
+       RESPONSIVIDADE COMPLETA E CORRIGIDA PARA MOBILE
        ========================================================= */
     @media (max-width: 1024px) {
       .hero-grid {
@@ -1530,7 +1533,100 @@
       }
     }
 
-    /* FORMATO HORIZONTAL COMPACTO PARA STATS NO MOBILE */
+    /* REORDENAÇÃO E ADAPTAÇÃO DA CASA DOMUS NO MOBILE */
+    @media (max-width: 860px) {
+      /* Oculta o SVG rígido do desktop no mobile para evitar achatamento */
+      .infographic-wrapper .full-house-svg,
+      .infographic-wrapper .golden-lines-bg,
+      .infographic-wrapper .dots-pattern,
+      .infographic-wrapper .central-divider {
+        display: none !important;
+      }
+
+      /* Transforma o invólucro numa Estrutura de Casa Mobile em CSS Puro */
+      .infographic-wrapper {
+        background: #ffffff;
+        border: 2px solid var(--gold-yellow);
+        border-top: none;
+        border-radius: 0 0 18px 18px;
+        position: relative;
+        padding: 0;
+        margin-top: 50px; /* Espaço para o telhado em CSS */
+      }
+
+      /* Desenho do Telhado Triangular em CSS Puro no topo do card */
+      .infographic-wrapper::before {
+        content: '';
+        position: absolute;
+        top: -42px;
+        left: -2px;
+        right: -2px;
+        height: 42px;
+        background: var(--navy-blue);
+        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      }
+
+      .infographic-wrapper .house-content-layer {
+        padding: 24px 16px;
+      }
+
+      .infographic-wrapper .columns-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .infographic-wrapper .title-main {
+        font-size: 1.6rem;
+      }
+
+      .infographic-wrapper .pill-container {
+        font-size: 0.95rem;
+        padding: 4px 16px 4px 6px;
+      }
+
+      .infographic-wrapper .pill-icon-badge {
+        width: 30px;
+        height: 30px;
+      }
+
+      .infographic-wrapper .pill-icon-badge svg {
+        width: 16px;
+        height: 16px;
+      }
+
+      .infographic-wrapper .card-item {
+        padding: 14px 16px;
+      }
+
+      .infographic-wrapper .card-icon-wrap {
+        width: 40px;
+        height: 40px;
+      }
+
+      .infographic-wrapper .card-icon-wrap svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .infographic-wrapper .card-info h4 {
+        font-size: 0.95rem;
+      }
+
+      .infographic-wrapper .card-info p {
+        font-size: 0.8rem;
+      }
+
+      .infographic-wrapper .foundation-banner {
+        font-size: 0.78rem;
+        padding: 12px 14px;
+        line-height: 1.35;
+      }
+
+      .about-highlights-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 600px) {
       .hero-authority-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -1557,27 +1653,6 @@
       }
     }
 
-    /* MANTER ESTRUTURA COMPLETA DA CASA DOMUS NO MOBILE COM ROLAR SUAVE */
-    @media (max-width: 860px) {
-      .domus-house-diagram {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 10px;
-      }
-
-      .infographic-wrapper {
-        min-width: 680px;
-      }
-
-      .infographic-wrapper .house-content-layer {
-        padding: 70px 20px 0 20px;
-      }
-
-      .about-highlights-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
     @media (max-width: 768px) {
       section {
         padding: 60px 0;
@@ -1585,7 +1660,7 @@
 
       nav {
         position: fixed;
-        top: 76px;
+        top: 84px;
         left: 0;
         width: 100%;
         background: rgba(5, 7, 23, 0.98);
@@ -1893,7 +1968,7 @@
               <path d="M 70 260 C 120 180, 180 140, 220 60" stroke="#E0A020" stroke-width="1.2" />
             </svg>
 
-            <!-- DESENHO VETORIAL DA CASA MANTIDO INTEGRO -->
+            <!-- DESENHO VETORIAL DA CASA -->
             <svg class="full-house-svg" viewBox="0 0 940 640" fill="none" preserveAspectRatio="none">
               <path d="M 30 230 L 470 20 L 910 230" stroke="#0A192F" stroke-width="16" stroke-linecap="round"
                 stroke-linejoin="round" />
