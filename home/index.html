@@ -201,59 +201,6 @@
     }
 
     /* =========================================================
-       EFEITO BOAS-VINDAS
-       ========================================================= */
-    .welcome-bar {
-      background: linear-gradient(90deg, rgba(241, 191, 66, 0.25), rgba(10, 14, 40, 0.98), rgba(241, 191, 66, 0.25));
-      border-bottom: 1px solid var(--gold-border);
-      color: #fff;
-      padding: 8px 16px;
-      font-size: 12.5px;
-      font-weight: 600;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: relative;
-      z-index: 1002;
-      backdrop-filter: blur(12px);
-      transition: all 0.3s ease;
-    }
-
-    .welcome-bar.closed {
-      display: none;
-    }
-
-    .welcome-content {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .welcome-badge {
-      background: var(--gold-primary);
-      color: #050717;
-      font-size: 10px;
-      font-weight: 900;
-      text-transform: uppercase;
-      padding: 2px 7px;
-      border-radius: var(--radius-full);
-      letter-spacing: 0.5px;
-      flex-shrink: 0;
-    }
-
-    .welcome-close {
-      background: none;
-      border: none;
-      color: var(--navy-text-muted);
-      font-size: 16px;
-      cursor: pointer;
-      padding: 0 4px;
-      line-height: 1;
-    }
-
-    /* =========================================================
        CLASSE BOTÃO PRINCIPAL COM SHIMMER EFFECT
        ========================================================= */
     .primary {
@@ -435,11 +382,11 @@
     }
 
     /* =========================================================
-       2. HERO (PRIMEIRA DOBRA)
+       2. HERO (PRIMEIRA DOBRA) - AJUSTE DA IMAGEM FLUTUANTE
        ========================================================= */
     .hero {
       padding-top: 80px;
-      padding-bottom: 90px;
+      padding-bottom: 0px; /* Alinhado ao fundo para fixação visual */
       background:
         radial-gradient(circle at 75% 35%, rgba(241, 191, 66, 0.15) 0%, rgba(5, 7, 23, 0) 55%),
         radial-gradient(circle at 20% 80%, rgba(16, 21, 56, 0.9) 0%, rgba(5, 7, 23, 0) 65%),
@@ -451,8 +398,12 @@
     .hero-grid {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
-      align-items: center;
+      align-items: flex-end; /* Ancoragem visual no fundo */
       gap: 50px;
+    }
+
+    .hero-content {
+      padding-bottom: 90px;
     }
 
     .hero-tag {
@@ -530,23 +481,25 @@
       line-height: 1.25;
     }
 
+    /* FIXAÇÃO VISUAL DA IMAGEM PRINCIPAL */
     .hero-image-wrap {
       position: relative;
       display: flex;
       justify-content: center;
       align-items: flex-end;
-      padding: 10px;
+      padding: 0;
+      margin-bottom: -5px; /* Elimina folgas de renderização na base */
     }
 
     .hero-image-glow {
       position: absolute;
-      width: 400px;
-      height: 400px;
+      width: 420px;
+      height: 420px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(241, 191, 66, 0.18) 0%, rgba(241, 191, 66, 0.02) 60%, transparent 70%);
-      top: 50%;
+      background: radial-gradient(circle, rgba(241, 191, 66, 0.22) 0%, rgba(241, 191, 66, 0.03) 60%, transparent 70%);
+      bottom: 5%;
       left: 50%;
-      transform: translate(-50%, -45%);
+      transform: translateX(-50%);
       z-index: 1;
       pointer-events: none;
     }
@@ -554,9 +507,12 @@
     .hero-image-wrap img {
       position: relative;
       z-index: 2;
-      max-height: 550px;
+      max-height: 540px;
       object-fit: contain;
-      filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.65));
+      /* Mascaramento suave e sombra de apoio na base */
+      mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+      filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.8));
     }
 
     /* =========================================================
@@ -725,7 +681,7 @@
     }
 
     /* =========================================================
-       5. MÉTODO DOMUS - REFACTOR RESPONSIVO MOBILE
+       5. MÉTODO DOMUS
        ========================================================= */
     .domus-section {
       background-color: var(--cream-base);
@@ -1386,68 +1342,151 @@
     }
 
     /* =========================================================
-       9. FOOTER
+       9. FOOTER ALTAMENTE PROFISSIONALIZADO
        ========================================================= */
     footer {
-      background: var(--navy-base);
+      background: var(--navy-surface-1);
       color: var(--navy-text-muted);
-      padding: 50px 0 35px;
-      border-top: 1px solid var(--navy-border-subtle);
+      padding: 80px 0 30px;
+      border-top: 1px solid var(--navy-border-card);
+      position: relative;
     }
 
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+      opacity: 0.6;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      gap: 40px;
+      margin-bottom: 60px;
     }
 
     .footer-brand {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 16px;
     }
 
     .footer-logo {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 2px;
+      gap: 4px;
     }
 
     .footer-logo img:first-child {
-      height: 24px;
+      height: 28px;
       width: auto;
     }
 
     .footer-logo img:last-child {
-      height: 14px;
+      height: 16px;
       width: auto;
     }
 
     .footer-tagline {
-      font-size: 12px;
-      color: var(--navy-text-muted);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 24px;
-    }
-
-    .footer-links a {
       font-size: 13.5px;
       color: var(--navy-text-muted);
+      line-height: 1.6;
+      max-width: 320px;
     }
 
-    .footer-links a:hover {
+    .footer-heading {
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--navy-text-main);
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .footer-heading::after {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--gold-primary);
+      margin-top: 6px;
+      border-radius: var(--radius-full);
+    }
+
+    .footer-nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-nav-list a {
+      font-size: 14px;
+      color: var(--navy-text-muted);
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-nav-list a:hover {
       color: var(--gold-primary);
+      transform: translateX(3px);
+    }
+
+    .footer-contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 14px;
+    }
+
+    .footer-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--navy-text-muted);
+    }
+
+    .footer-contact-item svg {
+      width: 16px;
+      height: 16px;
+      color: var(--gold-primary);
+      flex-shrink: 0;
     }
 
     .footer-social-icons {
       display: flex;
       gap: 10px;
+      margin-top: 8px;
+    }
+
+    .footer-bottom {
+      padding-top: 30px;
+      border-top: 1px solid var(--navy-border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 12.5px;
+      color: var(--navy-text-muted);
+    }
+
+    .footer-legal-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .footer-legal-links a:hover {
+      color: var(--navy-text-main);
     }
 
     /* WHATSAPP FLUTUANTE */
@@ -1490,13 +1529,21 @@
     }
 
     /* =========================================================
-       RESPONSIVIDADE COMPLETA E CORRIGIDA PARA MOBILE
+       RESPONSIVIDADE COMPLETA
        ========================================================= */
     @media (max-width: 1024px) {
+      .hero {
+        padding-bottom: 60px;
+      }
+
       .hero-grid {
         grid-template-columns: 1fr;
         text-align: center;
         gap: 35px;
+      }
+
+      .hero-content {
+        padding-bottom: 0;
       }
 
       .hero-subheadline {
@@ -1509,6 +1556,11 @@
 
       .hero-authority-grid {
         margin: 28px auto 0 auto;
+      }
+
+      .hero-image-wrap img {
+        max-height: 440px;
+        margin: 0 auto;
       }
 
       .positioning-panel {
@@ -1531,11 +1583,14 @@
         grid-template-columns: 1fr;
         gap: 35px;
       }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
     }
 
-    /* REORDENAÇÃO E ADAPTAÇÃO DA CASA DOMUS NO MOBILE */
     @media (max-width: 860px) {
-      /* Oculta o SVG rígido do desktop no mobile para evitar achatamento */
       .infographic-wrapper .full-house-svg,
       .infographic-wrapper .golden-lines-bg,
       .infographic-wrapper .dots-pattern,
@@ -1543,7 +1598,6 @@
         display: none !important;
       }
 
-      /* Transforma o invólucro numa Estrutura de Casa Mobile em CSS Puro */
       .infographic-wrapper {
         background: #ffffff;
         border: 2px solid var(--gold-yellow);
@@ -1551,10 +1605,9 @@
         border-radius: 0 0 18px 18px;
         position: relative;
         padding: 0;
-        margin-top: 50px; /* Espaço para o telhado em CSS */
+        margin-top: 50px;
       }
 
-      /* Desenho do Telhado Triangular em CSS Puro no topo do card */
       .infographic-wrapper::before {
         content: '';
         position: absolute;
@@ -1651,6 +1704,17 @@
         min-height: 44px;
         padding: 0 10px;
       }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+      }
     }
 
     @media (max-width: 768px) {
@@ -1688,26 +1752,11 @@
       .form-row {
         grid-template-columns: 1fr;
       }
-
-      .footer-inner {
-        flex-direction: column;
-        text-align: center;
-        gap: 18px;
-      }
     }
   </style>
 </head>
 
 <body>
-  <!-- BANNER DE BOAS-VINDAS FLUTUANTE -->
-  <div class="welcome-bar" id="welcome-bar">
-    <div class="welcome-content">
-      <span class="welcome-badge">Bem-vinda</span>
-      <span>Transforme a gestão da sua creche ou hospedagem pet hoje mesmo!</span>
-    </div>
-    <button class="welcome-close" onclick="closeWelcome()" aria-label="Fechar aviso">✕</button>
-  </div>
-
   <!-- Google Tag Manager (noscript) -->
   <noscript>
     <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W4MNGWDW" height="0" width="0"
@@ -1715,7 +1764,7 @@
   </noscript>
 
   <!-- =======================================================
-       1. HEADER
+        1. HEADER
   ======================================================== -->
   <header id="site-header">
     <div class="container header-inner">
@@ -1760,7 +1809,7 @@
 
   <main id="inicio">
     <!-- =====================================================
-         2. HERO — PRIMEIRA DOBRA
+          2. HERO — PRIMEIRA DOBRA
     ====================================================== -->
     <section class="hero" id="inicio-section">
       <div class="container hero-grid">
@@ -1811,7 +1860,7 @@
     </section>
 
     <!-- =====================================================
-         3. SEÇÃO CURTA DE POSICIONAMENTO
+          3. SEÇÃO CURTA DE POSICIONAMENTO
     ====================================================== -->
     <section class="positioning" id="posicionamento">
       <div class="container">
@@ -1838,7 +1887,7 @@
     </section>
 
     <!-- =====================================================
-         4. SOLUÇÕES
+          4. SOLUÇÕES
     ====================================================== -->
     <section class="solutions" id="solucoes">
       <div class="container">
@@ -1941,7 +1990,7 @@
     </section>
 
     <!-- =====================================================
-         5. BLOCO SOBRE O MÉTODO DOMUS (CASA DOMUS)
+          5. BLOCO SOBRE O MÉTODO DOMUS (CASA DOMUS)
     ====================================================== -->
     <section class="domus-section" id="metodo">
       <div class="container">
@@ -2139,7 +2188,7 @@
     </section>
 
     <!-- =====================================================
-         6. SOBRE A TATA
+          6. SOBRE A TATA
     ====================================================== -->
     <section class="about" id="sobre">
       <div class="container about-grid">
@@ -2200,7 +2249,7 @@
     </section>
 
     <!-- =====================================================
-         7. REDES SOCIAIS (ACOMPANHE A TATA)
+          7. REDES SOCIAIS (ACOMPANHE A TATA)
     ====================================================== -->
     <section class="social-section" id="redes">
       <div class="container fade-in">
@@ -2227,7 +2276,7 @@
     </section>
 
     <!-- =====================================================
-         8. CONTATO
+          8. CONTATO
     ====================================================== -->
     <section class="contact" id="contato">
       <div class="container contact-grid">
@@ -2325,35 +2374,76 @@
   </main>
 
   <!-- =======================================================
-       9. FOOTER
+        9. FOOTER PROFISSIONALIZADO
   ======================================================== -->
   <footer>
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <a href="#inicio" class="footer-logo" aria-label="Tata Pereira - Início">
-          <img src="./assets/tata-logo-dog.png" alt="Tata Pereira Logo Ícone" />
-          <img src="./assets/tata-logo-nome.png" alt="Tata Pereira Logo Nome" />
-        </a>
-        <span class="footer-tagline">Estruturação de creches e hospedagens pet</span>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#inicio" class="footer-logo" aria-label="Tata Pereira - Início">
+            <img src="./assets/tata-logo-dog.png" alt="Tata Pereira Logo Ícone" />
+            <img src="./assets/tata-logo-nome.png" alt="Tata Pereira Logo Nome" />
+          </a>
+          <p class="footer-tagline">
+            Estruturação de processos, gestão operacional e capacitação profissional para creches e hospedagens pet.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Navegação</h4>
+          <ul class="footer-nav-list">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#posicionamento">O Conceito</a></li>
+            <li><a href="#metodo">Método Domus</a></li>
+            <li><a href="#sobre">Sobre a Tata</a></li>
+            <li><a href="#contato">Contato</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Soluções</h4>
+          <ul class="footer-nav-list">
+            <li><a href="./operacao-sob-controle/index.html">Operação Sob Controle</a></li>
+            <li><a href="./minha-creche-estruturada/index.html">Minha Creche Estruturada</a></li>
+            <li><a href="./profissao-dog-walker/index.html">Profissão Dog Walker</a></li>
+            <li><a href="./monitor-creche-canina/index.html">Monitor de Creche Canina</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Atendimento</h4>
+          <div class="footer-contact-info">
+            <div class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>contato@tatapereira.com</span>
+            </div>
+            <div class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-9 8.5 9.4 9.4 0 0 1-4-.9L3 21l1.9-4.7A8.4 8.4 0 0 1 3 11.5 8.5 8.5 0 0 1 12 3a8.5 8.5 0 0 1 9 8.5Z"/></svg>
+              <span>Atendimento via WhatsApp</span>
+            </div>
+            <div class="footer-social-icons">
+              <a class="social-icon-btn" href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </a>
+              <a class="social-icon-btn" href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.56-1.36 1.48-1.45 2.47-.11 1.25.4 2.5 1.39 3.21.94.7 2.21.87 3.3.49 1.03-.34 1.87-1.19 2.22-2.22.1-.38.16-.78.16-1.18.02-3.78.01-7.57.01-11.35z"/></svg>
+              </a>
+              <a class="social-icon-btn" href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="footer-links">
-        <a href="#inicio">Início</a>
-        <a href="#solucoes">Soluções</a>
-        <a href="#sobre">Sobre</a>
-        <a href="#contato">Contato</a>
-      </div>
-
-      <div class="footer-social-icons">
-        <a class="social-icon-btn" href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </a>
-        <a class="social-icon-btn" href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-          <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.82.56-1.36 1.48-1.45 2.47-.11 1.25.4 2.5 1.39 3.21.94.7 2.21.87 3.3.49 1.03-.34 1.87-1.19 2.22-2.22.1-.38.16-.78.16-1.18.02-3.78.01-7.57.01-11.35z"/></svg>
-        </a>
-        <a class="social-icon-btn" href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-          <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-        </a>
+      <div class="footer-bottom">
+        <div>
+          © 2026 Tata Pereira. Todos os direitos reservados.
+        </div>
+        <div class="footer-legal-links">
+          <a href="#">Termos de Uso</a>
+          <a href="#">Política de Privacidade</a>
+        </div>
       </div>
     </div>
   </footer>
@@ -2370,17 +2460,9 @@
   </a>
 
   <!-- =======================================================
-       JAVASCRIPT FUNCIONAL E RASTREAMENTO
+        JAVASCRIPT FUNCIONAL E RASTREAMENTO
   ======================================================== -->
   <script>
-    // --- Controle do Banner de Boas-Vindas ---
-    function closeWelcome() {
-      const welcomeBar = document.getElementById("welcome-bar");
-      if (welcomeBar) {
-        welcomeBar.classList.add("closed");
-      }
-    }
-
     // --- Menu Mobile Hamburger e Acessibilidade ---
     const menuToggle = document.getElementById("menu-toggle");
     const mainNav = document.getElementById("main-nav");
