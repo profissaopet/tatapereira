@@ -1549,7 +1549,7 @@
     }
 
     /* =========================================================
-       RESPONSIVIDADE COMPLETA E AJUSTES DE ESPAÇAMENTO MOBILE
+       RESPONSIVIDADE COMPLETA E ELIMINAÇÃO DE ESPAÇOS EM MOBILE
        ========================================================= */
     @media (max-width: 1024px) {
       .hero-grid {
@@ -1689,15 +1689,21 @@
 
     @media (max-width: 768px) {
       section {
-        padding: 45px 0; /* Reduz padding global de seções no mobile */
+        padding: 45px 0;
       }
 
+      /* REMOVE O ESPAÇO ENTRE NAVBAR E O CONTEÚDO INICIAL NO MOBILE */
       .hero {
-        padding-top: 20px !important; /* Elimina o vão excessivo no topo da dobra inicial */
-        padding-bottom: 50px !important;
+        padding-top: 0px !important;
+        padding-bottom: 45px !important;
+      }
+
+      .hero-content {
+        padding-top: 15px;
       }
 
       .hero-tag {
+        margin-top: 0;
         margin-bottom: 8px;
       }
 
