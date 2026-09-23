@@ -221,6 +221,7 @@
       letter-spacing: 0.5px;
       gap: 8px;
       position: relative;
+      z-index: 10;
       overflow: hidden;
       transition: var(--transition);
       text-align: center;
@@ -1179,7 +1180,7 @@
       color: var(--cream-text-main);
       border-top: 1px solid var(--cream-border-card);
       padding-top: 80px;
-      padding-bottom: 0px; /* Vão inferior removido */
+      padding-bottom: 0px;
       text-align: center;
     }
 
@@ -1236,7 +1237,7 @@
     .contact {
       background-color: var(--cream-base);
       color: var(--cream-text-main);
-      padding-top: 25px; /* Aproxima os blocos */
+      padding-top: 25px;
       padding-bottom: 90px;
     }
 
@@ -1508,12 +1509,12 @@
       color: var(--navy-text-main);
     }
 
-    /* WHATSAPP FLUTUANTE */
+    /* WHATSAPP FLUTUANTE (SOBREPOSIÇÃO AJUSTADA) */
     .whatsapp-float {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      z-index: 999;
+      z-index: 99;
       width: 54px;
       height: 54px;
       border-radius: 50%;
@@ -1726,6 +1727,17 @@
     @media (max-width: 768px) {
       section {
         padding: 60px 0;
+      }
+
+      .whatsapp-float {
+        bottom: 25px;
+        right: 16px;
+        width: 48px;
+        height: 48px;
+      }
+
+      .btn-hero {
+        margin-bottom: 10px;
       }
 
       nav {
