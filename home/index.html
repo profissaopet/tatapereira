@@ -1549,7 +1549,7 @@
     }
 
     /* =========================================================
-       RESPONSIVIDADE COMPLETA E CORREÇÃO DE ENQUADRAMENTO MOBILE
+       RESPONSIVIDADE COMPLETA E REMOÇÃO TOTAL DO VÃO NO MOBILE
        ========================================================= */
     @media (max-width: 1024px) {
       .hero-grid {
@@ -1692,19 +1692,20 @@
         padding: 40px 0;
       }
 
-      /* COMPENSAÇÃO EXATA DA NAVBAR FIXA (84px) PARA ELIMINAR O VÃO E EVITAR SOBREPOSIÇÃO */
+      /* ZERA COMPLETAMENTE O ESPAÇO SUPERIOR E MARGENS PARASITAS NO MOBILE */
       .hero {
-        padding-top: 84px !important;
+        padding-top: 0px !important;
         padding-bottom: 40px !important;
       }
 
       .hero-content {
-        padding-top: 10px;
+        padding-top: 0px !important;
+        margin-top: 0px !important;
       }
 
       .hero-tag {
-        margin-top: 0;
-        margin-bottom: 12px;
+        margin-top: 15px !important;
+        margin-bottom: 12px !important;
       }
 
       .whatsapp-float {
@@ -1714,7 +1715,7 @@
         height: 48px;
       }
 
-      /* OCULTA O MENU DROPDOWN TOTALMENTE QUANDO FECHADO */
+      /* MENU DROPDOWN TOTALMENTE RECOLHIDO E OCULTO QUANDO FECHADO */
       nav {
         position: fixed;
         top: 84px;
@@ -1728,13 +1729,15 @@
         border-bottom: 1px solid var(--navy-border-card);
         transform: translateY(-150%);
         opacity: 0;
+        visibility: hidden;
         pointer-events: none;
-        transition: transform 0.3s ease, opacity 0.3s ease;
+        transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
       }
 
       nav.mobile-open {
         transform: translateY(0);
         opacity: 1;
+        visibility: visible;
         pointer-events: auto;
       }
 
