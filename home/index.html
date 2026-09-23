@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -1549,7 +1549,7 @@
     }
 
     /* =========================================================
-       RESPONSIVIDADE COMPLETA E ELIMINAÇÃO DE ESPAÇOS EM MOBILE
+       RESPONSIVIDADE COMPLETA E CORREÇÃO DE ENQUADRAMENTO MOBILE
        ========================================================= */
     @media (max-width: 1024px) {
       .hero-grid {
@@ -1689,22 +1689,22 @@
 
     @media (max-width: 768px) {
       section {
-        padding: 45px 0;
+        padding: 40px 0;
       }
 
-      /* REMOVE O ESPAÇO ENTRE NAVBAR E O CONTEÚDO INICIAL NO MOBILE */
+      /* COMPENSAÇÃO EXATA DA NAVBAR FIXA (84px) PARA ELIMINAR O VÃO E EVITAR SOBREPOSIÇÃO */
       .hero {
-        padding-top: 0px !important;
-        padding-bottom: 45px !important;
+        padding-top: 84px !important;
+        padding-bottom: 40px !important;
       }
 
       .hero-content {
-        padding-top: 15px;
+        padding-top: 10px;
       }
 
       .hero-tag {
         margin-top: 0;
-        margin-bottom: 8px;
+        margin-bottom: 12px;
       }
 
       .whatsapp-float {
@@ -1714,6 +1714,7 @@
         height: 48px;
       }
 
+      /* OCULTA O MENU DROPDOWN TOTALMENTE QUANDO FECHADO */
       nav {
         position: fixed;
         top: 84px;
@@ -1722,14 +1723,19 @@
         background: rgba(5, 7, 23, 0.98);
         backdrop-filter: blur(20px);
         flex-direction: column;
+        padding: 24px 20px;
         gap: 16px;
         border-bottom: 1px solid var(--navy-border-card);
-        transform: translateY(-130%);
-        transition: transform 0.3s ease;
+        transform: translateY(-150%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.3s ease, opacity 0.3s ease;
       }
 
       nav.mobile-open {
         transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
       }
 
       .menu-toggle {
