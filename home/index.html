@@ -382,10 +382,10 @@
     }
 
     /* =========================================================
-       2. HERO (PRIMEIRA DOBRA) - IMAGEM DENTRO DE CARD GLASS
+       2. HERO (PRIMEIRA DOBRA)
        ========================================================= */
     .hero {
-      padding-top: 80px;
+      padding-top: 40px;
       padding-bottom: 90px;
       background:
         radial-gradient(circle at 75% 35%, rgba(241, 191, 66, 0.15) 0%, rgba(5, 7, 23, 0) 55%),
@@ -477,7 +477,7 @@
       line-height: 1.25;
     }
 
-    /* CARD DE ENQUADRAMENTO DA MENTORA (INICIA DA BASE DO CARD) */
+    /* CARD DE ENQUADRAMENTO DA MENTORA */
     .hero-image-wrap {
       position: relative;
       display: flex;
@@ -1173,13 +1173,13 @@
     }
 
     /* =========================================================
-       7. REDES SOCIAIS & 8. CONTATO (ESPAÇAMENTO OTIMIZADO)
+       7. REDES SOCIAIS & 8. CONTATO
        ========================================================= */
     .social-section {
       background-color: var(--cream-base);
       color: var(--cream-text-main);
       border-top: 1px solid var(--cream-border-card);
-      padding-top: 80px;
+      padding-top: 60px;
       padding-bottom: 0px;
       text-align: center;
     }
@@ -1509,7 +1509,7 @@
       color: var(--navy-text-main);
     }
 
-    /* WHATSAPP FLUTUANTE (SOBREPOSIÇÃO AJUSTADA) */
+    /* WHATSAPP FLUTUANTE */
     .whatsapp-float {
       position: fixed;
       bottom: 20px;
@@ -1549,7 +1549,7 @@
     }
 
     /* =========================================================
-       RESPONSIVIDADE COMPLETA
+       RESPONSIVIDADE COMPLETA E AJUSTES DE ESPAÇAMENTO MOBILE
        ========================================================= */
     @media (max-width: 1024px) {
       .hero-grid {
@@ -1687,6 +1687,59 @@
       }
     }
 
+    @media (max-width: 768px) {
+      section {
+        padding: 45px 0; /* Reduz padding global de seções no mobile */
+      }
+
+      .hero {
+        padding-top: 20px !important; /* Elimina o vão excessivo no topo da dobra inicial */
+        padding-bottom: 50px !important;
+      }
+
+      .hero-tag {
+        margin-bottom: 8px;
+      }
+
+      .whatsapp-float {
+        bottom: 20px;
+        right: 16px;
+        width: 48px;
+        height: 48px;
+      }
+
+      nav {
+        position: fixed;
+        top: 84px;
+        left: 0;
+        width: 100%;
+        background: rgba(5, 7, 23, 0.98);
+        backdrop-filter: blur(20px);
+        flex-direction: column;
+        padding: 24px 20px;
+        gap: 16px;
+        border-bottom: 1px solid var(--navy-border-card);
+        transform: translateY(-130%);
+        transition: transform 0.3s ease;
+      }
+
+      nav.mobile-open {
+        transform: translateY(0);
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .header-social {
+        display: none;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 600px) {
       .hero-authority-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -1721,54 +1774,6 @@
         flex-direction: column;
         text-align: center;
         gap: 12px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      section {
-        padding: 60px 0;
-      }
-
-      .whatsapp-float {
-        bottom: 25px;
-        right: 16px;
-        width: 48px;
-        height: 48px;
-      }
-
-      .btn-hero {
-        margin-bottom: 10px;
-      }
-
-      nav {
-        position: fixed;
-        top: 84px;
-        left: 0;
-        width: 100%;
-        background: rgba(5, 7, 23, 0.98);
-        backdrop-filter: blur(20px);
-        flex-direction: column;
-        padding: 24px 20px;
-        gap: 16px;
-        border-bottom: 1px solid var(--navy-border-card);
-        transform: translateY(-130%);
-        transition: transform 0.3s ease;
-      }
-
-      nav.mobile-open {
-        transform: translateY(0);
-      }
-
-      .menu-toggle {
-        display: flex;
-      }
-
-      .header-social {
-        display: none;
-      }
-
-      .form-row {
-        grid-template-columns: 1fr;
       }
     }
   </style>
