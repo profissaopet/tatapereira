@@ -38,7 +38,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="./assets/tata-logo-dog.png" />
 
-  <!-- Google Fonts: Inter & Montserrat (Identidade Visual da Home) -->
+  <!-- Google Fonts: Inter & Montserrat -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -68,7 +68,7 @@
     gtag('config', 'G-7Y6MYXW5X3');
   </script>
 
-  <!-- Schema.org Dados Estruturados (JSON-LD) -->
+  <!-- Schema.org -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -101,10 +101,10 @@
 
   <style>
     /* =========================================================
-       DESIGN SYSTEM - MISTURA DA HOME COM OPERAÇÃO SOB CONTROLE
+       DESIGN SYSTEM - DUAL PALETTE (NAVY & CREAM CHAMPAGNE)
        ========================================================= */
     :root {
-      /* PALETA DA HOME */
+      /* PALETA ESCURA (NAVY) */
       --navy-base: #050717;
       --navy-surface-1: #0a0e28;
       --navy-surface-2: #101538;
@@ -117,16 +117,22 @@
       --navy-border-subtle: rgba(255, 255, 255, 0.08);
       --navy-border-card: rgba(255, 255, 255, 0.12);
 
+      /* PALETA CLARA (CREAM / CHAMPAGNE) - PARA BREAK DE SEÇÃO */
+      --cream-base: #fcfaf6;
+      --cream-card: #ffffff;
+      --cream-text-main: #0a0e28;
+      --cream-text-muted: #475569;
+      --cream-border-card: #ebdcc8;
+
       /* ACENTOS E IDENTIDADE */
       --gold-primary: #f1bf42;
       --gold-hover: #dfa82e;
       --gold-muted: rgba(241, 191, 66, 0.14);
       --gold-border: rgba(241, 191, 66, 0.35);
-      --gold-glow: rgba(241, 191, 66, 0.28);
       --gold-dark: #b58e1c;
 
-      --accent-red: #ff5252;
-      --accent-green: #2ecc71;
+      --accent-red: #ef4444;
+      --accent-green: #10b981;
 
       /* RAIOS E SOMBRAS */
       --radius-sm: 10px;
@@ -137,6 +143,7 @@
       --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.15);
       --shadow-md: 0 12px 35px rgba(0, 0, 0, 0.28);
       --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.4);
+      --shadow-cream: 0 12px 30px rgba(10, 14, 40, 0.05);
 
       --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -191,13 +198,99 @@
     }
 
     section {
-      padding: 90px 0;
+      padding: 95px 0;
       position: relative;
-      border-bottom: 1px solid var(--navy-border-subtle);
     }
 
     /* =========================================================
-       BOTÃO DA HOME COM SHIMMER EFFECT
+       CLASSES DE SEÇÃO CLARA (CREAM / CHAMPAGNE BREAK)
+       ========================================================= */
+    .section-cream {
+      background-color: var(--cream-base);
+      color: var(--cream-text-main);
+      border-top: 1px solid var(--cream-border-card);
+      border-bottom: 1px solid var(--cream-border-card);
+    }
+
+    .section-cream h2,
+    .section-cream h3 {
+      color: var(--cream-text-main);
+    }
+
+    .section-cream .section-kicker {
+      color: var(--gold-dark);
+    }
+
+    .section-cream .section-lead {
+      color: var(--cream-text-muted);
+    }
+
+    .section-cream .bullet-card {
+      background: var(--cream-card);
+      border: 1.5px solid var(--cream-border-card);
+      color: var(--cream-text-main);
+      box-shadow: var(--shadow-cream);
+    }
+
+    .section-cream .bullet-card:hover {
+      border-color: var(--gold-dark);
+      transform: translateY(-3px);
+    }
+
+    .section-cream .bullet-card .check {
+      background: rgba(207, 164, 38, 0.15);
+      color: var(--gold-dark);
+    }
+
+    .section-cream .audience-card {
+      background: var(--cream-card);
+      border-left: 4px solid var(--gold-dark);
+      border-top: 1px solid var(--cream-border-card);
+      border-right: 1px solid var(--cream-border-card);
+      border-bottom: 1px solid var(--cream-border-card);
+      color: var(--cream-text-main);
+      box-shadow: var(--shadow-cream);
+    }
+
+    .section-cream .audience-card:hover {
+      border-left-color: var(--cream-text-main);
+    }
+
+    .section-cream .audience-card svg {
+      color: var(--gold-dark);
+    }
+
+    .section-cream .flow-card {
+      background: var(--cream-card);
+      border: 1.5px solid var(--cream-border-card);
+      color: var(--cream-text-main);
+      box-shadow: var(--shadow-cream);
+    }
+
+    .section-cream .flow-card small {
+      color: var(--gold-dark);
+    }
+
+    .section-cream .faq-item {
+      background: var(--cream-card);
+      border: 1.5px solid var(--cream-border-card);
+      box-shadow: var(--shadow-cream);
+    }
+
+    .section-cream .faq-trigger {
+      color: var(--cream-text-main);
+    }
+
+    .section-cream .faq-trigger svg {
+      color: var(--gold-dark);
+    }
+
+    .section-cream .faq-content {
+      color: var(--cream-text-muted);
+    }
+
+    /* =========================================================
+       BOTÃO PRINCIPAL COM SHIMMER EFFECT
        ========================================================= */
     .primary {
       display: inline-flex;
@@ -293,7 +386,7 @@
     }
 
     /* =========================================================
-       2. HERO
+       2. HERO (ESCURO)
        ========================================================= */
     .hero-new {
       padding-top: 60px;
@@ -303,6 +396,7 @@
         radial-gradient(circle at 20% 80%, rgba(16, 21, 56, 0.9) 0%, transparent 65%),
         var(--navy-base);
       text-align: center;
+      border-bottom: 1px solid var(--navy-border-subtle);
     }
 
     .brand-name {
@@ -387,7 +481,7 @@
     }
 
     /* =========================================================
-       3. GRIDS & CARDS ESTILO HOME
+       3. ESTRUTURA GERAL DE SEÇÕES
        ========================================================= */
     .section-kicker {
       font-size: 11px;
@@ -461,22 +555,22 @@
     }
 
     .experience-box {
-      background: var(--navy-surface-2);
+      background: #f1edfa;
       border-radius: var(--radius-md);
       padding: 30px;
       max-width: 800px;
       margin: 35px auto 0;
-      border-left: 5px solid var(--gold-primary);
-      box-shadow: var(--shadow-md);
+      border-left: 5px solid var(--gold-dark);
+      box-shadow: var(--shadow-cream);
     }
 
     .experience-box p {
-      color: var(--navy-text-muted);
+      color: var(--cream-text-muted);
       font-size: 1rem;
     }
 
     .experience-box p strong {
-      color: var(--navy-text-main);
+      color: var(--cream-text-main);
     }
 
     /* =========================================================
@@ -509,8 +603,6 @@
 
     .audience-card:hover {
       transform: translateX(4px);
-      background: var(--navy-card-hover);
-      border-left-color: #ffffff;
     }
 
     .audience-card svg {
@@ -519,7 +611,7 @@
     }
 
     /* =========================================================
-       5. DO IMPROVISO À CLAREZA
+       5. DO IMPROVISO À CLAREZA (ESCURO)
        ========================================================= */
     .compare-block-title {
       font-size: clamp(22px, 3vw, 32px);
@@ -560,7 +652,7 @@
     }
 
     /* =========================================================
-       6. JORNADA AO VIVO
+       6. JORNADA AO VIVO (ESCURO)
        ========================================================= */
     .journey {
       max-width: 860px;
@@ -614,12 +706,8 @@
     }
 
     /* =========================================================
-       7. FLUXO
+       7. FLUXO (CLARO)
        ========================================================= */
-    .flow-section {
-      background: radial-gradient(circle at center, rgba(241, 191, 66, 0.05) 0%, transparent 60%);
-    }
-
     .flow-grid {
       max-width: 980px;
       margin: 0 auto;
@@ -632,10 +720,7 @@
       position: relative;
       text-align: center;
       padding: 28px 20px;
-      background: var(--navy-card);
-      border: 1.5px solid var(--gold-border);
-      border-radius: var(--radius-lg);
-      backdrop-filter: blur(12px);
+
     }
 
     .flow-card:not(:last-child)::after {
@@ -644,20 +729,10 @@
       right: -16px;
       top: 50%;
       transform: translateY(-50%);
-      color: var(--gold-primary);
+      color: var(--gold-dark);
       font-size: 1.5rem;
       font-weight: 900;
       z-index: 2;
-    }
-
-    .flow-card small {
-      color: var(--gold-primary);
-      display: block;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: 800;
-      font-size: 0.72rem;
     }
 
     .flow-card strong {
@@ -666,7 +741,7 @@
     }
 
     /* =========================================================
-       8. PREPARAÇÃO & BÔNUS
+       8. PREPARAÇÃO & BÔNUS (ESCURO)
        ========================================================= */
     .prep-grid {
       max-width: 980px;
@@ -709,7 +784,7 @@
     }
 
     /* =========================================================
-       9. SOBRE A TATA
+       9. SOBRE A TATA (ESCURO)
        ========================================================= */
     .bio-wrapper {
       display: grid;
@@ -766,7 +841,7 @@
     }
 
     /* =========================================================
-       10. OPERAÇÃO IMPROVISADA X ESTRUTURADA
+       10. OPERAÇÃO IMPROVISADA X ESTRUTURADA (ESCURO)
        ========================================================= */
     .comparison-grid {
       display: grid;
@@ -803,7 +878,7 @@
     }
 
     .comp-header .icon-neg {
-      background: rgba(255, 82, 82, 0.12);
+      background: rgba(239, 68, 68, 0.12);
       color: var(--accent-red);
       width: 32px;
       height: 32px;
@@ -814,7 +889,7 @@
     }
 
     .comp-header .icon-pos {
-      background: rgba(46, 204, 113, 0.12);
+      background: rgba(16, 185, 129, 0.12);
       color: var(--accent-green);
       width: 32px;
       height: 32px;
@@ -853,12 +928,14 @@
     }
 
     /* =========================================================
-       11. OFERTA & PREÇO
+       11. OFERTA & PREÇO (ESCURO)
        ========================================================= */
     .price-section {
       background: radial-gradient(circle at center, rgba(16, 21, 56, 0.9) 0%, var(--navy-base) 100%);
       text-align: center;
       padding: 90px 0;
+      border-top: 1px solid var(--navy-border-subtle);
+      border-bottom: 1px solid var(--navy-border-subtle);
     }
 
     .price-card {
@@ -953,7 +1030,7 @@
     }
 
     /* =========================================================
-       12. FAQ ACCORDION
+       12. FAQ ACCORDION (CLARO)
        ========================================================= */
     .faq-wrapper {
       max-width: 820px;
@@ -964,11 +1041,9 @@
     }
 
     .faq-item {
-      background: var(--navy-card);
       border-radius: var(--radius-md);
-      border: 1.5px solid var(--navy-border-card);
       overflow: hidden;
-      backdrop-filter: blur(12px);
+      transition: var(--transition);
     }
 
     .faq-trigger {
@@ -977,7 +1052,6 @@
       border: none;
       padding: 20px 24px;
       text-align: left;
-      color: var(--navy-text-main);
       font-size: 1rem;
       font-weight: 700;
       cursor: pointer;
@@ -990,7 +1064,6 @@
 
     .faq-trigger svg {
       transition: var(--transition);
-      color: var(--gold-primary);
       flex-shrink: 0;
     }
 
@@ -1003,7 +1076,6 @@
       max-height: 0;
       overflow: hidden;
       transition: all 0.3s cubic-bezier(0, 1, 0, 1);
-      color: var(--navy-text-muted);
       font-size: 0.92rem;
       line-height: 1.65;
     }
@@ -1127,7 +1199,7 @@
   </noscript>
 
   <!-- =======================================================
-       1. TOP BAR DE IMERSÃO FIXA
+       1. TOP BAR DE IMERSÃO FIXA (NAVY)
   ======================================================== -->
   <div class="immersion-bar">
     <div class="container">
@@ -1146,7 +1218,7 @@
   </div>
 
   <!-- =======================================================
-       2. HERO
+       2. HERO (NAVY)
   ======================================================== -->
   <header class="hero-new">
     <div class="container">
@@ -1182,12 +1254,12 @@
   </header>
 
   <!-- =======================================================
-       3. O PROBLEMA
+       3. O PROBLEMA (SEÇÃO CLARA - CREAM BREAK 1)
   ======================================================== -->
-  <section>
+  <section class="section-cream">
     <div class="container">
       <div class="section-kicker">O PROBLEMA</div>
-      <h2>A experiência ajuda. <span class="gold">Mas ela não pode ser o único critério.</span></h2>
+      <h2>A experiência ajuda. <span>Mas ela não pode ser o único critério.</span></h2>
       <p class="section-lead">Sem um processo claro:</p>
 
       <div class="bullet-grid">
@@ -1206,7 +1278,7 @@
   </section>
 
   <!-- =======================================================
-       4. RESULTADO
+       4. RESULTADO (NAVY)
   ======================================================== -->
   <section>
     <div class="container">
@@ -1232,9 +1304,9 @@
   </section>
 
   <!-- =======================================================
-       5. PARA QUEM É
+       5. PARA QUEM É (SEÇÃO CLARA - CREAM BREAK 2)
   ======================================================== -->
-  <section>
+  <section class="section-cream">
     <div class="container">
       <div class="section-kicker">PARA QUEM É</div>
       <h2>Essa imersão é para você que:</h2>
@@ -1265,7 +1337,7 @@
   </section>
 
   <!-- =======================================================
-       6. COMPARATIVO VISUAL
+       6. COMPARATIVO VISUAL (NAVY)
   ======================================================== -->
   <section>
     <div class="container text-center">
@@ -1290,7 +1362,7 @@
   </section>
 
   <!-- =======================================================
-       7. JORNADA AO VIVO
+       7. JORNADA AO VIVO (NAVY)
   ======================================================== -->
   <section>
     <div class="container">
@@ -1339,9 +1411,9 @@
   </section>
 
   <!-- =======================================================
-       8. FLUXO
+       8. FLUXO (SEÇÃO CLARA - CREAM BREAK 3)
   ======================================================== -->
-  <section class="flow-section">
+  <section class="section-cream">
     <div class="container">
       <div class="section-kicker">A LÓGICA DA IMERSÃO</div>
       <h2>Tudo conectado para você começar a estruturar seu processo</h2>
@@ -1364,7 +1436,7 @@
   </section>
 
   <!-- =======================================================
-       9. PREPARAÇÃO & ENTREGÁVEIS
+       9. PREPARAÇÃO & ENTREGÁVEIS (NAVY)
   ======================================================== -->
   <section>
     <div class="container">
@@ -1408,7 +1480,7 @@
   </section>
 
   <!-- =======================================================
-       10. QUEM CONDUZ
+       10. QUEM CONDUZ (NAVY)
   ======================================================== -->
   <section>
     <div class="container">
@@ -1444,7 +1516,7 @@
   </section>
 
   <!-- =======================================================
-       11. COMPARATIVO DE OPERAÇÃO
+       11. COMPARATIVO DE OPERAÇÃO (NAVY)
   ======================================================== -->
   <section>
     <div class="container">
@@ -1482,7 +1554,7 @@
   </section>
 
   <!-- =======================================================
-       12. TUDO O QUE VOCÊ RECEBE
+       12. TUDO O QUE VOCÊ RECEBE (NAVY)
   ======================================================== -->
   <section>
     <div class="container">
@@ -1509,7 +1581,7 @@
   </section>
 
   <!-- =======================================================
-       13. SEÇÃO DE OFERTA & PREÇO (COM TESTE A/B)
+       13. SEÇÃO DE OFERTA & PREÇO (NAVY HIGHLIGHT)
   ======================================================== -->
   <section id="oferta" class="price-section">
     <div class="container">
@@ -1541,9 +1613,9 @@
   </section>
 
   <!-- =======================================================
-       14. FAQ ACCORDION
+       14. FAQ ACCORDION (SEÇÃO CLARA - CREAM BREAK 4)
   ======================================================== -->
-  <section>
+  <section class="section-cream">
     <div class="container">
       <div class="section-kicker">TIRA-DÚVIDAS</div>
       <h2>Dúvidas frequentes</h2>
@@ -1588,7 +1660,7 @@
   </section>
 
   <!-- =======================================================
-       15. CTA FINAL
+       15. CTA FINAL (NAVY)
   ======================================================== -->
   <section class="text-center" style="padding: 90px 0; background: radial-gradient(circle at center, rgba(16, 21, 56, 0.9) 0%, var(--navy-base) 100%);">
     <div class="container">
@@ -1636,7 +1708,7 @@
   </a>
 
   <!-- =======================================================
-       17. JAVASCRIPT FUNCIONAL (FAQ + TESTE A/B + TRACKING)
+       17. JAVASCRIPT FUNCIONAL
   ======================================================== -->
   <script>
     // Accordion FAQ
