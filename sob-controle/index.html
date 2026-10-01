@@ -117,7 +117,7 @@
       --navy-border-subtle: rgba(255, 255, 255, 0.08);
       --navy-border-card: rgba(255, 255, 255, 0.12);
 
-      /* PALETA CLARA (CREAM / CHAMPAGNE) - PARA BREAK DE SEÇÃO */
+      /* PALETA CLARA (CREAM / CHAMPAGNE) */
       --cream-base: #fcfaf6;
       --cream-card: #ffffff;
       --cream-text-main: #0a0e28;
@@ -133,6 +133,11 @@
 
       --accent-red: #ef4444;
       --accent-green: #10b981;
+
+      /* ESPAÇAMENTOS PADRONIZADOS */
+      --spacing-section-padding: clamp(60px, 8vw, 100px);
+      --spacing-grid-gap: clamp(16px, 3vw, 24px);
+      --spacing-element-margin: clamp(20px, 4vw, 35px);
 
       /* RAIOS E SOMBRAS */
       --radius-sm: 10px;
@@ -168,6 +173,13 @@
       line-height: 1.65;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
+      padding-bottom: 70px;
+    }
+
+    @media (min-width: 861px) {
+      body {
+        padding-bottom: 0;
+      }
     }
 
     img {
@@ -186,7 +198,7 @@
       width: 100%;
       max-width: 1100px;
       margin: 0 auto;
-      padding: 0 24px;
+      padding: 0 20px;
     }
 
     .text-center {
@@ -198,12 +210,12 @@
     }
 
     section {
-      padding: 95px 0;
+      padding: var(--spacing-section-padding) 0;
       position: relative;
     }
 
     /* =========================================================
-       CLASSES DE SEÇÃO CLARA (CREAM / CHAMPAGNE BREAK)
+       SEÇÃO CLARA (CREAM / CHAMPAGNE BREAK)
        ========================================================= */
     .section-cream {
       background-color: var(--cream-base);
@@ -260,17 +272,6 @@
       color: var(--gold-dark);
     }
 
-    .section-cream .flow-card {
-      background: var(--cream-card);
-      border: 1.5px solid var(--cream-border-card);
-      color: var(--cream-text-main);
-      box-shadow: var(--shadow-cream);
-    }
-
-    .section-cream .flow-card small {
-      color: var(--gold-dark);
-    }
-
     .section-cream .faq-item {
       background: var(--cream-card);
       border: 1.5px solid var(--cream-border-card);
@@ -302,14 +303,14 @@
       background: linear-gradient(135deg, var(--gold-primary), var(--gold-hover));
       color: #050717;
       cursor: pointer;
-      font-size: 0.8rem;
+      font-size: clamp(0.8rem, 2vw, 0.88rem);
       font-weight: 800;
       font-family: 'Montserrat', sans-serif;
       box-shadow: 0 12px 30px rgba(241, 191, 66, .2);
       text-transform: uppercase;
       letter-spacing: 0.5px;
       gap: 10px;
-      padding: 0 32px;
+      padding: 12px 32px;
       position: relative;
       overflow: hidden;
       transition: var(--transition);
@@ -340,7 +341,7 @@
     .mini-cta {
       min-height: 38px;
       padding: 0 18px;
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       border-radius: var(--radius-md);
     }
 
@@ -355,22 +356,23 @@
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--gold-border);
+      padding: 8px 0;
     }
 
     .immersion-bar .container {
-      min-height: 58px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 12px;
     }
 
     .immersion-info {
       display: flex;
       align-items: center;
-      gap: 10px;
+      flex-wrap: wrap;
+      gap: 6px 10px;
       color: var(--navy-text-muted);
-      font-size: 0.85rem;
+      font-size: clamp(0.75rem, 2vw, 0.85rem);
       font-weight: 600;
     }
 
@@ -379,18 +381,19 @@
     }
 
     .immersion-dot {
-      width: 6px;
-      height: 6px;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background: var(--gold-primary);
+      display: inline-block;
     }
 
     /* =========================================================
        2. HERO (ESCURO)
        ========================================================= */
     .hero-new {
-      padding-top: 60px;
-      padding-bottom: 70px;
+      padding-top: clamp(40px, 6vw, 70px);
+      padding-bottom: clamp(50px, 7vw, 80px);
       background:
         radial-gradient(circle at 50% 20%, rgba(241, 191, 66, 0.12) 0%, transparent 55%),
         radial-gradient(circle at 20% 80%, rgba(16, 21, 56, 0.9) 0%, transparent 65%),
@@ -424,10 +427,10 @@
     }
 
     h1 {
-      font-size: clamp(28px, 4.2vw, 48px);
+      font-size: clamp(24px, 4.5vw, 48px);
       font-weight: 900;
       line-height: 1.2;
-      letter-spacing: -1px;
+      letter-spacing: -0.5px;
       margin-bottom: 20px;
       max-width: 900px;
       margin-left: auto;
@@ -437,14 +440,14 @@
 
     .hero-subtitle {
       color: var(--navy-text-muted);
-      font-size: 1.05rem;
+      font-size: clamp(0.95rem, 2vw, 1.05rem);
       max-width: 720px;
-      margin: 0 auto 30px auto;
-      line-height: 1.7;
+      margin: 0 auto var(--spacing-element-margin) auto;
+      line-height: 1.65;
     }
 
     .hero-media {
-      margin: 30px auto;
+      margin: var(--spacing-element-margin) auto;
       width: min(100%, 820px);
       aspect-ratio: 16 / 9;
       border-radius: var(--radius-lg);
@@ -465,15 +468,16 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      margin: 10px auto 30px;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      margin: 10px auto var(--spacing-element-margin);
       padding: 10px 22px;
       border: 1px solid var(--gold-border);
       background: rgba(241, 191, 66, 0.06);
       border-radius: var(--radius-full);
       color: var(--navy-text-main);
       font-weight: 700;
-      font-size: 0.9rem;
+      font-size: clamp(0.8rem, 2vw, 0.9rem);
     }
 
     .event-line span {
@@ -495,29 +499,40 @@
     }
 
     h2 {
-      font-size: clamp(24px, 3.2vw, 36px);
+      font-size: clamp(22px, 3.5vw, 36px);
       font-weight: 900;
-      margin-bottom: 25px;
+      margin-bottom: var(--spacing-element-margin);
       text-align: center;
       line-height: 1.25;
       font-family: 'Montserrat', sans-serif;
-      letter-spacing: -0.8px;
+      letter-spacing: -0.5px;
     }
 
     .section-lead {
       max-width: 720px;
-      margin: -10px auto 35px;
+      margin: -10px auto var(--spacing-element-margin);
       color: var(--navy-text-muted);
       text-align: center;
-      line-height: 1.7;
+      line-height: 1.65;
+      font-size: clamp(0.95rem, 2vw, 1.05rem);
     }
 
     .bullet-grid {
       max-width: 920px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-grid-gap);
+    }
+
+    /* Alinhamento do último item órfão se for ímpar */
+    .bullet-grid > .bullet-card:last-child:nth-child(odd),
+    .audience-new > .audience-card:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
     }
 
     .bullet-card {
@@ -544,29 +559,31 @@
       color: var(--gold-primary);
       font-weight: 900;
       flex-shrink: 0;
-      width: 22px;
-      height: 22px;
+      width: 24px;
+      height: 24px;
       background: var(--gold-muted);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 0.8rem;
+      margin-top: 2px;
     }
 
     .experience-box {
       background: #f1edfa;
       border-radius: var(--radius-md);
-      padding: 30px;
+      padding: clamp(20px, 4vw, 30px);
       max-width: 800px;
-      margin: 35px auto 0;
+      margin: var(--spacing-element-margin) auto 0;
       border-left: 5px solid var(--gold-dark);
       box-shadow: var(--shadow-cream);
+      text-align: center;
     }
 
     .experience-box p {
       color: var(--cream-text-muted);
-      font-size: 1rem;
+      font-size: clamp(0.95rem, 2vw, 1.05rem);
     }
 
     .experience-box p strong {
@@ -580,8 +597,8 @@
       max-width: 920px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-grid-gap);
     }
 
     .audience-card {
@@ -614,11 +631,11 @@
        5. DO IMPROVISO À CLAREZA (ESCURO)
        ========================================================= */
     .compare-block-title {
-      font-size: clamp(22px, 3vw, 32px);
+      font-size: clamp(20px, 3vw, 32px);
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 25px;
+      letter-spacing: 1px;
+      margin-bottom: var(--spacing-element-margin);
       text-align: center;
       font-family: 'Montserrat', sans-serif;
     }
@@ -628,8 +645,8 @@
       max-width: 960px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-grid-gap);
     }
 
     .compare-img-wrapper {
@@ -648,6 +665,8 @@
 
     .compare-img-wrapper img {
       width: 100%;
+      height: 100%;
+      object-fit: cover;
       display: block;
     }
 
@@ -664,12 +683,12 @@
 
     .journey-item {
       display: grid;
-      grid-template-columns: 110px 1fr;
-      gap: 20px;
+      grid-template-columns: 100px 1fr;
+      gap: 16px;
       background: var(--navy-card);
       border: 1.5px solid var(--navy-border-card);
       border-radius: var(--radius-md);
-      padding: 22px 26px;
+      padding: clamp(16px, 3vw, 24px);
       transition: var(--transition);
       backdrop-filter: blur(12px);
     }
@@ -693,7 +712,7 @@
     }
 
     .journey-item h3 {
-      font-size: 1.1rem;
+      font-size: clamp(1rem, 2vw, 1.1rem);
       margin-bottom: 6px;
       font-weight: 800;
       color: var(--navy-text-main);
@@ -706,58 +725,88 @@
     }
 
     /* =========================================================
-       7. FLUXO (CLARO)
+       7. FLUXO VERTICAL COM SETAS (CLARO)
        ========================================================= */
-    .flow-grid {
-      max-width: 980px;
+    .flow-vertical {
+      max-width: 600px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
     }
 
-    .flow-card {
-      position: relative;
+    .flow-vertical .flow-card {
+      width: 100%;
+      background: var(--cream-card);
+      border: 1.5px solid var(--cream-border-card);
+      border-radius: var(--radius-md);
+      padding: 24px 20px;
       text-align: center;
-      padding: 28px 20px;
-
+      box-shadow: var(--shadow-cream);
+      transition: var(--transition);
     }
 
-    .flow-card:not(:last-child)::after {
-      content: "→";
-      position: absolute;
-      right: -16px;
-      top: 50%;
-      transform: translateY(-50%);
+    .flow-vertical .flow-card:hover {
+      border-color: var(--gold-dark);
+      transform: translateY(-2px);
+    }
+
+    .flow-vertical .flow-card small {
+      display: block;
       color: var(--gold-dark);
-      font-size: 1.5rem;
-      font-weight: 900;
-      z-index: 2;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      font-size: 0.75rem;
+      margin-bottom: 6px;
     }
 
-    .flow-card strong {
-      font-size: 0.95rem;
+    .flow-vertical .flow-card strong {
+      font-size: 1rem;
+      color: var(--cream-text-main);
       line-height: 1.5;
+    }
+
+    .flow-arrow {
+      color: var(--gold-dark);
+      font-size: 1.8rem;
+      font-weight: 900;
+      line-height: 1;
+      user-select: none;
+      margin: 2px 0;
+      animation: bounceArrow 2s infinite;
+    }
+
+    @keyframes bounceArrow {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(4px);
+      }
     }
 
     /* =========================================================
        8. PREPARAÇÃO & BÔNUS (ESCURO)
        ========================================================= */
     .prep-grid {
-      max-width: 980px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
+          max-width: 980px;
+    margin: 0 auto;
+    display: flex;
+    gap: var(--spacing-grid-gap);
+    flex-direction: column;
     }
 
     .prep-card {
       background: var(--navy-card);
       border: 1.5px solid var(--navy-border-card);
       border-radius: var(--radius-lg);
-      padding: 26px;
+      padding: clamp(20px, 3vw, 26px);
       transition: var(--transition);
       backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
     }
 
     .prep-card:hover {
@@ -767,7 +816,7 @@
     }
 
     .prep-card h3 {
-      font-size: 1.1rem;
+      font-size: clamp(1rem, 2vw, 1.1rem);
       margin-bottom: 10px;
       color: var(--navy-text-main);
       font-weight: 800;
@@ -789,7 +838,7 @@
     .bio-wrapper {
       display: grid;
       grid-template-columns: 260px 1fr;
-      gap: 40px;
+      gap: clamp(20px, 4vw, 40px);
       align-items: center;
       max-width: 880px;
       margin: 30px auto 0 auto;
@@ -797,11 +846,13 @@
 
     .bio-img {
       width: 100%;
+      max-width: 260px;
       height: 280px;
       border-radius: var(--radius-lg);
       overflow: hidden;
       border: 1.5px solid var(--navy-border-card);
       box-shadow: var(--shadow-lg);
+      margin: 0 auto;
     }
 
     .bio-img img {
@@ -811,7 +862,7 @@
     }
 
     .bio-content h3 {
-      font-size: 1.6rem;
+      font-size: clamp(1.3rem, 3vw, 1.6rem);
       margin-bottom: 10px;
       font-weight: 900;
       font-family: 'Montserrat', sans-serif;
@@ -826,7 +877,7 @@
 
     .bio-stats {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
       gap: 12px;
     }
 
@@ -838,6 +889,7 @@
       font-size: 0.82rem;
       font-weight: 700;
       color: var(--gold-primary);
+      text-align: center;
     }
 
     /* =========================================================
@@ -845,15 +897,15 @@
        ========================================================= */
     .comparison-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--spacing-grid-gap);
       max-width: 900px;
       margin: 30px auto 0;
     }
 
     .comparison-col {
       border-radius: var(--radius-lg);
-      padding: 28px;
+      padding: clamp(20px, 3vw, 28px);
       border: 1.5px solid var(--navy-border-card);
       background: var(--navy-card);
       backdrop-filter: blur(12px);
@@ -871,7 +923,7 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      font-size: 1.15rem;
+      font-size: clamp(1rem, 2vw, 1.15rem);
       font-weight: 800;
       margin-bottom: 20px;
       font-family: 'Montserrat', sans-serif;
@@ -886,6 +938,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
     }
 
     .comp-header .icon-pos {
@@ -897,6 +950,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-shrink: 0;
     }
 
     .comp-list {
@@ -933,7 +987,6 @@
     .price-section {
       background: radial-gradient(circle at center, rgba(16, 21, 56, 0.9) 0%, var(--navy-base) 100%);
       text-align: center;
-      padding: 90px 0;
       border-top: 1px solid var(--navy-border-subtle);
       border-bottom: 1px solid var(--navy-border-subtle);
     }
@@ -941,7 +994,7 @@
     .price-card {
       background: var(--navy-card);
       border-radius: var(--radius-lg);
-      padding: 45px 30px;
+      padding: clamp(30px, 5vw, 45px) clamp(20px, 4vw, 30px);
       max-width: 520px;
       margin: 0 auto;
       border: 2px solid var(--gold-border);
@@ -966,7 +1019,7 @@
     }
 
     .price-tag {
-      font-size: 4rem;
+      font-size: clamp(3rem, 8vw, 4rem);
       font-weight: 900;
       color: var(--gold-primary);
       line-height: 1;
@@ -979,7 +1032,7 @@
     }
 
     .price-currency {
-      font-size: 1.6rem;
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
       font-weight: 700;
       align-self: flex-start;
       margin-top: 8px;
@@ -997,7 +1050,7 @@
 
     .includes-list {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 14px;
       max-width: 860px;
       margin: 0 auto;
@@ -1050,9 +1103,9 @@
       width: 100%;
       background: none;
       border: none;
-      padding: 20px 24px;
+      padding: 18px 20px;
       text-align: left;
-      font-size: 1rem;
+      font-size: clamp(0.9rem, 2vw, 1rem);
       font-weight: 700;
       cursor: pointer;
       display: flex;
@@ -1072,7 +1125,7 @@
     }
 
     .faq-content {
-      padding: 0 24px;
+      padding: 0 20px;
       max-height: 0;
       overflow: hidden;
       transition: all 0.3s cubic-bezier(0, 1, 0, 1);
@@ -1081,7 +1134,7 @@
     }
 
     .faq-item.active .faq-content {
-      padding: 0 24px 22px 24px;
+      padding: 0 20px 20px 20px;
       max-height: 500px;
       transition: all 0.3s cubic-bezier(1, 0, 1, 0);
     }
@@ -1092,7 +1145,7 @@
     footer {
       background: var(--navy-surface-1);
       color: var(--navy-text-muted);
-      padding: 50px 0 30px;
+      padding: 40px 0 30px;
       border-top: 1px solid var(--navy-border-card);
       text-align: center;
     }
@@ -1100,15 +1153,16 @@
     .mobile-cta {
       display: none;
       position: fixed;
-      left: 16px;
-      right: 16px;
-      bottom: calc(16px + env(safe-area-inset-bottom));
+      left: 12px;
+      right: 12px;
+      bottom: calc(12px + env(safe-area-inset-bottom));
       z-index: 998;
       padding: 8px;
       border: 1px solid var(--gold-border);
       border-radius: var(--radius-md);
-      background: rgba(10, 14, 40, 0.92);
+      background: rgba(10, 14, 40, 0.94);
       backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
       box-shadow: var(--shadow-lg);
     }
 
@@ -1118,11 +1172,11 @@
 
     .whatsapp-float {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
+      bottom: clamp(16px, 4vw, 24px);
+      right: clamp(16px, 4vw, 24px);
       z-index: 999;
-      width: 54px;
-      height: 54px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       background: #25d366;
       color: #fff;
@@ -1139,38 +1193,18 @@
     }
 
     .whatsapp-float svg {
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       fill: currentColor;
     }
 
     /* =========================================================
-       RESPONSIVIDADE COMPLETA
+       RESPONSIVIDADE E AJUSTES DE TELA
        ========================================================= */
     @media (max-width: 860px) {
-
-      .bullet-grid,
-      .audience-new,
-      .prep-grid,
-      .flow-grid,
-      .includes-list,
-      .comparison-grid,
-      .comparison-section-container {
-        grid-template-columns: 1fr;
-      }
-
       .journey-item {
         grid-template-columns: 1fr;
         gap: 6px;
-      }
-
-      .flow-card:not(:last-child)::after {
-        content: "↓";
-        right: auto;
-        left: 50%;
-        top: auto;
-        bottom: -22px;
-        transform: translateX(-50%);
       }
 
       .bio-wrapper {
@@ -1178,14 +1212,12 @@
         text-align: center;
       }
 
-      .bio-img {
-        width: 200px;
-        height: 200px;
-        margin: 0 auto;
-      }
-
       .mobile-cta {
         display: block;
+      }
+
+      .whatsapp-float {
+        bottom: calc(75px + env(safe-area-inset-bottom));
       }
     }
   </style>
@@ -1244,7 +1276,7 @@
         <span>14 de novembro</span> • <b>10h às 16h</b> • <span>Online e ao vivo</span>
       </div>
 
-      <div class="text-center" style="margin-top: 25px;">
+      <div class="text-center">
         <a href="https://pay.hotmart.com/M107075913V" target="_blank" rel="noopener noreferrer"
           class="primary price-cta">
           Quero participar da imersão
@@ -1263,11 +1295,11 @@
       <p class="section-lead">Sem um processo claro:</p>
 
       <div class="bullet-grid">
-        <div class="bullet-card"><span class="check">✓</span><span>cada avaliação pode acontecer de um jeito;</span></div>
-        <div class="bullet-card"><span class="check">✓</span><span>informações importantes podem passar despercebidas;</span></div>
-        <div class="bullet-card"><span class="check">✓</span><span>o relato do tutor pode ganhar peso demais;</span></div>
-        <div class="bullet-card"><span class="check">✓</span><span>decisões acabam dependendo da memória e do feeling;</span></div>
-        <div class="bullet-card"><span class="check">✓</span><span>fica difícil justificar uma aprovação, restrição ou recusa;</span></div>
+        <div class="bullet-card"><span class="check">✓</span><span>cada avaliação pode acontecer de um jeito.</span></div>
+        <div class="bullet-card"><span class="check">✓</span><span>informações importantes podem passar despercebidas.</span></div>
+        <div class="bullet-card"><span class="check">✓</span><span>o relato do tutor pode ganhar peso demais.</span></div>
+        <div class="bullet-card"><span class="check">✓</span><span>decisões acabam dependendo da memória e do feeling.</span></div>
+        <div class="bullet-card"><span class="check">✓</span><span>fica difícil justificar uma aprovação, restrição ou recusa.</span></div>
         <div class="bullet-card"><span class="check">✓</span><span>outra pessoa da equipe pode chegar a uma conclusão diferente.</span></div>
       </div>
 
@@ -1286,16 +1318,16 @@
       <h2>Ao final da imersão, você terá mais clareza para:</h2>
 
       <div class="bullet-grid">
-        <div class="bullet-card"><span class="check">✓</span><span>levantar as informações certas antes da avaliação;</span></div>
-        <div class="bullet-card"><span class="check">✓</span><span>compreender melhor o comportamento que está observando;</span></div>
-        <div class="bullet-card"><span class="check">✓</span><span>cruzar anamnese e avaliação presencial;</span></div>
-        <div class="bullet-card"><span class="check">✓</span><span>criar critérios para tomar decisões;</span></div>
-        <div class="bullet-card"><span class="check">✓</span><span>registrar o resultado de cada avaliação;</span></div>
-        <div class="bullet-card"><span class="check">✓</span><span>começar a acompanhar indicadores;</span></div>
-        <div class="bullet-card"><span class="check">✓</span><span>identificar onde o processo ainda depende apenas de você.</span></div>
+        <div class="bullet-card"><span class="check">✓</span><span>levantar as <strong>informações certas</strong> antes da avaliação.</span></div>
+        <div class="bullet-card"><span class="check">✓</span><span>compreender melhor o <strong>comportamento</strong> que está observando.</span></div>
+        <div class="bullet-card"><span class="check">✓</span><span><strong>cruzar anamnese</strong> e avaliação presencial.</span></div>
+        <div class="bullet-card"><span class="check">✓</span><span>criar <strong>critérios claros</strong> para tomar decisões.</span></div>
+        <div class="bullet-card"><span class="check">✓</span><span><strong>registrar o resultado</strong> de cada avaliação.</span></div>
+        <div class="bullet-card"><span class="check">✓</span><span>começar a acompanhar <strong>indicadores</strong>.</span></div>
+        <div class="bullet-card"><span class="check">✓</span><span>identificar onde o processo ainda <strong>depende apenas de você</strong>.</span></div>
       </div>
 
-      <div class="text-center" style="margin-top: 35px;">
+      <div class="text-center" style="margin-top: var(--spacing-element-margin);">
         <a href="https://pay.hotmart.com/M107075913V" target="_blank" rel="noopener noreferrer" class="primary price-cta">
           Quero estruturar minha avaliação
         </a>
@@ -1314,19 +1346,19 @@
       <div class="audience-new">
         <div class="audience-card">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <span>já possui uma creche ou hospedagem e quer profissionalizar seu processo de avaliação;</span>
+          <span>já possui uma creche ou hospedagem e quer profissionalizar seu processo de avaliação.</span>
         </div>
         <div class="audience-card">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <span>percebe que boa parte da decisão ainda depende apenas da própria experiência;</span>
+          <span>percebe que boa parte da decisão ainda depende apenas da própria experiência.</span>
         </div>
         <div class="audience-card">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <span>possui equipe e quer aumentar a consistência entre diferentes avaliadores;</span>
+          <span>possui equipe e quer aumentar a consistência entre diferentes avaliadores.</span>
         </div>
         <div class="audience-card">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <span>está estruturando uma nova operação e quer começar com critérios mais claros;</span>
+          <span>está estruturando uma nova operação e quer começar com critérios mais claros.</span>
         </div>
         <div class="audience-card">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -1355,7 +1387,7 @@
         </div>
       </div>
 
-      <h3 class="compare-block-title" style="margin-top: 35px; font-size: 1.5rem;">
+      <h3 class="compare-block-title" style="margin-top: var(--spacing-element-margin);">
         SUA EXPERIÊNCIA PRECISA VIRAR <span class="gold">PROCESSO</span>
       </h3>
     </div>
@@ -1411,22 +1443,28 @@
   </section>
 
   <!-- =======================================================
-       8. FLUXO (SEÇÃO CLARA - CREAM BREAK 3)
+       8. FLUXO VERTICAL COM SETAS (SEÇÃO CLARA - CREAM BREAK 3)
   ======================================================== -->
   <section class="section-cream">
     <div class="container">
       <div class="section-kicker">A LÓGICA DA IMERSÃO</div>
       <h2>Tudo conectado para você começar a estruturar seu processo</h2>
 
-      <div class="flow-grid">
+      <div class="flow-vertical">
         <div class="flow-card">
           <small>Antes da imersão</small>
           <strong>Comportamento canino + Anamnese + Formulário</strong>
         </div>
+
+        <div class="flow-arrow">↓</div>
+
         <div class="flow-card">
           <small>Durante a imersão</small>
           <strong>Fluxo → Avaliação → Tomada de decisão</strong>
         </div>
+
+        <div class="flow-arrow">↓</div>
+
         <div class="flow-card">
           <small>Depois da decisão</small>
           <strong>Registro → Indicadores → Ajustes na operação</strong>
@@ -1447,31 +1485,31 @@
       <div class="prep-grid">
         <div class="prep-card">
           <h3>Comportamento canino aplicado à avaliação</h3>
-          <p>Antes da imersão, você terá acesso a um material de preparação sobre <strong>comportamento e drives caninos</strong>, pensada para a realidade de creches e hospedagens. O objetivo é dar uma base para você compreender melhor <strong>o que está observando e por que determinados comportamentos podem importar na avaliação</strong>.</p>
+          <p>Antes da imersão, você terá acesso a um material de preparação sobre <strong>comportamento e drives caninos</strong>, pensada para a realidade de creches e hospedagens. O objetivo é dar uma base para você compreender melhor o que está observando e por que determinados comportamentos importam na avaliação.</p>
         </div>
         <div class="prep-card">
           <h3>Questionário de Anamnese Editável</h3>
-          <p>Você recebe uma estrutura pronta para personalizar e utilizar na sua empresa, ajudando a coletar as informações que antecedem a avaliação presencial.</p>
+          <p>Você recebe uma <strong>estrutura pronta para personalizar</strong> e utilizar na sua empresa, ajudando a coletar as informações que antecedem a avaliação presencial.</p>
         </div>
         <div class="prep-card">
           <h3>Google Forms na Prática</h3>
-          <p>Aprenda a organizar sua anamnese em um formulário profissional, facilitando o envio, a coleta e a organização das respostas dos tutores.</p>
+          <p>Aprenda a organizar sua anamnese em um <strong>formulário profissional</strong>, facilitando o envio, a coleta e a organização das respostas dos tutores.</p>
         </div>
         <div class="prep-card">
           <h3>Ferramentas de Avaliação</h3>
-          <p>Você receberá ferramentas para organizar aquilo que foi observado presencialmente e cruzar essas informações com o que apareceu na anamnese.</p>
+          <p>Você receberá <strong>ferramentas práticas</strong> para organizar aquilo que foi observado presencialmente e cruzar essas informações com a anamnese.</p>
         </div>
         <div class="prep-card">
           <h3>Estrutura para Tomada de Decisão</h3>
-          <p>Depois de perguntar e observar, é preciso decidir. Você terá uma estrutura para começar a transformar percepção em critérios mais claros.</p>
+          <p>Depois de perguntar e observar, é preciso decidir. Você terá uma estrutura para <strong>transformar percepção em critérios claros</strong>.</p>
         </div>
         <div class="prep-card">
           <h3>Registros e Indicadores</h3>
-          <p>Você também vai aprender o que vale registrar depois da avaliação para construir histórico e começar a enxergar padrões dentro da operação.</p>
+          <p>Você também vai aprender <strong>o que vale registrar</strong> depois da avaliação para construir histórico e começar a enxergar padrões na operação.</p>
         </div>
       </div>
 
-      <div class="text-center" style="margin-top: 35px;">
+      <div class="text-center" style="margin-top: var(--spacing-element-margin);">
         <a href="https://pay.hotmart.com/M107075913V" target="_blank" rel="noopener noreferrer" class="primary price-cta">
           Quero garantir minha vaga
         </a>
@@ -1572,7 +1610,7 @@
         <div class="checklist-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Grupo de Implementação por 30 dias</strong></span></div>
       </div>
 
-      <div class="text-center" style="margin-top: 35px;">
+      <div class="text-center" style="margin-top: var(--spacing-element-margin);">
         <a href="https://pay.hotmart.com/M107075913V" target="_blank" rel="noopener noreferrer" class="primary price-cta">
           Quero garantir minha vaga
         </a>
@@ -1662,13 +1700,13 @@
   <!-- =======================================================
        15. CTA FINAL (NAVY)
   ======================================================== -->
-  <section class="text-center" style="padding: 90px 0; background: radial-gradient(circle at center, rgba(16, 21, 56, 0.9) 0%, var(--navy-base) 100%);">
+  <section class="text-center" style="background: radial-gradient(circle at center, rgba(16, 21, 56, 0.9) 0%, var(--navy-base) 100%);">
     <div class="container">
       <div class="section-kicker">PRÓXIMO PASSO</div>
-      <h2 style="font-size: clamp(26px, 3.5vw, 40px); line-height: 1.25; margin-bottom: 15px;">
+      <h2>
         Pare de decidir no improviso.<br>Estruture seu processo de avaliação.
       </h2>
-      <p style="color: var(--navy-text-muted); font-size: 1.05rem; max-width: 650px; margin: 0 auto 30px;">
+      <p style="color: var(--navy-text-muted); font-size: clamp(0.95rem, 2vw, 1.05rem); max-width: 650px; margin: 0 auto var(--spacing-element-margin);">
         <strong style="color: #fff;">14 de novembro | 10h às 16h | Online e ao vivo</strong>
       </p>
       <a href="https://pay.hotmart.com/M107075913V" target="_blank" rel="noopener noreferrer" class="primary price-cta">
@@ -1682,7 +1720,7 @@
   ======================================================== -->
   <footer>
     <div class="container text-center">
-      <div style="margin-bottom: 15px; display: flex; justify-content: center; gap: 20px;">
+      <div style="margin-bottom: 15px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
         <a href="#" style="color: var(--navy-text-muted); text-decoration: none; font-size: 0.85rem;">Condições e suporte</a>
         <a href="#" style="color: var(--navy-text-muted); text-decoration: none; font-size: 0.85rem;">Política de Privacidade</a>
       </div>
