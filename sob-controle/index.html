@@ -464,21 +464,22 @@
       border: 0;
     }
 
-  .event-line {
-    display: inline-flex;
-    flex-wrap: nowrap;
-    gap: 8px 12px;
-    margin: 10px auto var(--spacing-element-margin);
-    padding: 10px 22px;
-    border: 1px solid var(--gold-border);
-    background: rgba(241, 191, 66, 0.06);
-    border-radius: var(--radius-full);
-    color: var(--navy-text-main);
-    font-weight: 500;
-    font-size: clamp(0.7rem, 2vw, 0.9rem);
-    flex-direction: row;
-    align-items: center;
-}
+    .event-line {
+      display: inline-flex;
+      flex-wrap: nowrap;
+      gap: 8px 12px;
+      margin: 10px auto var(--spacing-element-margin);
+      padding: 10px 22px;
+      border: 1px solid var(--gold-border);
+      background: rgba(241, 191, 66, 0.06);
+      border-radius: var(--radius-full);
+      color: var(--navy-text-main);
+      font-weight: 500;
+      font-size: clamp(0.7rem, 2vw, 0.9rem);
+      flex-direction: row;
+      align-items: center;
+    }
+
     .event-line span {
       color: var(--gold-primary);
     }
@@ -522,16 +523,6 @@
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: var(--spacing-grid-gap);
-    }
-
-    /* Alinhamento do último item órfão se for ímpar */
-    .bullet-grid > .bullet-card:last-child:nth-child(odd),
-    .audience-new > .audience-card:last-child:nth-child(odd) {
-      grid-column: 1 / -1;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-      width: 100%;
     }
 
     .bullet-card {
@@ -787,48 +778,87 @@
     }
 
     /* =========================================================
-       8. PREPARAÇÃO & BÔNUS (ESCURO)
+       8. PREPARAÇÃO & ENTREGÁVEIS (COM IMAGENS)
        ========================================================= */
-    .prep-grid {
-          max-width: 980px;
-    margin: 0 auto;
-    display: flex;
-    gap: var(--spacing-grid-gap);
-    flex-direction: column;
+    .prep-grid-new {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
     }
 
-    .prep-card {
+    .prep-card-new {
       background: var(--navy-card);
       border: 1.5px solid var(--navy-border-card);
-      border-radius: var(--radius-lg);
-      padding: clamp(20px, 3vw, 26px);
-      transition: var(--transition);
-      backdrop-filter: blur(12px);
+      border-radius: var(--radius-md);
+      overflow: hidden;
       display: flex;
       flex-direction: column;
+      transition: var(--transition);
+      backdrop-filter: blur(12px);
     }
 
-    .prep-card:hover {
+    .prep-card-new:hover {
       border-color: var(--gold-border);
-      transform: translateY(-3px);
+      transform: translateY(-4px);
       background: var(--navy-card-hover);
     }
 
-    .prep-card h3 {
-      font-size: clamp(1rem, 2vw, 1.1rem);
-      margin-bottom: 10px;
-      color: var(--navy-text-main);
+    .prep-img-wrapper {
+      width: 100%;
+      height: 160px;
+      background: var(--navy-surface-1);
+      overflow: hidden;
+      border-bottom: 1px solid var(--navy-border-subtle);
+    }
+
+    .prep-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .prep-card-new:hover .prep-img-wrapper img {
+      transform: scale(1.05);
+    }
+
+    .prep-card-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .prep-card-body h3 {
+      font-size: 1.05rem;
       font-weight: 800;
-    }
-
-    .prep-card p {
-      color: var(--navy-text-muted);
-      line-height: 1.65;
-      font-size: 0.92rem;
-    }
-
-    .prep-card p strong {
       color: var(--navy-text-main);
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+
+    .prep-card-body p {
+      font-size: 0.9rem;
+      color: var(--navy-text-muted);
+      line-height: 1.6;
+    }
+
+    .prep-card-body p strong {
+      color: var(--navy-text-main);
+    }
+
+    @media (max-width: 960px) {
+      .prep-grid-new {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .prep-grid-new {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* =========================================================
@@ -1472,90 +1502,90 @@
     </div>
   </section>
 
-<!-- =======================================================
-     9. PREPARAÇÃO & ENTREGÁVEIS (NAVY)
-======================================================== -->
-<section>
-  <div class="container">
-    <div class="section-kicker">PREPARAÇÃO COMPLETA</div>
-    <h2>Você não precisa chegar sabendo tudo para conseguir aplicar</h2>
-    <p class="section-lead">Preparamos tudo que você precisa para acelerar seu resultado:</p>
+  <!-- =======================================================
+       9. PREPARAÇÃO & ENTREGÁVEIS (NAVY)
+  ======================================================== -->
+  <section>
+    <div class="container">
+      <div class="section-kicker">PREPARAÇÃO COMPLETA</div>
+      <h2>Você não precisa chegar sabendo tudo para conseguir aplicar</h2>
+      <p class="section-lead">Preparamos tudo que você precisa para acelerar seu resultado:</p>
 
-    <div class="prep-grid">
-      <!-- Card 1 -->
-      <div class="prep-card">
-        <div class="prep-card-header">
-          <div class="prep-icon-wrapper">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/><path d="M12 6v6l4 2"/></svg>
+      <div class="prep-grid-new">
+        <!-- Card 1 -->
+        <div class="prep-card-new">
+          <div class="prep-img-wrapper">
+            <img src="assets/prep-comportamento.jpg" alt="Comportamento Canino" />
           </div>
-          <h3>Comportamento canino aplicado à avaliação</h3>
+          <div class="prep-card-body">
+            <h3>Comportamento canino aplicado à avaliação</h3>
+            <p>Antes da imersão, você terá acesso a um material de preparação sobre <strong>comportamento e drives caninos</strong>, pensada para a realidade de creches e hospedagens. O objetivo é dar uma base para você compreender melhor o que está observando e por que determinados comportamentos importam na avaliação.</p>
+          </div>
         </div>
-        <p>Antes da imersão, você terá acesso a um material de preparação sobre <strong>comportamento e drives caninos</strong>, pensada para a realidade de creches e hospedagens. O objetivo é dar uma base para você compreender melhor o que está observando e por que determinados comportamentos importam na avaliação.</p>
+
+        <!-- Card 2 -->
+        <div class="prep-card-new">
+          <div class="prep-img-wrapper">
+            <img src="assets/prep-anamnese.jpg" alt="Questionário de Anamnese Editável" />
+          </div>
+          <div class="prep-card-body">
+            <h3>Questionário de Anamnese Editável</h3>
+            <p>Você recebe uma <strong>estrutura pronta para personalizar</strong> e utilizar na sua empresa, ajudando a coletar as informações que antecedem a avaliação presencial.</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="prep-card-new">
+          <div class="prep-img-wrapper">
+            <img src="assets/prep-forms.jpg" alt="Google Forms na Prática" />
+          </div>
+          <div class="prep-card-body">
+            <h3>Google Forms na Prática</h3>
+            <p>Aprenda a organizar sua anamnese em um <strong>formulário profissional</strong>, facilitando o envio, a coleta e a organização das respostas dos tutores.</p>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="prep-card-new">
+          <div class="prep-img-wrapper">
+            <img src="assets/prep-ferramentas.jpg" alt="Ferramentas de Avaliação" />
+          </div>
+          <div class="prep-card-body">
+            <h3>Ferramentas de Avaliação</h3>
+            <p>Você receberá <strong>ferramentas práticas</strong> para organizar aquilo que foi observado presencialmente e cruzar essas informações com a anamnese.</p>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="prep-card-new">
+          <div class="prep-img-wrapper">
+            <img src="assets/prep-decisao.jpg" alt="Estrutura para Tomada de Decisão" />
+          </div>
+          <div class="prep-card-body">
+            <h3>Estrutura para Tomada de Decisão</h3>
+            <p>Depois de perguntar e observar, é preciso decidir. Você terá uma estrutura para <strong>transformar percepção em critérios claros</strong>.</p>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="prep-card-new">
+          <div class="prep-img-wrapper">
+            <img src="assets/prep-indicadores.jpg" alt="Registros e Indicadores" />
+          </div>
+          <div class="prep-card-body">
+            <h3>Registros e Indicadores</h3>
+            <p>Você também vai aprender <strong>o que vale registrar</strong> depois da avaliação para construir histórico e começar a enxergar padrões na operação.</p>
+          </div>
+        </div>
       </div>
 
-      <!-- Card 2 -->
-      <div class="prep-card">
-        <div class="prep-card-header">
-          <div class="prep-icon-wrapper">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-          </div>
-          <h3>Questionário de Anamnese Editável</h3>
-        </div>
-        <p>Você recebe uma <strong>estrutura pronta para personalizar</strong> e utilizar na sua empresa, ajudando a coletar as informações que antecedem a avaliação presencial.</p>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="prep-card">
-        <div class="prep-card-header">
-          <div class="prep-icon-wrapper">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          </div>
-          <h3>Google Forms na Prática</h3>
-        </div>
-        <p>Aprenda a organizar sua anamnese em um <strong>formulário profissional</strong>, facilitando o envio, a coleta e a organização das respostas dos tutores.</p>
-      </div>
-
-      <!-- Card 4 -->
-      <div class="prep-card">
-        <div class="prep-card-header">
-          <div class="prep-icon-wrapper">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-          </div>
-          <h3>Ferramentas de Avaliação</h3>
-        </div>
-        <p>Você receberá <strong>ferramentas práticas</strong> para organizar aquilo que foi observado presencialmente e cruzar essas informações com a anamnese.</p>
-      </div>
-
-      <!-- Card 5 -->
-      <div class="prep-card">
-        <div class="prep-card-header">
-          <div class="prep-icon-wrapper">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-          </div>
-          <h3>Estrutura para Tomada de Decisão</h3>
-        </div>
-        <p>Depois de perguntar e observar, é preciso decidir. Você terá uma estrutura para <strong>transformar percepção em critérios claros</strong>.</p>
-      </div>
-
-      <!-- Card 6 -->
-      <div class="prep-card">
-        <div class="prep-card-header">
-          <div class="prep-icon-wrapper">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-          </div>
-          <h3>Registros e Indicadores</h3>
-        </div>
-        <p>Você também vai aprender <strong>o que vale registrar</strong> depois da avaliação para construir histórico e começar a enxergar padrões na operação.</p>
+      <div class="text-center" style="margin-top: var(--spacing-element-margin);">
+        <a href="https://pay.hotmart.com/M107075913V" target="_blank" rel="noopener noreferrer" class="primary price-cta">
+          Quero garantir minha vaga
+        </a>
       </div>
     </div>
-
-    <div class="text-center" style="margin-top: var(--spacing-element-margin);">
-      <a href="https://pay.hotmart.com/M107075913V" target="_blank" rel="noopener noreferrer" class="primary price-cta">
-        Quero garantir minha vaga
-      </a>
-    </div>
-  </div>
-</section>
+  </section>
 
   <!-- =======================================================
        10. QUEM CONDUZ (NAVY)
@@ -1760,7 +1790,6 @@
   ======================================================== -->
   <footer>
     <div class="container text-center">
-  
       <p style="color: var(--navy-text-muted); font-size: 0.8rem;">
         © 2026 Tata Pereira • Tata Educação • Todos os direitos reservados.
       </p>
