@@ -238,20 +238,24 @@
     }
 
     .section-cream .bullet-card {
-      background: var(--cream-card);
-      border: 1.5px solid var(--cream-border-card);
-      color: var(--cream-text-main);
-      box-shadow: var(--shadow-cream);
+      background: var(--cream-card) !important;
+      border: 1.5px solid var(--cream-border-card) !important;
+      color: var(--cream-text-main) !important;
+      box-shadow: var(--shadow-cream) !important;
+    }
+
+    .section-cream .bullet-card span {
+      color: var(--cream-text-main) !important;
     }
 
     .section-cream .bullet-card:hover {
-      border-color: var(--gold-dark);
+      border-color: var(--gold-dark) !important;
       transform: translateY(-3px);
     }
 
     .section-cream .bullet-card .check {
-      background: rgba(207, 164, 38, 0.15);
-      color: var(--gold-dark);
+      background: rgba(207, 164, 38, 0.15) !important;
+      color: var(--gold-dark) !important;
     }
 
     .section-cream .audience-card {
@@ -485,7 +489,7 @@
     }
 
     /* =========================================================
-       3. ESTRUTURA GERAL DE SEÇÕES
+       3. ESTRUTURA GERAL DE SEÇÕES & CORREÇÕES DE CARDS/GRIDS
        ========================================================= */
     .section-kicker {
       font-size: 11px;
@@ -517,18 +521,26 @@
       font-size: clamp(0.95rem, 2vw, 1.05rem);
     }
 
-    .bullet-grid {
-      max-width: 920px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* Layout Flex para centralização perfeita de itens na última linha */
+    .bullet-grid,
+    .audience-new {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
       gap: var(--spacing-grid-gap);
+      max-width: 980px;
+      margin: 0 auto;
     }
 
-    .bullet-card {
+    .bullet-card,
+    .audience-card {
+      flex: 1 1 calc(33.333% - var(--spacing-grid-gap));
+      min-width: 280px;
+      max-width: 310px;
+      box-sizing: border-box;
       display: flex;
       gap: 14px;
-      align-items: flex-start;
+      align-items: flex-start !important; /* Fixa o check no topo */
       background: var(--navy-card);
       border: 1.5px solid var(--navy-border-card);
       border-radius: var(--radius-md);
@@ -557,7 +569,7 @@
       align-items: center;
       justify-content: center;
       font-size: 0.8rem;
-      margin-top: 2px;
+      margin-top: 2px !important;
     }
 
     .experience-box {
@@ -583,29 +595,13 @@
     /* =========================================================
        4. PÚBLICO ALVO
        ========================================================= */
-    .audience-new {
-      max-width: 920px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: var(--spacing-grid-gap);
-    }
-
     .audience-card {
-      background: var(--navy-card);
-      border-radius: var(--radius-md);
-      padding: 20px;
       border-left: 4px solid var(--gold-primary);
       border-top: 1px solid var(--navy-border-card);
       border-right: 1px solid var(--navy-border-card);
       border-bottom: 1px solid var(--navy-border-card);
-      display: flex;
-      align-items: center;
-      gap: 14px;
+      align-items: center !important;
       font-weight: 600;
-      font-size: 0.95rem;
-      transition: var(--transition);
-      backdrop-filter: blur(12px);
     }
 
     .audience-card:hover {
@@ -778,7 +774,7 @@
     }
 
     /* =========================================================
-       8. PREPARAÇÃO & ENTREGÁVEIS (COM IMAGENS)
+       8. PREPARAÇÃO & ENTREGÁVEIS (COM IMAGENS DEDICADAS)
        ========================================================= */
     .prep-grid-new {
       max-width: 1080px;
@@ -1231,6 +1227,12 @@
        RESPONSIVIDADE E AJUSTES DE TELA
        ========================================================= */
     @media (max-width: 860px) {
+      .bullet-card,
+      .audience-card {
+        flex: 1 1 100% !important;
+        max-width: 100% !important;
+      }
+
       .journey-item {
         grid-template-columns: 1fr;
         gap: 6px;
@@ -1563,7 +1565,7 @@
           </div>
           <div class="prep-card-body">
             <h3>Estrutura para Tomada de Decisão</h3>
-            <p>Depois de perguntar e observar, é preciso decidir. Você terá uma estrutura para <strong>transformar percepção em critérios claros</strong>.</p>
+            <p>Depois de perguntar e observar, é preciso decidir. Você terá uma estrutura para <strong>transformar perception em critérios claros</strong>.</p>
           </div>
         </div>
 
