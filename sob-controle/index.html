@@ -21,8 +21,10 @@
   <meta property="og:description"
     content="Em um dia ao vivo, estruture seu processo de avaliação de cães. 14 de novembro, das 10h às 16h, online e ao vivo." />
   <meta property="og:url" content="https://profissaopet.github.io/sob-controle/" />
-  <meta property="og:image" content="https://raw.githubusercontent.com/profissaopet/sob-controle/main/assets/og-cover.jpg" />
-  <meta property="og:image:secure_url" content="https://raw.githubusercontent.com/profissaopet/sob-controle/main/assets/og-cover.jpg" />
+  <meta property="og:image"
+    content="https://raw.githubusercontent.com/profissaopet/sob-controle/main/assets/og-cover.jpg" />
+  <meta property="og:image:secure_url"
+    content="https://raw.githubusercontent.com/profissaopet/sob-controle/main/assets/og-cover.jpg" />
   <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="675" />
@@ -32,8 +34,10 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Operação Sob Controle — Por Tata Pereira" />
-  <meta name="twitter:description" content="Em um dia ao vivo, estruture seu processo de avaliação de cães da sua creche ou hospedagem." />
-  <meta name="twitter:image" content="https://raw.githubusercontent.com/profissaopet/sob-controle/main/assets/og-cover.jpg" />
+  <meta name="twitter:description"
+    content="Em um dia ao vivo, estruture seu processo de avaliação de cães da sua creche ou hospedagem." />
+  <meta name="twitter:image"
+    content="https://raw.githubusercontent.com/profissaopet/sob-controle/main/assets/og-cover.jpg" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="./assets/tata-logo-dog.png" />
@@ -540,7 +544,8 @@
       box-sizing: border-box;
       display: flex;
       gap: 14px;
-      align-items: flex-start !important; /* Fixa o check no topo */
+      align-items: flex-start !important;
+      /* Fixa o check no topo */
       background: var(--navy-card);
       border: 1.5px solid var(--navy-border-card);
       border-radius: var(--radius-md);
@@ -668,13 +673,13 @@
     }
 
     .journey-item {
-      display: grid;
-      grid-template-columns: 100px 1fr;
-      gap: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
       background: var(--navy-card);
       border: 1.5px solid var(--navy-border-card);
       border-radius: var(--radius-md);
-      padding: clamp(16px, 3vw, 24px);
+      padding: clamp(18px, 3vw, 24px);
       transition: var(--transition);
       backdrop-filter: blur(12px);
     }
@@ -765,9 +770,12 @@
     }
 
     @keyframes bounceArrow {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translateY(0);
       }
+
       50% {
         transform: translateY(4px);
       }
@@ -1227,6 +1235,7 @@
        RESPONSIVIDADE E AJUSTES DE TELA
        ========================================================= */
     @media (max-width: 860px) {
+
       .bullet-card,
       .audience-card {
         flex: 1 1 100% !important;
@@ -1234,7 +1243,6 @@
       }
 
       .journey-item {
-        grid-template-columns: 1fr;
         gap: 6px;
       }
 
@@ -1326,12 +1334,18 @@
       <p class="section-lead">Sem um processo claro:</p>
 
       <div class="bullet-grid">
-        <div class="bullet-card"><span class="check">✓</span><span>cada avaliação pode acontecer de um jeito.</span></div>
-        <div class="bullet-card"><span class="check">✓</span><span>informações importantes podem passar despercebidas.</span></div>
-        <div class="bullet-card"><span class="check">✓</span><span>o relato do tutor pode ganhar peso demais.</span></div>
-        <div class="bullet-card"><span class="check">✓</span><span>decisões acabam dependendo da memória e do feeling.</span></div>
-        <div class="bullet-card"><span class="check">✓</span><span>fica difícil justificar uma aprovação, restrição ou recusa.</span></div>
-        <div class="bullet-card"><span class="check">✓</span><span>outra pessoa da equipe pode chegar a uma conclusão diferente.</span></div>
+        <div class="bullet-card"><span class="check">✓</span><span>cada avaliação pode acontecer de um jeito.</span>
+        </div>
+        <div class="bullet-card"><span class="check">✓</span><span>informações importantes podem passar
+            despercebidas.</span></div>
+        <div class="bullet-card"><span class="check">✓</span><span>o relato do tutor pode ganhar peso demais.</span>
+        </div>
+        <div class="bullet-card"><span class="check">✓</span><span>decisões acabam dependendo da memória e do
+            feeling.</span></div>
+        <div class="bullet-card"><span class="check">✓</span><span>fica difícil justificar uma aprovação, restrição ou
+            recusa.</span></div>
+        <div class="bullet-card"><span class="check">✓</span><span>outra pessoa da equipe pode chegar a uma conclusão
+            diferente.</span></div>
       </div>
 
       <div class="experience-box">
@@ -1349,17 +1363,25 @@
       <h2>Ao final da imersão, você terá mais clareza para:</h2>
 
       <div class="bullet-grid">
-        <div class="bullet-card"><span class="check">✓</span><span>levantar as <strong>informações certas</strong> antes da avaliação.</span></div>
-        <div class="bullet-card"><span class="check">✓</span><span>compreender melhor o <strong>comportamento</strong> que está observando.</span></div>
-        <div class="bullet-card"><span class="check">✓</span><span><strong>cruzar anamnese</strong> e avaliação presencial.</span></div>
-        <div class="bullet-card"><span class="check">✓</span><span>criar <strong>critérios claros</strong> para tomar decisões.</span></div>
-        <div class="bullet-card"><span class="check">✓</span><span><strong>registrar o resultado</strong> de cada avaliação.</span></div>
-        <div class="bullet-card"><span class="check">✓</span><span>começar a acompanhar <strong>indicadores</strong>.</span></div>
-        <div class="bullet-card"><span class="check">✓</span><span>identificar onde o processo ainda <strong>depende apenas de você</strong>.</span></div>
+        <div class="bullet-card"><span class="check">✓</span><span>levantar as <strong>informações certas</strong> antes
+            da avaliação.</span></div>
+        <div class="bullet-card"><span class="check">✓</span><span>compreender melhor o <strong>comportamento</strong>
+            que está observando.</span></div>
+        <div class="bullet-card"><span class="check">✓</span><span><strong>cruzar anamnese</strong> e avaliação
+            presencial.</span></div>
+        <div class="bullet-card"><span class="check">✓</span><span>criar <strong>critérios claros</strong> para tomar
+            decisões.</span></div>
+        <div class="bullet-card"><span class="check">✓</span><span><strong>registrar o resultado</strong> de cada
+            avaliação.</span></div>
+        <div class="bullet-card"><span class="check">✓</span><span>começar a acompanhar
+            <strong>indicadores</strong>.</span></div>
+        <div class="bullet-card"><span class="check">✓</span><span>identificar onde o processo ainda <strong>depende
+              apenas de você</strong>.</span></div>
       </div>
 
       <div class="text-center" style="margin-top: var(--spacing-element-margin);">
-        <a href="https://pay.hotmart.com/M107075913V" target="_blank" rel="noopener noreferrer" class="primary price-cta">
+        <a href="https://pay.hotmart.com/M107075913V" target="_blank" rel="noopener noreferrer"
+          class="primary price-cta">
           Quero estruturar minha avaliação
         </a>
       </div>
@@ -1376,23 +1398,33 @@
 
       <div class="audience-new">
         <div class="audience-card">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
           <span>já possui uma creche ou hospedagem e quer profissionalizar seu processo de avaliação.</span>
         </div>
         <div class="audience-card">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
           <span>percebe que boa parte da decisão ainda depende apenas da própria experiência.</span>
         </div>
         <div class="audience-card">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
           <span>possui equipe e quer aumentar a consistência entre diferentes avaliadores.</span>
         </div>
         <div class="audience-card">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
           <span>está estruturando uma nova operação e quer começar com critérios mais claros.</span>
         </div>
         <div class="audience-card">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
           <span>possui outro negócio pet e pretende adicionar creche ou hospedagem.</span>
         </div>
       </div>
@@ -1434,40 +1466,49 @@
 
       <div class="journey">
         <div class="journey-item">
-          <div class="journey-time">10h00</div>
-          <div><h3>Diagnóstico do processo atual</h3><p>Como sua avaliação funciona hoje e onde estão os principais pontos de dúvida, improviso e risco.</p></div>
+          <h3>Diagnóstico do processo atual</h3>
+          <p>Como sua avaliação funciona hoje e onde estão os principais pontos de dúvida, improviso e risco.</p>
         </div>
+
         <div class="journey-item">
-          <div class="journey-time">10h30</div>
-          <div><h3>Fluxo da avaliação</h3><p>Do primeiro contato com o tutor até a decisão sobre a entrada do cão.</p></div>
+          <h3>Fluxo da avaliação</h3>
+          <p>Do primeiro contato com o tutor até a decisão sobre a entrada do cão.</p>
         </div>
+
         <div class="journey-item">
-          <div class="journey-time">11h15</div>
-          <div><h3>Anamnese na prática</h3><p>Como transformar respostas em hipóteses e pontos de atenção para a avaliação presencial.</p></div>
+          <h3>Anamnese na prática</h3>
+          <p>Como transformar respostas em hipóteses e pontos de atenção para a avaliação presencial.</p>
         </div>
+
         <div class="journey-item">
-          <div class="journey-time">12h15</div>
-          <div><h3>Intervalo para almoço</h3><p>Retorno às 13h45.</p></div>
+          <h3>Intervalo para almoço</h3>
+          <p>Pausa para descanso e refeição.</p>
         </div>
+
         <div class="journey-item">
-          <div class="journey-time">13h45</div>
-          <div><h3>Avaliação presencial</h3><p>O que observar e como cruzar comportamento com as informações levantadas anteriormente.</p></div>
+          <h3>Avaliação presencial</h3>
+          <p>O que observar e como cruzar comportamento com as informações levantadas anteriormente.</p>
         </div>
+
         <div class="journey-item">
-          <div class="journey-time">14h45</div>
-          <div><h3>Tomada de decisão</h3><p>Como começar a organizar critérios para aprovar, restringir, adaptar, reavaliar ou recusar.</p></div>
+          <h3>Tomada de decisão</h3>
+          <p>Como começar a organizar critérios para aprovar, restringir, adaptar, reavaliar ou recusar.</p>
         </div>
+
         <div class="journey-item">
-          <div class="journey-time">15h00</div>
-          <div><h3>Registros e indicadores</h3><p>Como criar histórico e transformar avaliações em informações úteis para a gestão.</p></div>
+          <h3>Registros e indicadores</h3>
+          <p>Como criar histórico e transformar avaliações em informações úteis para a gestão.</p>
         </div>
+
         <div class="journey-item featured">
-          <div class="journey-time">15h15</div>
-          <div><h3>Método Domus: A engenharia de uma creche e hospedagem estruturadas</h3><p>Como avaliação, equipe, rotina, segurança, experiência do cliente e gestão se conectam dentro de uma operação mais estruturada.</p></div>
+          <h3>Método Domus: A engenharia de uma creche e hospedagem estruturadas</h3>
+          <p>Como avaliação, equipe, rotina, segurança, experiência do cliente e gestão se conectam dentro de uma
+            operação mais estruturada.</p>
         </div>
+
         <div class="journey-item">
-          <div class="journey-time">16h00</div>
-          <div><h3>Encerramento</h3><p>Fechamento da imersão e próximos passos.</p></div>
+          <h3>Encerramento</h3>
+          <p>Fechamento da imersão e próximos passos.</p>
         </div>
       </div>
     </div>
@@ -1484,14 +1525,14 @@
       <div class="flow-vertical">
         <div class="flow-card">
           <small>Antes da imersão</small>
-          <strong>Comportamento canino + Anamnese + Formulário</strong>
+          <strong>Comportamento e formulário de anamnese</strong>
         </div>
 
         <div class="flow-arrow">↓</div>
 
         <div class="flow-card">
           <small>Durante a imersão</small>
-          <strong>Fluxo → Avaliação → Tomada de decisão</strong>
+          <strong>Fluxo → Levantamento de hipóteses → Avaliação prática → Tomada de decisão</strong>
         </div>
 
         <div class="flow-arrow">↓</div>
@@ -1517,157 +1558,171 @@
         <!-- Card 1 -->
         <div class="prep-card-new">
           <div class="prep-img-wrapper">
-  <svg viewBox="0 0 400 225" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="225" fill="#0A0E28"/>
-    <circle cx="200" cy="112" r="80" fill="#F1BF42" opacity="0.08"/>
-    <!-- Mockup de Ebook / Guia -->
-    <rect x="140" y="35" width="120" height="155" rx="8" fill="#101538" stroke="#F1BF42" stroke-width="2"/>
-    <rect x="155" y="55" width="90" height="6" rx="3" fill="#F1BF42"/>
-    <rect x="155" y="68" width="60" height="4" rx="2" fill="#9BA3C7"/>
-    <!-- Ícone de Cão / Comportamento -->
-    <circle cx="200" cy="105" r="18" fill="none" stroke="#F1BF42" stroke-width="2"/>
-    <path d="M192 110 C192 102, 208 102, 208 110" stroke="#F1BF42" stroke-width="2" fill="none"/>
-    <circle cx="194" cy="100" r="2" fill="#F1BF42"/>
-    <circle cx="206" cy="100" r="2" fill="#F1BF42"/>
-    <!-- Linhas de Texto -->
-    <rect x="155" y="135" width="90" height="3" rx="1.5" fill="#9BA3C7" opacity="0.6"/>
-    <rect x="155" y="143" width="70" height="3" rx="1.5" fill="#9BA3C7" opacity="0.4"/>
-    <rect x="155" y="151" width="80" height="3" rx="1.5" fill="#9BA3C7" opacity="0.4"/>
-  </svg>
-</div>
+            <svg viewBox="0 0 400 225" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <rect width="400" height="225" fill="#0A0E28" />
+              <circle cx="200" cy="112" r="80" fill="#F1BF42" opacity="0.08" />
+              <!-- Mockup de Ebook / Guia -->
+              <rect x="140" y="35" width="120" height="155" rx="8" fill="#101538" stroke="#F1BF42" stroke-width="2" />
+              <rect x="155" y="55" width="90" height="6" rx="3" fill="#F1BF42" />
+              <rect x="155" y="68" width="60" height="4" rx="2" fill="#9BA3C7" />
+              <!-- Ícone de Cão / Comportamento -->
+              <circle cx="200" cy="105" r="18" fill="none" stroke="#F1BF42" stroke-width="2" />
+              <path d="M192 110 C192 102, 208 102, 208 110" stroke="#F1BF42" stroke-width="2" fill="none" />
+              <circle cx="194" cy="100" r="2" fill="#F1BF42" />
+              <circle cx="206" cy="100" r="2" fill="#F1BF42" />
+              <!-- Linhas de Texto -->
+              <rect x="155" y="135" width="90" height="3" rx="1.5" fill="#9BA3C7" opacity="0.6" />
+              <rect x="155" y="143" width="70" height="3" rx="1.5" fill="#9BA3C7" opacity="0.4" />
+              <rect x="155" y="151" width="80" height="3" rx="1.5" fill="#9BA3C7" opacity="0.4" />
+            </svg>
+          </div>
           <div class="prep-card-body">
             <h3>Comportamento canino aplicado à avaliação</h3>
-            <p>Antes da imersão, você terá acesso a um material de preparação sobre <strong>comportamento e drives caninos</strong>, pensada para a realidade de creches e hospedagens. O objetivo é dar uma base para você compreender melhor o que está observando e por que determinados comportamentos importam na avaliação.</p>
+            <p>Antes da imersão, você terá acesso a um material de preparação sobre <strong>comportamento e drives
+                caninos</strong>, pensada para a realidade de creches e hospedagens. O objetivo é dar uma base para você
+              compreender melhor o que está observando e por que determinados comportamentos importam na avaliação.</p>
           </div>
         </div>
 
         <!-- Card 2 -->
         <div class="prep-card-new">
-        
-<div class="prep-img-wrapper">
-  <svg viewBox="0 0 400 225" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="225" fill="#0A0E28"/>
-    <!-- Prancheta com Anamnese -->
-    <rect x="135" y="30" width="130" height="165" rx="6" fill="#101538" stroke="#252F5A" stroke-width="2"/>
-    <rect x="170" y="22" width="60" height="14" rx="3" fill="#F1BF42"/>
-    <!-- Linhas e Checkboxes -->
-    <rect x="150" y="55" width="100" height="6" rx="3" fill="#F1BF42"/>
-    <rect x="150" y="75" width="12" height="12" rx="3" fill="none" stroke="#F1BF42" stroke-width="1.5"/>
-    <path d="M153 81 L157 85 L164 77" stroke="#F1BF42" stroke-width="2" fill="none"/>
-    <rect x="170" y="79" width="75" height="4" rx="2" fill="#9BA3C7"/>
-    <rect x="150" y="98" width="12" height="12" rx="3" fill="none" stroke="#F1BF42" stroke-width="1.5"/>
-    <path d="M153 104 L157 108 L164 100" stroke="#F1BF42" stroke-width="2" fill="none"/>
-    <rect x="170" y="102" width="60" height="4" rx="2" fill="#9BA3C7"/>
-    <rect x="150" y="121" width="12" height="12" rx="3" fill="none" stroke="#9BA3C7" stroke-width="1.5"/>
-    <rect x="170" y="125" width="80" height="4" rx="2" fill="#9BA3C7" opacity="0.5"/>
-    <rect x="150" y="148" width="100" height="20" rx="4" fill="#050717" stroke="#F1BF42" stroke-dasharray="3 3"/>
-    <text x="200" y="161" font-family="sans-serif" font-size="8" font-weight="bold" fill="#F1BF42" text-anchor="middle">EDITÁVEL</text>
-  </svg>
-</div>
+          <div class="prep-img-wrapper">
+            <svg viewBox="0 0 400 225" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <rect width="400" height="225" fill="#0A0E28" />
+              <!-- Laptop / Formulário -->
+              <rect x="110" y="40" width="180" height="120" rx="8" fill="#101538" stroke="#252F5A" stroke-width="2" />
+              <path d="M90 165 L310 165 L320 175 L80 175 Z" fill="#181F4E" stroke="#252F5A" />
+              <!-- Cabeçalho Roxo do Form -->
+              <rect x="125" y="55" width="150" height="22" rx="4" fill="#7248B9" />
+              <rect x="135" y="63" width="70" height="6" rx="3" fill="#FFFFFF" />
+              <!-- Perguntas do Form -->
+              <rect x="125" y="85" width="150" height="30" rx="4" fill="#050717" />
+              <circle cx="137" cy="100" r="4" fill="none" stroke="#F1BF42" stroke-width="1.5" />
+              <circle cx="137" cy="100" r="2" fill="#F1BF42" />
+              <rect x="148" y="98" width="60" height="4" rx="2" fill="#9BA3C7" />
+              <rect x="125" y="122" width="150" height="25" rx="4" fill="#050717" />
+              <rect x="135" y="132" width="80" height="4" rx="2" fill="#9BA3C7" opacity="0.5" />
+            </svg>
+          </div>
           <div class="prep-card-body">
-            <h3>Questionário de Anamnese Editável</h3>
-            <p>Você recebe uma <strong>estrutura pronta para personalizar</strong> e utilizar na sua empresa, ajudando a coletar as informações que antecedem a avaliação presencial.</p>
+            <h3>Google Forms na Prática</h3>
+            <p>Aprenda a organizar sua anamnese em um <strong>formulário profissional</strong>, facilitando o envio, a
+              coleta e a organização das respostas dos tutores.</p>
           </div>
         </div>
 
         <!-- Card 3 -->
         <div class="prep-card-new">
           <div class="prep-img-wrapper">
-  <svg viewBox="0 0 400 225" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="225" fill="#0A0E28"/>
-    <!-- Laptop / Formulário -->
-    <rect x="110" y="40" width="180" height="120" rx="8" fill="#101538" stroke="#252F5A" stroke-width="2"/>
-    <path d="M90 165 L310 165 L320 175 L80 175 Z" fill="#181F4E" stroke="#252F5A"/>
-    <!-- Cabeçalho Roxo do Form -->
-    <rect x="125" y="55" width="150" height="22" rx="4" fill="#7248B9"/>
-    <rect x="135" y="63" width="70" height="6" rx="3" fill="#FFFFFF"/>
-    <!-- Perguntas do Form -->
-    <rect x="125" y="85" width="150" height="30" rx="4" fill="#050717"/>
-    <circle cx="137" cy="100" r="4" fill="none" stroke="#F1BF42" stroke-width="1.5"/>
-    <circle cx="137" cy="100" r="2" fill="#F1BF42"/>
-    <rect x="148" y="98" width="60" height="4" rx="2" fill="#9BA3C7"/>
-    <rect x="125" y="122" width="150" height="25" rx="4" fill="#050717"/>
-    <rect x="135" y="132" width="80" height="4" rx="2" fill="#9BA3C7" opacity="0.5"/>
-  </svg>
-</div>
+            <svg viewBox="0 0 400 225" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <rect width="400" height="225" fill="#0A0E28" />
+              <!-- Painel de Hipóteses / Análise -->
+              <rect x="125" y="32" width="150" height="160" rx="8" fill="#101538" stroke="#252F5A" stroke-width="2" />
+              <rect x="142" y="46" width="70" height="6" rx="3" fill="#F1BF42" />
+              <circle cx="255" cy="49" r="4" fill="#10B981" />
+              <!-- Hipótese 1 -->
+              <rect x="140" y="65" width="120" height="32" rx="4" fill="#050717" stroke="#252F5A" stroke-width="1" />
+              <rect x="150" y="73" width="50" height="4" rx="2" fill="#F1BF42" />
+              <rect x="150" y="82" width="95" height="3" rx="1.5" fill="#9BA3C7" opacity="0.6" />
+              <rect x="150" y="88" width="70" height="3" rx="1.5" fill="#9BA3C7" opacity="0.4" />
+              <!-- Hipótese 2 -->
+              <rect x="140" y="105" width="120" height="32" rx="4" fill="#050717" stroke="#252F5A" stroke-width="1" />
+              <rect x="150" y="113" width="60" height="4" rx="2" fill="#F1BF42" />
+              <rect x="150" y="122" width="90" height="3" rx="1.5" fill="#9BA3C7" opacity="0.6" />
+              <rect x="150" y="128" width="65" height="3" rx="1.5" fill="#9BA3C7" opacity="0.4" />
+              <!-- Tag -->
+              <rect x="140" y="148" width="120" height="24" rx="4" fill="#050717" stroke="#F1BF42" stroke-dasharray="3 3" />
+              <text x="200" y="163" font-family="sans-serif" font-size="8" font-weight="bold" fill="#F1BF42" text-anchor="middle">LEVANTAMENTO DE HIPÓTESE</text>
+            </svg>
+          </div>
           <div class="prep-card-body">
-            <h3>Google Forms na Prática</h3>
-            <p>Aprenda a organizar sua anamnese em um <strong>formulário profissional</strong>, facilitando o envio, a coleta e a organização das respostas dos tutores.</p>
+            <h3>Levantamento de Hipótese</h3>
+            <p>Aprenda a analisar as respostas coletadas na anamnese para <strong>formular hipóteses comportamentais precisas</strong> antes mesmo da avaliação presencial.</p>
           </div>
         </div>
 
         <!-- Card 4 -->
         <div class="prep-card-new">
           <div class="prep-img-wrapper">
-  <svg viewBox="0 0 400 225" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="225" fill="#0A0E28"/>
-    <!-- Escudo / Ferramentas -->
-    <circle cx="200" cy="112" r="55" fill="#101538" stroke="#F1BF42" stroke-width="2"/>
-    <path d="M185 85 L215 85 L215 110 C215 125, 200 135, 200 135 C200 135, 185 125, 185 110 Z" fill="none" stroke="#F1BF42" stroke-width="2"/>
-    <!-- Ícone de Lupa / Análise -->
-    <circle cx="197" cy="105" r="10" fill="none" stroke="#F1BF42" stroke-width="2"/>
-    <line x1="204" y1="112" x2="212" y2="120" stroke="#F1BF42" stroke-width="2.5" stroke-linecap="round"/>
-  </svg>
-</div>
+            <svg viewBox="0 0 400 225" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <rect width="400" height="225" fill="#0A0E28" />
+              <!-- Escudo / Ferramentas -->
+              <circle cx="200" cy="112" r="55" fill="#101538" stroke="#F1BF42" stroke-width="2" />
+              <path d="M185 85 L215 85 L215 110 C215 125, 200 135, 200 135 C200 135, 185 125, 185 110 Z" fill="none"
+                stroke="#F1BF42" stroke-width="2" />
+              <!-- Ícone de Lupa / Análise -->
+              <circle cx="197" cy="105" r="10" fill="none" stroke="#F1BF42" stroke-width="2" />
+              <line x1="204" y1="112" x2="212" y2="120" stroke="#F1BF42" stroke-width="2.5" stroke-linecap="round" />
+            </svg>
+          </div>
           <div class="prep-card-body">
             <h3>Ferramentas de Avaliação</h3>
-            <p>Você receberá <strong>ferramentas práticas</strong> para organizar aquilo que foi observado presencialmente e cruzar essas informações com a anamnese.</p>
+            <p>Você receberá <strong>ferramentas práticas</strong> para organizar aquilo que foi observado
+              presencialmente e cruzar essas informações com a anamnese.</p>
           </div>
         </div>
 
         <!-- Card 5 -->
         <div class="prep-card-new">
           <div class="prep-img-wrapper">
-  <svg viewBox="0 0 400 225" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="225" fill="#0A0E28"/>
-    <!-- Fluxograma de Decisão -->
-    <rect x="160" y="35" width="80" height="30" rx="6" fill="#101538" stroke="#F1BF42" stroke-width="1.5"/>
-    <text x="200" y="53" font-family="sans-serif" font-size="9" font-weight="bold" fill="#F1BF42" text-anchor="middle">AVALIAÇÃO</text>
-    <!-- Setas para Baixo -->
-    <path d="M200 65 L200 85 M200 85 L130 105 M200 85 L270 105" stroke="#9BA3C7" stroke-width="1.5" fill="none"/>
-    <!-- Opções -->
-    <rect x="90" y="105" width="80" height="28" rx="6" fill="#101538" stroke="#10B981" stroke-width="1.5"/>
-    <text x="130" y="122" font-family="sans-serif" font-size="8" font-weight="bold" fill="#10B981" text-anchor="middle">APROVADO</text>
-    <rect x="230" y="105" width="80" height="28" rx="6" fill="#101538" stroke="#EF4444" stroke-width="1.5"/>
-    <text x="270" y="122" font-family="sans-serif" font-size="8" font-weight="bold" fill="#EF4444" text-anchor="middle">RECUSADO</text>
-    <rect x="160" y="150" width="80" height="28" rx="6" fill="#101538" stroke="#F1BF42" stroke-width="1.5"/>
-    <text x="200" y="167" font-family="sans-serif" font-size="8" font-weight="bold" fill="#F1BF42" text-anchor="middle">RESTRINGIR</text>
-    <path d="M200 85 L200 150" stroke="#F1BF42" stroke-width="1.5" stroke-dasharray="2 2" fill="none"/>
-  </svg>
-</div>
+            <svg viewBox="0 0 400 225" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <rect width="400" height="225" fill="#0A0E28" />
+              <!-- Fluxograma de Decisão -->
+              <rect x="160" y="35" width="80" height="30" rx="6" fill="#101538" stroke="#F1BF42" stroke-width="1.5" />
+              <text x="200" y="53" font-family="sans-serif" font-size="9" font-weight="bold" fill="#F1BF42"
+                text-anchor="middle">AVALIAÇÃO</text>
+              <!-- Setas para Baixo -->
+              <path d="M200 65 L200 85 M200 85 L130 105 M200 85 L270 105" stroke="#9BA3C7" stroke-width="1.5"
+                fill="none" />
+              <!-- Opções -->
+              <rect x="90" y="105" width="80" height="28" rx="6" fill="#101538" stroke="#10B981" stroke-width="1.5" />
+              <text x="130" y="122" font-family="sans-serif" font-size="8" font-weight="bold" fill="#10B981"
+                text-anchor="middle">APROVADO</text>
+              <rect x="230" y="105" width="80" height="28" rx="6" fill="#101538" stroke="#EF4444" stroke-width="1.5" />
+              <text x="270" y="122" font-family="sans-serif" font-size="8" font-weight="bold" fill="#EF4444"
+                text-anchor="middle">RECUSADO</text>
+              <rect x="160" y="150" width="80" height="28" rx="6" fill="#101538" stroke="#F1BF42" stroke-width="1.5" />
+              <text x="200" y="167" font-family="sans-serif" font-size="8" font-weight="bold" fill="#F1BF42"
+                text-anchor="middle">RESTRINGIR</text>
+              <path d="M200 85 L200 150" stroke="#F1BF42" stroke-width="1.5" stroke-dasharray="2 2" fill="none" />
+            </svg>
+          </div>
           <div class="prep-card-body">
             <h3>Estrutura para Tomada de Decisão</h3>
-            <p>Depois de perguntar e observar, é preciso decidir. Você terá uma estrutura para <strong>transformar perception em critérios claros</strong>.</p>
+            <p>Depois de perguntar e observar, é preciso decidir. Você terá uma estrutura para <strong>transformar
+                perception em critérios claros</strong>.</p>
           </div>
         </div>
 
         <!-- Card 6 -->
         <div class="prep-card-new">
           <div class="prep-img-wrapper">
-  <svg viewBox="0 0 400 225" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-    <rect width="400" height="225" fill="#0A0E28"/>
-    <!-- Dashboard / Gráficos -->
-    <rect x="110" y="35" width="180" height="155" rx="8" fill="#101538" stroke="#252F5A" stroke-width="2"/>
-    <!-- Gráfico de Barras -->
-    <rect x="130" y="130" width="18" height="40" rx="3" fill="#F1BF42" opacity="0.5"/>
-    <rect x="155" y="100" width="18" height="70" rx="3" fill="#F1BF42"/>
-    <rect x="180" y="115" width="18" height="55" rx="3" fill="#F1BF42" opacity="0.8"/>
-    <!-- Gráfico de Linha / Tendência -->
-    <path d="M130 80 Q160 50, 190 70 T250 45" fill="none" stroke="#10B981" stroke-width="2.5"/>
-    <circle cx="250" cy="45" r="4" fill="#10B981"/>
-    <!-- Linha de Base -->
-    <line x1="125" y1="170" x2="275" y2="170" stroke="#9BA3C7" stroke-width="1"/>
-  </svg>
-</div>
+            <svg viewBox="0 0 400 225" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+              <rect width="400" height="225" fill="#0A0E28" />
+              <!-- Dashboard / Gráficos -->
+              <rect x="110" y="35" width="180" height="155" rx="8" fill="#101538" stroke="#252F5A" stroke-width="2" />
+              <!-- Gráfico de Barras -->
+              <rect x="130" y="130" width="18" height="40" rx="3" fill="#F1BF42" opacity="0.5" />
+              <rect x="155" y="100" width="18" height="70" rx="3" fill="#F1BF42" />
+              <rect x="180" y="115" width="18" height="55" rx="3" fill="#F1BF42" opacity="0.8" />
+              <!-- Gráfico de Linha / Tendência -->
+              <path d="M130 80 Q160 50, 190 70 T250 45" fill="none" stroke="#10B981" stroke-width="2.5" />
+              <circle cx="250" cy="45" r="4" fill="#10B981" />
+              <!-- Linha de Base -->
+              <line x1="125" y1="170" x2="275" y2="170" stroke="#9BA3C7" stroke-width="1" />
+            </svg>
+          </div>
           <div class="prep-card-body">
             <h3>Registros e Indicadores</h3>
-            <p>Você também vai aprender <strong>o que vale registrar</strong> depois da avaliação para construir histórico e começar a enxergar padrões na operação.</p>
+            <p>Você também vai aprender <strong>o que vale registrar</strong> depois da avaliação para construir
+              histórico e começar a enxergar padrões na operação.</p>
           </div>
         </div>
       </div>
 
       <div class="text-center" style="margin-top: var(--spacing-element-margin);">
-        <a href="https://pay.hotmart.com/M107075913V" target="_blank" rel="noopener noreferrer" class="primary price-cta">
+        <a href="https://pay.hotmart.com/M107075913V" target="_blank" rel="noopener noreferrer"
+          class="primary price-cta">
           Quero garantir minha vaga
         </a>
       </div>
@@ -1689,10 +1744,12 @@
         <div class="bio-content">
           <h3>Tata Pereira</h3>
           <p class="bio-text">
-            Tata Pereira é especialista em comportamento canino, formação de profissionais e estruturação de negócios pet.
+            Tata Pereira é especialista em comportamento canino, formação de profissionais e estruturação de negócios
+            pet.
             Fundadora da <strong>Tata EducaCão</strong>, sua trajetória passa por diferentes funções da operação:
             pet sitter, dog walker, adestradora, monitora, supervisora e consultora de creches.
-            Hoje, une <strong>comportamento, operação e processos</strong> para ajudar empresas pet a funcionarem com mais clareza e estrutura.
+            Hoje, une <strong>comportamento, operação e processos</strong> para ajudar empresas pet a funcionarem com
+            mais clareza e estrutura.
           </p>
 
           <div class="bio-stats">
@@ -1703,7 +1760,8 @@
           </div>
 
           <p class="bio-text" style="margin-top:20px;">
-            Tata também é criadora do <strong>Método Domus</strong>, uma linha de trabalho que ajuda a enxergar os diferentes processos que sustentam uma operação pet estruturada.
+            Tata também é criadora do <strong>Método Domus</strong>, uma linha de trabalho que ajuda a enxergar os
+            diferentes processos que sustentam uma operação pet estruturada.
           </p>
         </div>
       </div>
@@ -1725,10 +1783,26 @@
             <span>Sem processo estruturado</span>
           </div>
           <ul class="comp-list">
-            <li class="neg-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Operação cresce mas você continua presa</span></li>
-            <li class="neg-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Tudo depende de você para funcionar</span></li>
-            <li class="neg-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>A equipe executa cada tarefa de um jeito diferente</span></li>
-            <li class="neg-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg><span>Você vive apagando incêndios</span></li>
+            <li class="neg-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="3">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg><span>Operação cresce mas você continua presa</span></li>
+            <li class="neg-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="3">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg><span>Tudo depende de você para funcionar</span></li>
+            <li class="neg-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="3">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg><span>A equipe executa cada tarefa de um jeito diferente</span></li>
+            <li class="neg-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="3">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg><span>Você vive apagando incêndios</span></li>
           </ul>
         </div>
 
@@ -1738,10 +1812,22 @@
             <span>Com processo estruturado</span>
           </div>
           <ul class="comp-list">
-            <li class="pos-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Etapas definidas e critérios de observação claros</span></li>
-            <li class="pos-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Documentos padronizados e fáceis de localizar</span></li>
-            <li class="pos-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Organizar processos, agenda e responsabilidades</span></li>
-            <li class="pos-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Delegar com segurança e confiança</span></li>
+            <li class="pos-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="3">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg><span>Etapas definidas e critérios de observação claros</span></li>
+            <li class="pos-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="3">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg><span>Documentos padronizados e fáceis de localizar</span></li>
+            <li class="pos-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="3">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg><span>Organizar processos, agenda e responsabilidades</span></li>
+            <li class="pos-item"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="3">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg><span>Delegar com segurança e confiança</span></li>
           </ul>
         </div>
       </div>
@@ -1757,18 +1843,43 @@
       <h2>Tudo o que você recebe</h2>
 
       <div class="includes-list">
-        <div class="checklist-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>preparação em comportamento e drives caninos para avaliação;</span></div>
-        <div class="checklist-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Google Forms na Prática;</span></div>
-        <div class="checklist-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>Questionário de Anamnese Editável;</span></div>
-        <div class="checklist-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>ferramentas de avaliação;</span></div>
-        <div class="checklist-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>estrutura para tomada de decisão;</span></div>
-        <div class="checklist-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>orientação sobre registros e indicadores;</span></div>
-        <div class="checklist-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span>imersão ao vivo com aplicação prática.</span></div>
-        <div class="checklist-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Grupo de Implementação por 30 dias</strong></span></div>
+        <div class="checklist-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="3">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg><span>preparação em comportamento e drives caninos para avaliação;</span></div>
+        <div class="checklist-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="3">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg><span>Google Forms na Prática;</span></div>
+        <div class="checklist-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="3">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg><span>Levantamento de Hipótese;</span></div>
+        <div class="checklist-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="3">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg><span>ferramentas de avaliação;</span></div>
+        <div class="checklist-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="3">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg><span>estrutura para tomada de decisão;</span></div>
+        <div class="checklist-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="3">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg><span>orientação sobre registros e indicadores;</span></div>
+        <div class="checklist-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="3">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg><span>imersão ao vivo com aplicação prática.</span></div>
+        <div class="checklist-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="3">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg><span><strong>Grupo de Implementação por 30 dias</strong></span></div>
       </div>
 
       <div class="text-center" style="margin-top: var(--spacing-element-margin);">
-        <a href="https://pay.hotmart.com/M107075913V" target="_blank" rel="noopener noreferrer" class="primary price-cta">
+        <a href="https://pay.hotmart.com/M107075913V" target="_blank" rel="noopener noreferrer"
+          class="primary price-cta">
           Quero garantir minha vaga
         </a>
       </div>
@@ -1802,7 +1913,8 @@
         <span style="display: block; margin-top: 12px; font-size: 0.8rem; color: var(--navy-text-muted);">
           Vagas limitadas. Pagamento seguro pela Hotmart.
         </span>
-        <div class="ab-note" id="ab-note" style="margin-top: 10px; font-size: 0.72rem; color: rgba(155, 163, 199, 0.65);"></div>
+        <div class="ab-note" id="ab-note"
+          style="margin-top: 10px; font-size: 0.72rem; color: rgba(155, 163, 199, 0.65);"></div>
       </div>
     </div>
   </section>
@@ -1817,38 +1929,78 @@
 
       <div class="faq-wrapper">
         <div class="faq-item">
-          <button class="faq-trigger"><span>Preciso ser especialista em comportamento canino?</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
-          <div class="faq-content"><p>Não. Você terá uma preparação específica para compreender os conceitos que serão utilizados durante a avaliação.</p></div>
+          <button class="faq-trigger"><span>Preciso ser especialista em comportamento canino?</span><svg width="18"
+              height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg></button>
+          <div class="faq-content">
+            <p>Não. Você terá uma preparação específica para compreender os conceitos que serão utilizados durante a
+              avaliação.</p>
+          </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-trigger"><span>Já tenho uma creche ou hospedagem funcionando. Faz sentido para mim?</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
-          <div class="faq-content"><p>Sim. Principalmente se suas avaliações ainda dependem muito da experiência individual, da memória ou se pessoas diferentes acabam avaliando de maneiras diferentes.</p></div>
+          <button class="faq-trigger"><span>Já tenho uma creche ou hospedagem funcionando. Faz sentido para
+              mim?</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg></button>
+          <div class="faq-content">
+            <p>Sim. Principalmente se suas avaliações ainda dependem muito da experiência individual, da memória ou se
+              pessoas diferentes acabam avaliando de maneiras diferentes.</p>
+          </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-trigger"><span>Estou começando minha operação. Posso participar?</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
-          <div class="faq-content"><p>Sim. Estruturar esse processo desde o início pode ajudar a evitar que decisões improvisadas se tornem o padrão da empresa.</p></div>
+          <button class="faq-trigger"><span>Estou começando minha operação. Posso participar?</span><svg width="18"
+              height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg></button>
+          <div class="faq-content">
+            <p>Sim. Estruturar esse processo desde o início pode ajudar a evitar que decisões improvisadas se tornem o
+              padrão da empresa.</p>
+          </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-trigger"><span>Preciso ter um formulário de anamnese pronto?</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
-          <div class="faq-content"><p>Não. Você receberá um Questionário de Anamnese Editável e orientação para personalizá-lo e utilizá-lo na sua operação.</p></div>
+          <button class="faq-trigger"><span>Preciso ter um formulário de anamnese pronto?</span><svg width="18"
+              height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg></button>
+          <div class="faq-content">
+            <p>Não. Você terá o treinamento Google Forms na Prática e orientação passo a passo para estruturar e
+              personalizar seu formulário na sua operação.</p>
+          </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-trigger"><span>A imersão é presencial?</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
-          <div class="faq-content"><p>Não. O encontro será <strong>online e ao vivo</strong>.</p></div>
+          <button class="faq-trigger"><span>A imersão é presencial?</span><svg width="18" height="18"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg></button>
+          <div class="faq-content">
+            <p>Não. O encontro será <strong>online e ao vivo</strong>.</p>
+          </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-trigger"><span>Qual é o horário?</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
-          <div class="faq-content"><p>Dia <strong>14 de novembro, das 10h às 16h</strong>, com intervalo para almoço.</p></div>
+          <button class="faq-trigger"><span>Qual é o horário?</span><svg width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg></button>
+          <div class="faq-content">
+            <p>Dia <strong>14 de novembro, das 10h às 16h</strong>, com intervalo para almoço.</p>
+          </div>
         </div>
 
         <div class="faq-item">
-          <button class="faq-trigger"><span>Haverá gravação? Por quanto tempo terei acesso?</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
-          <div class="faq-content"><p>Sim, a gravação ficará disponível por 30 dias após a imersão.</p></div>
+          <button class="faq-trigger"><span>Haverá gravação? Por quanto tempo terei acesso?</span><svg width="18"
+              height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg></button>
+          <div class="faq-content">
+            <p>Sim, a gravação ficará disponível por 30 dias após a imersão.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1857,13 +2009,15 @@
   <!-- =======================================================
        15. CTA FINAL (NAVY)
   ======================================================== -->
-  <section class="text-center" style="background: radial-gradient(circle at center, rgba(16, 21, 56, 0.9) 0%, var(--navy-base) 100%);">
+  <section class="text-center"
+    style="background: radial-gradient(circle at center, rgba(16, 21, 56, 0.9) 0%, var(--navy-base) 100%);">
     <div class="container">
       <div class="section-kicker">PRÓXIMO PASSO</div>
       <h2>
         Pare de decidir no improviso.<br>Estruture seu processo de avaliação.
       </h2>
-      <p style="color: var(--navy-text-muted); font-size: clamp(0.95rem, 2vw, 1.05rem); max-width: 650px; margin: 0 auto var(--spacing-element-margin);">
+      <p
+        style="color: var(--navy-text-muted); font-size: clamp(0.95rem, 2vw, 1.05rem); max-width: 650px; margin: 0 auto var(--spacing-element-margin);">
         <strong style="color: #fff;">14 de novembro | 10h às 16h | Online e ao vivo</strong>
       </p>
       <a href="https://pay.hotmart.com/M107075913V" target="_blank" rel="noopener noreferrer" class="primary price-cta">
@@ -1891,10 +2045,11 @@
   </div>
 
   <!-- WHATSAPP FLUTUANTE -->
-  <a href="https://wa.me/5521995454595?text=Ol%C3%A1%20Tata!%20Vim%20pela%20p%C3%A1gina%20da%20Imers%C3%A3o%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida."
+  <a href="https://wa.me/5521975994712?text=Ol%C3%A1%20Tata!%20Vim%20pela%20p%C3%A1gina%20da%20Imers%C3%A3o%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida."
     target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Falar pelo WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor">
-      <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.322-.297-.124-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.124-1.256-.463-2.393-1.479-.885-.801-1.482-1.79-1.655-2.087-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+      <path
+        d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.322-.297-.124-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.124-1.256-.463-2.393-1.479-.885-.801-1.482-1.79-1.655-2.087-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
     </svg>
   </a>
 
@@ -1927,7 +2082,7 @@
           preco: "97",
           desconto: "51% OFF",
           descricao: "Imersão online e ao vivo • 14 de novembro • 10h às 16h",
-          checkout: ""
+          checkout: "https://pay.hotmart.com/M107075913V"
         }
       };
 
@@ -1957,21 +2112,13 @@
       document.querySelectorAll(".price-cta").forEach(link => {
         if (cfg.checkout) {
           link.href = cfg.checkout;
-        } else {
-          link.href = "#oferta";
-          link.addEventListener("click", function (e) {
-            e.preventDefault();
-            alert("O checkout da variante de R$ 97 ainda precisa ser configurado na Hotmart.");
-          });
         }
       });
 
       document.documentElement.dataset.priceVariant = variante;
 
-      if (params.get("preco") === "97" || params.get("preco") === "67") {
-        if (note) note.textContent = "Variante de teste: R$ " + variante;
-      } else if (AB_TEST_ATIVO) {
-        if (note) note.textContent = "Teste A/B ativo • variante R$ " + variante;
+      if (params.get("debug") === "1") {
+        if (note) note.textContent = "Variante: R$ " + variante;
       }
     })();
 
