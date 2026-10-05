@@ -2660,56 +2660,19 @@
                 });
             }
 
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = "<span>Enviando mensagem...</span>";
+            const subject = encodeURIComponent(`Contato do site: ${name}`);
+            const body = encodeURIComponent(`Nome: ${name}\nE-mail: ${email}\nTelefone: ${phone}\nNegócio: ${business}\n\nMensagem:\n${message}`);
+            
+            window.location.href = `mailto:contato@tatapereira.com?subject=${subject}&body=${body}`;
 
-            try {
-                const WORKER_URL = "https://contato-tata.juangomes-sales.workers.dev/";
-
-                const response = await fetch(WORKER_URL, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        name: name,
-                        email: email,
-                        phone: phone,
-                        business: business,
-                        message: message
-                    })
-                });
-
-                let result;
-                try {
-                    result = await response.json();
-                } catch (jsonErr) {
-                    result = {};
-                }
-
-                if (response.ok && (result.success || result.id)) {
-                    feedback.className = "form-feedback success";
-                    feedback.style.display = "block";
-                    feedback.innerHTML = `
-            <strong>✓ Mensagem enviada com sucesso, ${name}!</strong><br />
-            Nossa equipe entrará em contato em breve. Se preferir atendimento imediato, <a href="https://wa.me/5521975994712?text=${encodeURIComponent(`Olá! Sou ${name} (${business}). Preenchi o formulário no site e gostaria de atendimento.`)}" target="_blank" style="color: #065f46; text-decoration: underline; font-weight: 700;">clique aqui para falar no WhatsApp agora</a>.
-          `;
-                    form.reset();
-                    submitBtn.innerHTML = `<span>Mensagem Enviada!</span> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>`;
-                } else {
-                    throw new Error(result.error || result.message || "Erro retornado pela API");
-                }
-            } catch (error) {
-                feedback.className = "form-feedback";
-                feedback.style.display = "block";
-                feedback.style.background = "rgba(239, 68, 68, 0.12)";
-                feedback.style.border = "1px solid rgba(239, 68, 68, 0.3)";
-                feedback.style.color = "#991b1b";
-                feedback.innerHTML = `<strong>✕ Ocorreu um erro ao enviar.</strong> Por favor, tente novamente ou entre em contato pelo WhatsApp.`;
-                submitBtn.innerHTML = `<span>Tentar Novamente</span>`;
-            } finally {
-                submitBtn.disabled = false;
-            }
+            feedback.className = "form-feedback success";
+            feedback.style.display = "block";
+            feedback.innerHTML = `
+            <strong>✓ Abrindo seu aplicativo de e-mail...</strong><br />
+            Se o seu aplicativo não abrir, <a href="https://wa.me/5521975994712?text=${encodeURIComponent(`Olá! Sou ${name} (${business}). Tentei enviar um formulário pelo site e gostaria de atendimento.`)}" target="_blank" style="color: #065f46; text-decoration: underline; font-weight: 700;">clique aqui para falar no WhatsApp agora</a>.
+            `;
+            
+            form.reset();
         }
 
         // --- Helpers de Tracking de Analytics ---
