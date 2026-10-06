@@ -12,407 +12,331 @@
     <meta name="keywords"
         content="programa pet, creche pet, hospedagem pet, método domus, tata pereira, gestão pet, processos pet">
     <meta name="author" content="Tata Pereira">
-    <meta name="theme-color" content="#020422">
+    <meta name="theme-color" content="#050717">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Minha Creche Estruturada - Programa Tata Pereira">
     <meta property="og:description"
         content="Deixe o improviso. Construa uma empresa pet sólida, com processos claros, segurança e previsibilidade.">
-    <meta property="og:image"
-        content="https://raw.githubusercontent.com/profissaopet/sob-controle/main/assets/og-cover.jpg">
+    <meta property="og:image" content="./assets/tata-bracos-cruzados.png">
 
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐾</text></svg>">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./assets/tata-logo-dog.png">
 
-    <!-- Google Fonts: Inter, Satisfy e Montserrat -->
+    <!-- Google Fonts: Inter e Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Satisfy&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
         rel="stylesheet">
 
-    <!-- Lucide Icons for Interactive Infographic -->
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        /* CSS Reset & Variables */
-        * {
+        /* =========================================================
+           DESIGN SYSTEM & CSS VARIABLES (PADRÃO DA HOME)
+           ========================================================= */
+        :root {
+            /* PALETA AZUL ESCURO DEEP NAVY */
+            --navy-base: #050717;
+            --navy-surface-1: #0a0e28;
+            --navy-surface-2: #101538;
+            --navy-card: rgba(16, 21, 56, 0.78);
+            --navy-card-hover: rgba(24, 31, 78, 0.92);
+            --navy-glass: rgba(10, 14, 40, 0.88);
+
+            --navy-text-main: #f8fafc;
+            --navy-text-muted: #9ba3c7;
+            --navy-border-subtle: rgba(255, 255, 255, 0.08);
+            --navy-border-card: rgba(255, 255, 255, 0.12);
+
+            /* PALETA BRANCO / CREME CHAMPAGNE */
+            --cream-base: #fcfaf6;
+            --cream-surface-1: #ffffff;
+            --cream-surface-2: #f6f2e9;
+            --cream-card: #ffffff;
+
+            --cream-text-main: #0a0e28;
+            --cream-text-body: #334155;
+            --cream-text-muted: #5e697d;
+            --cream-border-card: #ebdcc8;
+            --cream-border-input: #d8cebe;
+
+            /* ACENTOS E IDENTIDADE */
+            --gold-primary: #f1bf42;
+            --gold-2: #f1bf42;
+            --gold-hover: #e0ac2b;
+            --gold-muted: rgba(241, 191, 66, 0.14);
+            --gold-border: rgba(241, 191, 66, 0.35);
+            --gold-glow: rgba(241, 191, 66, 0.28);
+            --gold-dark: #b58e1c;
+
+            --text-contrast: #070919;
+
+            /* RAIOS E SOMBRAS */
+            --radius-sm: 10px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-full: 9999px;
+
+            --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.15);
+            --shadow-md: 0 12px 35px rgba(0, 0, 0, 0.28);
+            --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.4);
+            --shadow-cream: 0 16px 40px rgba(10, 14, 40, 0.06);
+
+            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        *,
+        *::before,
+        *::after {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
-        :root {
-            /* Spacing Scale (Strict 8px Grid) */
-            --space-1: 8px;
-            --space-2: 16px;
-            --space-3: 24px;
-            --space-4: 32px;
-            --space-5: 40px;
-            --space-6: 48px;
-            --space-8: 64px;
-            --space-10: 80px;
-            --space-12: 96px;
-            --space-16: 128px;
-
-            /* Typographic Scale */
-            --font-xs: 0.88rem;
-            --font-sm: 0.95rem;
-            --font-base: 1.05rem;
-            --font-lg: 1.2rem;
-            --font-xl: 1.5rem;
-            --font-2xl: 2.2rem;
-            --font-3xl: 2.8rem;
-
-            /* Visual Tokens */
-            --border-radius: 24px;
-            /* Unificado para todos os cartões */
-            --border-radius-sm: 12px;
-            --border-radius-lg: 32px;
-
-            /* Color System */
-            --bg-dark: #020422;
-            /* Azul Marinho Escuro Premium */
-            --bg-dark-gradient: linear-gradient(180deg, #020422 0%, #060938 100%);
-            --bg-light: #ffffff;
-            --bg-light-muted: #fdfbf7;
-            /* Creme Champagne Suave */
-            --accent-yellow: #cfa426;
-            /* Dourado do Canva */
-            --accent-yellow-gradient: linear-gradient(135deg, #e5be49 0%, #b0871a 100%);
-            --accent-yellow-hover: #b58e1c;
-            --text-white: #ffffff;
-            --text-dark: #020422;
-            --text-muted: #5e6488;
-            --text-light-muted: #aab2dd;
-            --accent-red: #e74c3c;
-            --accent-green: #2ecc71;
-
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            --shadow-subtle: 0 10px 30px rgba(2, 4, 34, 0.03);
-            --shadow-medium: 0 20px 40px rgba(2, 4, 34, 0.06);
-            --shadow-dark: 0 25px 50px rgba(0, 0, 0, 0.45);
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
         }
 
         body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.75;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--navy-base);
+            color: var(--navy-text-main);
+            line-height: 1.65;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
         }
 
         .container {
-            max-width: 1040px;
+            width: 100%;
+            max-width: 1180px;
             margin: 0 auto;
-            padding: 0 var(--space-3);
+            padding: 0 24px;
+        }
+
+        section {
+            padding: 105px 0;
+            position: relative;
         }
 
         .text-center {
             text-align: center;
         }
 
-        /* Scroll Reveal Effect */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-            will-change: transform, opacity;
+        /* =========================================================
+           BOTÃO PRINCIPAL COM SHIMMER EFFECT (HOME)
+           ========================================================= */
+        .primary {
+            display: flex;
+            width: 100%;
+            min-height: 49px;
+            align-items: center;
+            justify-content: center;
+            border: 0;
+            border-radius: 11px;
+            background: linear-gradient(135deg, var(--gold-2), #dfa82e);
+            color: #10111a;
+            cursor: pointer;
+            font-size: .74rem;
+            font-weight: 800;
+            box-shadow: 0 12px 30px rgba(241, 191, 66, .16);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            gap: 8px;
+            position: relative;
+            z-index: 10;
+            overflow: hidden;
+            transition: var(--transition);
+            text-align: center;
         }
 
-        .reveal.active {
+        .primary::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .primary:hover::after {
+            left: 140%;
+        }
+
+        .primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 16px 36px rgba(241, 191, 66, .35);
+            filter: brightness(1.05);
+        }
+
+        /* FADE-IN ANIMATION */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(22px);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .delay-1 {
-            transition-delay: 0.05s;
-        }
-
-        .delay-2 {
-            transition-delay: 0.1s;
-        }
-
-        .delay-3 {
-            transition-delay: 0.15s;
-        }
-
-        .delay-4 {
-            transition-delay: 0.2s;
-        }
-
-        /* Sticky Navigation Bar */
-        .sticky-navbar {
-            position: fixed;
+        /* =========================================================
+           HEADER
+           ========================================================= */
+        header {
+            position: sticky;
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(2, 4, 34, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            z-index: 9998;
+            z-index: 1000;
+            background: var(--navy-glass);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--navy-border-subtle);
+            transition: transform 0.35s ease;
+        }
+
+        header.hidden {
             transform: translateY(-100%);
-            opacity: 0;
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
-            padding: var(--space-2) 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
 
-        .sticky-navbar.visible {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .sticky-navbar-container {
+        .header-inner {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            height: 84px;
         }
 
-        .sticky-logo-container {
-            display: flex;
-            align-items: center;
-            gap: var(--space-1);
-        }
-
-        .sticky-logo-stack {
+        .logo {
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             gap: 2px;
         }
 
-        .sticky-logo-dog {
-            height: 28px;
+        .logo img:first-child {
+            height: 26px;
             width: auto;
-            display: block;
-            filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.4));
+            object-fit: contain;
         }
 
-        .sticky-logo-nome {
+        .logo img:last-child {
             height: 16px;
             width: auto;
-            display: block;
-            filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
+            object-fit: contain;
         }
 
-        .sticky-cta-btn {
-            background: var(--accent-yellow-gradient);
-            color: var(--text-white);
-            font-weight: 800;
-            font-size: 0.85rem;
-            padding: 10px 24px;
-            border-radius: 100px;
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: var(--transition);
-            box-shadow: 0 4px 10px rgba(207, 164, 38, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .btn-header-wa {
+            width: auto;
+            min-height: 40px;
+            padding: 0 18px;
+            border-radius: var(--radius-full);
+            font-size: 0.74rem;
         }
 
-        .sticky-cta-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(207, 164, 38, 0.45);
-        }
-
-        /* Floating WhatsApp Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25d366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
-            z-index: 9999;
-            transition: var(--transition);
-            animation: pulse-whatsapp 2s infinite;
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1) translateY(-3px);
-            background-color: #20ba5a;
-            box-shadow: 0 12px 30px rgba(37, 211, 102, 0.45);
-        }
-
-        @keyframes pulse-whatsapp {
-            0% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
-            }
-
-            70% {
-                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-            }
-
-            100% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
-        }
-
-        /* Hero Section (Dark Blue Gradient) */
+        /* =========================================================
+           HERO SECTION
+           ========================================================= */
         .hero {
-            background: var(--bg-dark-gradient);
-            color: var(--text-white);
-            padding: var(--space-12) 0 var(--space-10) 0;
-            text-align: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            position: relative;
-        }
-
-        .hero-logo-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: var(--space-4);
-        }
-
-        .hero-logo-dog {
-            width: 130px;
-            height: auto;
-            display: block;
-            filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.5));
-            transition: var(--transition);
-        }
-
-        .hero-logo-nome {
-            width: 200px;
-            height: auto;
-            display: block;
-            margin-top: -8px;
-            filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.4));
-            transition: var(--transition);
-        }
-
-        .hero-logo-container:hover .hero-logo-dog,
-        .hero-logo-container:hover .hero-logo-nome {
-            filter: drop-shadow(0 8px 24px rgba(207, 164, 38, 0.35));
-        }
-
-        .hero-logo-label {
-            font-size: 0.75rem;
-            font-weight: 900;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            color: var(--accent-yellow);
-            margin-top: var(--space-1);
-            opacity: 0.9;
-        }
-
-        .hero-title-banner {
-            background: var(--accent-yellow-gradient);
-            padding: var(--space-2) var(--space-6);
-            border-radius: 100px;
-            display: inline-block;
-            margin-bottom: var(--space-4);
-            max-width: 100%;
-            box-shadow: 0 10px 35px rgba(207, 164, 38, 0.35);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .hero-title-banner h1 {
-            font-size: var(--font-2xl);
-            font-weight: 900;
-            color: var(--text-white);
-            letter-spacing: 0.5px;
-            line-height: 1.2;
-            text-shadow: 0 2px 4px rgba(2, 4, 34, 0.3);
-        }
-
-        .hero-subtitle {
-            font-size: var(--font-base);
-            color: var(--text-light-muted);
-            max-width: 780px;
-            margin: 0 auto var(--space-4) auto;
-            line-height: 1.75;
-            font-weight: 400;
-        }
-
-        /* Headline Quote Box */
-        .hero-quote-banner {
-            background: linear-gradient(135deg, #a48222 0%, #735712 100%);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: var(--border-radius-sm);
-            padding: var(--space-3) var(--space-5);
-            max-width: 740px;
-            margin: 0 auto var(--space-6) auto;
-            box-shadow: var(--shadow-dark);
-        }
-
-        .hero-quote-banner p {
-            font-family: 'Satisfy', cursive;
-            font-size: 2.2rem;
-            font-weight: normal;
-            color: var(--text-white);
-            line-height: 1.3;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .hero-quote-banner p span.quote-marks {
-            color: rgba(255, 255, 255, 0.65);
-            font-family: Georgia, serif;
-            font-size: 2rem;
-            vertical-align: middle;
-        }
-
-        /* Video Header & Curved Arrows */
-        .hero-video-header {
-            margin-bottom: var(--space-3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--space-2);
-            position: relative;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .curved-arrow {
-            color: var(--accent-yellow);
-            width: 60px;
-            height: auto;
-            opacity: 0.85;
-        }
-
-        .curved-arrow path {
-            stroke: var(--accent-yellow);
-            stroke-linecap: round;
-        }
-
-        span.video-cta-text {
-            color: var(--text-white);
-            font-weight: 800;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        /* Video Player Mockup */
-        .video-player-container {
-            max-width: 740px;
-            margin: 0 auto var(--space-5) auto;
-            border-radius: var(--border-radius);
+            padding-top: 40px;
+            padding-bottom: 90px;
+            background:
+                radial-gradient(circle at 75% 35%, rgba(241, 191, 66, 0.15) 0%, rgba(5, 7, 23, 0) 55%),
+                radial-gradient(circle at 20% 80%, rgba(16, 21, 56, 0.9) 0%, rgba(5, 7, 23, 0) 65%),
+                var(--navy-base);
             overflow: hidden;
-            border: 2px solid rgba(207, 164, 38, 0.35);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.55);
+            position: relative;
+        }
+
+        .hero-tag {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--gold-primary);
+            margin-bottom: 14px;
+            display: inline-block;
+        }
+
+        .hero h1 {
+            font-size: clamp(28px, 4vw, 46px);
+            font-weight: 900;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            color: var(--navy-text-main);
+            margin-bottom: 20px;
+        }
+
+        .hero-subheadline {
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--navy-text-muted);
+            max-width: 680px;
+            margin: 0 auto 30px auto;
+        }
+
+        .hero-quote-box {
+            background: var(--navy-card);
+            border: 1px solid var(--gold-border);
+            border-radius: var(--radius-md);
+            padding: 20px 30px;
+            max-width: 740px;
+            margin: 0 auto 35px auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-quote-box p {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--navy-text-main);
+            line-height: 1.35;
+        }
+
+        .hero-quote-box p span.gold-text {
+            color: var(--gold-primary);
+        }
+
+        /* VIDEO CONTAINER */
+        .video-player-container {
+            max-width: 780px;
+            margin: 0 auto 35px auto;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 2px solid var(--gold-border);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55);
             position: relative;
             cursor: pointer;
+            background: var(--navy-surface-2);
+            aspect-ratio: 16 / 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .video-player-container img {
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
+            object-fit: cover;
             transition: var(--transition);
         }
 
@@ -425,1204 +349,386 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 84px;
-            height: 84px;
-            background: var(--accent-yellow-gradient);
-            color: #ffffff;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--gold-2), #dfa82e);
+            color: #10111a;
             border-radius: 50%;
             display: grid;
             place-items: center;
-            box-shadow: 0 10px 30px rgba(207, 164, 38, 0.5);
+            box-shadow: 0 10px 30px rgba(241, 191, 66, 0.4);
             transition: var(--transition);
             z-index: 2;
-            border: 2px solid rgba(255, 255, 255, 0.25);
         }
 
         .video-player-container:hover .play-button-overlay {
             transform: translate(-50%, -50%) scale(1.1);
-            box-shadow: 0 15px 35px rgba(207, 164, 38, 0.7);
+            box-shadow: 0 15px 40px rgba(241, 191, 66, 0.6);
         }
 
         .play-icon-svg {
             width: 32px;
             height: 32px;
             fill: currentColor;
-            margin-left: 5px;
+            margin-left: 4px;
         }
 
-        /* Hero Button & CTA subtext */
-        .hero-cta-btn {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            font-weight: 850;
-            font-size: var(--font-base);
-            padding: var(--space-2) var(--space-5);
-            border-radius: 100px;
-            text-decoration: none;
-            display: inline-block;
-            transition: var(--transition);
-            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.12);
-            border: 2px solid transparent;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .hero-cta-btn:hover {
-            background: var(--accent-yellow-gradient);
-            color: var(--text-white);
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(207, 164, 38, 0.35);
-        }
-
-        .hero-cta-subtext {
-            font-size: var(--font-sm);
-            color: var(--text-light-muted);
-            margin-top: var(--space-2);
-            max-width: 580px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.65;
-        }
-
-        /* Generic Section Styling (Strict Vertical Rhythm) */
-        section {
-            padding: var(--space-12) 0;
-            background-color: var(--bg-light);
-            border-bottom: 1px solid #eef1f6;
-            position: relative;
-        }
-
-        section.muted-bg {
-            background-color: var(--bg-light-muted);
-        }
-
-        h2 {
-            font-family: 'Inter', sans-serif;
-            font-size: 1.75rem;
-            font-weight: 800;
-            color: var(--text-dark);
-            text-align: center;
-            margin-bottom: var(--space-2);
-            line-height: 1.25;
-            letter-spacing: 0;
-        }
-
-        .section-subtitle {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-            text-align: center;
-            max-width: 720px;
-            margin: 0 auto var(--space-5) auto;
-            line-height: 1.7;
-        }
-
-        .section-cta-block {
-            text-align: center;
-            margin-top: var(--space-6);
-        }
-
-        .section-cta-btn {
-            background: var(--accent-yellow-gradient);
-            color: var(--text-white);
-            font-weight: 800;
-            font-size: var(--font-base);
-            padding: var(--space-2) var(--space-5);
-            border-radius: 100px;
-            text-decoration: none;
-            display: inline-block;
-            transition: var(--transition);
-            box-shadow: 0 10px 25px rgba(207, 164, 38, 0.25);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .section-cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(207, 164, 38, 0.45);
-        }
-
-        /* Section 2: target audience cards */
-        .target-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-3);
-            max-width: 900px;
+        .btn-hero {
+            max-width: 420px;
             margin: 0 auto;
+            min-height: 52px;
+            border-radius: var(--radius-full);
+            font-size: 0.8rem;
+        }
+
+        /* =========================================================
+           SECTION 2: TARGET AUDIENCE (PUBLICO ALVO)
+           ========================================================= */
+        .target-section {
+            background-color: var(--cream-base);
+            color: var(--cream-text-main);
+            border-top: 1px solid var(--cream-border-card);
+            border-bottom: 1px solid var(--cream-border-card);
+        }
+
+        .section-tag-cream {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 5px 12px;
+            background: rgba(207, 164, 38, 0.12);
+            border: 1px solid rgba(207, 164, 38, 0.3);
+            border-radius: var(--radius-full);
+            color: var(--gold-dark);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+
+        .section-title-cream {
+            font-size: clamp(26px, 3.2vw, 38px);
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: var(--cream-text-main);
+            line-height: 1.25;
+        }
+
+        .target-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            max-width: 920px;
+            margin: 40px auto 0 auto;
         }
 
         .target-card {
-            background-color: #ffffff;
-            border: 1px solid rgba(2, 4, 34, 0.05);
-            padding: var(--space-4);
-            border-radius: var(--border-radius);
+            background: var(--cream-card);
+            border: 1.5px solid var(--cream-border-card);
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
             display: flex;
             align-items: center;
-            gap: var(--space-2);
-            box-shadow: var(--shadow-subtle);
+            gap: 16px;
+            box-shadow: var(--shadow-cream);
             transition: var(--transition);
         }
 
         .target-card:hover {
-            border-color: rgba(207, 164, 38, 0.35);
+            border-color: var(--gold-dark);
             transform: translateY(-3px);
-            box-shadow: var(--shadow-medium);
         }
 
         .target-icon {
-            background: var(--accent-yellow-gradient);
-            color: var(--text-white);
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
-            display: grid;
-            place-items: center;
-            font-size: 1.05rem;
+            background: rgba(207, 164, 38, 0.15);
+            border: 1px solid rgba(207, 164, 38, 0.35);
+            color: var(--gold-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: 900;
+            font-size: 14px;
             flex-shrink: 0;
-            box-shadow: 0 4px 10px rgba(207, 164, 38, 0.2);
         }
 
         .target-text {
-            font-size: var(--font-sm);
+            font-size: 14.5px;
             font-weight: 700;
-            color: var(--text-dark);
-            line-height: 1.45;
+            color: var(--cream-text-main);
         }
 
-        /* Section 3: Split layout & Pills */
-        .benefits-grid-layout {
+        /* =========================================================
+           SECTION 3: BENEFÍCIOS (NAVY SURF)
+           ========================================================= */
+        .benefits-section {
+            background: var(--navy-surface-1);
+            color: var(--navy-text-main);
+        }
+
+        .section-title-navy {
+            font-size: clamp(26px, 3.2vw, 38px);
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: var(--navy-text-main);
+            line-height: 1.2;
+        }
+
+        .benefits-grid {
             display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
-            gap: var(--space-8);
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 50px;
             align-items: center;
+            margin-top: 40px;
         }
 
-        .benefits-list-col h2 {
-            text-align: left;
-            margin-bottom: var(--space-3);
-        }
-
-        .benefits-pills-list {
+        .benefits-pills {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-2);
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
         }
 
         .benefit-pill {
-            background-color: var(--bg-dark);
-            color: var(--text-white);
-            padding: var(--space-2) var(--space-3);
-            border-radius: 100px;
-            font-size: var(--font-xs);
+            background: var(--navy-card);
+            border: 1px solid var(--navy-border-card);
+            color: var(--navy-text-main);
+            padding: 14px 18px;
+            border-radius: var(--radius-sm);
+            font-size: 12px;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
-            box-shadow: 0 8px 20px rgba(2, 4, 34, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            letter-spacing: 0.6px;
             display: flex;
             align-items: center;
-            gap: var(--space-2);
+            gap: 10px;
             transition: var(--transition);
         }
 
         .benefit-pill:hover {
-            transform: translateX(5px);
-            border-color: rgba(207, 164, 38, 0.35);
+            border-color: var(--gold-border);
+            transform: translateX(4px);
         }
 
         .benefit-pill::before {
             content: "➔";
-            color: var(--accent-yellow);
-            font-weight: 900;
-            font-size: var(--font-base);
+            color: var(--gold-primary);
+            font-size: 14px;
         }
 
-        .benefits-image-col img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-medium);
+        .benefits-image-wrap {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--navy-border-card);
+            box-shadow: var(--shadow-lg);
         }
 
-        /* Section 4: A Creche Cresce (Pain Grid) */
-        .pain-list {
+        /* =========================================================
+           SECTION 4: A CRECHE CRESCE (PAIN GRID)
+           ========================================================= */
+        .pain-section {
+            background-color: var(--cream-base);
+            color: var(--cream-text-main);
+            border-top: 1px solid var(--cream-border-card);
+            border-bottom: 1px solid var(--cream-border-card);
+        }
+
+        .pain-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-3);
-            max-width: 900px;
-            margin: 0 auto;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            max-width: 920px;
+            margin: 40px auto 0 auto;
         }
 
         .pain-card {
-            background-color: var(--bg-dark);
-            color: var(--text-white);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: var(--space-4);
-            border-radius: var(--border-radius);
+            background: var(--navy-surface-1);
+            color: var(--navy-text-main);
+            border: 1px solid var(--navy-border-card);
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
             display: flex;
             align-items: center;
-            gap: var(--space-2);
-            box-shadow: 0 10px 25px rgba(2, 4, 34, 0.18);
+            gap: 16px;
             transition: var(--transition);
         }
 
         .pain-card:hover {
+            border-color: var(--gold-border);
             transform: translateY(-3px);
-            border-color: rgba(207, 164, 38, 0.4);
-            box-shadow: 0 15px 35px rgba(207, 164, 38, 0.15);
         }
 
         .pain-icon {
-            background: var(--accent-yellow-gradient);
-            color: var(--text-white);
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
-            display: grid;
-            place-items: center;
+            background: var(--gold-muted);
+            border: 1px solid var(--gold-border);
+            color: var(--gold-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: 900;
-            font-size: 1.1rem;
             flex-shrink: 0;
-            box-shadow: 0 4px 10px rgba(207, 164, 38, 0.2);
         }
 
         .pain-text {
-            font-size: var(--font-sm);
+            font-size: 14px;
             font-weight: 700;
-            line-height: 1.45;
         }
 
         .pain-callout {
-            background-color: var(--bg-light-muted);
-            border: 1px dashed rgba(207, 164, 38, 0.45);
-            padding: var(--space-4) var(--space-5);
-            border-radius: var(--border-radius);
+            background: var(--cream-card);
+            border: 1.5px dashed var(--cream-border-card);
+            border-radius: var(--radius-md);
+            padding: 24px 30px;
             text-align: center;
-            font-size: var(--font-base);
-            color: var(--text-muted);
-            max-width: 900px;
-            margin: var(--space-6) auto 0 auto;
-            line-height: 1.75;
-            box-shadow: var(--shadow-subtle);
+            font-size: 15px;
+            color: var(--cream-text-body);
+            max-width: 920px;
+            margin: 30px auto 0 auto;
         }
 
-        .pain-callout strong {
-            color: var(--text-dark);
-            font-weight: 800;
-        }
-
-        /* Section 5: Chaos Section */
+        /* =========================================================
+           SECTION 5: CHAOS SECTION
+           ========================================================= */
         .chaos-section {
-            background: var(--bg-dark-gradient);
-            color: var(--text-white);
-            padding: var(--space-12) 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            background: var(--navy-base);
+            padding: 90px 0;
         }
 
         .chaos-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: var(--space-8);
+            gap: 50px;
             align-items: center;
-            max-width: 960px;
-            margin: 0 auto;
         }
 
-        .chaos-left-title {
-            font-size: var(--font-2xl);
+        .chaos-title {
+            font-size: clamp(24px, 3vw, 36px);
             font-weight: 900;
-            line-height: 1.4;
-            letter-spacing: -0.5px;
+            line-height: 1.3;
             font-style: italic;
-            position: relative;
+            color: var(--navy-text-main);
         }
 
-        .chaos-left-title::before {
-            content: "“";
-            position: absolute;
-            top: -40px;
-            left: -20px;
-            font-size: 6rem;
-            color: rgba(207, 164, 38, 0.15);
-            font-family: Georgia, serif;
+        .chaos-card {
+            background: var(--navy-card);
+            border: 1.5px solid var(--navy-border-card);
+            border-radius: var(--radius-lg);
+            padding: 35px;
         }
 
-        .chaos-right-card {
-            background-color: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: var(--border-radius);
-            padding: var(--space-5);
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
-        }
-
-        .chaos-right-card h3 {
-            font-size: var(--font-lg);
+        .chaos-card h3 {
+            font-size: 18px;
             font-weight: 900;
-            color: var(--accent-yellow);
-            margin-bottom: var(--space-3);
-            letter-spacing: 0.5px;
+            color: var(--gold-primary);
+            margin-bottom: 20px;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .chaos-transform-item {
+        .chaos-item {
             display: flex;
-            align-items: flex-start;
-            gap: var(--space-2);
-            margin-bottom: var(--space-3);
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
         }
 
-        .chaos-transform-item:last-child {
+        .chaos-item:last-child {
             margin-bottom: 0;
         }
 
-        .chaos-num-badge {
-            background: var(--accent-yellow-gradient);
-            color: var(--text-white);
-            width: 32px;
-            height: 32px;
+        .chaos-badge {
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
-            display: grid;
-            place-items: center;
-            font-size: var(--font-xs);
+            background: var(--gold-muted);
+            border: 1px solid var(--gold-border);
+            color: var(--gold-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: 900;
+            font-size: 13px;
             flex-shrink: 0;
-            box-shadow: 0 4px 10px rgba(207, 164, 38, 0.2);
         }
 
-        .chaos-desc {
-            font-size: var(--font-sm);
-            font-weight: 600;
-            line-height: 1.55;
-            color: var(--text-white);
+        /* =========================================================
+           SECTION 6: QUEM SERÁ A SUA MENTORA
+           ========================================================= */
+        .mentor-section {
+            background-color: var(--cream-base);
+            color: var(--cream-text-main);
+            border-top: 1px solid var(--cream-border-card);
+            border-bottom: 1px solid var(--cream-border-card);
         }
 
-        /* Section 6: Biography & Stats */
         .mentor-grid {
             display: grid;
             grid-template-columns: 1.15fr 0.85fr;
-            gap: var(--space-8);
+            gap: 50px;
             align-items: center;
-            max-width: 960px;
-            margin: 0 auto;
-        }
-
-        .mentor-name {
-            font-size: var(--font-sm);
-            font-weight: 900;
-            color: var(--accent-yellow);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: var(--space-1);
-        }
-
-        .mentor-title {
-            font-size: var(--font-2xl);
-            font-weight: 950;
-            color: var(--text-dark);
-            margin-bottom: var(--space-3);
-            letter-spacing: -0.5px;
-        }
-
-        .mentor-bio {
-            color: var(--text-muted);
-            font-size: var(--font-sm);
-            line-height: 1.75;
-            margin-bottom: var(--space-4);
         }
 
         .mentor-stats-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-2);
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 25px;
         }
 
         .mentor-stat-card {
-            background-color: #ffffff;
-            border: 1px solid rgba(2, 4, 34, 0.05);
-            padding: var(--space-2) var(--space-3);
-            border-radius: var(--border-radius);
-            font-size: var(--font-xs);
-            font-weight: 800;
-            color: var(--text-dark);
+            background: var(--cream-card);
+            border: 1.5px solid var(--cream-border-card);
+            padding: 14px 18px;
+            border-radius: var(--radius-md);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--cream-text-main);
             display: flex;
             align-items: center;
-            gap: var(--space-2);
-            box-shadow: var(--shadow-subtle);
-            transition: var(--transition);
-        }
-
-        .mentor-stat-card:hover {
-            transform: translateY(-2px);
-            border-color: rgba(207, 164, 38, 0.3);
-            box-shadow: var(--shadow-medium);
+            gap: 12px;
+            box-shadow: var(--shadow-cream);
         }
 
         .mentor-stat-icon {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
-            background: rgba(207, 164, 38, 0.1);
-            border: 1px solid rgba(207, 164, 38, 0.3);
-            display: grid;
-            place-items: center;
-            color: var(--accent-yellow);
-            flex-shrink: 0;
-            transition: var(--transition);
-        }
-
-        .mentor-stat-card:hover .mentor-stat-icon {
-            background: rgba(207, 164, 38, 0.2);
-            border-color: var(--accent-yellow);
-        }
-
-        /* Solid Gold Image Wrapping for Tata */
-        .bio-image-wrapper {
-            background: var(--accent-yellow-gradient);
-            border-radius: var(--border-radius-lg);
-            overflow: hidden;
+            background: rgba(207, 164, 38, 0.15);
+            border: 1px solid rgba(207, 164, 38, 0.35);
             display: flex;
+            align-items: center;
             justify-content: center;
-            align-items: flex-end;
-            box-shadow: 0 25px 50px rgba(2, 4, 34, 0.15);
-            position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .bio-image-wrapper img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transform-origin: bottom center;
-            transition: var(--transition);
-        }
-
-        .bio-image-wrapper:hover img {
-            transform: scale(1.03);
-        }
-
-        /* Section 7: Domus Method */
-        .domus-intro-grid {
-            display: grid;
-            grid-template-columns: 0.85fr 1.15fr;
-            gap: var(--space-8);
-            align-items: center;
-            margin-bottom: var(--space-8);
-        }
-
-        .domus-intro-image {
-            background: var(--accent-yellow-gradient);
-            border-radius: var(--border-radius-lg);
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            box-shadow: 0 25px 50px rgba(2, 4, 34, 0.15);
-            position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .domus-intro-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transform-origin: bottom center;
-            transition: var(--transition);
-        }
-
-        .domus-intro-image:hover img {
-            transform: scale(1.03);
-        }
-
-        .domus-intro-content h2 {
-            text-align: left;
-            margin-bottom: var(--space-2);
-        }
-
-        .domus-intro-content p {
-            color: var(--text-muted);
-            font-size: var(--font-sm);
-            line-height: 1.75;
-            margin-bottom: var(--space-2);
-        }
-
-        .domus-intro-content p:last-child {
-            margin-bottom: 0;
-        }
-
-        .domus-house-diagram {
-            background-color: transparent;
-            border: none;
-            border-radius: 0;
-            padding: 0;
-            max-width: 940px;
-            margin: 0 auto var(--space-5) auto;
-            box-shadow: none;
-        }
-
-        .domus-footer-callout {
-            background: var(--accent-yellow-gradient);
-            color: var(--text-white);
-            font-weight: 900;
-            font-size: var(--font-base);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            text-align: center;
-            padding: var(--space-2) var(--space-4);
-            border-radius: var(--border-radius-sm);
-            box-shadow: 0 10px 25px rgba(207, 164, 38, 0.35);
-            max-width: 900px;
-            margin: 0 auto;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            text-shadow: 0 2px 4px rgba(2, 4, 34, 0.2);
-        }
-
-        /* Section 8: Como funciona a Mentoria */
-        .logistics-section {
-            background: var(--bg-dark-gradient);
-            color: var(--text-white);
-            padding: var(--space-12) 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-        }
-
-        .logistics-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--space-3);
-            max-width: 960px;
-            margin: 0 auto;
-        }
-
-        .logistics-card {
-            background: linear-gradient(145deg, #12194e, #0b1138);
-            border: 1px solid rgba(207, 164, 38, 0.25);
-            padding: var(--space-4);
-            border-radius: var(--border-radius);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-2);
-            position: relative;
-        }
-
-        .logistics-card:hover {
-            border-color: var(--accent-yellow);
-            transform: translateY(-4px);
-            background: linear-gradient(145deg, #1a2560, #111a50);
-            box-shadow: 0 20px 45px rgba(207, 164, 38, 0.2);
-        }
-
-        .logistics-icon {
-            background: rgba(207, 164, 38, 0.12);
-            border: 1px solid rgba(207, 164, 38, 0.3);
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: grid;
-            place-items: center;
-            color: var(--accent-yellow);
-            flex-shrink: 0;
-            transition: var(--transition);
-        }
-
-        .logistics-card:hover .logistics-icon {
-            background: rgba(207, 164, 38, 0.22);
-            border-color: var(--accent-yellow);
-        }
-
-        .logistics-title {
-            font-size: var(--font-sm);
-            font-weight: 800;
-            color: var(--text-white);
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .logistics-desc {
-            font-size: var(--font-xs);
-            color: var(--text-light-muted);
-            line-height: 1.65;
-        }
-
-        /* Section 9: POPs Section */
-        .pops-section {
-            background: var(--bg-dark-gradient);
-            color: var(--text-white);
-            padding: var(--space-12) 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-        }
-
-        .pops-section-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--space-8);
-            align-items: center;
-            max-width: 960px;
-            margin: 0 auto;
-        }
-
-        .pops-left-col {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: var(--space-3);
-        }
-
-        .pops-badge-icon {
-            background: var(--accent-yellow-gradient);
-            color: var(--text-white);
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: grid;
-            place-items: center;
-            font-size: 1.4rem;
-            font-weight: 900;
-            box-shadow: 0 6px 15px rgba(207, 164, 38, 0.3);
-        }
-
-        .pops-left-desc {
-            font-size: var(--font-lg);
-            font-weight: 700;
-            line-height: 1.7;
-            color: var(--text-white);
-        }
-
-        .pops-gold-box {
-            border: 3px solid var(--accent-yellow);
-            border-radius: var(--border-radius);
-            padding: var(--space-5);
-            background-color: rgba(255, 255, 255, 0.01);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
-        }
-
-        .pops-gold-box h3 {
-            font-size: var(--font-lg);
-            font-weight: 900;
-            color: var(--accent-yellow);
-            margin-bottom: var(--space-3);
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .pop-item {
-            display: flex;
-            align-items: center;
-            gap: var(--space-2);
-            margin-bottom: var(--space-2);
-            font-size: var(--font-sm);
-            font-weight: 700;
-        }
-
-        .pop-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .pop-check-icon {
-            color: var(--accent-yellow);
-            font-weight: 900;
+            color: var(--gold-dark);
             flex-shrink: 0;
         }
 
-        /* Section 10: Application Steps */
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: var(--space-3);
-            max-width: 960px;
-            margin: 0 auto;
-        }
-
-        .step-card {
-            background-color: #ffffff;
-            border: 1px solid rgba(2, 4, 34, 0.05);
-            padding: var(--space-4) var(--space-3);
-            border-radius: var(--border-radius);
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: var(--space-2);
-            box-shadow: var(--shadow-subtle);
-            transition: var(--transition);
-        }
-
-        .step-card:hover {
-            border-color: rgba(207, 164, 38, 0.35);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .step-num {
-            background-color: rgba(207, 164, 38, 0.12);
-            color: var(--accent-yellow);
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            display: grid;
-            place-items: center;
-            font-size: 1.1rem;
-            font-weight: 900;
-        }
-
-        .step-title {
-            font-size: var(--font-sm);
-            font-weight: 800;
-            color: var(--text-dark);
-            line-height: 1.35;
-        }
-
-        .step-desc {
-            font-size: var(--font-xs);
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        /* FAQ Accordion Styling */
-        .faq-accordion {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-2);
-        }
-
-        .faq-item {
-            background-color: #ffffff;
-            border: 1px solid rgba(2, 4, 34, 0.05);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow-subtle);
+        .mentor-image-wrap {
+            border-radius: var(--radius-lg);
             overflow: hidden;
-            transition: var(--transition);
+            border: 1px solid var(--cream-border-card);
+            box-shadow: var(--shadow-lg);
         }
 
-        .faq-item:hover {
-            border-color: rgba(207, 164, 38, 0.25);
-            box-shadow: var(--shadow-medium);
+        /* =========================================================
+           SECTION 7: MÉTODO DOMUS (CASA DOMUS INFOGRÁFICO)
+           ========================================================= */
+        .domus-section {
+            background: var(--navy-base);
+            padding: 100px 0;
         }
 
-        .faq-question {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: none;
-            border: none;
-            padding: var(--space-3) var(--space-4);
-            font-size: var(--font-base);
-            font-weight: 800;
-            color: var(--text-dark);
-            text-align: left;
-            cursor: pointer;
-            outline: none;
-            transition: var(--transition);
-        }
-
-        .faq-question .faq-icon {
-            font-size: 1.5rem;
-            color: var(--accent-yellow);
-            transition: transform 0.3s ease;
-        }
-
-        .faq-item.active .faq-question {
-            color: var(--accent-yellow-hover);
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(45deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .faq-answer-inner {
-            padding: 0 var(--space-4) var(--space-3) var(--space-4);
-            color: var(--text-muted);
-            font-size: var(--font-sm);
-            line-height: 1.7;
-        }
-
-        /* Section 11: Support block (Tata with Dog) */
-        .support-grid {
-            display: grid;
-            grid-template-columns: 0.85fr 1.15fr;
-            gap: var(--space-8);
-            align-items: center;
-            max-width: 880px;
-            margin: 0 auto;
-        }
-
-        .support-img-col img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .support-content-col {
-            background-color: var(--bg-light-muted);
-            border: 1px solid rgba(207, 164, 38, 0.15);
-            padding: var(--space-5);
-            border-radius: var(--border-radius-lg);
-            box-shadow: var(--shadow-subtle);
-        }
-
-        .support-content-col h3 {
-            font-size: var(--font-xl);
-            font-weight: 900;
-            color: var(--text-dark);
-            margin-bottom: var(--space-2);
-            letter-spacing: -0.5px;
-        }
-
-        .support-content-col p {
-            color: var(--text-muted);
-            font-size: var(--font-base);
-            margin-bottom: var(--space-4);
-            line-height: 1.7;
-        }
-
-        .support-cta-btn {
-            background-color: #25d366;
-            color: var(--text-white);
-            font-weight: 800;
-            font-size: var(--font-base);
-            padding: 18px 40px;
-            border-radius: 100px;
-            text-decoration: none;
-            display: inline-block;
-            transition: var(--transition);
-            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.25);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .support-cta-btn:hover {
-            background-color: #20ba5a;
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(37, 211, 102, 0.4);
-        }
-
-        /* Footer */
-        footer {
-            background-color: #010212;
-            padding: var(--space-5) 0;
-            color: var(--text-light-muted);
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-4);
-            margin-bottom: var(--space-3);
-        }
-
-        .footer-links a {
-            color: var(--text-light-muted);
-            text-decoration: none;
-            font-size: var(--font-xs);
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-yellow);
-        }
-
-        .footer-copy {
-            font-size: var(--font-xs);
-            opacity: 0.8;
-        }
-
-        /* Application Selection Modal Popup */
-        .app-modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(2, 4, 34, 0.85);
-            backdrop-filter: blur(10px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 99999;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s ease;
-            padding: 20px;
-        }
-
-        .app-modal-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .app-modal-container {
-            background: linear-gradient(145deg, #0e123a, #020422);
-            border: 1px solid rgba(207, 164, 38, 0.3);
-            width: 100%;
-            max-width: 480px;
-            border-radius: var(--border-radius-lg);
-            padding: var(--space-5) var(--space-4) var(--space-4) var(--space-4);
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.65);
-            position: relative;
-            transform: translateY(20px) scale(0.95);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15);
-            text-align: center;
-        }
-
-        .app-modal-overlay.active .app-modal-container {
-            transform: translateY(0) scale(1);
-        }
-
-        .modal-close-btn {
-            position: absolute;
-            top: 18px;
-            right: 18px;
-            width: 36px;
-            height: 36px;
-            display: grid;
-            place-items: center;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 50%;
-            color: var(--text-light-muted);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .modal-close-btn:hover {
-            color: var(--accent-red);
-            background: rgba(231, 76, 60, 0.1);
-            transform: rotate(90deg);
-        }
-
-        .modal-title {
-            font-size: var(--font-xl);
-            font-weight: 900;
-            margin-bottom: var(--space-1);
-            color: var(--text-white);
-            letter-spacing: -0.3px;
-        }
-
-        .modal-subtitle {
-            font-size: var(--font-sm);
-            color: var(--text-light-muted);
-            line-height: 1.6;
-            margin-bottom: var(--space-4);
-        }
-
-        .modal-options {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-2);
-        }
-
-        .modal-option-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: var(--space-2) var(--space-3);
-            border-radius: 100px;
-            text-decoration: none;
-            font-weight: 800;
-            font-size: var(--font-xs);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: var(--transition);
-        }
-
-        .modal-option-btn.primary {
-            background: var(--accent-yellow-gradient);
-            color: var(--text-white);
-            box-shadow: 0 6px 18px rgba(207, 164, 38, 0.25);
-        }
-
-        .modal-option-btn.primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 22px rgba(207, 164, 38, 0.4);
-        }
-
-        .modal-option-btn.secondary {
-            background-color: #25d366;
-            color: white;
-            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.2);
-        }
-
-        .modal-option-btn.secondary:hover {
-            background-color: #20ba5a;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 22px rgba(37, 211, 102, 0.35);
-        }
-
-        /* Responsiveness */
-        @media (max-width: 992px) {
-
-            .benefits-grid-layout,
-            .chaos-grid,
-            .mentor-grid,
-            .domus-intro-grid,
-            .pops-section-grid,
-            .support-grid {
-                grid-template-columns: 1fr;
-                gap: var(--space-5);
-            }
-
-            .benefits-list-col h2,
-            .domus-intro-content h2 {
-                text-align: center;
-            }
-
-            .bio-image-wrapper,
-            .domus-intro-image,
-            .benefits-image-col,
-            .support-img-col {
-                max-width: 480px;
-                margin: 0 auto;
-            }
-
-            .logistics-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .steps-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 768px) {
-            section {
-                padding: var(--space-6) 0 !important;
-            }
-
-            .sticky-navbar-container {
-                padding: 0 var(--space-2);
-            }
-
-            .sticky-logo-text-group {
-                display: none !important;
-            }
-
-            .sticky-cta-btn {
-                font-size: 0.75rem !important;
-                padding: 8px 16px !important;
-            }
-
-            .target-list,
-            .pain-list {
-                grid-template-columns: 1fr;
-                gap: var(--space-2);
-            }
-
-            .hero-title-banner h1 {
-                font-size: 1.6rem !important;
-            }
-
-            .hero-title-banner {
-                padding: 10px 20px !important;
-            }
-
-            .hero-subtitle {
-                font-size: 0.95rem !important;
-                margin-bottom: var(--space-3) !important;
-            }
-
-            h2 {
-                font-size: 1.45rem !important;
-            }
-
-            .hero-quote-banner p {
-                font-size: 1.6rem !important;
-                font-weight: normal !important;
-            }
-
-            .hero-quote-banner {
-                padding: 18px 20px !important;
-            }
-
-            .chaos-left-title {
-                font-size: 1.5rem !important;
-                text-align: center;
-            }
-
-            .chaos-left-title::before {
-                display: none;
-            }
-
-            .mentor-title {
-                font-size: 1.6rem !important;
-                text-align: center !important;
-            }
-
-            .mentor-name {
-                text-align: center;
-            }
-
-            .mentor-stats-grid {
-                grid-template-columns: 1fr !important;
-            }
-
-            .mentor-stat-card {
-                grid-column: span 1 !important;
-            }
-
-            .benefit-pill {
-                font-size: 0.78rem !important;
-                border-radius: 12px !important;
-                text-align: left;
-                align-items: flex-start;
-            }
-
-            .benefits-pills-list {
-                grid-template-columns: 1fr !important;
-                gap: var(--space-1) !important;
-            }
-
-            .domus-house-diagram {
-                padding: 0;
-            }
-
-            .logistics-grid,
-            .steps-grid {
-                grid-template-columns: 1fr;
-                gap: var(--space-2);
-            }
-
-            .support-content-col {
-                padding: var(--space-4);
-                text-align: center;
-            }
-
-            .pops-left-desc {
-                text-align: center;
-            }
-
-            .pops-badge-icon {
-                margin: 0 auto;
-            }
-
-            .curved-arrow {
-                display: none;
-            }
-        }
-
-        /* Scoped Styles for the Interactive Infographic */
         .infographic-wrapper {
             --navy-blue: #0A192F;
             --gold-yellow: #E0A020;
             --bg-perception: #FFFDF5;
             --bg-sustentacao: #F4F8FC;
-            --text-dark: #0A192F;
             --text-muted-info: #555555;
-            --card-bg: #FFFFFF;
+            --card-bg-info: #FFFFFF;
             --transition-info: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
 
             position: relative;
@@ -1636,10 +742,9 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Montserrat', 'Inter', sans-serif;
         }
 
-        /* BACKGROUND DECORATIVE ELEMENTS */
         .infographic-wrapper .dots-pattern {
             position: absolute;
             left: -20px;
@@ -1662,7 +767,6 @@
             opacity: 0.4;
         }
 
-        /* FULL HOUSE SVG MOLDING */
         .infographic-wrapper .full-house-svg {
             position: absolute;
             top: -13px;
@@ -1671,23 +775,20 @@
             height: 101%;
             pointer-events: none;
             z-index: 5;
+            display: block;
         }
-
 
         .infographic-wrapper:hover .full-house-svg path {
             stroke: #0c2343;
             filter: drop-shadow(0 2px 5px rgba(10, 25, 47, 0.1));
-            transition: all 0.3s ease;
         }
 
-        /* INTERACTIVE HTML CONTENT LAYER */
         .infographic-wrapper .house-content-layer {
             position: relative;
             z-index: 6;
             padding: 90px 48px 0 48px;
         }
 
-        /* HEADER SECTION */
         .infographic-wrapper .header-section {
             text-align: center;
             margin-bottom: 25px;
@@ -1713,7 +814,6 @@
             margin-top: 4px;
         }
 
-        /* GRID COLUMNS */
         .infographic-wrapper .columns-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1722,7 +822,6 @@
             margin-bottom: 12px;
         }
 
-        /* CENTRAL DASHED DIVIDER */
         .infographic-wrapper .central-divider {
             position: absolute;
             left: 50%;
@@ -1755,7 +854,6 @@
             margin-bottom: -8px;
         }
 
-        /* COLUMN BLOCKS */
         .infographic-wrapper .column-block {
             border-radius: 18px 18px 0 0;
             padding: 22px 22px 28px 22px;
@@ -1776,7 +874,6 @@
             border-bottom: none;
         }
 
-        /* BADGE PILLS */
         .infographic-wrapper .pill-container {
             display: flex;
             align-items: center;
@@ -1832,9 +929,8 @@
             padding: 0 10px;
         }
 
-        /* INTERACTIVE WHITE CARDS */
         .infographic-wrapper .card-item {
-            background: var(--card-bg);
+            background: var(--card-bg-info);
             border-radius: 12px;
             padding: 18px 20px;
             display: flex;
@@ -1892,9 +988,8 @@
             border-color: var(--navy-blue);
         }
 
-        .infographic-wrapper .card-item:hover .card-icon-wrap i {
-            transform: scale(1.1) rotate(5deg);
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        .infographic-wrapper .card-item:hover .card-icon-wrap svg {
+            transform: scale(1.1);
         }
 
         .infographic-wrapper .card-info h4 {
@@ -1911,7 +1006,6 @@
             line-height: 1.35;
         }
 
-        /* FOUNDATION BASE BANNER */
         .infographic-wrapper .foundation-banner {
             width: 100%;
             background-color: var(--gold-yellow);
@@ -1932,33 +1026,567 @@
 
         .infographic-wrapper .foundation-banner:hover {
             background-color: #D69618;
-            transform: scale(1.02);
-            box-shadow: 0 8px 20px rgba(224, 160, 32, 0.4);
+            transform: scale(1.015);
+            box-shadow: 0 8px 20px rgba(224, 160, 32, 0.35);
         }
 
-        /* RESPONSIVE SCALING */
-        @media (max-width: 820px) {
-            .infographic-wrapper .full-house-svg {
+        /* =========================================================
+           SECTION 8: COMO FUNCIONA A MENTORIA (LOGÍSTICA)
+           ========================================================= */
+        .logistics-section {
+            background: var(--navy-surface-1);
+            padding: 100px 0;
+        }
+
+        .logistics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .logistics-card {
+            background: var(--navy-card);
+            border: 1.5px solid var(--navy-border-card);
+            padding: 28px;
+            border-radius: var(--radius-lg);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            transition: var(--transition);
+        }
+
+        .logistics-card:hover {
+            border-color: var(--gold-border);
+            transform: translateY(-4px);
+        }
+
+        .logistics-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--gold-muted);
+            border: 1px solid var(--gold-border);
+            color: var(--gold-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logistics-title {
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--navy-text-main);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .logistics-desc {
+            font-size: 13.5px;
+            color: var(--navy-text-muted);
+            line-height: 1.6;
+        }
+
+        /* =========================================================
+           SECTION 9: POPs
+           ========================================================= */
+        .pops-section {
+            background-color: var(--cream-base);
+            color: var(--cream-text-main);
+            border-top: 1px solid var(--cream-border-card);
+            border-bottom: 1px solid var(--cream-border-card);
+        }
+
+        .pops-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .pops-box {
+            background: var(--cream-card);
+            border: 2px solid var(--gold-dark);
+            border-radius: var(--radius-lg);
+            padding: 35px;
+            box-shadow: var(--shadow-cream);
+        }
+
+        .pops-box h3 {
+            font-size: 18px;
+            font-weight: 900;
+            color: var(--gold-dark);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .pop-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            font-size: 14.5px;
+            font-weight: 700;
+        }
+
+        .pop-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .pop-check {
+            color: var(--gold-dark);
+            font-weight: 900;
+        }
+
+        /* =========================================================
+           SECTION 10: COMO FUNCIONA A APLICAÇÃO (ETAPAS)
+           ========================================================= */
+        .steps-section {
+            background: var(--navy-base);
+            padding: 100px 0;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .step-card {
+            background: var(--navy-card);
+            border: 1.5px solid var(--navy-border-card);
+            padding: 28px 20px;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            transition: var(--transition);
+        }
+
+        .step-card:hover {
+            border-color: var(--gold-border);
+            transform: translateY(-4px);
+        }
+
+        .step-num {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--gold-muted);
+            border: 1px solid var(--gold-border);
+            color: var(--gold-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: 900;
+        }
+
+        .step-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--navy-text-main);
+        }
+
+        .step-desc {
+            font-size: 13px;
+            color: var(--navy-text-muted);
+            line-height: 1.6;
+        }
+
+        /* =========================================================
+           SECTION 11: FAQ ACCORDION
+           ========================================================= */
+        .faq-section {
+            background-color: var(--cream-base);
+            color: var(--cream-text-main);
+            border-top: 1px solid var(--cream-border-card);
+            border-bottom: 1px solid var(--cream-border-card);
+        }
+
+        .faq-accordion {
+            max-width: 820px;
+            margin: 40px auto 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .faq-item {
+            background: var(--cream-card);
+            border: 1.5px solid var(--cream-border-card);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-cream);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: none;
+            border: none;
+            padding: 20px 24px;
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--cream-text-main);
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .faq-icon {
+            font-size: 20px;
+            color: var(--gold-dark);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .faq-answer-inner {
+            padding: 0 24px 20px 24px;
+            color: var(--cream-text-body);
+            font-size: 14.5px;
+            line-height: 1.7;
+        }
+
+        /* =========================================================
+           SECTION 12: AINDA EM DÚVIDA
+           ========================================================= */
+        .support-section {
+            background: var(--navy-surface-1);
+            padding: 100px 0;
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: 50px;
+            align-items: center;
+            max-width: 920px;
+            margin: 0 auto;
+        }
+
+        .support-box {
+            background: var(--navy-card);
+            border: 1.5px solid var(--navy-border-card);
+            padding: 35px;
+            border-radius: var(--radius-lg);
+        }
+
+        .support-box h3 {
+            font-size: 22px;
+            font-weight: 900;
+            margin-bottom: 12px;
+        }
+
+        .support-box p {
+            color: var(--navy-text-muted);
+            margin-bottom: 24px;
+        }
+
+        /* =========================================================
+           FOOTER (PADRÃO DA HOME)
+           ========================================================= */
+        footer {
+            background: var(--navy-surface-1);
+            color: var(--navy-text-muted);
+            padding: 80px 0 30px;
+            border-top: 1px solid var(--navy-border-card);
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+            opacity: 0.6;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+        }
+
+        .footer-logo img:first-child {
+            height: 28px;
+            width: auto;
+        }
+
+        .footer-logo img:last-child {
+            height: 16px;
+            width: auto;
+        }
+
+        .footer-tagline {
+            font-size: 13.5px;
+            color: var(--navy-text-muted);
+            line-height: 1.6;
+            margin-top: 14px;
+        }
+
+        .footer-heading {
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--navy-text-main);
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .footer-heading::after {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--gold-primary);
+            margin-top: 6px;
+            border-radius: var(--radius-full);
+        }
+
+        .footer-nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-nav-list a {
+            font-size: 14px;
+            color: var(--navy-text-muted);
+            transition: var(--transition);
+        }
+
+        .footer-nav-list a:hover {
+            color: var(--gold-primary);
+            transform: translateX(3px);
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid var(--navy-border-subtle);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12.5px;
+        }
+
+        /* WHATSAPP FLUTUANTE */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 99;
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: #25d366;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.08) translateY(-2px);
+            box-shadow: 0 10px 28px rgba(37, 211, 102, 0.55);
+        }
+
+        .whatsapp-float svg {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
+        }
+
+        /* MODAL DE APLICAÇÃO */
+        .app-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(5, 7, 23, 0.88);
+            backdrop-filter: blur(12px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            padding: 20px;
+        }
+
+        .app-modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .app-modal-container {
+            background: var(--navy-surface-2);
+            border: 1.5px solid var(--gold-border);
+            width: 100%;
+            max-width: 480px;
+            border-radius: var(--radius-lg);
+            padding: 35px 28px;
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7);
+            position: relative;
+            transform: translateY(20px) scale(0.95);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+            text-align: center;
+        }
+
+        .app-modal-overlay.active .app-modal-container {
+            transform: translateY(0) scale(1);
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 36px;
+            height: 36px;
+            display: grid;
+            place-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--navy-border-subtle);
+            border-radius: 50%;
+            color: var(--navy-text-muted);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-close-btn:hover {
+            color: #e74c3c;
+            background: rgba(231, 76, 60, 0.1);
+        }
+
+        .modal-title {
+            font-size: 22px;
+            font-weight: 900;
+            margin-bottom: 8px;
+            color: var(--navy-text-main);
+        }
+
+        .modal-subtitle {
+            font-size: 14px;
+            color: var(--navy-text-muted);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 1024px) {
+            .benefits-grid,
+            .mentor-grid,
+            .chaos-grid,
+            .pops-grid,
+            .support-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .logistics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 860px) {
+            .infographic-wrapper .full-house-svg,
+            .infographic-wrapper .golden-lines-bg,
+            .infographic-wrapper .dots-pattern,
+            .infographic-wrapper .central-divider {
                 display: none !important;
+            }
+
+            .infographic-wrapper {
+                background: #ffffff;
+                border: 2px solid var(--gold-yellow);
+                border-top: none;
+                border-radius: 0 0 18px 18px;
+                position: relative;
+                padding: 0;
+                margin-top: 50px;
+            }
+
+            .infographic-wrapper::before {
+                content: '';
+                position: absolute;
+                top: -42px;
+                left: -2px;
+                right: -2px;
+                height: 42px;
+                background: var(--navy-blue);
+                clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            }
+
+            .infographic-wrapper .house-content-layer {
+                padding: 24px 16px;
             }
 
             .infographic-wrapper .columns-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
+                gap: 18px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 60px 0;
             }
 
-            .infographic-wrapper .central-divider,
-            .infographic-wrapper .dots-pattern,
-            .infographic-wrapper .golden-lines-bg {
-                display: none;
+            .target-grid,
+            .pain-grid,
+            .logistics-grid,
+            .steps-grid,
+            .mentor-stats-grid {
+                grid-template-columns: 1fr;
             }
 
-            .infographic-wrapper .house-content-layer {
-                padding: 24px 16px 0 16px;
+            .footer-grid {
+                grid-template-columns: 1fr;
             }
 
-            .infographic-wrapper .foundation-banner {
-                font-size: 0.76rem;
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 12px;
             }
         }
     </style>
@@ -1971,85 +1599,42 @@
         window.CONFIG = {
             whatsappUrl: "https://wa.me/5521975994712?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20diagn%C3%B3stico%20para%20o%20Programa%20Minha%20Creche%20Estruturada.",
             applicationUrl: "https://forms.gle/AY4aACKddDixFKUM7",
-            videoUrl: "https://www.youtube.com/watch?v=NNmg9XwJxKI&t=1s" // Insira o link do seu vídeo aqui (YouTube, Vimeo ou MP4)
+            videoUrl: "https://www.youtube.com/watch?v=NNmg9XwJxKI&t=1s"
         };
     </script>
 
-    <!-- STICKY NAVBAR -->
-    <nav class="sticky-navbar">
-        <div class="container sticky-navbar-container">
-            <div class="sticky-logo-container">
-                <div class="sticky-logo-stack">
-                    <img class="sticky-logo-dog" src="../assets/tata-logo-dog.png" alt="Tata Pereira">
-                    <img class="sticky-logo-nome" src="../assets/tata-logo-nome.png" alt="Tata Pereira">
-                </div>
-            </div>
-            <a href="#" class="sticky-cta-btn open-app-modal">Quero Estruturar</a>
-        </div>
-    </nav>
+    <!-- HEADER -->
+    <header id="site-header">
+        <div class="container header-inner">
+            <a href="#" class="logo" aria-label="Tata Pereira - Início">
+                <img src="./assets/tata-logo-dog.png" alt="Tata Pereira Logo Ícone" />
+                <img src="./assets/tata-logo-nome.png" alt="Tata Pereira Logo Nome" />
+            </a>
 
-    <!-- FLOATING WHATSAPP -->
-    <a href="#" class="whatsapp-float" onclick="this.href=window.CONFIG.whatsappUrl" target="_blank"
-        aria-label="WhatsApp Support">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round" style="fill: white; stroke: none;">
-            <path
-                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
-            </path>
-        </svg>
-    </a>
+            <a class="primary btn-header-wa open-app-modal" href="#">
+                Quero Estruturar
+            </a>
+        </div>
+    </header>
 
     <!-- HERO SECTION -->
-    <header class="hero">
+    <section class="hero text-center">
         <div class="container">
-            <!-- Brand Logo -->
-            <div class="hero-logo-container">
-                <img class="hero-logo-dog" src="../assets/tata-logo-dog.png" alt="Tata Pereira">
-                <img class="hero-logo-nome" src="../assets/tata-logo-nome.png" alt="Tata Pereira">
-                <span class="hero-logo-label">Programa de Implementação</span>
-            </div>
+            <div class="hero-tag fade-in">Programa de Implementação</div>
 
-            <!-- Main Title Banner -->
-            <div class="hero-title-banner">
-                <h1>MINHA CRECHE ESTRUTURADA</h1>
-            </div>
+            <h1 class="fade-in">MINHA CRECHE ESTRUTURADA</h1>
 
-            <!-- Subtitle -->
-            <p class="hero-subtitle">
+            <p class="hero-subheadline fade-in">
                 Um programa individual para donas de creches, hospedagens e serviços pet que desejam deixar o improviso
                 e construir uma empresa com mais processos, segurança e previsibilidade.
             </p>
 
-            <!-- Headline Quote Box -->
-            <div class="hero-quote-banner">
-                <p>
-                    <span class="quote-marks">“</span>Não precisa trabalhar mais. <br> Você precisa estruturar
-                    melhor!<span class="quote-marks">”</span>
-                </p>
+            <div class="hero-quote-box fade-in">
+                <p>“Não precisa trabalhar mais. <br><span class="gold-text">Você precisa estruturar melhor!”</span></p>
             </div>
 
-            <!-- Video CTA Header with SVG Curved Arrows -->
-            <div class="hero-video-header">
-                <svg class="curved-arrow" width="60" height="40" viewBox="0 0 60 40" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10 5 C 25 15, 30 20, 48 30" stroke="#cfa426" stroke-width="2.5" stroke-dasharray="4 4"
-                        fill="none" />
-                    <path d="M42 30 L48 30 L48 24" stroke="#cfa426" stroke-width="2.5" stroke-linecap="round"
-                        stroke-linejoin="round" fill="none" />
-                </svg>
-                <span class="video-cta-text">Assista ao vídeo e entenda como</span>
-                <svg class="curved-arrow" width="60" height="40" viewBox="0 0 60 40" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path d="M50 5 C 35 15, 30 20, 12 30" stroke="#cfa426" stroke-width="2.5" stroke-dasharray="4 4"
-                        fill="none" />
-                    <path d="M18 30 L12 30 L12 24" stroke="#cfa426" stroke-width="2.5" stroke-linecap="round"
-                        stroke-linejoin="round" fill="none" />
-                </svg>
-            </div>
-
-            <!-- Video Player Wrapper -->
-            <div id="video-wrapper" class="video-player-container">
-                <img src="../assets/tata-video-placeholder.png"
+            <div id="video-wrapper" class="video-player-container fade-in">
+                <img src="./assets/tata-video-placeholder.png"
                     alt="Tata Pereira dando explicações sobre o programa no vídeo">
                 <div class="play-button-overlay">
                     <svg class="play-icon-svg" viewBox="0 0 24 24">
@@ -2058,53 +1643,57 @@
                 </div>
             </div>
 
-            <!-- CTA Button Block -->
-            <div style="margin-top: 30px;">
-                <a href="#" class="hero-cta-btn open-app-modal">Quero Estruturar Minha Creche</a>
-                <p class="hero-cta-subtext">
-                    Clique no botão abaixo para agendar uma reunião de diagnóstico. Isso lhe dará uma visão clara e
-                    mostrará como o programa pode te ajudar.
+            <div class="fade-in">
+                <a href="#" class="primary btn-hero open-app-modal">
+                    <span>QUERO ESTRUTURAR MINHA CRECHE</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </a>
+                <p style="font-size: 13.5px; color: var(--navy-text-muted); margin-top: 14px;">
+                    Clique no botão acima para agendar uma reunião de diagnóstico.
                 </p>
             </div>
         </div>
-    </header>
+    </section>
 
     <!-- SECTION 2: ESSE PROGRAMA É PARA VOCÊ QUE -->
-    <section>
-        <div class="container">
-            <h2>Esse programa é para você que:</h2>
-            <p class="section-subtitle">Veja se você se identifica com algum destes cenários do mercado pet:</p>
+    <section class="target-section">
+        <div class="container text-center">
+            <div class="section-tag-cream">Perfil de Alunos</div>
+            <h2 class="section-title-cream">Esse programa é para você que:</h2>
+            <p style="color: var(--cream-text-muted); margin-top: 8px;">Veja se você se identifica com algum destes cenários:</p>
 
-            <div class="target-list">
-                <div class="target-card">
+            <div class="target-grid">
+                <div class="target-card fade-in">
                     <div class="target-icon">✓</div>
                     <span class="target-text">Tem uma creche ou hospedagem pet em operação.</span>
                 </div>
-                <div class="target-card">
+                <div class="target-card fade-in">
                     <div class="target-icon">✓</div>
                     <span class="target-text">Vive apagando incêndios na rotina.</span>
                 </div>
-                <div class="target-card">
+                <div class="target-card fade-in">
                     <div class="target-icon">✓</div>
                     <span class="target-text">Sente que o negócio depende de você.</span>
                 </div>
-                <div class="target-card">
+                <div class="target-card fade-in">
                     <div class="target-icon">✓</div>
                     <span class="target-text">Quer organizar a rotina, os processos e a agenda.</span>
                 </div>
-                <div class="target-card">
+                <div class="target-card fade-in">
                     <div class="target-icon">✓</div>
                     <span class="target-text">Não consegue delegar com segurança.</span>
                 </div>
-                <div class="target-card">
+                <div class="target-card fade-in">
                     <div class="target-icon">✓</div>
                     <span class="target-text">Tem a sensação de que corre e não sai do lugar.</span>
                 </div>
-                <div class="target-card">
+                <div class="target-card fade-in">
                     <div class="target-icon">✓</div>
                     <span class="target-text">Percebe que a equipe trabalha sem um padrão.</span>
                 </div>
-                <div class="target-card">
+                <div class="target-card fade-in">
                     <div class="target-icon">✓</div>
                     <span class="target-text">Quer crescer sem aumentar o caos.</span>
                 </div>
@@ -2113,68 +1702,67 @@
     </section>
 
     <!-- SECTION 3: COM A MENTORIA VOCÊ TERÁ -->
-    <section class="muted-bg">
-        <div class="container benefits-grid-layout">
-            <div class="benefits-list-col">
-                <h2>Com o programa, você terá:</h2>
-                <div class="benefits-pills-list">
-                    <div class="benefit-pill">diagnóstico da operação</div>
-                    <div class="benefit-pill">encontros individuais</div>
-                    <div class="benefit-pill">plano de ação personalizado</div>
-                    <div class="benefit-pill">acompanhamento da implementação</div>
-                    <div class="benefit-pill">clareza sobre gestão, números e indicadores</div>
-                    <div class="benefit-pill">suporte diário</div>
-                    <div class="benefit-pill">organização da rotina</div>
-                    <div class="benefit-pill">construção de processos</div>
-                    <div class="benefit-pill">materiais customizados</div>
-                    <div class="benefit-pill">direcionamento para gestão da equipe</div>
+    <section class="benefits-section">
+        <div class="container">
+            <div class="benefits-grid">
+                <div class="fade-in">
+                    <div class="hero-tag">O que está incluído</div>
+                    <h2 class="section-title-navy">Com o programa, você terá:</h2>
+                    <div class="benefits-pills" style="margin-top: 25px;">
+                        <div class="benefit-pill">diagnóstico da operação</div>
+                        <div class="benefit-pill">encontros individuais</div>
+                        <div class="benefit-pill">plano de ação personalizado</div>
+                        <div class="benefit-pill">acompanhamento da implementação</div>
+                        <div class="benefit-pill">clareza sobre gestão, números e indicadores</div>
+                        <div class="benefit-pill">suporte diário</div>
+                        <div class="benefit-pill">organização da rotina</div>
+                        <div class="benefit-pill">construção de processos</div>
+                        <div class="benefit-pill">materiais customizados</div>
+                        <div class="benefit-pill">direcionamento para gestão da equipe</div>
+                    </div>
                 </div>
-            </div>
-            <div class="benefits-image-col">
-                <img src="../assets/tata-apontando-voce.png"
-                    alt="Tata apontando e indicando o seu sucesso na estruturação">
+                <div class="benefits-image-wrap fade-in">
+                    <img src="./assets/tata-apontando-voce.png"
+                        alt="Tata apontando e indicando o seu sucesso na estruturação">
+                </div>
             </div>
         </div>
     </section>
 
     <!-- SECTION 4: A CRECHE CRESCE... -->
-    <section>
-        <div class="container">
-            <div class="text-center" style="margin-bottom: 40px;">
-                <p
-                    style="font-size: 0.88rem; font-weight: 800; color: var(--accent-yellow); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px;">
-                    A verdade que ninguém te conta:</p>
-                <h2>A creche cresce… mas você continua presa na operação.</h2>
-            </div>
+    <section class="pain-section">
+        <div class="container text-center">
+            <div class="section-tag-cream">A verdade que ninguém te conta</div>
+            <h2 class="section-title-cream">A creche cresce… mas você continua presa na operação.</h2>
 
-            <div class="pain-list">
-                <div class="pain-card">
+            <div class="pain-grid">
+                <div class="pain-card fade-in">
                     <div class="pain-icon">!</div>
                     <span class="pain-text">Tudo depende de você para funcionar.</span>
                 </div>
-                <div class="pain-card">
+                <div class="pain-card fade-in">
                     <div class="pain-icon">!</div>
                     <span class="pain-text">Os mesmos erros continuam se repetindo frequentemente.</span>
                 </div>
-                <div class="pain-card">
+                <div class="pain-card fade-in">
                     <div class="pain-icon">!</div>
                     <span class="pain-text">A equipe executa cada tarefa de um jeito diferente.</span>
                 </div>
-                <div class="pain-card">
+                <div class="pain-card fade-in">
                     <div class="pain-icon">!</div>
                     <span class="pain-text">Delegar ainda parece arriscado.</span>
                 </div>
-                <div class="pain-card">
+                <div class="pain-card fade-in">
                     <div class="pain-icon">!</div>
                     <span class="pain-text">Você vive apagando incêndios.</span>
                 </div>
-                <div class="pain-card">
+                <div class="pain-card fade-in">
                     <div class="pain-icon">!</div>
                     <span class="pain-text">Crescer só aumenta a sobrecarga.</span>
                 </div>
             </div>
 
-            <div class="pain-callout">
+            <div class="pain-callout fade-in">
                 Isso acontece quando a operação cresce sem <strong>processos claros</strong>, <strong>rotina
                     padronizada</strong> e <strong>critérios bem definidos</strong> para a equipe.
             </div>
@@ -2184,35 +1772,35 @@
     <!-- SECTION 5: CHAOS VS TRANSFORMATION -->
     <section class="chaos-section">
         <div class="container chaos-grid">
-            <div class="chaos-left-title">
+            <div class="chaos-title fade-in">
                 "Crescer sem uma equipe estruturada não é evolução, é um convite ao caos."
             </div>
-            <div class="chaos-right-card">
+            <div class="chaos-card fade-in">
                 <h3>O programa existe para transformar:</h3>
 
-                <div class="chaos-transform-item">
-                    <div class="chaos-num-badge">1</div>
-                    <span class="chaos-desc">Improviso em previsibilidade;</span>
+                <div class="chaos-item">
+                    <div class="chaos-badge">1</div>
+                    <span style="color: var(--navy-text-main); font-weight: 600;">Improviso em previsibilidade;</span>
                 </div>
-                <div class="chaos-transform-item">
-                    <div class="chaos-num-badge">2</div>
-                    <span class="chaos-desc">Sobrecarga em organização;</span>
+                <div class="chaos-item">
+                    <div class="chaos-badge">2</div>
+                    <span style="color: var(--navy-text-main); font-weight: 600;">Sobrecarga em organização;</span>
                 </div>
-                <div class="chaos-transform-item">
-                    <div class="chaos-num-badge">3</div>
-                    <span class="chaos-desc">Faturamento em crescimento sustentável.</span>
+                <div class="chaos-item">
+                    <div class="chaos-badge">3</div>
+                    <span style="color: var(--navy-text-main); font-weight: 600;">Faturamento em crescimento sustentável.</span>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- SECTION 6: QUEM SERÁ A SUA MENTORA -->
-    <section class="muted-bg">
+    <section class="mentor-section">
         <div class="container mentor-grid">
-            <div>
-                <div class="mentor-name">Quem será a sua mentora?</div>
-                <h2 class="mentor-title">Tata Pereira</h2>
-                <p class="mentor-bio">
+            <div class="fade-in">
+                <div class="section-tag-cream">Sua Mentora</div>
+                <h2 class="section-title-cream">Tata Pereira</h2>
+                <p style="color: var(--cream-text-body); margin-top: 16px; line-height: 1.75;">
                     Tata Pereira é especialista em comportamento canino, formação de profissionais e estruturação de
                     negócios pet. Fundadora da Tata EducaCão e criadora do Método Domus, veio do mercado corporativo
                     para o mercado pet e já passou por diferentes funções da operação: pet sitter, dog walker,
@@ -2222,558 +1810,296 @@
 
                 <div class="mentor-stats-grid">
                     <div class="mentor-stat-card">
-                        <span class="mentor-stat-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path
-                                    d="M10 5.172C10 3.782 8.423 2.688 6.5 3c-2.823.47-4.113 6.006-4 7 .08.703 1.725 1.722 3.656 1 1.261-.472 1.96-1.45 2.344-2.5" />
-                                <path
-                                    d="M14.267 5.172c0-1.39 1.577-2.484 3.5-2.172 2.823.47 4.113 6.006 4 7-.08.703-1.725 1.722-3.656 1-1.261-.472-1.855-1.45-2.239-2.5" />
-                                <path d="M8 14v.5" />
-                                <path d="M16 14v.5" />
-                                <path d="M11.25 16.25h1.5L12 17l-.75-.75z" />
-                                <path
-                                    d="M4.42 11.247A13.152 13.152 0 0 0 4 14.556C4 18.728 7.582 21 12 21s8-2.272 8-6.444c0-1.061-.162-2.2-.493-3.309m-9.243-6.082A8.801 8.801 0 0 1 12 5c.78 0 1.5.108 2.161.306" />
-                            </svg>
-                        </span>
+                        <div class="mentor-stat-icon">🐾</div>
                         <span><strong class="stat-number" data-target="8">0</strong> anos no mercado pet</span>
                     </div>
                     <div class="mentor-stat-card">
-                        <span class="mentor-stat-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-                                <path d="M6 12v5c3 3 9 3 12 0v-5" />
-                            </svg>
-                        </span>
-                        <span>Mais de <strong class="stat-number" data-target="100">0</strong> profissionais
-                            capacitados</span>
+                        <div class="mentor-stat-icon">🎓</div>
+                        <span>Mais de <strong class="stat-number" data-target="100">0</strong> capacitados</span>
                     </div>
                     <div class="mentor-stat-card">
-                        <span class="mentor-stat-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                                <polyline points="9 22 9 12 15 12 15 22" />
-                            </svg>
-                        </span>
-                        <span>Mais de <strong class="stat-number" data-target="1000">0</strong> famílias
-                            atendidas</span>
+                        <div class="mentor-stat-icon">🏠</div>
+                        <span>Mais de <strong class="stat-number" data-target="1000">0</strong> famílias</span>
                     </div>
                     <div class="mentor-stat-card">
-                        <span class="mentor-stat-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-                            </svg>
-                        </span>
-                        <span><strong class="stat-number" data-target="13">0</strong> anos no corporativo</span>
-                    </div>
-                    <div class="mentor-stat-card" style="grid-column: span 2;">
-                        <span class="mentor-stat-icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 20h9" />
-                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
-                            </svg>
-                        </span>
-                        <span>Especialista em processos e estruturação de creches</span>
+                        <div class="mentor-stat-icon">💼</div>
+                        <span><strong class="stat-number" data-target="13">0</strong> anos corporativo</span>
                     </div>
                 </div>
             </div>
-            <div class="bio-image-wrapper">
-                <img src="../assets/tata-bracos-cruzados.png"
-                    alt="Tata Pereira fundadora do programa com braços cruzados e sorrindo">
+
+            <div class="mentor-image-wrap fade-in">
+                <img src="./assets/tata-bracos-cruzados.png"
+                    alt="Tata Pereira fundadora do programa com braços cruzados">
             </div>
         </div>
-        <div class="text-center" style="margin-top: 55px;">
-            <a href="#" class="section-cta-btn open-app-modal">Quero Estruturar Minha Creche</a>
+        <div class="text-center" style="margin-top: 40px;">
+            <a href="#" class="primary btn-hero open-app-modal">QUERO ESTRUTURAR MINHA CRECHE</a>
         </div>
     </section>
 
     <!-- SECTION 7: POR DENTRO DO MÉTODO DOMUS -->
-    <section>
+    <section class="domus-section">
         <div class="container">
-            <div class="domus-intro-grid">
-
-                <div class="domus-intro-content">
-                    <h2>Por dentro do Método Domus</h2>
-                    <p>Durante o programa, você aplicará o nosso Método exclusivo para organizar uma operação pet
-                        desestruturada.</p>
-                    <p>Ele parte de uma lógica simples: <strong>Uma creche precisa funcionar como uma casa bem
-                            construída!</strong></p>
-                    <p>Não existe crescimento sem uma equipe estruturada e funcional.</p>
-                    <p>Uma creche saudável deve cuidar tanto da percepção do cliente quanto da estrutura interna do
-                        negócio.</p>
-                </div>
+            <div class="text-center fade-in" style="max-width: 800px; margin: 0 auto 40px auto;">
+                <div class="hero-tag">Metodologia Exclusiva</div>
+                <h2 class="section-title-navy">Por dentro do Método Domus</h2>
+                <p style="color: var(--navy-text-muted); margin-top: 14px;">
+                    Durante o programa, você aplicará o nosso Método exclusivo. Ele parte de uma lógica simples:
+                    <strong>Uma creche precisa funcionar como uma casa bem construída!</strong>
+                </p>
             </div>
 
-            <div class="domus-house-diagram">
-                <div class="infographic-wrapper">
+            <div class="infographic-wrapper fade-in">
+                <div class="dots-pattern"></div>
+                <svg class="golden-lines-bg" viewBox="0 0 220 260" fill="none">
+                    <path d="M 10 260 C 60 200, 120 150, 220 100" stroke="#E0A020" stroke-width="1.2" />
+                    <path d="M 40 260 C 90 200, 150 150, 220 80" stroke="#E0A020" stroke-width="1.2" />
+                    <path d="M 70 260 C 120 180, 180 140, 220 60" stroke="#E0A020" stroke-width="1.2" />
+                </svg>
 
-                    <!-- Decorativos de Fundo -->
-                    <div class="dots-pattern"></div>
+                <svg class="full-house-svg" viewBox="0 0 940 640" fill="none" preserveAspectRatio="none">
+                    <path d="M 30 230 L 470 20 L 910 230" stroke="#0A192F" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M 740 150 V 75 H 825 V 190" stroke="#0A192F" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" />
+                    <line x1="46" y1="250" x2="46" y2="585" stroke="#E0A020" stroke-width="10" stroke-linecap="round" />
+                    <line x1="894" y1="250" x2="894" y2="585" stroke="#0A192F" stroke-width="10" stroke-linecap="round" />
+                </svg>
 
-                    <svg class="golden-lines-bg" viewBox="0 0 220 260" fill="none">
-                        <path d="M 10 260 C 60 200, 120 150, 220 100" stroke="#E0A020" stroke-width="1.2" />
-                        <path d="M 40 260 C 90 200, 150 150, 220 80" stroke="#E0A020" stroke-width="1.2" />
-                        <path d="M 70 260 C 120 180, 180 140, 220 60" stroke="#E0A020" stroke-width="1.2" />
-                    </svg>
-
-                    <!-- DESENHO VETORIAL UNIFICADO DA CASA (TELHADO + CHAMINÉ + PAREDES LATERAIS) -->
-                    <svg class="full-house-svg" viewBox="0 0 940 640" fill="none" preserveAspectRatio="none">
-                        <!-- Telhado Principal Azul Marinho -->
-                        <path d="M 30 230 L 470 20 L 910 230" stroke="#0A192F" stroke-width="16" stroke-linecap="round"
-                            stroke-linejoin="round" />
-
-                        <!-- Chaminé -->
-                        <path d="M 740 150 V 75 H 825 V 190" stroke="#0A192F" stroke-width="10" stroke-linecap="round"
-                            stroke-linejoin="round" />
-
-                        <!-- Parede Esquerda (Amarela/Dourada) -->
-                        <line x1="46" y1="250" x2="46" y2="585" stroke="#E0A020" stroke-width="10"
-                            stroke-linecap="round" />
-
-                        <!-- Parede Direita (Azul Marinho) -->
-                        <line x1="894" y1="250" x2="894" y2="585" stroke="#0A192F" stroke-width="10"
-                            stroke-linecap="round" />
-                    </svg>
-
-                    <!-- CONTEÚDO HTML INTERATIVO -->
-                    <div class="house-content-layer">
-
-                        <!-- Topo: Receita e Escala -->
-                        <div class="header-section">
-                            <div class="top-icon-svg">
-                                <svg width="68" height="56" viewBox="0 0 70 56" fill="none">
-                                    <circle cx="20" cy="22" r="11" stroke="#0A192F" stroke-width="2" fill="none" />
-                                    <text x="20" y="27" font-family="'Montserrat', sans-serif" font-weight="800"
-                                        font-size="13" fill="#0A192F" text-anchor="middle">$</text>
-                                    <rect x="33" y="34" width="7" height="18" rx="1" stroke="#0A192F" stroke-width="2"
-                                        fill="none" />
-                                    <rect x="44" y="25" width="7" height="27" rx="1" stroke="#0A192F" stroke-width="2"
-                                        fill="none" />
-                                    <rect x="55" y="16" width="7" height="36" rx="1" stroke="#0A192F" stroke-width="2"
-                                        fill="none" />
-                                    <path d="M 22 18 L 38 4 L 52 14 L 66 2" stroke="#E0A020" stroke-width="3"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M 56 2 H 66 V 12" stroke="#E0A020" stroke-width="3" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                            <div class="title-main">Receita e Escala</div>
-                            <div
-                                style="width: 50px; height: 3px; background: var(--gold-yellow); margin: var(--space-1) auto var(--space-2) auto; border-radius: 10px;">
-                            </div>
-                            <p class="subtitle-main">Crescimento financeiro sustentável.</p>
+                <div class="house-content-layer">
+                    <div class="header-section">
+                        <div class="top-icon-svg">
+                            <svg width="68" height="56" viewBox="0 0 70 56" fill="none">
+                                <circle cx="20" cy="22" r="11" stroke="#0A192F" stroke-width="2" fill="none" />
+                                <text x="20" y="27" font-family="'Montserrat', sans-serif" font-weight="800" font-size="13" fill="#0A192F" text-anchor="middle">$</text>
+                                <rect x="33" y="34" width="7" height="18" rx="1" stroke="#0A192F" stroke-width="2" fill="none" />
+                                <rect x="44" y="25" width="7" height="27" rx="1" stroke="#0A192F" stroke-width="2" fill="none" />
+                                <rect x="55" y="16" width="7" height="36" rx="1" stroke="#0A192F" stroke-width="2" fill="none" />
+                                <path d="M 22 18 L 38 4 L 52 14 L 66 2" stroke="#E0A020" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M 56 2 H 66 V 12" stroke="#E0A020" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
                         </div>
-
-                        <!-- Grid das Colunas -->
-                        <div class="columns-grid">
-
-                            <!-- Linha Divisória Central Pontilhada -->
-                            <div class="central-divider">
-                                <div class="arrow-head up"></div>
-                                <div class="arrow-head down"></div>
-                            </div>
-
-                            <!-- Coluna Esquerda: Sistema de Percepção -->
-                            <div class="column-block block-perception">
-                                <div class="pill-container pill-perception">
-                                    <div class="pill-icon-badge">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                                            stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users">
-                                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                                            <circle cx="9" cy="7" r="4" />
-                                            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                                        </svg>
-                                    </div>
-                                    <span>Sistema de Percepção</span>
-                                </div>
-
-                                <p class="column-description">
-                                    O que o cliente vê, sente e valoriza no seu negócio.
-                                </p>
-
-                                <div class="card-item card-perception">
-                                    <div class="card-icon-wrap">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round"
-                                            class="lucide lucide-user-check">
-                                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                                            <circle cx="12" cy="7" r="4" />
-                                            <polyline points="16 11 18 13 22 9" />
-                                        </svg>
-                                    </div>
-                                    <div class="card-info">
-                                        <h4>Identidade & Posicionamento</h4>
-                                        <p>Imagem profissional e percepção de valor externa.</p>
-                                    </div>
-                                </div>
-
-                                <div class="card-item card-perception">
-                                    <div class="card-icon-wrap">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round"
-                                            class="lucide lucide-user-sparkle">
-                                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                                            <circle cx="9" cy="7" r="4" />
-                                            <line x1="17" y1="5" x2="17" y2="7" />
-                                            <line x1="16" y1="6" x2="18" y2="6" />
-                                            <line x1="20" y1="9" x2="20" y2="11" />
-                                            <line x1="19" y1="10" x2="21" y2="10" />
-                                            <line x1="17" y1="14" x2="17" y2="16" />
-                                            <line x1="16" y1="15" x2="18" y2="15" />
-                                        </svg>
-                                    </div>
-                                    <div class="card-info">
-                                        <h4>Experiência do Cliente</h4>
-                                        <p>Como o cliente vivencia e sente o serviço prestado.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Coluna Direita: Sistema de Sustentação -->
-                            <div class="column-block block-sustentacao">
-                                <div class="pill-container pill-sustentacao">
-                                    <div class="pill-icon-badge">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                                            stroke-linecap="round" stroke-linejoin="round"
-                                            class="lucide lucide-shield-check">
-                                            <path
-                                                d="M20 13c0 5-3.5 7.5-7.66 9.7a1 1 0 0 1-.68 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.8 17 5 19 5a1 1 0 0 1 1 1Z" />
-                                            <path d="m9 12 2 2 4-4" />
-                                        </svg>
-                                    </div>
-                                    <span>Sistema de Sustentação</span>
-                                </div>
-
-                                <p class="column-description">
-                                    O que mantém o negócio e permite crescimento sustentável.
-                                </p>
-
-                                <div class="card-item card-sustentacao">
-                                    <div class="card-icon-wrap">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round"
-                                            class="lucide lucide-lightbulb">
-                                            <path
-                                                d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .6 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
-                                            <path d="M9 18h6" />
-                                            <path d="M10 22h4" />
-                                            <line x1="12" y1="6" x2="12" y2="10" />
-                                            <line x1="10" y1="8" x2="14" y2="8" />
-                                        </svg>
-                                    </div>
-                                    <div class="card-info">
-                                        <h4>Técnica & Segurança</h4>
-                                        <p>Qualidade da entrega e domínio de execução da especialidade.</p>
-                                    </div>
-                                </div>
-
-                                <div class="card-item card-sustentacao">
-                                    <div class="card-icon-wrap">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round"
-                                            class="lucide lucide-user-cog">
-                                            <circle cx="18" cy="15" r="3" />
-                                            <circle cx="9" cy="7" r="4" />
-                                            <path d="M10 15H6a4 4 0 0 0-4 4v2" />
-                                            <path d="m21.7 16.4-.9-.3" />
-                                            <path d="m15.2 13.9-.9-.3" />
-                                            <path d="m16.6 18.7.3-.9" />
-                                            <path d="m19.1 12.2.3-.9" />
-                                            <path d="m19.6 18.7-.4-.8" />
-                                            <path d="m16.8 12.1-.4-.8" />
-                                            <path d="m14.3 16-.8.4" />
-                                            <path d="m20.9 13.5-.8.4" />
-                                        </svg>
-                                    </div>
-                                    <div class="card-info">
-                                        <h4>Operação & Gestão</h4>
-                                        <p>Estrutura interna e funcionamento operacional do negócio.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <!-- Base Amarela -->
-                        <div class="foundation-banner">
-                            O CRESCIMENTO ACELERA, MAS SÓ UMA EQUIPE ESTRUTURADA SUSTENTA O PESO DO TOPO.
-                        </div>
-
+                        <div class="title-main">Receita e Escala</div>
+                        <div style="width: 50px; height: 3px; background: var(--gold-yellow); margin: 8px auto 14px auto; border-radius: 10px;"></div>
+                        <p class="subtitle-main">Crescimento financeiro sustentável.</p>
                     </div>
 
+                    <div class="columns-grid">
+                        <div class="central-divider">
+                            <div class="arrow-head up"></div>
+                            <div class="arrow-head down"></div>
+                        </div>
+
+                        <div class="column-block block-perception">
+                            <div class="pill-container pill-perception">
+                                <div class="pill-icon-badge">👥</div>
+                                <span>Sistema de Percepção</span>
+                            </div>
+                            <p class="column-description">O que o cliente vê, sente e valoriza no seu negócio.</p>
+                            <div class="card-item card-perception">
+                                <div class="card-icon-wrap">✔</div>
+                                <div class="card-info">
+                                    <h4>Identidade & Posicionamento</h4>
+                                    <p>Imagem profissional e percepção de valor externa.</p>
+                                </div>
+                            </div>
+                            <div class="card-item card-perception">
+                                <div class="card-icon-wrap">✨</div>
+                                <div class="card-info">
+                                    <h4>Experiência do Cliente</h4>
+                                    <p>Como o cliente vivencia e sente o serviço prestado.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column-block block-sustentacao">
+                            <div class="pill-container pill-sustentacao">
+                                <div class="pill-icon-badge">🛡</div>
+                                <span>Sistema de Sustentação</span>
+                            </div>
+                            <p class="column-description">O que mantém o negócio e permite crescimento sustentável.</p>
+                            <div class="card-item card-sustentacao">
+                                <div class="card-icon-wrap">💡</div>
+                                <div class="card-info">
+                                    <h4>Técnica & Segurança</h4>
+                                    <p>Qualidade da entrega e domínio de execução da especialidade.</p>
+                                </div>
+                            </div>
+                            <div class="card-item card-sustentacao">
+                                <div class="card-icon-wrap">⚙</div>
+                                <div class="card-info">
+                                    <h4>Operação & Gestão</h4>
+                                    <p>Estrutura interna e funcionamento operacional do negócio.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="foundation-banner">
+                        O CRESCIMENTO ACELERA, MAS SÓ UMA EQUIPE ESTRUTURADA SUSTENTA O PESO DO TOPO.
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 8: COMO FUNCIONA A MENTORIA -->
+    <!-- SECTION 8: COMO FUNCIONA O PROGRAMA -->
     <section class="logistics-section">
-        <div class="container">
-            <div class="text-center" style="margin-bottom: 50px;">
-                <h2>Como funciona o programa:</h2>
-            </div>
+        <div class="container text-center">
+            <div class="hero-tag">Estrutura do Acompanhamento</div>
+            <h2 class="section-title-navy">Como funciona o programa:</h2>
 
             <div class="logistics-grid">
-                <div class="logistics-card">
-                    <div class="logistics-icon">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                            <line x1="16" y1="2" x2="16" y2="6" />
-                            <line x1="8" y1="2" x2="8" y2="6" />
-                            <line x1="3" y1="10" x2="21" y2="10" />
-                        </svg>
-                    </div>
+                <div class="logistics-card fade-in">
+                    <div class="logistics-icon">📅</div>
                     <div class="logistics-title">4 MESES DE DURAÇÃO</div>
-                    <p class="logistics-desc">Período planejado para redefinir as rotinas da sua empresa e acompanhar a
-                        equipe na fixação do novo modelo.</p>
+                    <p class="logistics-desc">Período planejado para redefinir as rotinas da sua empresa e acompanhar a equipe na fixação do novo modelo.</p>
                 </div>
-                <div class="logistics-card">
-                    <div class="logistics-icon">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                            <circle cx="9" cy="7" r="4" />
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                        </svg>
-                    </div>
+                <div class="logistics-card fade-in">
+                    <div class="logistics-icon">👥</div>
                     <div class="logistics-title">10 ENCONTROS INDIVIDUAIS</div>
-                    <p class="logistics-desc">Sessões estratégicas focadas no seu faturamento, processos operacionais e
-                        infraestrutura pet.</p>
+                    <p class="logistics-desc">Sessões estratégicas focadas no seu faturamento, processos operacionais e infraestrutura pet.</p>
                 </div>
-                <div class="logistics-card">
-                    <div class="logistics-icon">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                        </svg>
-                    </div>
-                    <div class="logistics-title">SUPORTE DIÁRIO DIRETO COM A TATA NO WHATSAPP</div>
-                    <p class="logistics-desc">Acesso diário e direto à Tata Pereira nos intervalos das sessões para
-                        tirar dúvidas rápidas e aprovar processos.</p>
+                <div class="logistics-card fade-in">
+                    <div class="logistics-icon">💬</div>
+                    <div class="logistics-title">SUPORTE DIÁRIO DIRETO</div>
+                    <p class="logistics-desc">Acesso diário e direto à Tata Pereira no WhatsApp para tirar dúvidas rápidas e aprovar processos.</p>
                 </div>
-                <div class="logistics-card">
-                    <div class="logistics-icon">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polygon points="23 7 16 12 23 17 23 7" />
-                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
-                        </svg>
-                    </div>
+                <div class="logistics-card fade-in">
+                    <div class="logistics-icon">🎥</div>
                     <div class="logistics-title">GRAVAÇÃO DOS ENCONTROS</div>
-                    <p class="logistics-desc">Assista novamente quando quiser ou utilize as gravações para treinar seus
-                        gerentes de creche.</p>
+                    <p class="logistics-desc">Assista novamente quando quiser ou utilize as gravações para treinar seus gerentes de creche.</p>
                 </div>
-                <div class="logistics-card">
-                    <div class="logistics-icon">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
-                        </svg>
-                    </div>
-                    <div class="logistics-title">PROGRAMA DE IMPLEMENTAÇÃO</div>
-                    <p class="logistics-desc">Acesso a modelos de POPs, planilhas operacionais e materiais de
-                        treinamento prontos para preencher.</p>
+                <div class="logistics-card fade-in">
+                    <div class="logistics-icon">📁</div>
+                    <div class="logistics-title">MATERIAIS E MODELOS</div>
+                    <p class="logistics-desc">Acesso a modelos de POPs, planilhas operacionais e materiais de treinamento prontos para preencher.</p>
                 </div>
-                <div class="logistics-card">
-                    <div class="logistics-icon">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="23 4 23 10 17 10" />
-                            <polyline points="1 20 1 14 7 14" />
-                            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
-                        </svg>
-                    </div>
-                    <div class="logistics-title">AUDITORIA DE TODA A ROTINA E DOCUMENTOS</div>
-                    <p class="logistics-desc">Auditorias constantes dos seus procedimentos operacionais e acompanhamento
-                        dos indicadores operacionais.</p>
+                <div class="logistics-card fade-in">
+                    <div class="logistics-icon">🔍</div>
+                    <div class="logistics-title">AUDITORIA COMPLETA</div>
+                    <p class="logistics-desc">Auditorias constantes dos seus procedimentos operacionais e acompanhamento dos indicadores.</p>
                 </div>
             </div>
 
-            <div class="section-cta-block">
-                <a href="#" class="section-cta-btn open-app-modal">Quero Estruturar Minha Creche</a>
-                <p
-                    style="font-size: 0.88rem; color: var(--text-light-muted); margin-top: 18px; max-width: 580px; margin-left: auto; margin-right: auto; line-height: 1.6;">
-                    Clique no botão abaixo para agendar uma reunião de diagnóstico. Isso lhe dará uma visão clara e
-                    mostrará como o programa pode te ajudar.
-                </p>
+            <div style="margin-top: 40px;" class="fade-in">
+                <a href="#" class="primary btn-hero open-app-modal">QUERO ESTRUTURAR MINHA CRECHE</a>
             </div>
         </div>
     </section>
 
     <!-- SECTION 9: POPs -->
     <section class="pops-section">
-        <div class="container pops-section-grid">
-            <div class="pops-left-col">
-                <div class="pops-badge-icon">ℹ</div>
-                <div class="pops-left-desc">
-                    Durante o programa, você terá acesso a modelos de procedimentos operacionais padrão (POPs) para
-                    creches e, com a Tata, desenvolverá os modelos adaptados à sua realidade operacional.
+        <div class="container">
+            <div class="pops-grid">
+                <div class="fade-in">
+                    <div class="section-tag-cream">Documentação Prática</div>
+                    <h2 class="section-title-cream">Procedimentos Operacionais Padrão (POPs)</h2>
+                    <p style="color: var(--cream-text-body); margin-top: 14px; line-height: 1.7;">
+                        Durante o programa, você terá acesso a modelos de procedimentos operacionais para creches e, com a Tata, desenvolverá os modelos adaptados à sua realidade.
+                    </p>
                 </div>
-            </div>
 
-            <div class="pops-gold-box">
-                <h3>Como por exemplo:</h3>
-                <div class="pop-item">
-                    <span class="pop-check-icon">✓</span>
-                    <span>POPs de Entrada e Saída dos Cães</span>
-                </div>
-                <div class="pop-item">
-                    <span class="pop-check-icon">✓</span>
-                    <span>POPs de Alimentação</span>
-                </div>
-                <div class="pop-item">
-                    <span class="pop-check-icon">✓</span>
-                    <span>POPs de Manejo e Monitoramento dos Cães</span>
-                </div>
-                <div class="pop-item">
-                    <span class="pop-check-icon">✓</span>
-                    <span>POPs de Limpeza</span>
-                </div>
-                <div class="pop-item">
-                    <span class="pop-check-icon">✓</span>
-                    <span>POPs de Segurança</span>
-                </div>
-                <div class="pop-item">
-                    <span class="pop-check-icon">✓</span>
-                    <span>POPs de Integração e Treinamento de Equipe</span>
-                </div>
-                <div class="pop-item">
-                    <span class="pop-check-icon">✓</span>
-                    <span>POPs de Triagem e Avaliação de Cães</span>
+                <div class="pops-box fade-in">
+                    <h3>Modelos prontos e adaptáveis:</h3>
+                    <div class="pop-item"><span class="pop-check">✓</span> POPs de Entrada e Saída dos Cães</div>
+                    <div class="pop-item"><span class="pop-check">✓</span> POPs de Alimentação</div>
+                    <div class="pop-item"><span class="pop-check">✓</span> POPs de Manejo e Monitoramento</div>
+                    <div class="pop-item"><span class="pop-check">✓</span> POPs de Limpeza</div>
+                    <div class="pop-item"><span class="pop-check">✓</span> POPs de Segurança</div>
+                    <div class="pop-item"><span class="pop-check">✓</span> POPs de Integração e Treinamento</div>
+                    <div class="pop-item"><span class="pop-check">✓</span> POPs de Triagem e Avaliação</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- SECTION 10: COMO FUNCIONA A APLICAÇÃO -->
-    <section>
-        <div class="container">
-            <h2>Como funciona a aplicação?</h2>
-            <p class="section-subtitle">Confira as 4 etapas para entrar no programa:</p>
+    <section class="steps-section">
+        <div class="container text-center">
+            <div class="hero-tag">Passo a Passo</div>
+            <h2 class="section-title-navy">Como funciona a aplicação?</h2>
+            <p style="color: var(--navy-text-muted); margin-top: 8px;">Confira as 4 etapas para entrar no programa:</p>
 
             <div class="steps-grid">
-                <div class="step-card">
+                <div class="step-card fade-in">
                     <div class="step-num">1</div>
-                    <div class="step-title">Você preenche o formulário</div>
-                    <p class="step-desc">Você responde a perguntas sobre sua creche, hospedagem ou serviço pet, sua
-                        rotina, desafios e o momento do seu negócio.</p>
+                    <div class="step-title">Formulário de Aplicação</div>
+                    <p class="step-desc">Você responde a perguntas sobre sua creche, rotina, desafios e o momento do seu negócio.</p>
                 </div>
-                <div class="step-card">
+                <div class="step-card fade-in">
                     <div class="step-num">2</div>
-                    <div class="step-title">Sua aplicação é analisada</div>
-                    <p class="step-desc">A Tatá analisa se o programa é adequado para o seu momento e se pode ajudar com
-                        seus desafios.</p>
+                    <div class="step-title">Análise de Perfil</div>
+                    <p class="step-desc">A Tatá analisa se o programa é adequado para o seu momento e se pode te ajudar.</p>
                 </div>
-                <div class="step-card">
+                <div class="step-card fade-in">
                     <div class="step-num">3</div>
-                    <div class="step-title">Sessão de Diagnóstico (Online e ao vivo)</div>
-                    <p class="step-desc">Se o seu perfil for aprovado, você será convidada para uma reunião com a Tatá,
-                        que avaliará os desafios da sua operação e mostrará como o programa pode ajudar.</p>
+                    <div class="step-title">Sessão de Diagnóstico</div>
+                    <p class="step-desc">Reunião online e ao vivo para avaliar os desafios da sua operação e apresentar o plano.</p>
                 </div>
-                <div class="step-card">
+                <div class="step-card fade-in">
                     <div class="step-num">4</div>
-                    <div class="step-title">Recebimento da proposta</div>
-                    <p class="step-desc">O programa começa após a formalização da proposta de trabalho. Este serviço é
-                        voltado para empresas que desejam se estruturar de maneira sólida, deixando de lado a
-                        improvisação.</p>
+                    <div class="step-title">Início da Estruturação</div>
+                    <p class="step-desc">Formalização da proposta e início do acompanhamento individual de 4 meses.</p>
                 </div>
             </div>
 
-            <div class="section-cta-block">
-                <a href="#" class="section-cta-btn open-app-modal">Quero Estruturar Minha Creche</a>
+            <div style="margin-top: 40px;" class="fade-in">
+                <a href="#" class="primary btn-hero open-app-modal">QUERO ESTRUTURAR MINHA CRECHE</a>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 11: PERGUNTAS FREQUENTES (FAQ Accordion) -->
+    <!-- SECTION 11: PERGUNTAS FREQUENTES -->
     <section class="faq-section">
-        <div class="container">
-            <h2>Perguntas Frequentes</h2>
-            <p class="section-subtitle">Tire suas dúvidas rápidas sobre o funcionamento do programa individual:</p>
+        <div class="container text-center">
+            <div class="section-tag-cream">Dúvidas Frequentes</div>
+            <h2 class="section-title-cream">Perguntas Frequentes</h2>
 
             <div class="faq-accordion">
-                <div class="faq-item">
+                <div class="faq-item fade-in">
                     <button class="faq-question">
                         <span>O programa serve para quem está começando do zero?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            <p>Sim, serve perfeitamente. Estruturar o seu negócio pet com processos claros e rotinas
-                                padronizadas desde o primeiro dia evita retrabalhos, desentendimentos na equipe e
-                                prejuízos operacionais futuros. É o caminho ideal para começar já com o pé direito.</p>
+                            Sim, serve perfeitamente. Estruturar o seu negócio pet com processos claros desde o primeiro dia evita retrabalhos, desentendimentos e prejuízos futuros.
                         </div>
                     </div>
                 </div>
 
-                <div class="faq-item">
+                <div class="faq-item fade-in">
                     <button class="faq-question">
                         <span>Como funcionam os encontros individuais?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            <p>São reuniões 100% online, ao vivo e individuais de planejamento estratégico. Em cada
-                                sessão, nós avaliamos os gargalos da sua creche, desenhamos processos personalizados
-                                (POPs), redefinimos a rotina operacional e acompanhamos a implementação prática dos
-                                novos procedimentos.</p>
+                            São reuniões 100% online, ao vivo e individuais. Em cada sessão, avaliamos gargalos, desenhamos processos personalizados e acompanhamos a implementação.
                         </div>
                     </div>
                 </div>
 
-                <div class="faq-item">
+                <div class="faq-item fade-in">
                     <button class="faq-question">
                         <span>Terei acesso a materiais prontos?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            <p>Sim! Você terá acesso a modelos estruturados de Procedimentos Operacionais Padrão (POPs)
-                                de entrada/saída, alimentação, manejo e limpeza, além de planilhas de gestão de equipe e
-                                indicadores de desempenho. Você só precisará preencher e adaptá-los com a ajuda da Tata.
-                            </p>
+                            Sim! Você terá acesso a modelos estruturados de POPs e planilhas de gestão. Você só precisará preencher e adaptá-los com a ajuda da Tata.
                         </div>
                     </div>
                 </div>
 
-                <div class="faq-item">
+                <div class="faq-item fade-in">
                     <button class="faq-question">
-                        <span>Qual é a duração do programa e o formato do suporte?</span>
+                        <span>Qual é a duração do programa e suporte?</span>
                         <span class="faq-icon">+</span>
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            <p>O programa individual tem duração de 4 meses, período ideal para fixar a nova cultura e
-                                rotina em sua empresa pet. O suporte é diário diretamente com a Tata Pereira pelo
-                                WhatsApp para aprovação de documentos e resolução de dúvidas práticas.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>A equipe da minha creche participará das sessões estratégicas?</span>
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-inner">
-                            <p>As sessões são exclusivas para as proprietárias/gestoras. No entanto, todas as sessões
-                                são gravadas e os materiais desenvolvidos são entregues prontos para que você os utilize
-                                diretamente no treinamento e capacitação da sua equipe.</p>
+                            O programa dura 4 meses com suporte diário direto com a Tata Pereira pelo WhatsApp para validação de documentos e dúvidas operacionais.
                         </div>
                     </div>
                 </div>
@@ -2781,20 +2107,17 @@
         </div>
     </section>
 
-    <!-- SECTION 12: AINDA EM DÚVIDA? -->
-    <section class="muted-bg" style="border-bottom: none;">
-        <div class="container support-grid">
-            <div class="support-img-col">
-                <img src="../assets/mentoria-tata-dog.png" alt="Tata Pereira com o Cão e bandana de banana">
+    <!-- SECTION 12: AINDA EM DÚVIDA -->
+    <section class="support-section">
+        <div class="container support-grid text-center">
+            <div class="benefits-image-wrap fade-in">
+                <img src="./assets/mentoria-tata-dog.png" alt="Tata Pereira com Cão">
             </div>
-            <div class="support-content-col">
+            <div class="support-box fade-in">
                 <h3>AINDA EM DÚVIDA?</h3>
-                <p>
-                    Chame nossa equipe no WhatsApp e eles poderão te ajudar a decidir se o programa realmente é pra
-                    você.
-                </p>
-                <a href="#" class="support-cta-btn" onclick="this.href=window.CONFIG.whatsappUrl" target="_blank">
-                    Chamar no WhatsApp
+                <p>Chame nossa equipe no WhatsApp e tire suas dúvidas diretas sobre o programa.</p>
+                <a href="#" class="primary btn-hero" onclick="window.open(window.CONFIG.whatsappUrl, '_blank')">
+                    CHAMAR NO WHATSAPP
                 </a>
             </div>
         </div>
@@ -2802,44 +2125,78 @@
 
     <!-- FOOTER -->
     <footer>
-        <div class="container"
-            style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; font-size: 0.75rem; color: var(--text-light-muted);">
-            <div style="display: flex; flex-direction: column; gap: 5px; text-align: left;">
-                <span>&copy; 2026 Tata Pereira. Todos os direitos reservados.</span>
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="#" class="footer-logo">
+                        <img src="./assets/tata-logo-dog.png" alt="Tata Pereira Logo" />
+                        <img src="./assets/tata-logo-nome.png" alt="Tata Pereira Logo Nome" />
+                    </a>
+                    <p class="footer-tagline">
+                        Estruturação de processos, gestão operacional e capacitação profissional para creches e hospedagens pet.
+                    </p>
+                </div>
 
+                <div>
+                    <h4 class="footer-heading">Navegação</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="#">Início</a></li>
+                        <li><a href="#">Método Domus</a></li>
+                        <li><a href="#">A Mentora</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">Programa</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="#">Diagnóstico</a></li>
+                        <li><a href="#">Aplicação</a></li>
+                        <li><a href="#">POPs</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="footer-heading">Contato</h4>
+                    <p style="font-size: 13.5px; color: var(--navy-text-muted);">contato@tatapereira.com</p>
+                </div>
             </div>
 
+            <div class="footer-bottom">
+                <div>&copy; 2026 Tata Pereira. Todos os direitos reservados.</div>
+            </div>
         </div>
     </footer>
 
+    <!-- WHATSAPP FLUTUANTE -->
+    <a href="#" class="whatsapp-float" onclick="window.open(window.CONFIG.whatsappUrl, '_blank')" aria-label="WhatsApp Support">
+        <svg viewBox="0 0 24 24">
+            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.322-.297-.124-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.124-1.256-.463-2.393-1.479-.885-.801-1.482-1.79-1.655-2.087-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+        </svg>
+    </a>
+
     <!-- APPLICATION POPUP MODAL -->
     <div id="app-modal" class="app-modal-overlay">
-        <div class="app-modal-container" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-            <button id="close-modal" class="modal-close-btn" aria-label="Fechar janela">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
-
-            <h3 id="modal-title" class="modal-title">Como deseja aplicar?</h3>
+        <div class="app-modal-container">
+            <button id="close-modal" class="modal-close-btn" aria-label="Fechar janela">✕</button>
+            <h3 class="modal-title">Como deseja aplicar?</h3>
             <p class="modal-subtitle">
-                Recomendamos preencher o formulário para adiantar sua análise, mas você também pode falar com a Tata
-                diretamente.
+                Recomendamos preencher o formulário para adiantar sua análise, mas você também pode falar com a equipe diretamente.
             </p>
-
-            <div class="modal-options">
-                <a href="#" class="modal-option-btn primary" onclick="this.href=window.CONFIG.applicationUrl"
-                    target="_blank">
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <a href="#" class="primary" onclick="window.open(window.CONFIG.applicationUrl, '_blank')">
                     📋 Preencher Formulário de Aplicação
+                </a>
+                <a href="#" class="primary" style="background: #25d366; color: #fff;" onclick="window.open(window.CONFIG.whatsappUrl, '_blank')">
+                    💬 Falar no WhatsApp
                 </a>
             </div>
         </div>
     </div>
 
-    <!-- Script Modal -->
+    <!-- SCRIPTS -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            // Modal
             const modal = document.getElementById('app-modal');
             const openButtons = document.querySelectorAll('.open-app-modal');
             const closeButton = document.getElementById('close-modal');
@@ -2857,9 +2214,7 @@
             }
 
             modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    closeModal();
-                }
+                if (e.target === modal) closeModal();
             });
 
             function closeModal() {
@@ -2881,84 +2236,15 @@
                             videoId = videoUrl.split('v=')[1].split('&')[0];
                         } else if (videoUrl.includes('youtu.be/')) {
                             videoId = videoUrl.split('youtu.be/')[1].split('?')[0];
-                        } else if (videoUrl.includes('youtube.com/embed/')) {
-                            videoId = videoUrl.split('youtube.com/embed/')[1].split('?')[0];
                         }
-                        embedHtml = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top:0; left:0; width:100%; height:100%; border:none;"></iframe>`;
-                    } else if (videoUrl.includes('vimeo.com')) {
-                        let videoId = '';
-                        const matches = videoUrl.match(/vimeo\.com\/(?:video\/)?([0-9]+)/);
-                        if (matches && matches[1]) {
-                            videoId = matches[1];
-                        }
-                        embedHtml = `<iframe src="https://player.vimeo.com/video/${videoId}?autoplay=1&title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="position: absolute; top:0; left:0; width:100%; height:100%; border:none;"></iframe>`;
-                    } else {
-                        embedHtml = `<video src="${videoUrl}" controls autoplay style="position: absolute; top:0; left:0; width:100%; height:100%; object-fit: cover; background-color: #000;"></video>`;
+                        embedHtml = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; height:100%; border:none;"></iframe>`;
                     }
-
                     videoWrapper.innerHTML = embedHtml;
                     videoWrapper.style.cursor = 'default';
                 });
             }
-        });
-    </script>
 
-    <!-- Script Scroll Reveal Dynamic Animation -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const revealElements = document.querySelectorAll('section, header, .logistics-card, .pain-card, .step-card, .domus-card, .support-content-col, .target-card, .bio-image-wrapper, .domus-intro-image, .support-img-col');
-            revealElements.forEach(el => el.classList.add('reveal'));
-
-            const gridsAndLists = document.querySelectorAll('.benefits-pills-list, .pain-list, .steps-grid, .mentor-stats-grid, .target-list');
-            gridsAndLists.forEach(list => {
-                const items = list.children;
-                for (let i = 0; i < items.length; i++) {
-                    items[i].classList.add('reveal');
-                    const delayClass = 'delay-' + ((i % 4) + 1);
-                    items[i].classList.add(delayClass);
-                }
-            });
-
-            const observerOptions = {
-                root: null,
-                threshold: 0.05,
-                rootMargin: "0px 0px 50px 0px"
-            };
-
-            const revealObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting || entry.boundingClientRect.top < 0) {
-                        entry.target.classList.add('active');
-                        revealObserver.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            document.querySelectorAll('.reveal').forEach(element => {
-                revealObserver.observe(element);
-            });
-        });
-    </script>
-
-    <!-- Script Sticky Navbar, FAQ Accordion & Stats Counters -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // 0. Initialize Lucide Icons
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-
-            // 1. Sticky Navbar Toggle
-            const stickyNavbar = document.querySelector('.sticky-navbar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 400) {
-                    stickyNavbar.classList.add('visible');
-                } else {
-                    stickyNavbar.classList.remove('visible');
-                }
-            });
-
-            // 2. FAQ Accordion Toggle
+            // FAQ Accordion
             const faqItems = document.querySelectorAll('.faq-item');
             faqItems.forEach(item => {
                 const question = item.querySelector('.faq-question');
@@ -2966,13 +2252,10 @@
 
                 question.addEventListener('click', () => {
                     const isActive = item.classList.contains('active');
-
-                    // Close other items
                     faqItems.forEach(i => {
                         i.classList.remove('active');
                         i.querySelector('.faq-answer').style.maxHeight = null;
                     });
-
                     if (!isActive) {
                         item.classList.add('active');
                         answer.style.maxHeight = answer.scrollHeight + 'px';
@@ -2980,20 +2263,28 @@
                 });
             });
 
-            // 3. Animated Stats Counter
-            const statsSection = document.querySelector('.mentor-stats-grid');
+            // Intersection Observer para Fade-in
+            const fadeElements = document.querySelectorAll(".fade-in");
+            const fadeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        fadeObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            fadeElements.forEach(el => fadeObserver.observe(el));
+
+            // Counter Animation
             const statNumbers = document.querySelectorAll('.stat-number');
             let animated = false;
 
             const animateStats = () => {
                 statNumbers.forEach(stat => {
                     const target = +stat.getAttribute('data-target');
-                    const duration = 2000; // 2 seconds animation
-                    const stepTime = Math.abs(Math.floor(duration / target));
-
                     let current = 0;
                     const increment = target > 500 ? 10 : 1;
-
                     const timer = setInterval(() => {
                         current += increment;
                         if (current >= target) {
@@ -3002,7 +2293,7 @@
                         } else {
                             stat.textContent = current.toLocaleString('pt-BR');
                         }
-                    }, target > 500 ? stepTime * 10 : stepTime);
+                    }, 20);
                 });
             };
 
@@ -3011,14 +2302,12 @@
                     if (entry.isIntersecting && !animated) {
                         animateStats();
                         animated = true;
-                        statsObserver.unobserve(entry.target);
                     }
                 });
-            }, { threshold: 0.1 });
+            }, { threshold: 0.2 });
 
-            if (statsSection) {
-                statsObserver.observe(statsSection);
-            }
+            const mentorSection = document.querySelector('.mentor-section');
+            if (mentorSection) statsObserver.observe(mentorSection);
         });
     </script>
 </body>
