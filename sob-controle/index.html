@@ -298,6 +298,10 @@
       color: var(--cream-text-muted);
     }
 
+    .section-cream .gold {
+      color: var(--gold-dark);
+    }
+
     /* =========================================================
        BOTÃO PRINCIPAL COM SHIMMER EFFECT
        ========================================================= */
@@ -545,7 +549,6 @@
       display: flex;
       gap: 14px;
       align-items: flex-start !important;
-      /* Fixa o check no topo */
       background: var(--navy-card);
       border: 1.5px solid var(--navy-border-card);
       border-radius: var(--radius-md);
@@ -619,7 +622,7 @@
     }
 
     /* =========================================================
-       5. DO IMPROVISO À CLAREZA (ESCURO)
+       5. DO IMPROVISO À CLAREZA
        ========================================================= */
     .compare-block-title {
       font-size: clamp(20px, 3vw, 32px);
@@ -640,6 +643,12 @@
       gap: var(--spacing-grid-gap);
     }
 
+    .compare-img-wrapper {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1.5px solid var(--navy-border-card);
+      transition: var(--transition);
+    }
 
     .compare-img-wrapper:hover {
       transform: translateY(-4px);
@@ -653,8 +662,41 @@
       display: block;
     }
 
+    /* Adjustes para Seção Clara do Comparativo */
+    .section-cream .compare-img-wrapper {
+      border: 1.5px solid var(--cream-border-card);
+      box-shadow: var(--shadow-cream);
+    }
+    
+    .section-cream .compare-img-wrapper:hover {
+      border-color: var(--gold-dark);
+    }
+
+    /* Adjustes para Seção Clara do Comparativo de Operação */
+    .section-cream .comparison-col {
+      background: var(--cream-card);
+      border: 1.5px solid var(--cream-border-card);
+      box-shadow: var(--shadow-cream);
+    }
+
+    .section-cream .comparison-col.negative {
+      border-top: 4px solid var(--accent-red);
+    }
+
+    .section-cream .comparison-col.positive {
+      border-top: 4px solid var(--accent-green);
+    }
+
+    .section-cream .comp-header span {
+      color: var(--cream-text-main);
+    }
+
+    .section-cream .comp-list li {
+      color: var(--cream-text-muted);
+    }
+
     /* =========================================================
-       6. JORNADA AO VIVO (ESCURO)
+       6. JORNADA AO VIVO
        ========================================================= */
     .journey {
       max-width: 860px;
@@ -845,6 +887,30 @@
       color: var(--navy-text-main);
     }
 
+    /* Adjustes para Seção Clara de Preparação */
+    .section-cream .prep-card-new {
+      background: var(--cream-card);
+      border: 1.5px solid var(--cream-border-card);
+      box-shadow: var(--shadow-cream);
+    }
+
+    .section-cream .prep-card-new:hover {
+      border-color: var(--gold-dark);
+      background: var(--cream-card);
+    }
+
+    .section-cream .prep-card-body h3 {
+      color: var(--cream-text-main);
+    }
+
+    .section-cream .prep-card-body p {
+      color: var(--cream-text-muted);
+    }
+
+    .section-cream .prep-card-body p strong {
+      color: var(--cream-text-main);
+    }
+
     @media (max-width: 960px) {
       .prep-grid-new {
         grid-template-columns: repeat(2, 1fr);
@@ -858,7 +924,7 @@
     }
 
     /* =========================================================
-       9. SOBRE A TATA (ESCURO)
+       9. SOBRE A TATA
        ========================================================= */
     .bio-wrapper {
       display: grid;
@@ -917,8 +983,29 @@
       text-align: center;
     }
 
+    /* Adjustes para Seção Clara da Bio */
+    .section-cream .bio-img {
+      border: 1.5px solid var(--cream-border-card);
+      box-shadow: var(--shadow-cream);
+    }
+
+    .section-cream .bio-text {
+      color: var(--cream-text-muted);
+    }
+
+    .section-cream .bio-text strong {
+      color: var(--cream-text-main);
+    }
+
+    .section-cream .bio-stat-card {
+      background: var(--cream-card);
+      border: 1px solid var(--cream-border-card);
+      color: var(--gold-dark);
+      box-shadow: var(--shadow-cream);
+    }
+
     /* =========================================================
-       10. OPERAÇÃO IMPROVISADA X ESTRUTURADA (ESCURO)
+       10. OPERAÇÃO IMPROVISADA X ESTRUTURADA
        ========================================================= */
     .comparison-grid {
       display: grid;
@@ -1007,7 +1094,7 @@
     }
 
     /* =========================================================
-       11. OFERTA & PREÇO (ESCURO)
+       11. OFERTA & PREÇO
        ========================================================= */
     .price-section {
       background: radial-gradient(circle at center, rgba(16, 21, 56, 0.9) 0%, var(--navy-base) 100%);
@@ -1105,6 +1192,22 @@
     .checklist-item svg {
       color: var(--gold-primary);
       flex-shrink: 0;
+    }
+
+    /* Adjustes para Seção Clara de Entregáveis */
+    .section-cream .checklist-item {
+      background: var(--cream-card);
+      border: 1.5px solid var(--cream-border-card);
+      color: var(--cream-text-main);
+      box-shadow: var(--shadow-cream);
+    }
+
+    .section-cream .checklist-item:hover {
+      border-color: var(--gold-dark);
+    }
+
+    .section-cream .checklist-item svg {
+      color: var(--gold-dark);
     }
 
     /* =========================================================
@@ -1281,7 +1384,7 @@
   </div>
 
   <!-- =======================================================
-       2. HERO (NAVY)
+       2. HERO (ESCURO - NAVY) [1]
   ======================================================== -->
   <header class="hero-new">
     <div class="container">
@@ -1317,7 +1420,7 @@
   </header>
 
   <!-- =======================================================
-       3. O PROBLEMA (SEÇÃO CLARA - CREAM BREAK 1)
+       3. O PROBLEMA (CLARO - CREAM) [2]
   ======================================================== -->
   <section class="section-cream">
     <div class="container">
@@ -1347,7 +1450,7 @@
   </section>
 
   <!-- =======================================================
-       4. RESULTADO (NAVY)
+       4. RESULTADO (ESCURO - NAVY) [3]
   ======================================================== -->
   <section>
     <div class="container">
@@ -1381,7 +1484,7 @@
   </section>
 
   <!-- =======================================================
-       5. PARA QUEM É (SEÇÃO CLARA - CREAM BREAK 2)
+       5. PARA QUEM É (CLARO - CREAM) [4]
   ======================================================== -->
   <section class="section-cream">
     <div class="container">
@@ -1424,7 +1527,7 @@
   </section>
 
   <!-- =======================================================
-       6. COMPARATIVO VISUAL (NAVY)
+       6. COMPARATIVO VISUAL DE/PARA (ESCURO - NAVY) [5]
   ======================================================== -->
   <section>
     <div class="container text-center">
@@ -1449,9 +1552,9 @@
   </section>
 
   <!-- =======================================================
-       7. JORNADA AO VIVO (NAVY)
+       7. JORNADA AO VIVO (CLARO - CREAM) [6]
   ======================================================== -->
-  <section>
+  <section class="section-cream">
     <div class="container">
       <div class="section-kicker">UM DIA DE APLICAÇÃO</div>
       <h2>Jornada ao vivo | 10h às 16h</h2>
@@ -1507,9 +1610,9 @@
   </section>
 
   <!-- =======================================================
-       8. FLUXO VERTICAL COM SETAS (SEÇÃO CLARA - CREAM BREAK 3)
+       8. FLUXO VERTICAL COM SETAS (ESCURO - NAVY) [7]
   ======================================================== -->
-  <section class="section-cream">
+  <section>
     <div class="container">
       <div class="section-kicker">A LÓGICA DA IMERSÃO</div>
       <h2>Tudo conectado para você começar a estruturar seu processo</h2>
@@ -1538,9 +1641,9 @@
   </section>
 
   <!-- =======================================================
-       9. PREPARAÇÃO & ENTREGÁVEIS (NAVY)
+       9. PREPARAÇÃO & ENTREGÁVEIS (CLARO - CREAM) [8]
   ======================================================== -->
-  <section>
+  <section class="section-cream">
     <div class="container">
       <div class="section-kicker">PREPARAÇÃO COMPLETA</div>
       <h2>Você não precisa chegar sabendo tudo para conseguir aplicar</h2>
@@ -1553,16 +1656,13 @@
             <svg viewBox="0 0 400 225" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
               <rect width="400" height="225" fill="#0A0E28" />
               <circle cx="200" cy="112" r="80" fill="#F1BF42" opacity="0.08" />
-              <!-- Mockup de Ebook / Guia -->
               <rect x="140" y="35" width="120" height="155" rx="8" fill="#101538" stroke="#F1BF42" stroke-width="2" />
               <rect x="155" y="55" width="90" height="6" rx="3" fill="#F1BF42" />
               <rect x="155" y="68" width="60" height="4" rx="2" fill="#9BA3C7" />
-              <!-- Ícone de Cão / Comportamento -->
               <circle cx="200" cy="105" r="18" fill="none" stroke="#F1BF42" stroke-width="2" />
               <path d="M192 110 C192 102, 208 102, 208 110" stroke="#F1BF42" stroke-width="2" fill="none" />
               <circle cx="194" cy="100" r="2" fill="#F1BF42" />
               <circle cx="206" cy="100" r="2" fill="#F1BF42" />
-              <!-- Linhas de Texto -->
               <rect x="155" y="135" width="90" height="3" rx="1.5" fill="#9BA3C7" opacity="0.6" />
               <rect x="155" y="143" width="70" height="3" rx="1.5" fill="#9BA3C7" opacity="0.4" />
               <rect x="155" y="151" width="80" height="3" rx="1.5" fill="#9BA3C7" opacity="0.4" />
@@ -1581,13 +1681,10 @@
           <div class="prep-img-wrapper">
             <svg viewBox="0 0 400 225" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
               <rect width="400" height="225" fill="#0A0E28" />
-              <!-- Laptop / Formulário -->
               <rect x="110" y="40" width="180" height="120" rx="8" fill="#101538" stroke="#252F5A" stroke-width="2" />
               <path d="M90 165 L310 165 L320 175 L80 175 Z" fill="#181F4E" stroke="#252F5A" />
-              <!-- Cabeçalho Roxo do Form -->
               <rect x="125" y="55" width="150" height="22" rx="4" fill="#7248B9" />
               <rect x="135" y="63" width="70" height="6" rx="3" fill="#FFFFFF" />
-              <!-- Perguntas do Form -->
               <rect x="125" y="85" width="150" height="30" rx="4" fill="#050717" />
               <circle cx="137" cy="100" r="4" fill="none" stroke="#F1BF42" stroke-width="1.5" />
               <circle cx="137" cy="100" r="2" fill="#F1BF42" />
@@ -1608,21 +1705,17 @@
           <div class="prep-img-wrapper">
             <svg viewBox="0 0 400 225" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
               <rect width="400" height="225" fill="#0A0E28" />
-              <!-- Painel de Hipóteses / Análise -->
               <rect x="125" y="32" width="150" height="160" rx="8" fill="#101538" stroke="#252F5A" stroke-width="2" />
               <rect x="142" y="46" width="70" height="6" rx="3" fill="#F1BF42" />
               <circle cx="255" cy="49" r="4" fill="#10B981" />
-              <!-- Hipótese 1 -->
               <rect x="140" y="65" width="120" height="32" rx="4" fill="#050717" stroke="#252F5A" stroke-width="1" />
               <rect x="150" y="73" width="50" height="4" rx="2" fill="#F1BF42" />
               <rect x="150" y="82" width="95" height="3" rx="1.5" fill="#9BA3C7" opacity="0.6" />
               <rect x="150" y="88" width="70" height="3" rx="1.5" fill="#9BA3C7" opacity="0.4" />
-              <!-- Hipótese 2 -->
               <rect x="140" y="105" width="120" height="32" rx="4" fill="#050717" stroke="#252F5A" stroke-width="1" />
               <rect x="150" y="113" width="60" height="4" rx="2" fill="#F1BF42" />
               <rect x="150" y="122" width="90" height="3" rx="1.5" fill="#9BA3C7" opacity="0.6" />
               <rect x="150" y="128" width="65" height="3" rx="1.5" fill="#9BA3C7" opacity="0.4" />
-              <!-- Tag -->
               <rect x="140" y="148" width="120" height="24" rx="4" fill="#050717" stroke="#F1BF42" stroke-dasharray="3 3" />
               <text x="200" y="163" font-family="sans-serif" font-size="8" font-weight="bold" fill="#F1BF42" text-anchor="middle">LEVANTAMENTO DE HIPÓTESE</text>
             </svg>
@@ -1638,11 +1731,9 @@
           <div class="prep-img-wrapper">
             <svg viewBox="0 0 400 225" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
               <rect width="400" height="225" fill="#0A0E28" />
-              <!-- Escudo / Ferramentas -->
               <circle cx="200" cy="112" r="55" fill="#101538" stroke="#F1BF42" stroke-width="2" />
               <path d="M185 85 L215 85 L215 110 C215 125, 200 135, 200 135 C200 135, 185 125, 185 110 Z" fill="none"
                 stroke="#F1BF42" stroke-width="2" />
-              <!-- Ícone de Lupa / Análise -->
               <circle cx="197" cy="105" r="10" fill="none" stroke="#F1BF42" stroke-width="2" />
               <line x1="204" y1="112" x2="212" y2="120" stroke="#F1BF42" stroke-width="2.5" stroke-linecap="round" />
             </svg>
@@ -1659,14 +1750,11 @@
           <div class="prep-img-wrapper">
             <svg viewBox="0 0 400 225" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
               <rect width="400" height="225" fill="#0A0E28" />
-              <!-- Fluxograma de Decisão -->
               <rect x="160" y="35" width="80" height="30" rx="6" fill="#101538" stroke="#F1BF42" stroke-width="1.5" />
               <text x="200" y="53" font-family="sans-serif" font-size="9" font-weight="bold" fill="#F1BF42"
                 text-anchor="middle">AVALIAÇÃO</text>
-              <!-- Setas para Baixo -->
               <path d="M200 65 L200 85 M200 85 L130 105 M200 85 L270 105" stroke="#9BA3C7" stroke-width="1.5"
                 fill="none" />
-              <!-- Opções -->
               <rect x="90" y="105" width="80" height="28" rx="6" fill="#101538" stroke="#10B981" stroke-width="1.5" />
               <text x="130" y="122" font-family="sans-serif" font-size="8" font-weight="bold" fill="#10B981"
                 text-anchor="middle">APROVADO</text>
@@ -1691,16 +1779,12 @@
           <div class="prep-img-wrapper">
             <svg viewBox="0 0 400 225" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
               <rect width="400" height="225" fill="#0A0E28" />
-              <!-- Dashboard / Gráficos -->
               <rect x="110" y="35" width="180" height="155" rx="8" fill="#101538" stroke="#252F5A" stroke-width="2" />
-              <!-- Gráfico de Barras -->
               <rect x="130" y="130" width="18" height="40" rx="3" fill="#F1BF42" opacity="0.5" />
               <rect x="155" y="100" width="18" height="70" rx="3" fill="#F1BF42" />
               <rect x="180" y="115" width="18" height="55" rx="3" fill="#F1BF42" opacity="0.8" />
-              <!-- Gráfico de Linha / Tendência -->
               <path d="M130 80 Q160 50, 190 70 T250 45" fill="none" stroke="#10B981" stroke-width="2.5" />
               <circle cx="250" cy="45" r="4" fill="#10B981" />
-              <!-- Linha de Base -->
               <line x1="125" y1="170" x2="275" y2="170" stroke="#9BA3C7" stroke-width="1" />
             </svg>
           </div>
@@ -1722,7 +1806,7 @@
   </section>
 
   <!-- =======================================================
-       10. QUEM CONDUZ (NAVY)
+       10. QUEM CONDUZ (ESCURO - NAVY) [9]
   ======================================================== -->
   <section>
     <div class="container">
@@ -1757,9 +1841,9 @@
   </section>
 
   <!-- =======================================================
-       11. COMPARATIVO DE OPERAÇÃO (NAVY)
+       11. COMPARATIVO DE OPERAÇÃO (CLARO - CREAM) [10]
   ======================================================== -->
-  <section>
+  <section class="section-cream">
     <div class="container">
       <div class="section-kicker">ESTRUTURA OPERACIONAL</div>
       <h2>Operação improvisada ou operação estruturada?</h2>
@@ -1823,7 +1907,7 @@
   </section>
 
   <!-- =======================================================
-       12. TUDO O QUE VOCÊ RECEBE (NAVY)
+       12. TUDO O QUE VOCÊ RECEBE (ESCURO - NAVY) [11]
   ======================================================== -->
   <section>
     <div class="container">
@@ -1875,22 +1959,22 @@
   </section>
 
   <!-- =======================================================
-       13. SEÇÃO DE OFERTA & PREÇO (NAVY HIGHLIGHT)
+       13. SEÇÃO DE OFERTA & PREÇO (CLARO - CREAM) [12]
   ======================================================== -->
-  <section id="oferta" class="price-section">
+  <section id="oferta" class="section-cream text-center">
     <div class="container">
       <div class="section-kicker">SUA VAGA</div>
       <h2>Sua vaga na Imersão Operação Sob Controle</h2>
       <p class="section-lead">Um dia ao vivo para estruturar o processo de avaliação da sua operação.</p>
 
-      <div class="price-card">
-        <div class="price-original">De R$ 197</div>
-        <div class="price-promo-label">por apenas:</div>
-        <div class="price-tag">
+      <div class="price-card" style="background: var(--cream-card); border-color: var(--gold-dark);">
+        <div class="price-original" style="color: var(--cream-text-muted);">De R$ 197</div>
+        <div class="price-promo-label" style="color: var(--cream-text-main);">por apenas:</div>
+        <div class="price-tag" style="color: var(--gold-dark);">
           <span class="price-currency">R$</span><span id="price-number">67</span>
           <span class="price-discount-badge" id="price-discount">66% OFF</span>
         </div>
-        <p id="price-description" style="color: var(--navy-text-muted); font-size: 0.9rem; margin-bottom: 24px;">
+        <p id="price-description" style="color: var(--cream-text-muted); font-size: 0.9rem; margin-bottom: 24px;">
           Imersão online e ao vivo • 14 de novembro • 10h às 16h
         </p>
 
@@ -1898,95 +1982,95 @@
           class="primary price-cta" id="main-price-cta" style="width: 100%;">
           Quero garantir minha vaga
         </a>
-        <span style="display: block; margin-top: 12px; font-size: 0.8rem; color: var(--navy-text-muted);">
+        <span style="display: block; margin-top: 12px; font-size: 0.8rem; color: var(--cream-text-muted);">
           Vagas limitadas. Pagamento seguro pela Hotmart.
         </span>
         <div class="ab-note" id="ab-note"
-          style="margin-top: 10px; font-size: 0.72rem; color: rgba(155, 163, 199, 0.65);"></div>
+          style="margin-top: 10px; font-size: 0.72rem; color: rgba(71, 85, 105, 0.65);"></div>
       </div>
     </div>
   </section>
 
   <!-- =======================================================
-       14. FAQ ACCORDION (SEÇÃO CLARA - CREAM BREAK 4)
+       14. FAQ ACCORDION (ESCURO - NAVY) [13]
   ======================================================== -->
-  <section class="section-cream">
+  <section>
     <div class="container">
       <div class="section-kicker">TIRA-DÚVIDAS</div>
       <h2>Dúvidas frequentes</h2>
 
       <div class="faq-wrapper">
-        <div class="faq-item">
-          <button class="faq-trigger"><span>Preciso ser especialista em comportamento canino?</span><svg width="18"
-              height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <div class="faq-item" style="background: var(--navy-card); border: 1.5px solid var(--navy-border-card);">
+          <button class="faq-trigger" style="color: var(--navy-text-main);"><span>Preciso ser especialista em comportamento canino?</span><svg width="18"
+              height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--gold-primary);">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg></button>
-          <div class="faq-content">
+          <div class="faq-content" style="color: var(--navy-text-muted);">
             <p>Não. Você terá uma preparação específica para compreender os conceitos que serão utilizados durante a
               avaliação.</p>
           </div>
         </div>
 
-        <div class="faq-item">
-          <button class="faq-trigger"><span>Já tenho uma creche ou hospedagem funcionando. Faz sentido para
+        <div class="faq-item" style="background: var(--navy-card); border: 1.5px solid var(--navy-border-card);">
+          <button class="faq-trigger" style="color: var(--navy-text-main);"><span>Já tenho uma creche ou hospedagem funcionando. Faz sentido para
               mim?</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2.5">
+              stroke-width="2.5" style="color: var(--gold-primary);">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg></button>
-          <div class="faq-content">
+          <div class="faq-content" style="color: var(--navy-text-muted);">
             <p>Sim. Principalmente se suas avaliações ainda dependem muito da experiência individual, da memória ou se
               pessoas diferentes acabam avaliando de maneiras diferentes.</p>
           </div>
         </div>
 
-        <div class="faq-item">
-          <button class="faq-trigger"><span>Estou começando minha operação. Posso participar?</span><svg width="18"
-              height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <div class="faq-item" style="background: var(--navy-card); border: 1.5px solid var(--navy-border-card);">
+          <button class="faq-trigger" style="color: var(--navy-text-main);"><span>Estou começando minha operação. Posso participar?</span><svg width="18"
+              height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--gold-primary);">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg></button>
-          <div class="faq-content">
+          <div class="faq-content" style="color: var(--navy-text-muted);">
             <p>Sim. Estruturar esse processo desde o início pode ajudar a evitar que decisões improvisadas se tornem o
               padrão da empresa.</p>
           </div>
         </div>
 
-        <div class="faq-item">
-          <button class="faq-trigger"><span>Preciso ter um formulário de anamnese pronto?</span><svg width="18"
-              height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <div class="faq-item" style="background: var(--navy-card); border: 1.5px solid var(--navy-border-card);">
+          <button class="faq-trigger" style="color: var(--navy-text-main);"><span>Preciso ter um formulário de anamnese pronto?</span><svg width="18"
+              height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--gold-primary);">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg></button>
-          <div class="faq-content">
+          <div class="faq-content" style="color: var(--navy-text-muted);">
             <p>Não. Você terá o treinamento Google Forms na Prática e orientação passo a passo para estruturar e
               personalizar seu formulário na sua operação.</p>
           </div>
         </div>
 
-        <div class="faq-item">
-          <button class="faq-trigger"><span>A imersão é presencial?</span><svg width="18" height="18"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <div class="faq-item" style="background: var(--navy-card); border: 1.5px solid var(--navy-border-card);">
+          <button class="faq-trigger" style="color: var(--navy-text-main);"><span>A imersão é presencial?</span><svg width="18" height="18"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--gold-primary);">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg></button>
-          <div class="faq-content">
+          <div class="faq-content" style="color: var(--navy-text-muted);">
             <p>Não. O encontro será <strong>online e ao vivo</strong>.</p>
           </div>
         </div>
 
-        <div class="faq-item">
-          <button class="faq-trigger"><span>Qual é o horário?</span><svg width="18" height="18" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2.5">
+        <div class="faq-item" style="background: var(--navy-card); border: 1.5px solid var(--navy-border-card);">
+          <button class="faq-trigger" style="color: var(--navy-text-main);"><span>Qual é o horário?</span><svg width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--gold-primary);">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg></button>
-          <div class="faq-content">
+          <div class="faq-content" style="color: var(--navy-text-muted);">
             <p>Dia <strong>14 de novembro, das 10h às 16h</strong>, com intervalo para almoço.</p>
           </div>
         </div>
 
-        <div class="faq-item">
-          <button class="faq-trigger"><span>Haverá gravação? Por quanto tempo terei acesso?</span><svg width="18"
-              height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <div class="faq-item" style="background: var(--navy-card); border: 1.5px solid var(--navy-border-card);">
+          <button class="faq-trigger" style="color: var(--navy-text-main);"><span>Haverá gravação? Por quanto tempo terei acesso?</span><svg width="18"
+              height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--gold-primary);">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg></button>
-          <div class="faq-content">
+          <div class="faq-content" style="color: var(--navy-text-muted);">
             <p>Sim, a gravação ficará disponível por 30 dias após a imersão.</p>
           </div>
         </div>
@@ -1995,18 +2079,17 @@
   </section>
 
   <!-- =======================================================
-       15. CTA FINAL (NAVY)
+       15. CTA FINAL (CLARO - CREAM) [14]
   ======================================================== -->
-  <section class="text-center"
-    style="background: radial-gradient(circle at center, rgba(16, 21, 56, 0.9) 0%, var(--navy-base) 100%);">
+  <section class="section-cream text-center">
     <div class="container">
       <div class="section-kicker">PRÓXIMO PASSO</div>
       <h2>
         Pare de decidir no improviso.<br>Estruture seu processo de avaliação.
       </h2>
       <p
-        style="color: var(--navy-text-muted); font-size: clamp(0.95rem, 2vw, 1.05rem); max-width: 650px; margin: 0 auto var(--spacing-element-margin);">
-        <strong style="color: #fff;">14 de novembro | 10h às 16h | Online e ao vivo</strong>
+        style="color: var(--cream-text-muted); font-size: clamp(0.95rem, 2vw, 1.05rem); max-width: 650px; margin: 0 auto var(--spacing-element-margin);">
+        <strong style="color: var(--cream-text-main);">14 de novembro | 10h às 16h | Online e ao vivo</strong>
       </p>
       <a href="https://pay.hotmart.com/M107075913V" target="_blank" rel="noopener noreferrer" class="primary price-cta">
         Quero participar e estruturar o meu processo
@@ -2015,7 +2098,7 @@
   </section>
 
   <!-- =======================================================
-       16. FOOTER
+       16. FOOTER (ESCURO - NAVY)
   ======================================================== -->
   <footer>
     <div class="container text-center">
