@@ -19,10 +19,10 @@
     <meta property="og:title" content="Minha Creche Estruturada - Programa Tata Pereira">
     <meta property="og:description"
         content="Deixe o improviso. Construa uma empresa pet sólida, com processos claros, segurança e previsibilidade.">
-    <meta property="og:image" content="../assets/tata-bracos-cruzados.png">
+    <meta property="og:image" content="./assets/tata-bracos-cruzados.png">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="../assets/tata-logo-dog.png">
+    <link rel="icon" type="image/png" href="./assets/tata-logo-dog.png">
 
     <!-- Google Fonts: Inter e Montserrat -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +36,7 @@
 
     <style>
         /* =========================================================
-           DESIGN SYSTEM & CSS VARIABLES (PADRÃO DA HOME)
+           DESIGN SYSTEM & CSS VARIABLES
            ========================================================= */
         :root {
             /* PALETA AZUL ESCURO DEEP NAVY */
@@ -139,9 +139,7 @@
             text-align: center;
         }
 
-        /* =========================================================
-           BOTÃO PRINCIPAL COM SHIMMER EFFECT (HOME)
-           ========================================================= */
+        /* BOTÃO PRINCIPAL COM SHIMMER EFFECT */
         .primary {
             display: flex;
             width: 100%;
@@ -164,6 +162,18 @@
             overflow: hidden;
             transition: var(--transition);
             text-align: center;
+        }
+
+        .primary.btn-outline {
+            background: transparent;
+            border: 1.5px solid var(--gold-primary);
+            color: var(--gold-primary);
+            box-shadow: none;
+        }
+
+        .primary.btn-outline:hover {
+            background: var(--gold-muted);
+            color: #ffffff;
         }
 
         .primary::after {
@@ -199,9 +209,7 @@
             transform: translateY(0);
         }
 
-        /* =========================================================
-           HEADER
-           ========================================================= */
+        /* HEADER */
         header {
             position: sticky;
             top: 0;
@@ -254,9 +262,7 @@
             font-size: 0.74rem;
         }
 
-        /* =========================================================
-           HERO SECTION
-           ========================================================= */
+        /* HERO SECTION */
         .hero {
             padding-top: 40px;
             padding-bottom: 90px;
@@ -381,9 +387,7 @@
             font-size: 0.8rem;
         }
 
-        /* =========================================================
-           SECTION 2: TARGET AUDIENCE (PUBLICO ALVO)
-           ========================================================= */
+        /* TARGET AUDIENCE */
         .target-section {
             background-color: var(--cream-base);
             color: var(--cream-text-main);
@@ -461,9 +465,7 @@
             color: var(--cream-text-main);
         }
 
-        /* =========================================================
-           SECTION 3: BENEFÍCIOS (NAVY SURF)
-           ========================================================= */
+        /* BENEFÍCIOS */
         .benefits-section {
             background: var(--navy-surface-1);
             color: var(--navy-text-main);
@@ -473,7 +475,7 @@
             font-size: clamp(26px, 3.2vw, 38px);
             font-weight: 900;
             letter-spacing: -1px;
-            color: var(--cream-text-body);;
+            color: var(--navy-text-main);
             line-height: 1.2;
         }
 
@@ -525,9 +527,7 @@
             box-shadow: var(--shadow-lg);
         }
 
-        /* =========================================================
-           SECTION 4: A CRECHE CRESCE (PAIN GRID)
-           ========================================================= */
+        /* PAIN GRID */
         .pain-section {
             background-color: var(--cream-base);
             color: var(--cream-text-main);
@@ -591,9 +591,7 @@
             margin: 30px auto 0 auto;
         }
 
-        /* =========================================================
-           SECTION 5: CHAOS SECTION
-           ========================================================= */
+        /* CHAOS SECTION */
         .chaos-section {
             background: var(--navy-base);
             padding: 90px 0;
@@ -656,11 +654,9 @@
             flex-shrink: 0;
         }
 
-        /* =========================================================
-           SECTION 6: QUEM SERÁ A SUA MENTORA
-           ========================================================= */
+        /* QUEM SERÁ A SUA MENTORA */
         .mentor-section {
-            background-color: var(--navy-surface-1);
+            background-color: var(--cream-base);
             color: var(--cream-text-main);
             border-top: 1px solid var(--cream-border-card);
             border-bottom: 1px solid var(--cream-border-card);
@@ -714,11 +710,9 @@
             box-shadow: var(--shadow-lg);
         }
 
-        /* =========================================================
-           SECTION 7: MÉTODO DOMUS (CASA DOMUS INFOGRÁFICO)
-           ========================================================= */
+        /* MÉTODO DOMUS INFOGRÁFICO */
         .domus-section {
-            background: var(--cream-base);
+            background: var(--navy-base);
             padding: 100px 0;
         }
 
@@ -988,10 +982,6 @@
             border-color: var(--navy-blue);
         }
 
-        .infographic-wrapper .card-item:hover .card-icon-wrap svg {
-            transform: scale(1.1);
-        }
-
         .infographic-wrapper .card-info h4 {
             font-size: 1.02rem;
             font-weight: 800;
@@ -1030,9 +1020,7 @@
             box-shadow: 0 8px 20px rgba(224, 160, 32, 0.35);
         }
 
-        /* =========================================================
-           SECTION 8: COMO FUNCIONA A MENTORIA (LOGÍSTICA)
-           ========================================================= */
+        /* LOGÍSTICA */
         .logistics-section {
             background: var(--navy-surface-1);
             padding: 100px 0;
@@ -1087,9 +1075,7 @@
             line-height: 1.6;
         }
 
-        /* =========================================================
-           SECTION 9: POPs
-           ========================================================= */
+        /* POPs */
         .pops-section {
             background-color: var(--cream-base);
             color: var(--cream-text-main);
@@ -1138,9 +1124,7 @@
             font-weight: 900;
         }
 
-        /* =========================================================
-           SECTION 10: COMO FUNCIONA A APLICAÇÃO (ETAPAS)
-           ========================================================= */
+        /* ETAPAS */
         .steps-section {
             background: var(--navy-base);
             padding: 100px 0;
@@ -1197,9 +1181,7 @@
             line-height: 1.6;
         }
 
-        /* =========================================================
-           SECTION 11: FAQ ACCORDION
-           ========================================================= */
+        /* FAQ ACCORDION */
         .faq-section {
             background-color: var(--cream-base);
             color: var(--cream-text-main);
@@ -1262,9 +1244,7 @@
             line-height: 1.7;
         }
 
-        /* =========================================================
-           SECTION 12: AINDA EM DÚVIDA
-           ========================================================= */
+        /* SUPORTE */
         .support-section {
             background: var(--navy-surface-1);
             padding: 100px 0;
@@ -1297,9 +1277,7 @@
             margin-bottom: 24px;
         }
 
-        /* =========================================================
-           FOOTER (PADRÃO DA HOME)
-           ========================================================= */
+        /* FOOTER */
         footer {
             background: var(--navy-surface-1);
             color: var(--navy-text-muted);
@@ -1538,22 +1516,10 @@
             .infographic-wrapper {
                 background: #ffffff;
                 border: 2px solid var(--gold-yellow);
-                border-top: none;
-                border-radius: 0 0 18px 18px;
+                border-radius: 18px;
                 position: relative;
                 padding: 0;
-                margin-top: 50px;
-            }
-
-            .infographic-wrapper::before {
-                content: '';
-                position: absolute;
-                top: -42px;
-                left: -2px;
-                right: -2px;
-                height: 42px;
-                background: var(--navy-blue);
-                clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+                margin-top: 20px;
             }
 
             .infographic-wrapper .house-content-layer {
@@ -1607,8 +1573,8 @@
     <header id="site-header">
         <div class="container header-inner">
             <a href="#" class="logo" aria-label="Tata Pereira - Início">
-                <img src="../assets/tata-logo-dog.png" alt="Tata Pereira Logo Ícone" />
-                <img src="../assets/tata-logo-nome.png" alt="Tata Pereira Logo Nome" />
+                <img src="./assets/tata-logo-dog.png" alt="Tata Pereira Logo Ícone" />
+                <img src="./assets/tata-logo-nome.png" alt="Tata Pereira Logo Nome" />
             </a>
 
             <a class="primary btn-header-wa open-app-modal" href="#">
@@ -1634,7 +1600,7 @@
             </div>
 
             <div id="video-wrapper" class="video-player-container fade-in">
-                <img src="../assets/tata-video-placeholder.png"
+                <img src="./assets/tata-video-placeholder.png"
                     alt="Tata Pereira dando explicações sobre o programa no vídeo">
                 <div class="play-button-overlay">
                     <svg class="play-icon-svg" viewBox="0 0 24 24">
@@ -1722,7 +1688,7 @@
                     </div>
                 </div>
                 <div class="benefits-image-wrap fade-in">
-                    <img src="../assets/tata-apontando-vc.png"
+                    <img src="./assets/tata-apontando-voce.png"
                         alt="Tata apontando e indicando o seu sucesso na estruturação">
                 </div>
             </div>
@@ -1801,7 +1767,7 @@
                 <div class="section-tag-cream">Sua Mentora</div>
                 <h2 class="section-title-cream">Tata Pereira</h2>
                 <p style="color: var(--cream-text-body); margin-top: 16px; line-height: 1.75;">
-                    Sou adestradora e atuo na formação de profissionais e na estruturação de negócios pet. Sou fundadora da Tata EducaCão, um ecossistema de educação para cães e seus responsáveis, que reúne escola canina, consultorias comportamentais, programas de adestramento e uma equipe de passeadores, adestradores e pet sitters.
+                   Sou adestradora e atuo na formação de profissionais e na estruturação de negócios pet. Sou fundadora da Tata EducaCão, um ecossistema de educação para cães e seus responsáveis, que reúne escola canina, consultorias comportamentais, programas de adestramento e uma equipe de passeadores, adestradores e pet sitters.
 
 Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da minha atuação no setor pet, onde trabalhei como pet sitter, dog walker, adestradora, monitora, supervisora e consultora de creches caninas. Minha trajetória une prática, gestão e conhecimento da rotina real de operação, tanto no atendimento às famílias quanto na preparação de profissionais e na organização de negócios pet.
                 </p>
@@ -1827,7 +1793,7 @@ Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da
             </div>
 
             <div class="mentor-image-wrap fade-in">
-                <img src="../assets/tata-bracos-cruzados.png"
+                <img src="./assets/tata-bracos-cruzados.png"
                     alt="Tata Pereira fundadora do programa com braços cruzados">
             </div>
         </div>
@@ -2109,7 +2075,7 @@ Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da
     <section class="support-section">
         <div class="container support-grid text-center">
             <div class="benefits-image-wrap fade-in">
-                <img src="../assets/mentoria-tata-dog.png" alt="Tata Pereira com Cão">
+                <img src="./assets/mentoria-tata-dog.png" alt="Tata Pereira com Cão">
             </div>
             <div class="support-box fade-in">
                 <h3>AINDA EM DÚVIDA?</h3>
@@ -2127,8 +2093,8 @@ Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da
             <div class="footer-grid">
                 <div>
                     <a href="#" class="footer-logo">
-                        <img src="../assets/tata-logo-dog.png" alt="Tata Pereira Logo" />
-                        <img src="../assets/tata-logo-nome.png" alt="Tata Pereira Logo Nome" />
+                        <img src="./assets/tata-logo-dog.png" alt="Tata Pereira Logo" />
+                        <img src="./assets/tata-logo-nome.png" alt="Tata Pereira Logo Nome" />
                     </a>
                     <p class="footer-tagline">
                         Estruturação de processos, gestão operacional e capacitação profissional para creches e hospedagens pet.
@@ -2178,13 +2144,16 @@ Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da
             <button id="close-modal" class="modal-close-btn" aria-label="Fechar janela">✕</button>
             <h3 class="modal-title">Como deseja aplicar?</h3>
             <p class="modal-subtitle">
-                Recomendamos preencher o formulário para adiantar sua análise, mas você também pode falar com a equipe diretamente.
+                Recomendamos preencher o formulário para adiantar sua análise, mas você também pode falar com a equipe diretamente pelo WhatsApp.
             </p>
             <div style="display: flex; flex-direction: column; gap: 12px;">
-                <a class="primary" onclick="window.open(window.CONFIG.applicationUrl, '_blank')">
+                <a href="#" class="primary" onclick="window.open(window.CONFIG.applicationUrl, '_blank')">
                     📋 Preencher Formulário de Aplicação
                 </a>
-                    </div>
+                <a href="#" class="primary btn-outline" onclick="window.open(window.CONFIG.whatsappUrl, '_blank')">
+                    💬 Falar com a Equipe via WhatsApp
+                </a>
+            </div>
         </div>
     </div>
 
@@ -2199,8 +2168,10 @@ Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da
             openButtons.forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    modal.classList.add('active');
-                    document.body.style.overflow = 'hidden';
+                    if (modal) {
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
                 });
             });
 
@@ -2208,13 +2179,17 @@ Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da
                 closeButton.addEventListener('click', closeModal);
             }
 
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) closeModal();
-            });
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeModal();
+                });
+            }
 
             function closeModal() {
-                modal.classList.remove('active');
-                document.body.style.overflow = '';
+                if (modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
             }
 
             // Video Player Activation
@@ -2245,31 +2220,36 @@ Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da
                 const question = item.querySelector('.faq-question');
                 const answer = item.querySelector('.faq-answer');
 
-                question.addEventListener('click', () => {
-                    const isActive = item.classList.contains('active');
-                    faqItems.forEach(i => {
-                        i.classList.remove('active');
-                        i.querySelector('.faq-answer').style.maxHeight = null;
+                if (question && answer) {
+                    question.addEventListener('click', () => {
+                        const isActive = item.classList.contains('active');
+                        faqItems.forEach(i => {
+                            i.classList.remove('active');
+                            const a = i.querySelector('.faq-answer');
+                            if (a) a.style.maxHeight = null;
+                        });
+                        if (!isActive) {
+                            item.classList.add('active');
+                            answer.style.maxHeight = answer.scrollHeight + 'px';
+                        }
                     });
-                    if (!isActive) {
-                        item.classList.add('active');
-                        answer.style.maxHeight = answer.scrollHeight + 'px';
-                    }
-                });
+                }
             });
 
             // Intersection Observer para Fade-in
             const fadeElements = document.querySelectorAll(".fade-in");
-            const fadeObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("visible");
-                        fadeObserver.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
+            if (fadeElements.length > 0) {
+                const fadeObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("visible");
+                            fadeObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
 
-            fadeElements.forEach(el => fadeObserver.observe(el));
+                fadeElements.forEach(el => fadeObserver.observe(el));
+            }
 
             // Counter Animation
             const statNumbers = document.querySelectorAll('.stat-number');
@@ -2278,6 +2258,7 @@ Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da
             const animateStats = () => {
                 statNumbers.forEach(stat => {
                     const target = +stat.getAttribute('data-target');
+                    if (!target) return;
                     let current = 0;
                     const increment = target > 500 ? 10 : 1;
                     const timer = setInterval(() => {
@@ -2292,17 +2273,19 @@ Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da
                 });
             };
 
-            const statsObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting && !animated) {
-                        animateStats();
-                        animated = true;
-                    }
-                });
-            }, { threshold: 0.2 });
-
             const mentorSection = document.querySelector('.mentor-section');
-            if (mentorSection) statsObserver.observe(mentorSection);
+            if (mentorSection && statNumbers.length > 0) {
+                const statsObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !animated) {
+                            animateStats();
+                            animated = true;
+                        }
+                    });
+                }, { threshold: 0.2 });
+
+                statsObserver.observe(mentorSection);
+            }
         });
     </script>
 </body>
