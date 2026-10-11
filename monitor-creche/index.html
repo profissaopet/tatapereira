@@ -5,14 +5,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 
-  <title>Profissão Dog Walker — Por Tata Pereira</title>
+  <title>Profissão Monitor de Creche Canina — Por Tata Pereira</title>
   <meta name="description"
-    content="Não basta amar cães. Conduzir vidas nas ruas exige técnica, leitura de comportamento e postura profissional." />
+    content="Do zero ao profissional, pra quem ama cães mas quer parar de depender de sorte — e começar a ser visto, tratado e pago como monitor de verdade." />
   <meta name="keywords"
-    content="Profissão Dog Walker, Tata Pereira, passeio canino, adestramento, comportamento canino, Método Domus, passeador de cães" />
+    content="Monitor de Creche Canina, Tata Pereira, comportamento canino, Método Domus, creche pet, hospedagem pet, adestramento" />
   <meta name="author" content="Tata Pereira" />
   <meta name="theme-color" content="#050717" />
-  <link rel="canonical" href="https://tatapereira.com/dog-walker/" />
+  <link rel="canonical" href="https://tatapereira.com/monitor-creche/" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="../assets/tata-logo-dog.png" />
@@ -73,7 +73,7 @@
 
       --cream-text-main: #0a0e28;
       --cream-text-body: #334155;
-      --cream-text-muted: #5e697d;
+      --cream-text-muted: #475569;
       --cream-border-card: #ebdcc8;
 
       /* ACENTOS E IDENTIDADE */
@@ -87,16 +87,17 @@
       --accent-green: #10b981;
 
       /* ESPAÇAMENTOS E RAIOS */
-      --spacing-section: clamp(50px, 7vw, 90px);
-      --radius-sm: 8px;
-      --radius-md: 14px;
-      --radius-lg: 20px;
+      --spacing-section: clamp(60px, 8vw, 95px);
+      --spacing-element: clamp(20px, 4vw, 32px);
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
       --radius-full: 9999px;
 
       --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.15);
       --shadow-md: 0 12px 35px rgba(0, 0, 0, 0.28);
       --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.4);
-      --shadow-cream: 0 10px 25px rgba(10, 14, 40, 0.05);
+      --shadow-cream: 0 12px 30px rgba(10, 14, 40, 0.05);
 
       --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -118,7 +119,7 @@
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       background-color: var(--navy-base);
       color: var(--navy-text-main);
-      line-height: 1.6;
+      line-height: 1.65;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
     }
@@ -142,6 +143,10 @@
       padding: 0 24px;
     }
 
+    .text-center {
+      text-align: center;
+    }
+
     .gold {
       color: var(--gold-primary);
     }
@@ -159,17 +164,13 @@
       border-bottom: 1px solid var(--cream-border-card);
     }
 
-    .section-cream h2,
-    .section-cream h3 {
-      color: var(--cream-text-main);
-    }
-
     .section-cream p {
       color: var(--cream-text-body);
     }
 
+    /* ESTILOS DE CABEÇALHO PADRONIZADOS */
     .section-kicker {
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 800;
       letter-spacing: 1.5px;
       text-transform: uppercase;
@@ -184,11 +185,11 @@
     }
 
     h2 {
-      font-size: clamp(24px, 3.8vw, 40px);
+      font-size: clamp(22px, 3.5vw, 36px);
       font-weight: 900;
-      line-height: 1.25;
+      line-height: 1.28;
       letter-spacing: -0.5px;
-      margin-bottom: 20px;
+      margin-bottom: var(--spacing-element);
       font-family: 'Montserrat', sans-serif;
       color: var(--navy-text-main);
     }
@@ -202,22 +203,22 @@
        ========================================================= */
     .primary {
       display: inline-flex;
-      min-height: 48px;
+      min-height: 52px;
       align-items: center;
       justify-content: center;
       border: 0;
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-full);
       background: linear-gradient(135deg, var(--gold-primary), var(--gold-hover));
       color: #050717;
       cursor: pointer;
-      font-size: clamp(0.78rem, 2vw, 0.85rem);
+      font-size: clamp(0.78rem, 2vw, 0.88rem);
       font-weight: 800;
       font-family: 'Montserrat', sans-serif;
-      box-shadow: 0 10px 25px rgba(241, 191, 66, .2);
+      box-shadow: 0 12px 30px rgba(241, 191, 66, .22);
       text-transform: uppercase;
       letter-spacing: 0.5px;
       gap: 10px;
-      padding: 12px 28px;
+      padding: 12px 32px;
       position: relative;
       overflow: hidden;
       transition: var(--transition);
@@ -241,7 +242,7 @@
 
     .primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 14px 32px rgba(241, 191, 66, .35);
+      box-shadow: 0 16px 36px rgba(241, 191, 66, .38);
       filter: brightness(1.05);
     }
 
@@ -264,7 +265,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 70px;
+      height: 76px;
     }
 
     .logo {
@@ -282,10 +283,10 @@
        2. HERO (PRIMEIRA DOBRA)
        ========================================================= */
     .hero {
-      padding-top: clamp(35px, 5vw, 60px);
-      padding-bottom: clamp(40px, 6vw, 70px);
+      padding-top: clamp(40px, 6vw, 70px);
+      padding-bottom: clamp(50px, 7vw, 80px);
       background:
-        radial-gradient(circle at 75% 35%, rgba(241, 191, 66, 0.12) 0%, rgba(5, 7, 23, 0) 55%),
+        radial-gradient(circle at 75% 35%, rgba(241, 191, 66, 0.15) 0%, rgba(5, 7, 23, 0) 55%),
         radial-gradient(circle at 20% 80%, rgba(16, 21, 56, 0.9) 0%, rgba(5, 7, 23, 0) 65%),
         var(--navy-base);
     }
@@ -297,46 +298,52 @@
       gap: 40px;
     }
 
-    .pill-tag-dark {
-      display: inline-block;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--navy-border-card);
-      color: var(--navy-text-main);
-      padding: 6px 14px;
-      border-radius: var(--radius-full);
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 16px;
+    .hero h1 {
+      font-size: clamp(26px, 4vw, 44px);
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 12px;
       font-family: 'Montserrat', sans-serif;
     }
 
-    .hero h1 {
-      font-size: clamp(32px, 4.5vw, 54px);
-      font-weight: 900;
-      line-height: 1.1;
-      margin-bottom: 16px;
+    .hero-title-sub {
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      color: var(--gold-primary);
+      font-weight: 800;
       font-family: 'Montserrat', sans-serif;
+      margin-bottom: 16px;
+      display: block;
     }
 
     .hero-subtitle {
-      font-size: clamp(0.95rem, 2vw, 1.05rem);
+      font-size: clamp(0.98rem, 2vw, 1.08rem);
       color: var(--navy-text-muted);
       margin-bottom: 24px;
       line-height: 1.6;
     }
 
-    .hero-features-bar {
-      margin-top: 30px;
-      padding-top: 20px;
-      border-top: 1px solid var(--navy-border-subtle);
+    .hero-badges {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 10px;
+      margin-bottom: 28px;
       font-size: 0.82rem;
-      color: var(--navy-text-muted);
-      font-weight: 500;
+      font-weight: 600;
+      color: var(--navy-text-main);
+    }
+
+    .hero-badge-item {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--navy-border-card);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-badge-item span {
+      color: var(--gold-primary);
     }
 
     .hero-author-card {
@@ -360,7 +367,7 @@
       bottom: 16px;
       left: 16px;
       right: 16px;
-      background: rgba(5, 7, 23, 0.9);
+      background: rgba(5, 7, 23, 0.88);
       border: 1px solid var(--navy-border-card);
       backdrop-filter: blur(10px);
       padding: 12px 16px;
@@ -378,49 +385,163 @@
       color: var(--gold-primary);
     }
 
-    .hero-stat-circle {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      width: 76px;
-      height: 76px;
-      background: var(--gold-primary);
-      color: #050717;
-      border-radius: 50%;
+    /* =========================================================
+       3. ISSO É PRA VOCÊ SE... (CREAM)
+       ========================================================= */
+    .problem-cards {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+      gap: 16px;
+      max-width: 860px;
+      margin: 30px auto 0;
+    }
+
+    .problem-card {
+      background: var(--cream-card);
+      border: 1.5px solid var(--cream-border-card);
+      border-left: 5px solid var(--gold-dark);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      box-shadow: var(--shadow-cream);
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      font-size: 0.98rem;
+    }
+
+    .problem-card-num {
+      background: rgba(181, 142, 28, 0.15);
+      color: var(--gold-dark);
       font-weight: 900;
-      font-family: 'Montserrat', sans-serif;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-      line-height: 1;
-      padding: 6px;
+      font-size: 0.9rem;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      flex-shrink: 0;
     }
 
-    .hero-stat-circle strong {
-      font-size: 1.3rem;
-    }
-
-    .hero-stat-circle span {
-      font-size: 0.52rem;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-      margin-top: 2px;
+    .problem-note {
+      text-align: center;
+      margin-top: 28px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--cream-text-main);
     }
 
     /* =========================================================
-       3. VOCÊ NÃO ESTÁ SÓ PASSEANDO... (NAVY)
+       4. A PARTE DURA DE OUVIR (NAVY)
        ========================================================= */
-    .timeline-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1.1fr;
-      gap: 20px;
-      margin-top: 30px;
+    .quote-box {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
     }
 
-    .timeline-card {
+    .compare-table {
+      width: 100%;
+      max-width: 900px;
+      margin: 30px auto 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .compare-col {
+      background: var(--navy-card);
+      border: 1.5px solid var(--navy-border-card);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      backdrop-filter: blur(12px);
+    }
+
+    .compare-title {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      font-family: 'Montserrat', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .compare-col:nth-child(1) .compare-title { color: var(--navy-text-muted); }
+    .compare-col:nth-child(2) .compare-title { color: var(--gold-primary); }
+
+    .compare-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      font-size: 0.92rem;
+      color: var(--navy-text-muted);
+    }
+
+    .compare-banner-note {
+      text-align: center;
+      max-width: 860px;
+      margin: 30px auto 0;
+      font-weight: 600;
+      color: var(--gold-primary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* =========================================================
+       5. PRA QUEM É (CREAM)
+       ========================================================= */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 980px;
+      margin: 30px auto 0;
+    }
+
+    .pillar-card {
+      background: var(--cream-card);
+      border: 1.5px solid var(--cream-border-card);
+      border-radius: var(--radius-md);
+      padding: 28px 22px;
+      box-shadow: var(--shadow-cream);
+      text-align: center;
+    }
+
+    .pillar-num {
+      width: 42px;
+      height: 42px;
+      background: rgba(207, 164, 38, 0.15);
+      color: var(--gold-dark);
+      font-weight: 900;
+      font-size: 1.2rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px auto;
+    }
+
+    .pillar-card h3 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .pillar-card p {
+      font-size: 0.88rem;
+      color: var(--cream-text-muted);
+      line-height: 1.6;
+    }
+
+    /* =========================================================
+       6. O QUE VOCÊ VAI APRENDER / MÓDULOS (NAVY)
+       ========================================================= */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      max-width: 960px;
+      margin: 30px auto 0;
+    }
+
+    .module-card {
       background: var(--navy-card);
       border: 1.5px solid var(--navy-border-card);
       border-radius: var(--radius-md);
@@ -428,64 +549,93 @@
       backdrop-filter: blur(12px);
     }
 
-    .timeline-card.gold-card {
-      background: linear-gradient(135deg, var(--gold-primary), var(--gold-hover));
-      border: none;
-      color: #050717;
+    .module-card.highlight {
+      border-color: var(--gold-primary);
+      background: rgba(241, 191, 66, 0.08);
+      grid-column: span 2;
     }
 
-    .timeline-card.gold-card .timeline-tag,
-    .timeline-card.gold-card h3,
-    .timeline-card.gold-card p {
-      color: #050717 !important;
-    }
-
-    .timeline-tag {
-      font-size: 0.7rem;
+    .module-card small {
+      color: var(--gold-primary);
       font-weight: 800;
       text-transform: uppercase;
+      font-size: 0.75rem;
       letter-spacing: 1px;
-      color: var(--navy-text-muted);
-      margin-bottom: 10px;
-      display: block;
     }
 
-    .timeline-card h3 {
+    .module-card h3 {
       font-size: 1.1rem;
-      font-weight: 900;
-      margin-bottom: 8px;
-      color: var(--navy-text-main);
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    .timeline-card p {
-      font-size: 0.88rem;
-      color: var(--navy-text-muted);
-      line-height: 1.5;
-    }
-
-    .banner-good-news {
-      text-align: center;
-      margin-top: 30px;
       font-weight: 800;
-      font-size: 1rem;
+      margin: 6px 0 10px 0;
+      color: var(--navy-text-main);
+    }
+
+    .module-card p {
+      font-size: 0.9rem;
+      color: var(--navy-text-muted);
+      line-height: 1.55;
+    }
+
+    /* CARD DE ENTREGÁVEIS EXTRAS */
+    .extras-box {
+      background: linear-gradient(135deg, rgba(241, 191, 66, 0.12), rgba(16, 21, 56, 0.9));
+      border: 1.5px solid var(--gold-border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      max-width: 960px;
+      margin: 35px auto 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(12px);
+    }
+
+    .extras-box-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .extras-box h3 {
+      font-size: 1.3rem;
+      font-weight: 900;
       color: var(--gold-primary);
-      font-style: italic;
+      font-family: 'Montserrat', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .extras-badge {
+      background: var(--gold-primary);
+      color: #050717;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+    }
+
+    .extras-list-p {
+      font-size: 1rem;
+      color: var(--navy-text-main);
+      font-weight: 600;
+      line-height: 1.8;
+      text-align: center;
     }
 
     /* =========================================================
-       4. TALVEZ VOCÊ PENSE / OBJEÇÕES (CREAM com FOTO À ESQUERDA)
+       7. O QUE VOCÊ CONSTRÓI AQUI (CREAM com FOTO À ESQUERDA)
        ========================================================= */
-    .objections-wrapper {
+    .build-grid {
       display: grid;
       grid-template-columns: 320px 1fr;
       gap: 40px;
       align-items: center;
-      max-width: 1000px;
+      max-width: 960px;
       margin: 30px auto 0;
     }
 
-    .objection-img {
+    .build-img {
       width: 100%;
       height: 380px;
       border-radius: var(--radius-lg);
@@ -494,186 +644,52 @@
       box-shadow: var(--shadow-cream);
     }
 
-    .objection-img img {
+    .build-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .objections-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .objection-card {
-      background: var(--cream-card);
-      border: 1.5px solid var(--cream-border-card);
-      border-radius: var(--radius-md);
-      padding: 18px;
-      box-shadow: var(--shadow-cream);
-    }
-
-    .objection-card strong {
-      display: block;
-      font-size: 0.85rem;
-      color: var(--cream-text-main);
-      margin-bottom: 6px;
-    }
-
-    .objection-card p {
-      font-size: 0.83rem;
-      color: var(--gold-dark);
-      font-weight: 700;
-    }
-
-    /* =========================================================
-       5. O ROTEIRO DO CURSO / PARADAS (CREAM com FOTO À DIREITA)
-       ========================================================= */
-    .stops-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 40px;
-      align-items: center;
-      max-width: 1000px;
-      margin: 30px auto 0;
-    }
-
-    .stops-list {
+    .build-list {
+      list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 16px;
     }
 
-    .stop-card {
+    .build-item {
       background: var(--cream-card);
       border: 1.5px solid var(--cream-border-card);
       border-radius: var(--radius-md);
-      padding: 16px 20px;
+      padding: 18px 22px;
       box-shadow: var(--shadow-cream);
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-
-    .stop-num {
-      width: 32px;
-      height: 32px;
-      background: var(--cream-text-main);
-      color: var(--cream-card);
-      font-weight: 900;
-      font-size: 0.95rem;
-      border-radius: 50%;
       display: flex;
       align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .stop-content h3 {
+      gap: 14px;
       font-size: 0.95rem;
-      font-weight: 800;
+      font-weight: 600;
       color: var(--cream-text-main);
-      margin-bottom: 2px;
     }
 
-    .stop-content p {
-      font-size: 0.83rem;
-      color: var(--cream-text-muted);
-      line-height: 1.45;
-    }
-
-    .stops-img-card {
-      position: relative;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1.5px solid var(--cream-border-card);
-      box-shadow: var(--shadow-cream);
-      height: 100%;
-      min-height: 420px;
-    }
-
-    .stops-img-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .stops-features-badge {
-      position: absolute;
-      bottom: 16px;
-      left: 16px;
-      right: 16px;
-      background: rgba(10, 14, 40, 0.92);
-      border: 1px solid var(--gold-border);
-      backdrop-filter: blur(10px);
-      padding: 12px;
-      border-radius: var(--radius-md);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      text-align: center;
-    }
-
-    .stops-feature-item strong {
-      display: block;
-      font-size: 0.72rem;
-      color: var(--navy-text-main);
-
-    }
-
-    .stops-feature-item span {
-      font-size: 0.7rem;
-      color: var(--gold-primary);
-      text-transform: lowercase;
+    .build-item span.check {
+      color: var(--gold-dark);
+      font-weight: 900;
+      font-size: 1.2rem;
     }
 
     /* =========================================================
-       6. QUANDO VOCÊ SE PROFISSIONALIZA... (CREAM)
+       8. QUEM VAI TE ENSINAR (NAVY com FOTO À DIREITA)
        ========================================================= */
-    .benefits-grid {
+    .mentor-wrapper-right {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      max-width: 1000px;
-      margin: 30px auto 0;
-    }
-
-    .benefit-card {
-      background: var(--cream-card);
-      border: 1.5px solid var(--cream-border-card);
-      border-radius: var(--radius-md);
-      padding: 20px 16px;
-      box-shadow: var(--shadow-cream);
-    }
-
-    .benefit-card h3 {
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--cream-text-main);
-      margin-bottom: 8px;
-      font-family: 'Montserrat', sans-serif;
-    }
-
-    .benefit-card p {
-      font-size: 0.83rem;
-      color: var(--cream-text-muted);
-      line-height: 1.5;
-    }
-
-    /* =========================================================
-       7. QUEM SOU EU (NAVY com FOTO À ESQUERDA)
-       ========================================================= */
-    .bio-wrapper {
-      display: grid;
-      grid-template-columns: 300px 1fr;
+      grid-template-columns: 1fr 320px;
       gap: 40px;
       align-items: center;
       max-width: 960px;
       margin: 30px auto 0;
     }
 
-    .bio-img {
+    .mentor-img-right {
       width: 100%;
       height: 380px;
       border-radius: var(--radius-lg);
@@ -682,28 +698,28 @@
       box-shadow: var(--shadow-lg);
     }
 
-    .bio-img img {
+    .mentor-img-right img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .bio-stats-grid {
+    .mentor-stats-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
-      margin: 20px 0;
+      margin-top: 20px;
     }
 
-    .bio-stat-card {
+    .mentor-stat-card {
       background: var(--navy-card);
       border: 1.5px solid var(--navy-border-card);
       border-radius: var(--radius-md);
-      padding: 14px 16px;
+      padding: 16px;
       backdrop-filter: blur(12px);
     }
 
-    .bio-stat-card strong {
+    .mentor-stat-card strong {
       display: block;
       font-size: 1.2rem;
       color: var(--gold-primary);
@@ -711,20 +727,31 @@
       margin-bottom: 4px;
     }
 
-    .bio-stat-card p {
-      font-size: 0.82rem;
+    .mentor-stat-card p {
+      font-size: 0.85rem;
       color: var(--navy-text-muted);
       line-height: 1.4;
     }
 
+    .mentor-quote {
+      margin-top: 24px;
+      background: rgba(255, 255, 255, 0.04);
+      border-left: 4px solid var(--gold-primary);
+      padding: 14px 18px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-style: italic;
+      font-size: 0.92rem;
+      color: var(--navy-text-main);
+    }
+
     /* =========================================================
-       8. SEU PASSE PARA A PROFISSIONALIZAÇÃO & OFERTA (CREAM)
+       9. SUA INSCRIÇÃO & INVESTIMENTO (CREAM)
        ========================================================= */
     .offer-wrapper {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
-      gap: 24px;
-      max-width: 940px;
+      gap: 30px;
+      max-width: 900px;
       margin: 30px auto 0;
       align-items: stretch;
     }
@@ -741,8 +768,8 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      font-size: 0.88rem;
+      gap: 12px;
+      font-size: 0.9rem;
       color: var(--cream-text-body);
     }
 
@@ -753,6 +780,35 @@
     }
 
     .offer-list li span.check {
+      color: var(--gold-dark);
+      font-weight: 900;
+    }
+
+    .materials-box {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--cream-border-card);
+    }
+
+    .materials-box h4 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--cream-text-main);
+      margin-bottom: 12px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .materials-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--cream-text-muted);
+    }
+
+    .materials-list li::before {
+      content: '• ';
       color: var(--gold-dark);
       font-weight: 900;
     }
@@ -789,21 +845,59 @@
     }
 
     /* =========================================================
-       9. FAQ / PERGUNTAS FREQUENTES (CREAM ALINHADO À DIREITA)
+       10. GARANTIA INCONDICIONAL (NAVY)
        ========================================================= */
-    .faq-section-grid {
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 40px;
-      align-items: flex-start;
-      max-width: 1000px;
+    .guarantee-box {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      max-width: 800px;
       margin: 0 auto;
+      background: var(--navy-card);
+      border: 1.5px solid var(--navy-border-card);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      backdrop-filter: blur(12px);
     }
 
-    .faq-wrapper {
+    .guarantee-badge {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid var(--gold-primary);
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold-primary);
+      font-weight: 900;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .guarantee-badge small {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .guarantee-sub {
+      margin-top: 8px;
+      font-size: 0.82rem;
+      color: var(--gold-primary);
+      font-weight: 600;
+    }
+
+    /* =========================================================
+       11. PERGUNTAS FREQUENTES (CREAM)
+       ========================================================= */
+    .faq-wrapper {
+      max-width: 820px;
+      margin: 30px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
 
     .faq-item {
@@ -818,9 +912,9 @@
       width: 100%;
       background: none;
       border: none;
-      padding: 16px 20px;
+      padding: 18px 20px;
       text-align: left;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       font-weight: 700;
       cursor: pointer;
       display: flex;
@@ -846,7 +940,7 @@
       max-height: 0;
       overflow: hidden;
       transition: all 0.3s ease;
-      font-size: 0.88rem;
+      font-size: 0.9rem;
       color: var(--cream-text-muted);
       line-height: 1.6;
     }
@@ -857,24 +951,12 @@
     }
 
     /* =========================================================
-       10. CTA FINAL (NAVY)
-       ========================================================= */
-    .cta-bottom-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    /* =========================================================
-       11. FOOTER (NAVY)
+       12. FOOTER (NAVY)
        ========================================================= */
     footer {
       background: var(--navy-surface-1);
       color: var(--navy-text-muted);
-      padding: 30px 0;
+      padding: 40px 0 30px;
       border-top: 1px solid var(--navy-border-card);
       text-align: center;
       font-size: 0.8rem;
@@ -883,24 +965,26 @@
     /* RESPONSIVIDADE */
     @media (max-width: 860px) {
       .hero-grid,
-      .timeline-grid,
-      .objections-wrapper,
-      .objections-grid,
-      .stops-wrapper,
-      .benefits-grid,
-      .bio-wrapper,
+      .compare-table,
+      .pillars-grid,
+      .modules-grid,
+      .mentor-wrapper-right,
+      .build-grid,
       .offer-wrapper,
-      .faq-section-grid,
-      .cta-bottom-bar,
-      .bio-stats-grid {
+      .mentor-stats-grid {
         grid-template-columns: 1fr;
       }
 
-      .stops-img-card {
-        min-height: 300px;
+      .mentor-img-right {
+        order: -1;
       }
 
-      .cta-bottom-bar {
+      .module-card.highlight {
+        grid-column: span 1;
+      }
+
+      .guarantee-box {
+        flex-direction: column;
         text-align: center;
       }
     }
@@ -924,7 +1008,7 @@
         <img src="../assets/tata-logo-nome.png" alt="Tata Pereira Logo Nome" />
       </a>
       <a href="#oferta" class="primary" style="min-height: 38px; padding: 0 18px; font-size: 0.75rem;">
-        Quero sair do improviso
+        Quero me inscrever
       </a>
     </div>
   </header>
@@ -936,31 +1020,27 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-content">
-          <span class="pill-tag-dark">CURSO ONLINE · FORMAÇÃO PROFISSIONAL</span>
-          <h1>Profissão <span class="gold">Dog Walker</span></h1>
-          <p class="hero-subtitle">
-            Não basta amar cães. Conduzir vidas nas ruas exige técnica, leitura de comportamento e postura profissional.
+          <span class="section-kicker" style="font-size: 0.9rem; margin-bottom: 6px;">FORMAÇÃO PROFISSIONAL</span>
+          <p class="hero-title-sub">CURSO ONLINE GRAVADO</p>
+          <h1>Trabalhar com cães não precisa ser sinônimo de salário baixo e improviso.</h1>
+          <p class="hero-title-sub" style="font-size: 1.1rem; color: var(--navy-text-main); font-weight: 800; margin-top: 10px;">
+            PROFISSÃO MONITOR DE CRECHE CANINA
           </p>
+          <h2>Do zero ao profissional, pra quem ama cães mas quer parar de depender de sorte — e começar a ser visto, tratado e pago como monitor de verdade.</h2>
 
-          <div>
-            <a href="#oferta" class="primary">
-              Quero sair do improviso
-            </a>
+          <div class="hero-badges">
+            <div class="hero-badge-item"><span>✓</span> Assista no seu ritmo</div>
+            <div class="hero-badge-item"><span>✓</span> 1 ano de acesso</div>
+            <div class="hero-badge-item"><span>✓</span> Certificado</div>
+            <div class="hero-badge-item"><span>✓</span> Garantia de 7 dias</div>
           </div>
 
-          <div class="hero-features-bar">
-            <span>Aulas gravadas, no seu ritmo</span>
-            <span>Modelos de contrato</span>
-            <span>Certificado + 1 ano de suporte</span>
-            <span>Garantia de 7 dias</span>
-          </div>
+          <a href="#oferta" class="primary">
+            QUERO SER PROFISSIONAL
+          </a>
         </div>
 
         <div class="hero-author-card">
-          <div class="hero-stat-circle">
-            <strong>8</strong>
-            <span>ANOS DE EXPERIÊNCIA</span>
-          </div>
           <img src="../assets/mentoria-tata-dog.png" alt="Tata Pereira" />
           <div class="hero-author-info">
             <strong>Tata Pereira</strong>
@@ -971,273 +1051,304 @@
     </section>
 
     <!-- =======================================================
-          3. VOCÊ NÃO ESTÁ SÓ PASSEANDO... (NAVY)
-    ======================================================== -->
-    <section>
-      <div class="container">
-        <div class="text-center" style="max-width: 860px; margin: 0 auto;">
-          <h2>Você não está só passeando com cachorros. <span class="gold">Está conduzindo vidas.</span></h2>
-          <p style="font-size: 0.95rem; color: var(--navy-text-muted); margin-top: -10px;">
-            Carros, motos, bicicletas, outros cães, pessoas com medo, barulhos inesperados, cheiros diferentes. Estímulos por todos os lados.
-          </p>
-        </div>
-
-        <div class="timeline-grid">
-          <div class="timeline-card">
-            <span class="timeline-tag">PRIMEIRO</span>
-            <h3>Um passeio “inocente”</h3>
-            <p>Guia na mão, rotina de sempre.</p>
-          </div>
-
-          <div class="timeline-card">
-            <span class="timeline-tag">EM SEGUNDOS</span>
-            <h3>O cão puxa, se assusta ou reage</h3>
-            <p>Um estímulo inesperado muda tudo.</p>
-          </div>
-
-          <div class="timeline-card gold-card">
-            <span class="timeline-tag">E SEM PREPARO, VIRA</span>
-            <h3>Briga. Acidente. Fuga.</h3>
-            <p>Com um cão que não é seu, e um tutor esperando por ele em casa.</p>
-          </div>
-        </div>
-
-        <div class="banner-good-news">
-          A boa notícia é que tudo isso pode ser aprendido.
-        </div>
-      </div>
-    </section>
-
-    <!-- =======================================================
-          4. TALVEZ VOCÊ PENSE / OBJEÇÕES (CREAM)
+          3. ISSO É PRA VOCÊ SE... (CREAM)
     ======================================================== -->
     <section class="section-cream">
       <div class="container">
-        <div class="objections-wrapper">
-          <div class="objection-img">
-            <img src="../assets/1depara.png" alt="Tata Pereira conduzindo cão com segurança" />
+        <div class="text-center">
+          <span class="section-kicker">ISSO É PRA VOCÊ SE...</span>
+          <h2>Você ama cães, mas a rotina na creche parece mais castigo do que profissão.</h2>
+        </div>
+
+        <div class="problem-cards">
+          <div class="problem-card">
+            <span class="problem-card-num">01</span>
+            <div>
+              Escuta que trabalhar com cachorro “não dá dinheiro de verdade” — e o salário parece confirmar isso.
+            </div>
           </div>
 
-          <div>
-            <span class="section-kicker">TALVEZ VOCÊ PENSE...</span>
-            <h2>Eu preciso ser direta com você.</h2>
-            <p style="font-size: 0.9rem; color: var(--cream-text-muted); margin-bottom: 20px;">
-              Se você realmente ama cães, o mínimo que eles esperam de você é responsabilidade. Profissionalizar não é exagero.
-            </p>
+          <div class="problem-card">
+            <span class="problem-card-num">02</span>
+            <div>
+              Dentro da creche, é visto só como “quem ajuda ali com os cães”.
+            </div>
+          </div>
 
-            <div class="objections-grid">
-              <div class="objection-card">
-                <strong>“Eu já passeio com cães da família, então sei o que estou fazendo.”</strong>
-                <p>→ Experiência informal não substitui preparo técnico.</p>
-              </div>
-
-              <div class="objection-card">
-                <strong>“Passear é simples, é só segurar a guia e andar.”</strong>
-                <p>→ Segurar a guia não significa ter controle.</p>
-              </div>
-
-              <div class="objection-card">
-                <strong>“Não preciso de curso pra isso, aprendo na prática.”</strong>
-                <p>→ Aprender “na marra” coloca cães, pessoas e você em risco.</p>
-              </div>
-
-              <div class="objection-card">
-                <strong>“Dog walker é só um bico, não uma profissão de verdade.”</strong>
-                <p>→ Enquanto você trata como bico, outros já vivem disso como profissão.</p>
-              </div>
+          <div class="problem-card">
+            <span class="problem-card-num">03</span>
+            <div>
+              Vive no improviso, com medo de errar, ser mordido, causar briga ou levar a culpa sozinho.
             </div>
           </div>
         </div>
+
+        <p class="problem-note">Então você está exatamente no ponto em que esse curso foi pensado.</p>
       </div>
     </section>
 
     <!-- =======================================================
-          5. O ROTEIRO DO CURSO (CREAM)
-    ======================================================== -->
-    <section class="section-cream" style="border-top: none;">
-      <div class="container">
-        <div class="stops-wrapper">
-          <div>
-            <span class="section-kicker">O ROTEIRO DO CURSO</span>
-            <h2>5 paradas do improviso até a profissão</h2>
-
-            <div class="stops-list">
-              <div class="stop-card">
-                <div class="stop-num">1</div>
-                <div class="stop-content">
-                  <h3>O que um dog walker profissional realmente faz</h3>
-                  <p>Funções, responsabilidades e a postura de quem é tratada como profissional.</p>
-                </div>
-              </div>
-
-              <div class="stop-card">
-                <div class="stop-num">2</div>
-                <div class="stop-content">
-                  <h3>Rotina, agenda e preço</h3>
-                  <p>Como montar sua agenda de passeios, estruturar seus serviços e cobrar de forma justa.</p>
-                </div>
-              </div>
-
-              <div class="stop-card">
-                <div class="stop-num">3</div>
-                <div class="stop-content">
-                  <h3>Técnica e leitura de comportamento</h3>
-                  <p>Condução segura e leitura corporal: estresse, medo, excitação e desconforto.</p>
-                </div>
-              </div>
-
-              <div class="stop-card">
-                <div class="stop-num">4</div>
-                <div class="stop-content">
-                  <h3>Comunicação com tutores</h3>
-                  <p>Clareza e profissionalismo pra passar segurança a quem confia o cão a você.</p>
-                </div>
-              </div>
-
-              <div class="stop-card">
-                <div class="stop-num">5</div>
-                <div class="stop-content">
-                  <h3>Segurança e imprevistos</h3>
-                  <p>Como agir com segurança diante de imprevistos e situações de risco na rua.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="stops-img-card">
-            <img src="../assets/2depara.png" alt="Dog Walker profissional em atendimento" />
-            <div class="stops-features-badge">
-              <div class="stops-feature-item">
-                <strong>No seu ritmo</strong>
-                <span>aulas gravadas</span>
-              </div>
-              <div class="stops-feature-item">
-                <strong>De onde estiver</strong>
-                <span>celular ou computador</span>
-              </div>
-              <div class="stops-feature-item">
-                <strong>Materiais</strong>
-                <span>de apoio</span>
-              </div>
-              <div class="stops-feature-item">
-                <strong>Suporte</strong>
-                <span>na plataforma</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =======================================================
-          6. QUANDO VOCÊ SE PROFISSIONALIZA... (CREAM)
-    ======================================================== -->
-    <section class="section-cream" style="border-top: none;">
-      <div class="container text-center">
-        <h2>Quando você se profissionaliza, não muda só o passeio. <span style="color: var(--gold-dark);">Muda a sua vida com os cães.</span></h2>
-
-        <div class="benefits-grid">
-          <div class="benefit-card">
-            <h3>Controle</h3>
-            <p>Você sabe o que fazer quando o cão puxa, se assusta ou reage de forma inesperada.</p>
-          </div>
-
-          <div class="benefit-card">
-            <h3>Leitura</h3>
-            <p>Você identifica sinais de estresse, medo, excitação ou desconforto antes do problema.</p>
-          </div>
-
-          <div class="benefit-card">
-            <h3>Confiança</h3>
-            <p>Você assume a responsabilidade por cada passeio sem medo.</p>
-          </div>
-
-          <div class="benefit-card">
-            <h3>Preço justo</h3>
-            <p>Você para de “chutar preços” e fatura de forma correta e profissional.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =======================================================
-          7. QUEM SOU EU (NAVY)
+          4. A PARTE DURA DE OUVIR (NAVY)
     ======================================================== -->
     <section>
       <div class="container">
-        <div class="bio-wrapper">
-          <div class="bio-img">
-            <img src="../assets/mentoria-tata-dog.png" alt="Tata Pereira" />
+        <div class="quote-box">
+          <span class="section-kicker">A PARTE DURA DE OUVIR</span>
+          <h2>
+            Gostar de cães é o mínimo. O que prende no salário baixo é continuar atuando como amador.<br>
+            Não é o mercado pet que paga mal por natureza. É o mercado que paga mal quem continua no improviso — mesmo amando muito os cães.
+          </h2>
+        </div>
+
+        <div class="compare-table">
+          <div class="compare-col">
+            <div class="compare-title">O AJUDANTE</div>
+            <ul class="compare-list">
+              <li>• Acha que amor por cães é qualificação</li>
+              <li>• Aprende só olhando os outros</li>
+              <li>• Só percebe o conflito quando já virou briga</li>
+              <li>• Vira peso na equipe — o primeiro da lista de corte</li>
+            </ul>
           </div>
 
-          <div class="bio-content">
-            <span class="section-kicker">QUEM SOU EU</span>
-            <h2>O que eu ensino é o preparo que eu queria que todo mundo tivesse <span class="gold">antes de pegar uma guia.</span></h2>
-            <p style="font-size: 0.9rem; color: var(--navy-text-muted); line-height: 1.6;">
-              Eu sou a Tata Pereira, fundadora da Tata EducaCão. Troquei uma carreira estável pelo comportamento canino e, desde então, formo profissionais para atuar com técnica, e não no improviso.
-            </p>
+          <div class="compare-col">
+            <div class="compare-title">O MONITOR PROFISSIONAL</div>
+            <ul class="compare-list">
+              <li>• Sabe que amor é só o ponto de partida — e investe em técnica</li>
+              <li>• Segue rotina, protocolo e método claro</li>
+              <li>• Lê o grupo e previne antes que vire problema</li>
+              <li>• Vira referência que a creche quer manter e valorizar</li>
+            </ul>
+          </div>
+        </div>
 
-            <div class="bio-stats-grid">
-              <div class="bio-stat-card">
-                <strong>13 anos</strong>
-                <p>no mercado financeiro, antes de mudar de vida.</p>
-              </div>
+        <div class="compare-banner-note">
+          O que separa um do outro não é o quanto você ama os cães. É o quanto sabe cuidar de um grupo com técnica, segurança e responsabilidade.
+        </div>
+      </div>
+    </section>
 
-              <div class="bio-stat-card">
-                <strong>8 anos</strong>
-                <p>com educação e comportamento canino, em creches, programas de socialização e atendendo famílias.</p>
-              </div>
-            </div>
+    <!-- =======================================================
+          5. PRA QUEM É (CREAM)
+    ======================================================== -->
+    <section class="section-cream">
+      <div class="container">
+        <div class="text-center">
+          <span class="section-kicker">PRA QUEM É</span>
+          <h2>Um curso pra quem quer trabalhar com cães em creches, hotéis ou escolas caninas — sem improviso.</h2>
+        </div>
 
-            <p style="font-size: 0.85rem; color: var(--navy-text-main); font-weight: 600;">
-              <strong style="color: var(--gold-primary);">Hoje:</strong> Sou adestradora e atuo na formação de profissionais e na estruturação de negócios pet. Sou fundadora da Tata EducaCão, um ecossistema de educação para cães e seus responsáveis, que reúne escola canina, consultorias comportamentais, programas de adestramento e uma equipe própria de passeadores, adestradores e pet sitters.
-            </p>
+        <div class="pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-num">1</div>
+            <h3>Nunca trabalhou em creche</h3>
+            <p>Mas quer entrar já com base técnica e postura de profissional.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-num">2</div>
+            <h3>Já está na creche</h3>
+            <p>Mas se sente perdido, desvalorizado e quer parar de ser visto como ajudante.</p>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-num">3</div>
+            <h3>Quer uma profissão séria</h3>
+            <p>Ama cães e quer construir carreira na área pet, com potencial real de renda e crescimento.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- =======================================================
-          8. SEU PASSE PARA A PROFISSIONALIZAÇÃO & OFERTA (CREAM)
+          6. O QUE VOCÊ VAI APRENDER (NAVY)
+    ======================================================== -->
+    <section>
+      <div class="container">
+        <div class="text-center">
+          <span class="section-kicker">O QUE VOCÊ VAI APRENDER</span>
+          <h2>Do zero ao monitor profissional, em 5 etapas</h2>
+        </div>
+
+        <div class="modules-grid">
+          <div class="module-card">
+            <small>MÓDULO 01</small>
+            <h3>O papel do monitor de creche</h3>
+            <p>Suas funções, responsabilidades e a rotina real da creche — saindo do lugar de “quebra-galho”.</p>
+          </div>
+
+          <div class="module-card">
+            <small>MÓDULO 02</small>
+            <h3>Comportamento canino em grupo</h3>
+            <p>Ler sinais, identificar tensão e prevenir conflitos antes que virem briga.</p>
+          </div>
+
+          <div class="module-card">
+            <small>MÓDULO 03</small>
+            <h3>Segurança e bem-estar</h3>
+            <p>Organizar o espaço, aplicar protocolos de higiene e reduzir o risco de acidentes.</p>
+          </div>
+
+          <div class="module-card">
+            <small>MÓDULO 04</small>
+            <h3>Atendimento aos tutores</h3>
+            <p>Comunicar, dar feedbacks e passar segurança pros responsáveis pelos cães.</p>
+          </div>
+
+          <div class="module-card highlight">
+            <small>MÓDULO 05</small>
+            <h3>Crescimento profissional</h3>
+            <p>Como se destacar na equipe, ser reconhecido(a) e abrir caminho pra ganhar melhor na área pet.</p>
+          </div>
+        </div>
+
+        <!-- CARD ENTREGÁVEIS EXTRAS REFORMULADO -->
+        <div class="extras-box">
+          <div class="extras-box-header">
+            <h3>ENTREGÁVEIS EXTRAS</h3>
+            <span class="extras-badge">Além das Aulas</span>
+          </div>
+          <p class="extras-list-p">
+            Guia prático do monitor, fichas, modelos e planilhas de rotina <br>
+            <span style="color: var(--gold-primary);">✦ 20 protocolos de treino com mais de 250 treinos ✦</span> <br>
+            Certificado · Suporte por 1 ano
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+          7. O QUE VOCÊ CONSTRÓI AQUI (CREAM com FOTO À ESQUERDA)
+    ======================================================== -->
+    <section class="section-cream">
+      <div class="container">
+        <div class="text-center">
+          <span class="section-kicker">O QUE VOCÊ CONSTRÓI AQUI</span>
+          <h2>
+            O mercado pet não está saturado. Está cansado de amadorismo.<br>
+            As creches caninas não sofrem com falta de vaga — sofrem com falta de gente preparada pra assumir responsabilidade de verdade. Ao final do curso, você vai:
+          </h2>
+        </div>
+
+        <div class="build-grid">
+          <div class="build-img">
+            <img src="../assets/1depara.png" alt="Aulas práticas e rotina de creche" />
+          </div>
+
+          <ul class="build-list">
+            <li class="build-item">
+              <span class="check">✓</span> Sair do papel de amador e assumir a função de monitor de creche canina de verdade
+            </li>
+            <li class="build-item">
+              <span class="check">✓</span> Atuar com segurança, confiança e clareza de rotina em creche, hotel ou escola canina
+            </li>
+            <li class="build-item">
+              <span class="check">✓</span> Entender comportamento em grupo pra prevenir conflitos antes que virem problema
+            </li>
+            <li class="build-item">
+              <span class="check">✓</span> Se tornar o profissional que as empresas querem manter e valorizar
+            </li>
+          </ul>
+        </div>
+
+        <div class="text-center" style="margin-top: 35px;">
+          <a href="#oferta" class="primary">
+            QUERO SER PROFISSIONAL
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+          8. QUEM VAI TE ENSINAR (NAVY com FOTO À DIREITA)
+    ======================================================== -->
+    <section>
+      <div class="container">
+        <div class="mentor-wrapper-right">
+          <div class="mentor-content">
+            <span class="section-kicker" style="text-align: left;">QUEM VAI TE ENSINAR</span>
+            <h2>Eu também não queria viver de amor e salário apertado.</h2>
+            <p style="margin-top: 10px; font-size: 0.92rem; color: var(--navy-text-muted); line-height: 1.6;">
+              Sou adestradora e atuo na formação de profissionais e na estruturação de negócios pet. Sou fundadora da Tata EducaCão, um ecossistema de educação para cães e seus responsáveis, que reúne escola canina, consultorias comportamentais, programas de adestramento e uma equipe própria de passeadores, adestradores e pet sitters.
+            </p>
+
+            <div class="mentor-stats-grid">
+              <div class="mentor-stat-card">
+                <strong>13 anos</strong>
+                <p>no mercado financeiro antes de migrar para o mercado pet.</p>
+              </div>
+              <div class="mentor-stat-card">
+                <strong>8 anos</strong>
+                <p>atuando com educação e comportamento canino, em creches, programas de socialização e atendendo famílias.</p>
+              </div>
+            </div>
+
+            <div class="mentor-quote">
+              “O que eu ensino aqui é exatamente o que eu gostaria de ter aprendido antes de ver tanta gente boa sendo jogada no coletivo sem preparo.”
+            </div>
+          </div>
+
+          <div class="mentor-img-right">
+            <img src="../assets/mentoria-tata-dog.png" alt="Tata Pereira" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+          9. SUA INSCRIÇÃO & INVESTIMENTO (CREAM)
     ======================================================== -->
     <section class="section-cream" id="oferta">
       <div class="container">
         <div class="text-center">
-          <span class="section-kicker">SEU PASSE PARA A PROFISSÃO</span>
-          <h2>Vamos dar o próximo passo?</h2>
-          <p style="font-size: 1.05rem; font-weight: 800; color: var(--cream-text-main); margin-top: -10px;">
-            Profissão Dog Walker
-          </p>
+          <span class="section-kicker">SUA INSCRIÇÃO</span>
+          <h2>Tudo o que você leva ao se inscrever hoje</h2>
         </div>
 
         <div class="offer-wrapper">
           <div class="offer-includes">
-            <h3 style="font-size: 0.95rem; font-weight: 800; color: var(--cream-text-main); margin-bottom: 16px; font-family: 'Montserrat', sans-serif;">
-              O QUE VOCÊ LEVA:
+            <h3 style="font-size: 1.05rem; font-weight: 800; color: var(--cream-text-main); margin-bottom: 16px; font-family: 'Montserrat', sans-serif;">
+              ESTÁ TUDO INCLUSO
             </h3>
             <ul class="offer-list">
-              <li><span class="check">✓</span> <span><strong>Formação completa</strong> em aulas gravadas</span></li>
-              <li><span class="check">✓</span> <span><strong>E-book de rotinas</strong>, para organizar seus passeios com segurança</span></li>
-              <li><span class="check">✓</span> <span><strong>Modelos de contrato</strong>, para formalizar seu trabalho com os tutores</span></li>
-              <li><span class="check">✓</span> <span><strong>Certificado de conclusão</strong>, comprovando sua formação</span></li>
-              <li><span class="check">✓</span> <span><strong>Suporte por 1 ano</strong> na plataforma, para tirar dúvidas na prática</span></li>
+              <li><span class="check">✓</span> <span>Formação completa em 5 módulos gravados</span></li>
+              <li><span class="check">✓</span> <span>Treinamentos de manejo e comportamento</span></li>
+              <li><span class="check">✓</span> <span>Protocolos de rotina, segurança e higiene</span></li>
+              <li><span class="check">✓</span> <span>Certificado de conclusão</span></li>
+              <li><span class="check">✓</span> <span>1 ano de acesso e suporte na plataforma</span></li>
             </ul>
+
+            <div class="materials-box">
+              <h4>MATERIAIS DE APOIO:</h4>
+              <ul class="materials-list">
+                <li><strong>20</strong> protocolos de treino com mais de 250 treinos prontos pra aplicar</li>
+                <li>Guia prático do monitor de creche</li>
+                <li>Ficha de checklist profissional</li>
+                <li>Ficha de avaliação comportamental</li>
+                <li>Modelo de relatório diário</li>
+                <li>Planilha de rotina e enriquecimento diário</li>
+                <li>Protocolo de emergência</li>
+                <li>Glossário do monitor</li>
+                <li>Protocolo unificado de sociabilidade</li>
+                <li>Regulamento TCS</li>
+              </ul>
+            </div>
           </div>
 
           <div class="offer-card-price">
             <span class="price-small" style="text-transform: uppercase; letter-spacing: 1px; color: var(--gold-primary); font-weight: 800; display: block; margin-bottom: 8px;">INVESTIMENTO</span>
             <span class="price-small">12x de</span>
             <div class="price-main">
-              <small>R$</small> 25,55
+              <small>R$</small> 51,40
             </div>
-            <span class="price-small">ou R$ 247 à vista no Pix, boleto ou cartão</span>
+            <span class="price-small">ou R$ 497,00 à vista</span>
 
-            <a href="https://pay.hotmart.com/M107075913V" target="_blank" rel="noopener noreferrer" class="primary" style="margin-top: 20px; width: 100%;">
-              Quero sair do improviso
+            <a href="https://pay.hotmart.com/M107075913V" target="_blank" rel="noopener noreferrer" class="primary" style="margin-top: 24px; width: 100%;">
+              QUERO SER PROFISSIONAL
             </a>
 
-            <span style="display: block; margin-top: 12px; font-size: 0.75rem; color: var(--navy-text-muted);">
-              Garantia incondicional de 7 dias. Se não for pra você, é só pedir o reembolso.
+            <span style="display: block; margin-top: 14px; font-size: 0.78rem; color: var(--navy-text-muted);">
+              Compra segura · Acesso liberado após a confirmação
             </span>
           </div>
         </div>
@@ -1245,68 +1356,97 @@
     </section>
 
     <!-- =======================================================
-          9. FAQ / PERGUNTAS FREQUENTES (CREAM)
+          10. GARANTIA INCONDICIONAL (NAVY)
     ======================================================== -->
-    <section class="section-cream" style="border-top: none;">
+    <section>
       <div class="container">
-        <div class="faq-section-grid">
+        <div class="guarantee-box">
+          <div class="guarantee-badge">
+            7
+            <small>DIAS</small>
+          </div>
           <div>
-            <span class="section-kicker">FAQ</span>
-            <h2>Ainda com dúvidas?</h2>
-            <p style="font-size: 0.88rem; color: var(--cream-text-muted);">
-              Antes de decidir, leia com atenção.
+            <span class="section-kicker" style="font-size: 1rem; margin-bottom: 6px;">GARANTIA INCONDICIONAL</span>
+            <h2>Você não precisa confiar em sorte. Pode testar sem risco.</h2>
+            <p style="font-size: 0.9rem; color: var(--navy-text-muted);">
+              Eu confio tanto no que ensino que coloco o risco do meu lado, não do seu. Você não decide hoje se o curso é perfeito pra você — decide se quer testar. Se em até 7 dias sentir que não é pra você, é só pedir o reembolso.
+            </p>
+            <p class="guarantee-sub">
+              Sem burocracia · Sem justificativa complicada · Sem letrinha miúda
             </p>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="faq-wrapper">
-            <div class="faq-item">
-              <button class="faq-trigger">
-                <span>Nunca trabalhei com cães. É para mim?</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-              </button>
-              <div class="faq-content">
-                <p>Sim. O curso foi pensado para quem está começando do zero: do que faz um dog walker até a condução segura no dia a dia.</p>
-              </div>
-            </div>
+    <!-- =======================================================
+          11. PERGUNTAS FREQUENTES (CREAM)
+    ======================================================== -->
+    <section class="section-cream">
+      <div class="container">
+        <div class="text-center">
+          <span class="section-kicker">PERGUNTAS FREQUENTES</span>
+          <h2>Dúvidas que podem estar te segurando agora</h2>
+        </div>
 
-            <div class="faq-item">
-              <button class="faq-trigger">
-                <span>E se eu tiver medo de cães mais difíceis?</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-              </button>
-              <div class="faq-content">
-                <p>Justamente por isso você precisa de preparo. Você aprende a ler o comportamento, identificar sinais de alerta e saber até onde pode ir com segurança.</p>
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-trigger">
-                <span>Vou aprender a cobrar e conseguir clientes?</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-              </button>
-              <div class="faq-content">
-                <p>Sim. Você aprende a estruturar seus serviços, precificar de forma profissional e se posicionar com clareza para os tutores.</p>
-              </div>
-            </div>
-
-            <div class="faq-item">
-              <button class="faq-trigger">
-                <span>Não tenho muito tempo. Vou conseguir?</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <div class="faq-wrapper">
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span>Eu nunca trabalhei em creche. Vou conseguir acompanhar?</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </button>
-              <div class="faq-content">
-                <p>As aulas são gravadas e você assiste no seu ritmo. E tem 1 ano de suporte na plataforma para tirar dúvidas ao longo da prática.</p>
-              </div>
+            <div class="faq-content">
+              <p>Sim. O conteúdo foi pensado pra quem está começando do zero. Eu te mostro desde o papel do monitor até o manejo de grupo, sem exigir experiência anterior.</p>
             </div>
+          </div>
 
-            <div class="faq-item">
-              <button class="faq-trigger">
-                <span>E se eu me arrepender depois de comprar?</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-              </button>
-              <div class="faq-content">
-                <p>Você tem garantia incondicional de 7 dias. Se não for pra você, é só pedir o reembolso dentro desse prazo.</p>
-              </div>
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span>Já trabalho em creche, mas ganho pouco e vivo no improviso. Faz sentido pra mim?</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-content">
+              <p>Faz muito. Você vai entender comportamento em grupo, segurança, rotina e comunicação com tutores — exatamente o que diferencia o “ajudante” do monitor profissional que a creche quer manter.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span>O curso é ao vivo ou gravado?</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-content">
+              <p>É 100% gravado. As aulas ficam na plataforma e você assiste no seu ritmo, de onde estiver, quantas vezes quiser durante 1 ano.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span>E se eu não tiver muito tempo pra estudar?</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-content">
+              <p>Melhor estudar um pouco por dia com método do que passar mais um ano improvisando. Como as aulas são gravadas, você encaixa o estudo na sua rotina e pode rever sempre que precisar.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span>E se eu me arrepender depois de comprar?</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-content">
+              <p>Você tem 7 dias de garantia incondicional. Se não sentir que está no caminho certo pra se tornar monitor profissional, é só pedir o reembolso. Sem burocracia.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-trigger">
+              <span>Por quanto tempo vou ter acesso ao curso?</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </button>
+            <div class="faq-content">
+              <p>Por 1 ano inteiro — tempo mais que suficiente pra assistir, aplicar e revisar o conteúdo.</p>
             </div>
           </div>
         </div>
@@ -1314,16 +1454,24 @@
     </section>
 
     <!-- =======================================================
-          10. CTA FINAL (NAVY)
+          12. CTA FINAL (NAVY)
     ======================================================== -->
-    <section>
+    <section class="text-center">
       <div class="container">
-        <div class="cta-bottom-bar">
-          <h2>Saia do improviso. <span class="gold">Eu vou te mostrar o caminho.</span></h2>
-          <a href="#oferta" class="primary" style="flex-shrink: 0;">
-            Quero sair do improviso
-          </a>
-        </div>
+        <h2>
+          Agora a escolha é sua: continuar sendo “só mais um” na creche, ou se tornar monitor de creche canina profissional.
+        </h2>
+        <p style="font-size: 1.05rem; color: var(--gold-primary); font-weight: 700; margin-bottom: 24px;">
+          Com técnica, segurança e potencial real de renda.
+        </p>
+
+        <a href="#oferta" class="primary">
+          QUERO SER PROFISSIONAL
+        </a>
+
+        <p style="margin-top: 14px; font-size: 0.85rem; color: var(--navy-text-muted);">
+          12x de R$ 51,40 ou R$ 497,00 à vista · Garantia de 7 dias
+        </p>
       </div>
     </section>
   </main>
@@ -1331,7 +1479,10 @@
   <!-- FOOTER -->
   <footer>
     <div class="container text-center">
-      <p>© 2026 Tata Pereira · Tata EducaCão · Rio de Janeiro.</p>
+      <p style="color: var(--navy-text-main); font-weight: 800; font-size: 0.85rem; margin-bottom: 6px;">
+        FORMAÇÃO PROFISSIONAL
+      </p>
+      <p>© 2026 Tata Pereira · Rio de Janeiro</p>
     </div>
   </footer>
 
