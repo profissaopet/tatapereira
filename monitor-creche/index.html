@@ -278,7 +278,31 @@
       height: 32px;
       width: auto;
     }
+/* =========================================================
+   AJUSTE DE CONTRASTE DA SEÇÃO 7 (JORNADA AO VIVO)
+   ========================================================= */
+.section-cream .journey-item {
+  background: var(--cream-card) !important;
+  border: 1.5px solid var(--cream-border-card) !important;
+  box-shadow: var(--shadow-cream) !important;
+}
 
+.section-cream .journey-item h3 {
+  color: var(--cream-text-main) !important; /* Cor de texto escura com alto contraste */
+}
+
+.section-cream .journey-item p {
+  color: var(--cream-text-muted) !important; /* Cor cinza escuro para leitura confortável */
+}
+
+.section-cream .journey-item.featured {
+  background: rgba(241, 191, 66, 0.12) !important;
+  border-color: var(--gold-dark) !important;
+}
+
+.section-cream .journey-time {
+  color: var(--gold-dark) !important;
+}
     /* =========================================================
        2. HERO (PRIMEIRA DOBRA)
        ========================================================= */
@@ -1127,7 +1151,62 @@
         </div>
       </div>
     </section>
+<!-- =======================================================
+        7. JORNADA AO VIVO (CLARO - CREAM) [6]
+  ======================================================== -->
+  <section class="section-cream">
+    <div class="container">
+      <div class="section-kicker">UM DIA DE APLICAÇÃO</div>
+      <h2>Jornada ao vivo | 10h às 16h</h2>
 
+      <div class="journey">
+        <div class="journey-item" style="background: var(--cream-card); border: 1.5px solid var(--cream-border-card); box-shadow: var(--shadow-cream);">
+          <h3 style="color: var(--cream-text-main);">Diagnóstico do processo atual</h3>
+          <p style="color: var(--cream-text-muted);">Como sua avaliação funciona hoje e onde estão os principais pontos de dúvida, improviso e risco.</p>
+        </div>
+
+        <div class="journey-item" style="background: var(--cream-card); border: 1.5px solid var(--cream-border-card); box-shadow: var(--shadow-cream);">
+          <h3 style="color: var(--cream-text-main);">Fluxo da avaliação</h3>
+          <p style="color: var(--cream-text-muted);">Do primeiro contato com o tutor até a decisão sobre a entrada do cão.</p>
+        </div>
+
+        <div class="journey-item" style="background: var(--cream-card); border: 1.5px solid var(--cream-border-card); box-shadow: var(--shadow-cream);">
+          <h3 style="color: var(--cream-text-main);">Anamnese na prática</h3>
+          <p style="color: var(--cream-text-muted);">Como transformar respostas em hipóteses e pontos de atenção para a avaliação presencial.</p>
+        </div>
+
+        <div class="journey-item" style="background: var(--cream-card); border: 1.5px solid var(--cream-border-card); box-shadow: var(--shadow-cream);">
+          <h3 style="color: var(--cream-text-main);">Intervalo para almoço</h3>
+          <p style="color: var(--cream-text-muted);">Pausa para descanso e refeição.</p>
+        </div>
+
+        <div class="journey-item" style="background: var(--cream-card); border: 1.5px solid var(--cream-border-card); box-shadow: var(--shadow-cream);">
+          <h3 style="color: var(--cream-text-main);">Avaliação presencial</h3>
+          <p style="color: var(--cream-text-muted);">O que observar e como cruzar comportamento com as informações levantadas anteriormente.</p>
+        </div>
+
+        <div class="journey-item" style="background: var(--cream-card); border: 1.5px solid var(--cream-border-card); box-shadow: var(--shadow-cream);">
+          <h3 style="color: var(--cream-text-main);">Tomada de decisão</h3>
+          <p style="color: var(--cream-text-muted);">Como começar a organizar critérios para aprovar, restringir, adaptar, reavaliar ou recusar.</p>
+        </div>
+
+        <div class="journey-item" style="background: var(--cream-card); border: 1.5px solid var(--cream-border-card); box-shadow: var(--shadow-cream);">
+          <h3 style="color: var(--cream-text-main);">Registros e indicadores</h3>
+          <p style="color: var(--cream-text-muted);">Como criar histórico e transformar avaliações em informações úteis para a gestão.</p>
+        </div>
+
+        <div class="journey-item featured" style="background: rgba(241, 191, 66, 0.12); border: 1.5px solid var(--gold-dark); box-shadow: var(--shadow-cream);">
+          <h3 style="color: var(--cream-text-main);">Método Domus: A engenharia de uma creche e hospedagem estruturadas</h3>
+          <p style="color: var(--cream-text-muted);">Como avaliação, equipe, rotina, segurança, experiência do cliente e gestão se conectam dentro de uma operação mais estruturada.</p>
+        </div>
+
+        <div class="journey-item" style="background: var(--cream-card); border: 1.5px solid var(--cream-border-card); box-shadow: var(--shadow-cream);">
+          <h3 style="color: var(--cream-text-main);">Encerramento</h3>
+          <p style="color: var(--cream-text-muted);">Fechamento da imersão e próximos passos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
     <!-- =======================================================
           5. PRA QUEM É (CREAM)
     ======================================================== -->
