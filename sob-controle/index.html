@@ -2163,7 +2163,7 @@
       });
     });
 
-    // Teste A/B de Preço
+   // Teste A/B de Preço
     (function () {
       const AB_TEST_ATIVO = false;
 
@@ -2172,13 +2172,13 @@
           preco: "67",
           desconto: "66% OFF",
           descricao: "Imersão online e ao vivo • 14 de novembro • 10h às 16h",
-          checkout: "https://pay.hotmart.com/M107075913V"
+          checkout: "https://pay.hotmart.com/R107981958D" // Link atualizado R$ 67
         },
         "97": {
           preco: "97",
           desconto: "51% OFF",
           descricao: "Imersão online e ao vivo • 14 de novembro • 10h às 16h",
-          checkout: "https://pay.hotmart.com/M107075913V"
+          checkout: "https://pay.hotmart.com/O107981912D" // Link atualizado R$ 97
         }
       };
 
@@ -2205,6 +2205,7 @@
       if (discount) discount.textContent = cfg.desconto;
       if (description) description.textContent = cfg.descricao;
 
+      // Atualiza o href de todos os botões com a classe .price-cta
       document.querySelectorAll(".price-cta").forEach(link => {
         if (cfg.checkout) {
           link.href = cfg.checkout;
