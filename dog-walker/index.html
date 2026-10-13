@@ -672,18 +672,18 @@
     }
 
     /* =========================================================
-       7. QUEM SOU EU (NAVY com FOTO À ESQUERDA)
+       7. QUEM VAI TE ENSINAR (NAVY com FOTO À DIREITA)
        ========================================================= */
-    .bio-wrapper {
+    .mentor-wrapper-right {
       display: grid;
-      grid-template-columns: 300px 1fr;
+      grid-template-columns: 1fr 320px;
       gap: 40px;
       align-items: center;
       max-width: 960px;
       margin: 30px auto 0;
     }
 
-    .bio-img {
+    .mentor-img-right {
       width: 100%;
       height: 380px;
       border-radius: var(--radius-lg);
@@ -692,28 +692,28 @@
       box-shadow: var(--shadow-lg);
     }
 
-    .bio-img img {
+    .mentor-img-right img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .bio-stats-grid {
+    .mentor-stats-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
-      margin: 20px 0;
+      margin-top: 20px;
     }
 
-    .bio-stat-card {
+    .mentor-stat-card {
       background: var(--navy-card);
       border: 1.5px solid var(--navy-border-card);
       border-radius: var(--radius-md);
-      padding: 14px 16px;
+      padding: 16px;
       backdrop-filter: blur(12px);
     }
 
-    .bio-stat-card strong {
+    .mentor-stat-card strong {
       display: block;
       font-size: 1.2rem;
       color: var(--gold-primary);
@@ -721,10 +721,21 @@
       margin-bottom: 4px;
     }
 
-    .bio-stat-card p {
-      font-size: 0.82rem;
+    .mentor-stat-card p {
+      font-size: 0.85rem;
       color: var(--navy-text-muted);
       line-height: 1.4;
+    }
+
+    .mentor-quote {
+      margin-top: 24px;
+      background: rgba(255, 255, 255, 0.04);
+      border-left: 4px solid var(--gold-primary);
+      padding: 14px 18px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-style: italic;
+      font-size: 0.92rem;
+      color: var(--navy-text-main);
     }
 
     /* =========================================================
@@ -873,9 +884,15 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
+      gap: 24px;
       max-width: 1000px;
       margin: 0 auto;
+    }
+
+    .cta-bottom-bar h2 {
+      font-size: clamp(1.35rem, 3vw, 2rem);
+      margin: 0;
+      line-height: 1.25;
     }
 
     /* =========================================================
@@ -1063,10 +1080,12 @@
       footer {
         padding: 60px 0 25px;
       }
+
       .footer-grid {
         grid-template-columns: 1fr;
         gap: 28px;
       }
+
       .footer-bottom {
         flex-direction: column;
         text-align: center;
@@ -1076,18 +1095,22 @@
 
     /* RESPONSIVIDADE */
     @media (max-width: 860px) {
+
       .hero-grid,
       .timeline-grid,
       .objections-wrapper,
       .objections-grid,
       .stops-wrapper,
       .benefits-grid,
-      .bio-wrapper,
+      .mentor-wrapper-right,
       .offer-wrapper,
       .faq-section-grid,
-      .cta-bottom-bar,
-      .bio-stats-grid {
+      .mentor-stats-grid {
         grid-template-columns: 1fr;
+      }
+
+      .mentor-img-right {
+        order: -1;
       }
 
       .stops-img-card {
@@ -1095,7 +1118,16 @@
       }
 
       .cta-bottom-bar {
+        flex-direction: column;
         text-align: center;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .cta-bottom-bar .primary {
+        width: 100%;
+        max-width: 380px;
+        justify-content: center;
       }
     }
   </style>
@@ -1155,7 +1187,7 @@
             <strong>8</strong>
             <span>ANOS DE EXPERIÊNCIA</span>
           </div>
-          <img src="../assets/dogwalker-pet.png" alt="Tata Pereira" />
+          <img src="../assets/dogwalker-pet.jpg" alt="Tata Pereira" />
           <div class="hero-author-info">
             <strong>Tata Pereira</strong>
             <span>Adestradora e comportamentalista</span>
@@ -1172,7 +1204,8 @@
         <div class="text-center" style="max-width: 860px; margin: 0 auto;">
           <h2>Você não está só passeando com cachorros. <span class="gold">Está conduzindo vidas.</span></h2>
           <p style="font-size: 0.95rem; color: var(--navy-text-muted); margin-top: -10px;">
-            Carros, motos, bicicletas, outros cães, pessoas com medo, barulhos inesperados, cheiros diferentes. Estímulos por todos os lados.
+            Carros, motos, bicicletas, outros cães, pessoas com medo, barulhos inesperados, cheiros diferentes.
+            Estímulos por todos os lados.
           </p>
         </div>
 
@@ -1209,14 +1242,15 @@
       <div class="container">
         <div class="objections-wrapper">
           <div class="objection-img">
-            <img src="../assets/dogwalker-pet-tata.png" alt="Tata Pereira conduzindo cão com segurança" />
+            <img src="../assets/dogwalker-pet-tata.jpg" alt="Tata Pereira conduzindo cão com segurança" />
           </div>
 
           <div>
             <span class="section-kicker">TALVEZ VOCÊ PENSE...</span>
             <h2>Eu preciso ser direta com você.</h2>
             <p style="font-size: 0.9rem; color: var(--cream-text-muted); margin-bottom: 20px;">
-              Se você realmente ama cães, o mínimo que eles esperam de você é responsabilidade. Profissionalizar não é exagero.
+              Se você realmente ama cães, o mínimo que eles esperam de você é responsabilidade. Profissionalizar não é
+              exagero.
             </p>
 
             <div class="objections-grid">
@@ -1299,7 +1333,7 @@
           </div>
 
           <div class="stops-img-card">
-            <img src="../assets/dogwalker-caminhar.png" alt="Dog Walker profissional em atendimento" />
+            <img src="../assets/dogwalker-caminhar.jpg" alt="Dog Walker profissional em atendimento" />
             <div class="stops-features-badge">
               <div class="stops-feature-item">
                 <strong>No seu ritmo</strong>
@@ -1328,7 +1362,8 @@
     ======================================================== -->
     <section class="section-cream" style="border-top: none;">
       <div class="container text-center">
-        <h2>Quando você se profissionaliza, não muda só o passeio. <span style="color: var(--gold-dark);">Muda a sua vida com os cães.</span></h2>
+        <h2>Quando você se profissionaliza, não muda só o passeio. <span style="color: var(--gold-dark);">Muda a sua
+            vida com os cães.</span></h2>
 
         <div class="benefits-grid">
           <div class="benefit-card">
@@ -1355,37 +1390,36 @@
     </section>
 
     <!-- =======================================================
-          7. QUEM SOU EU (NAVY)
+          7. QUEM VAI TE ENSINAR (NAVY com FOTO À DIREITA)
     ======================================================== -->
     <section>
       <div class="container">
-        <div class="bio-wrapper">
-          <div class="bio-img">
-            <img src="../assets/dogwalker-pet2.png" alt="Tata Pereira" />
-          </div>
-
-          <div class="bio-content">
-            <span class="section-kicker">QUEM SOU EU</span>
-            <h2>O que eu ensino é o preparo que eu queria que todo mundo tivesse <span class="gold">antes de pegar uma guia.</span></h2>
-            <p style="font-size: 0.9rem; color: var(--navy-text-muted); line-height: 1.6;">
-              Eu sou a Tata Pereira, fundadora da Tata EducaCão. Troquei uma carreira estável pelo comportamento canino e, desde então, formo profissionais para atuar com técnica, e não no improviso.
+        <div class="mentor-wrapper-right">
+          <div class="mentor-content">
+            <span class="section-kicker" style="text-align: left;">QUEM VAI TE ENSINAR</span>
+            <h2>Eu também não queria viver de amor e salário apertado.</h2>
+            <p style="margin-top: 10px; font-size: 0.92rem; color: var(--navy-text-muted); line-height: 1.6;">
+              Sou adestradora e atuo na formação de profissionais e na estruturação de negócios pet. Sou fundadora da Tata EducaCão, um ecossistema de educação para cães e seus responsáveis, que reúne escola canina, consultorias comportamentais, programas de adestramento e uma equipe própria de passeadores, adestradores e pet sitters.
             </p>
 
-            <div class="bio-stats-grid">
-              <div class="bio-stat-card">
+            <div class="mentor-stats-grid">
+              <div class="mentor-stat-card">
                 <strong>13 anos</strong>
-                <p>no mercado financeiro, antes de mudar de vida.</p>
+                <p>no mercado financeiro antes de migrar para o mercado pet.</p>
               </div>
-
-              <div class="bio-stat-card">
+              <div class="mentor-stat-card">
                 <strong>8 anos</strong>
-                <p>com educação e comportamento canino, em creches, programas de socialização e atendendo famílias.</p>
+                <p>atuando com educação e comportamento canino, em creches, programas de socialização e atendendo famílias.</p>
               </div>
             </div>
 
-            <p style="font-size: 0.85rem; color: var(--navy-text-main); font-weight: 600;">
-              <strong style="color: var(--gold-primary);">Hoje:</strong> Sou adestradora e atuo na formação de profissionais e na estruturação de negócios pet. Sou fundadora da Tata EducaCão, um ecossistema de educação para cães e seus responsáveis, que reúne escola canina, consultorias comportamentais, programas de adestramento e uma equipe própria de passeadores, adestradores e pet sitters.
-            </p>
+            <div class="mentor-quote">
+              “O que eu ensino aqui é exatamente o que eu gostaria de ter aprendido antes de ver tanta gente boa sendo jogada no coletivo sem preparo.”
+            </div>
+          </div>
+
+          <div class="mentor-img-right">
+            <img src="../assets/tata-aula2.jpg" alt="Tata Pereira" />
           </div>
         </div>
       </div>
@@ -1406,27 +1440,34 @@
 
         <div class="offer-wrapper">
           <div class="offer-includes">
-            <h3 style="font-size: 0.95rem; font-weight: 800; color: var(--cream-text-main); margin-bottom: 16px; font-family: 'Montserrat', sans-serif;">
+            <h3
+              style="font-size: 0.95rem; font-weight: 800; color: var(--cream-text-main); margin-bottom: 16px; font-family: 'Montserrat', sans-serif;">
               O QUE VOCÊ LEVA:
             </h3>
             <ul class="offer-list">
               <li><span class="check">✓</span> <span><strong>Formação completa</strong> em aulas gravadas</span></li>
-              <li><span class="check">✓</span> <span><strong>E-book de rotinas</strong>, para organizar seus passeios com segurança</span></li>
-              <li><span class="check">✓</span> <span><strong>Modelos de contrato</strong>, para formalizar seu trabalho com os tutores</span></li>
-              <li><span class="check">✓</span> <span><strong>Certificado de conclusão</strong>, comprovando sua formação</span></li>
-              <li><span class="check">✓</span> <span><strong>Suporte por 1 ano</strong> na plataforma, para tirar dúvidas na prática</span></li>
+              <li><span class="check">✓</span> <span><strong>E-book de rotinas</strong>, para organizar seus passeios
+                  com segurança</span></li>
+              <li><span class="check">✓</span> <span><strong>Modelos de contrato</strong>, para formalizar seu trabalho
+                  com os tutores</span></li>
+              <li><span class="check">✓</span> <span><strong>Certificado de conclusão</strong>, comprovando sua
+                  formação</span></li>
+              <li><span class="check">✓</span> <span><strong>Suporte por 1 ano</strong> na plataforma, para tirar
+                  dúvidas na prática</span></li>
             </ul>
           </div>
 
           <div class="offer-card-price">
-            <span class="price-small" style="text-transform: uppercase; letter-spacing: 1px; color: var(--gold-primary); font-weight: 800; display: block; margin-bottom: 8px;">INVESTIMENTO</span>
+            <span class="price-small"
+              style="text-transform: uppercase; letter-spacing: 1px; color: var(--gold-primary); font-weight: 800; display: block; margin-bottom: 8px;">INVESTIMENTO</span>
             <span class="price-small">12x de</span>
             <div class="price-main">
               <small>R$</small> 25,55
             </div>
             <span class="price-small">ou R$ 247 à vista no Pix, boleto ou cartão</span>
 
-            <a href="https://pay.hotmart.com/M107075913V" target="_blank" rel="noopener noreferrer" class="primary" style="margin-top: 20px; width: 100%;">
+            <a href="https://pay.hotmart.com/M107075913V" target="_blank" rel="noopener noreferrer" class="primary"
+              style="margin-top: 20px; width: 100%;">
               Quero sair do improviso
             </a>
 
@@ -1456,50 +1497,65 @@
             <div class="faq-item">
               <button class="faq-trigger">
                 <span>Nunca trabalhei com cães. É para mim?</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
               </button>
               <div class="faq-content">
-                <p>Sim. O curso foi pensado para quem está começando do zero: do que faz um dog walker até a condução segura no dia a dia.</p>
+                <p>Sim. O curso foi pensado para quem está começando do zero: do que faz um dog walker até a condução
+                  segura no dia a dia.</p>
               </div>
             </div>
 
             <div class="faq-item">
               <button class="faq-trigger">
                 <span>E se eu tiver medo de cães mais difíceis?</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
               </button>
               <div class="faq-content">
-                <p>Justamente por isso você precisa de preparo. Você aprende a ler o comportamento, identificar sinais de alerta e saber até onde pode ir com segurança.</p>
+                <p>Justamente por isso você precisa de preparo. Você aprende a ler o comportamento, identificar sinais
+                  de alerta e saber até onde pode ir com segurança.</p>
               </div>
             </div>
 
             <div class="faq-item">
               <button class="faq-trigger">
                 <span>Vou aprender a cobrar e conseguir clientes?</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
               </button>
               <div class="faq-content">
-                <p>Sim. Você aprende a estruturar seus serviços, precificar de forma profissional e se posicionar com clareza para os tutores.</p>
+                <p>Sim. Você aprende a estruturar seus serviços, precificar de forma profissional e se posicionar com
+                  clareza para os tutores.</p>
               </div>
             </div>
 
             <div class="faq-item">
               <button class="faq-trigger">
                 <span>Não tenho muito tempo. Vou conseguir?</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
               <div class="faq-content">
-                <p>As aulas são gravadas e você assiste no seu ritmo. E tem 1 ano de suporte na plataforma para tirar dúvidas ao longo da prática.</p>
+                <p>As aulas são gravadas e você assiste no seu ritmo. E tem 1 ano de suporte na plataforma para tirar
+                  dúvidas ao longo da prática.</p>
               </div>
             </div>
 
             <div class="faq-item">
               <button class="faq-trigger">
                 <span>E se eu me arrepender depois de comprar?</span>
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
               </button>
               <div class="faq-content">
-                <p>Você tem garantia incondicional de 7 dias. Se não for pra você, é só pedir o reembolso dentro desse prazo.</p>
+                <p>Você tem garantia incondicional de 7 dias. Se não for pra você, é só pedir o reembolso dentro desse
+                  prazo.</p>
               </div>
             </div>
           </div>
@@ -1510,7 +1566,7 @@
     <!-- =======================================================
           10. CTA FINAL (NAVY)
     ======================================================== -->
-    <section>
+    <section style="padding: clamp(35px, 6vw, 60px) 0;">
       <div class="container">
         <div class="cta-bottom-bar">
           <h2>Saia do improviso. <span class="gold">Eu vou te mostrar o caminho.</span></h2>
@@ -1585,8 +1641,8 @@
                     d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                 </svg>
               </a>
-              <a class="social-icon-btn" href="https://wa.me/5521975994712" target="_blank"
-                rel="noopener noreferrer" aria-label="WhatsApp">
+              <a class="social-icon-btn" href="https://wa.me/5521975994712" target="_blank" rel="noopener noreferrer"
+                aria-label="WhatsApp">
                 <svg viewBox="0 0 24 24">
                   <path
                     d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.322-.297-.124-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.124-1.256-.463-2.393-1.479-.885-.801-1.482-1.79-1.655-2.087-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
