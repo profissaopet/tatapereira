@@ -483,7 +483,48 @@
       font-size: 0.95rem;
       line-height: 1.6;
     }
+/* =========================================================
+       GALERIA DE 3 FOTOS
+       ========================================================= */
+    .photo-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-element);
+      max-width: 980px;
+      margin: 0 auto;
+    }
 
+    .photo-gallery-item {
+      width: 100%;
+      height: 260px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1.5px solid var(--cream-border-card);
+      box-shadow: var(--shadow-cream);
+      transition: var(--transition);
+    }
+
+    .photo-gallery-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold-dark);
+    }
+
+    .photo-gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Ajuste para celulares */
+    @media (max-width: 860px) {
+      .photo-gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .photo-gallery-item {
+        height: 220px;
+      }
+    }
     /* =========================================================
        5. PRA QUEM É (CREAM)
        ========================================================= */
@@ -1027,7 +1068,7 @@
             PROFISSÃO MONITOR DE CRECHE CANINA
           </p>
           <p>Do zero ao profissional, pra quem ama cães mas quer parar de depender de sorte — e começar a ser visto, tratado e pago como monitor de verdade.</p>
-
+<br>
           <div class="hero-badges">
             <div class="hero-badge-item"><span>✓</span> Assista no seu ritmo</div>
             <div class="hero-badge-item"><span>✓</span> 1 ano de acesso</div>
@@ -1041,7 +1082,7 @@
         </div>
 
         <div class="hero-author-card">
-          <img src="../assets/mentoria-tata-dog.png" alt="Tata Pereira" />
+          <img src="../assets/monitor-tata-cruzado.png" alt="Tata Pereira" />
           <div class="hero-author-info">
             <strong>Tata Pereira</strong>
             <span>Adestradora e comportamentalista</span>
@@ -1127,7 +1168,24 @@
         </div>
       </div>
     </section>
-
+<!-- =======================================================
+          GALERIA DE FOTOS (APÓS A PARTE DURA DE OUVIR)
+    ======================================================== -->
+    <section class="section-cream text-center" style="padding-top: 40px; padding-bottom: 40px;">
+      <div class="container">
+        <div class="photo-gallery-grid">
+          <div class="photo-gallery-item">
+            <img src="../assets/monitor-pet-tata.jpg" alt="Monitoria prática em creche canina" />
+          </div>
+          <div class="photo-gallery-item">
+            <img src="../assets/monitor-aula.jpg" alt="Manejo e comportamento em grupo" />
+          </div>
+          <div class="photo-gallery-item">
+            <img src="../assets/monitor-pet-tata2.jpg" alt="Rotina e bem-estar dos cães" />
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- =======================================================
           5. PRA QUEM É (CREAM)
     ======================================================== -->
@@ -1232,7 +1290,7 @@
 
         <div class="build-grid">
           <div class="build-img">
-            <img src="../assets/1depara.png" alt="Aulas práticas e rotina de creche" />
+            <img src="../assets/tata-aula.png" alt="Aulas práticas e rotina de creche" />
           </div>
 
           <ul class="build-list">
@@ -1289,7 +1347,7 @@
           </div>
 
           <div class="mentor-img-right">
-            <img src="../assets/mentoria-tata-dog.png" alt="Tata Pereira" />
+            <img src="../assets/tata-aula2.png" alt="Tata Pereira" />
           </div>
         </div>
       </div>
