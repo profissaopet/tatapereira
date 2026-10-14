@@ -364,12 +364,17 @@
       overflow: hidden;
       box-shadow: var(--shadow-lg);
       backdrop-filter: blur(12px);
+      width: 100%;
+      max-width: 380px;
+      margin: 0 auto;
     }
 
     .hero-author-card img {
       width: 100%;
-      height: 380px;
+      height: 460px;
       object-fit: cover;
+      object-position: center 15%;
+      display: block;
     }
 
     .hero-author-info {
@@ -493,46 +498,65 @@
       font-size: 0.95rem;
       line-height: 1.6;
     }
-/* =========================================================
+    /* =========================================================
        GALERIA DE 3 FOTOS
        ========================================================= */
     .photo-gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: var(--spacing-element);
-      max-width: 980px;
+      gap: 24px;
+      max-width: 1020px;
       margin: 0 auto;
     }
 
     .photo-gallery-item {
       width: 100%;
-      height: 260px;
+      height: 350px;
       border-radius: var(--radius-md);
       overflow: hidden;
       border: 1.5px solid var(--cream-border-card);
       box-shadow: var(--shadow-cream);
       transition: var(--transition);
+      background: var(--cream-surface-2);
+      position: relative;
     }
 
     .photo-gallery-item:hover {
       transform: translateY(-4px);
       border-color: var(--gold-dark);
+      box-shadow: 0 16px 36px rgba(10, 14, 40, 0.12);
     }
 
     .photo-gallery-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      display: block;
+    }
+
+    .photo-gallery-item:nth-child(1) img {
+      object-position: center 25%;
+    }
+
+    .photo-gallery-item:nth-child(2) img {
+      object-position: center center;
+    }
+
+    .photo-gallery-item:nth-child(3) img {
+      object-position: center 25%;
     }
 
     /* Ajuste para celulares */
     @media (max-width: 860px) {
       .photo-gallery-grid {
         grid-template-columns: 1fr;
+        max-width: 440px;
+        margin: 0 auto;
+        gap: 20px;
       }
       
       .photo-gallery-item {
-        height: 220px;
+        height: 320px;
       }
     }
     /* =========================================================
@@ -679,26 +703,29 @@
        ========================================================= */
     .build-grid {
       display: grid;
-      grid-template-columns: 320px 1fr;
+      grid-template-columns: 420px 1fr;
       gap: 40px;
       align-items: center;
-      max-width: 960px;
+      max-width: 980px;
       margin: 30px auto 0;
     }
 
     .build-img {
       width: 100%;
-      height: 380px;
+      height: 330px;
       border-radius: var(--radius-lg);
       overflow: hidden;
       border: 1.5px solid var(--cream-border-card);
       box-shadow: var(--shadow-cream);
+      background: var(--cream-surface-2);
     }
 
     .build-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center center;
+      display: block;
     }
 
     .build-list {
@@ -733,26 +760,29 @@
        ========================================================= */
     .mentor-wrapper-right {
       display: grid;
-      grid-template-columns: 1fr 320px;
+      grid-template-columns: 1fr 340px;
       gap: 40px;
       align-items: center;
-      max-width: 960px;
+      max-width: 980px;
       margin: 30px auto 0;
     }
 
     .mentor-img-right {
       width: 100%;
-      height: 380px;
+      height: 480px;
       border-radius: var(--radius-lg);
       overflow: hidden;
       border: 1.5px solid var(--navy-border-card);
       box-shadow: var(--shadow-lg);
+      background: var(--navy-surface-1);
     }
 
     .mentor-img-right img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center 12%;
+      display: block;
     }
 
     .mentor-stats-grid {
@@ -1210,8 +1240,31 @@
         grid-template-columns: 1fr;
       }
 
+      .hero-author-card {
+        max-width: 340px;
+        margin: 24px auto 0;
+      }
+
+      .hero-author-card img {
+        height: 390px;
+        object-position: center 15%;
+      }
+
+      .build-img {
+        height: 250px;
+        max-width: 480px;
+        margin: 0 auto 24px;
+      }
+
       .mentor-img-right {
         order: -1;
+        height: 400px;
+        max-width: 320px;
+        margin: 0 auto 25px;
+      }
+
+      .mentor-img-right img {
+        object-position: center 12%;
       }
 
       .module-card.highlight {
@@ -1457,7 +1510,7 @@
         <!-- CARD ENTREGÁVEIS EXTRAS REFORMULADO -->
         <div class="extras-box">
           <div class="extras-box-header">
-            <h3>BÔNUS EXCLUSIVOS</h3>
+            <h3>ENTREGÁVEIS EXTRAS</h3>
             <span class="extras-badge">Além das Aulas</span>
           </div>
           <p class="extras-list-p">

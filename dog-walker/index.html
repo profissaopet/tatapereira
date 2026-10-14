@@ -357,12 +357,17 @@
       overflow: hidden;
       box-shadow: var(--shadow-lg);
       backdrop-filter: blur(12px);
+      width: 100%;
+      max-width: 380px;
+      margin: 0 auto;
     }
 
     .hero-author-card img {
       width: 100%;
-      height: 380px;
+      height: 460px;
       object-fit: cover;
+      object-position: center 20%;
+      display: block;
     }
 
     .hero-author-info {
@@ -497,17 +502,20 @@
 
     .objection-img {
       width: 100%;
-      height: 380px;
+      height: 440px;
       border-radius: var(--radius-lg);
       overflow: hidden;
       border: 1.5px solid var(--cream-border-card);
       box-shadow: var(--shadow-cream);
+      background: var(--cream-surface-2);
     }
 
     .objection-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center 15%;
+      display: block;
     }
 
     .objections-grid {
@@ -607,6 +615,8 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center 20%;
+      display: block;
     }
 
     .stops-features-badge {
@@ -676,26 +686,29 @@
        ========================================================= */
     .mentor-wrapper-right {
       display: grid;
-      grid-template-columns: 1fr 320px;
+      grid-template-columns: 1fr 340px;
       gap: 40px;
       align-items: center;
-      max-width: 960px;
+      max-width: 980px;
       margin: 30px auto 0;
     }
 
     .mentor-img-right {
       width: 100%;
-      height: 380px;
+      height: 480px;
       border-radius: var(--radius-lg);
       overflow: hidden;
       border: 1.5px solid var(--navy-border-card);
       box-shadow: var(--shadow-lg);
+      background: var(--navy-surface-1);
     }
 
     .mentor-img-right img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center 12%;
+      display: block;
     }
 
     .mentor-stats-grid {
@@ -1109,12 +1122,36 @@
         grid-template-columns: 1fr;
       }
 
+      .hero-author-card {
+        max-width: 340px;
+        margin: 24px auto 0;
+      }
+
+      .hero-author-card img {
+        height: 390px;
+        object-position: center 18%;
+      }
+
+      .objection-img {
+        height: 340px;
+        max-width: 440px;
+        margin: 0 auto 20px;
+      }
+
       .mentor-img-right {
         order: -1;
+        height: 400px;
+        max-width: 320px;
+        margin: 0 auto 25px;
+      }
+
+      .mentor-img-right img {
+        object-position: center 12%;
       }
 
       .stops-img-card {
-        min-height: 300px;
+        min-height: 340px;
+        max-height: 440px;
       }
 
       .cta-bottom-bar {

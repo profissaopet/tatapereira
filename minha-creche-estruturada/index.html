@@ -36,7 +36,7 @@
 
     <style>
         /* =========================================================
-           DESIGN SYSTEM & CSS VARIABLES
+           DESIGN SYSTEM & CSS VARIABLES (PADRÃO DA HOME)
            ========================================================= */
         :root {
             /* PALETA AZUL ESCURO DEEP NAVY */
@@ -139,7 +139,9 @@
             text-align: center;
         }
 
-        /* BOTÃO PRINCIPAL COM SHIMMER EFFECT */
+        /* =========================================================
+           BOTÃO PRINCIPAL COM SHIMMER EFFECT (HOME)
+           ========================================================= */
         .primary {
             display: flex;
             width: 100%;
@@ -162,18 +164,6 @@
             overflow: hidden;
             transition: var(--transition);
             text-align: center;
-        }
-
-        .primary.btn-outline {
-            background: transparent;
-            border: 1.5px solid var(--gold-primary);
-            color: var(--gold-primary);
-            box-shadow: none;
-        }
-
-        .primary.btn-outline:hover {
-            background: var(--gold-muted);
-            color: #ffffff;
         }
 
         .primary::after {
@@ -209,7 +199,9 @@
             transform: translateY(0);
         }
 
-        /* HEADER */
+        /* =========================================================
+           HEADER
+           ========================================================= */
         header {
             position: sticky;
             top: 0;
@@ -262,7 +254,9 @@
             font-size: 0.74rem;
         }
 
-        /* HERO SECTION */
+        /* =========================================================
+           HERO SECTION
+           ========================================================= */
         .hero {
             padding-top: 40px;
             padding-bottom: 90px;
@@ -387,7 +381,9 @@
             font-size: 0.8rem;
         }
 
-        /* TARGET AUDIENCE */
+        /* =========================================================
+           SECTION 2: TARGET AUDIENCE (PUBLICO ALVO)
+           ========================================================= */
         .target-section {
             background-color: var(--cream-base);
             color: var(--cream-text-main);
@@ -465,7 +461,9 @@
             color: var(--cream-text-main);
         }
 
-        /* BENEFÍCIOS */
+        /* =========================================================
+           SECTION 3: BENEFÍCIOS (NAVY SURF)
+           ========================================================= */
         .benefits-section {
             background: var(--navy-surface-1);
             color: var(--navy-text-main);
@@ -514,10 +512,14 @@
             transform: translateX(4px);
         }
 
-        .benefit-pill::before {
-            content: "➔";
+        .benefit-pill svg {
             color: var(--gold-primary);
-            font-size: 14px;
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+
+        .benefit-pill:hover svg {
+            transform: translateX(3px);
         }
 
         .benefits-image-wrap {
@@ -525,9 +527,21 @@
             overflow: hidden;
             border: 1px solid var(--navy-border-card);
             box-shadow: var(--shadow-lg);
+            background: var(--navy-card);
         }
 
-        /* PAIN GRID */
+        .benefits-image-wrap img {
+            width: 100%;
+            height: 100%;
+            max-height: 380px;
+            object-fit: cover;
+            object-position: center center;
+            display: block;
+        }
+
+        /* =========================================================
+           SECTION 4: A CRECHE CRESCE (PAIN GRID)
+           ========================================================= */
         .pain-section {
             background-color: var(--cream-base);
             color: var(--cream-text-main);
@@ -544,33 +558,35 @@
         }
 
         .pain-card {
-            background: var(--navy-surface-1);
-            color: var(--navy-text-main);
-            border: 1px solid var(--navy-border-card);
+            background: var(--cream-card);
+            color: var(--cream-text-main);
+            border: 1.5px solid var(--cream-border-card);
             border-radius: var(--radius-md);
             padding: 20px 24px;
             display: flex;
             align-items: center;
             gap: 16px;
+            box-shadow: var(--shadow-cream);
             transition: var(--transition);
         }
 
         .pain-card:hover {
-            border-color: var(--gold-border);
+            border-color: var(--gold-dark);
             transform: translateY(-3px);
         }
 
         .pain-icon {
-            width: 32px;
-            height: 32px;
+            width: 34px;
+            height: 34px;
             border-radius: 50%;
-            background: var(--gold-muted);
-            border: 1px solid var(--gold-border);
-            color: var(--gold-primary);
+            background: rgba(239, 68, 68, 0.12);
+            border: 1px solid rgba(239, 68, 68, 0.28);
+            color: #ef4444;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: 900;
+            font-size: 15px;
             flex-shrink: 0;
         }
 
@@ -591,7 +607,9 @@
             margin: 30px auto 0 auto;
         }
 
-        /* CHAOS SECTION */
+        /* =========================================================
+           SECTION 5: CHAOS SECTION
+           ========================================================= */
         .chaos-section {
             background: var(--navy-base);
             padding: 90px 0;
@@ -654,7 +672,9 @@
             flex-shrink: 0;
         }
 
-        /* QUEM SERÁ A SUA MENTORA */
+        /* =========================================================
+           SECTION 6: QUEM SERÁ A SUA MENTORA
+           ========================================================= */
         .mentor-section {
             background-color: var(--cream-base);
             color: var(--cream-text-main);
@@ -691,8 +711,8 @@
         }
 
         .mentor-stat-icon {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             background: rgba(207, 164, 38, 0.15);
             border: 1px solid rgba(207, 164, 38, 0.35);
@@ -703,40 +723,30 @@
             flex-shrink: 0;
         }
 
-        .mentor-stat-icon svg {
-            width: 18px;
-            height: 18px;
-        }
-
         .mentor-image-wrap {
             border-radius: var(--radius-lg);
             overflow: hidden;
-            border: 1px solid var(--cream-border-card);
-            box-shadow: var(--shadow-lg);
+            border: 1.5px solid var(--cream-border-card);
+            box-shadow: var(--shadow-cream);
+            background: var(--cream-card);
+            max-width: 380px;
+            margin: 0 auto;
+        }
+
+        .mentor-image-wrap img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            object-position: center 15%;
+            display: block;
         }
 
         /* =========================================================
-           MÉTODO DOMUS INFOGRÁFICO - TEMA CLARO
+           SECTION 7: MÉTODO DOMUS (CASA DOMUS INFOGRÁFICO)
            ========================================================= */
         .domus-section {
-            background-color: var(--cream-base);
-            color: var(--cream-text-main);
-            border-top: 1px solid var(--cream-border-card);
-            border-bottom: 1px solid var(--cream-border-card);
+            background: var(--cream-base);
             padding: 100px 0;
-        }
-
-        .domus-header-wrap {
-            text-align: center;
-            max-width: 820px;
-            margin: 0 auto 40px auto;
-        }
-
-        .domus-intro-p {
-            color: var(--cream-text-body);
-            margin-top: 14px;
-            font-size: 16px;
-            line-height: 1.7;
         }
 
         .infographic-wrapper {
@@ -768,7 +778,7 @@
             bottom: 50px;
             width: 80px;
             height: 200px;
-            background-image: radial-gradient(#d1d8e0 2.5px, transparent 2.5px);
+            background-image: radial-gradient(#E2E8F0 2.5px, transparent 2.5px);
             background-size: 14px 14px;
             z-index: 0;
         }
@@ -781,7 +791,7 @@
             height: 260px;
             pointer-events: none;
             z-index: 0;
-            opacity: 0.45;
+            opacity: 0.4;
         }
 
         .infographic-wrapper .full-house-svg {
@@ -797,7 +807,7 @@
 
         .infographic-wrapper:hover .full-house-svg path {
             stroke: #0c2343;
-            filter: drop-shadow(0 2px 5px rgba(10, 25, 47, 0.15));
+            filter: drop-shadow(0 2px 5px rgba(10, 25, 47, 0.1));
         }
 
         .infographic-wrapper .house-content-layer {
@@ -877,7 +887,6 @@
             display: flex;
             flex-direction: column;
             gap: 16px;
-            box-shadow: 0 4px 20px rgba(10, 14, 40, 0.04);
         }
 
         .infographic-wrapper .block-perception {
@@ -954,7 +963,7 @@
             display: flex;
             align-items: center;
             gap: 16px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
             border: 1px solid #E2E8F0;
             position: relative;
             cursor: pointer;
@@ -1006,6 +1015,10 @@
             border-color: var(--navy-blue);
         }
 
+        .infographic-wrapper .card-item:hover .card-icon-wrap svg {
+            transform: scale(1.1);
+        }
+
         .infographic-wrapper .card-info h4 {
             font-size: 1.02rem;
             font-weight: 800;
@@ -1044,7 +1057,9 @@
             box-shadow: 0 8px 20px rgba(224, 160, 32, 0.35);
         }
 
-        /* LOGÍSTICA */
+        /* =========================================================
+           SECTION 8: COMO FUNCIONA A MENTORIA (LOGÍSTICA)
+           ========================================================= */
         .logistics-section {
             background: var(--navy-surface-1);
             padding: 100px 0;
@@ -1074,8 +1089,8 @@
         }
 
         .logistics-icon {
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: var(--gold-muted);
             border: 1px solid var(--gold-border);
@@ -1083,12 +1098,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .logistics-icon svg {
-            width: 22px;
-            height: 22px;
         }
 
         .logistics-title {
@@ -1105,7 +1114,9 @@
             line-height: 1.6;
         }
 
-        /* POPs */
+        /* =========================================================
+           SECTION 9: POPs
+           ========================================================= */
         .pops-section {
             background-color: var(--cream-base);
             color: var(--cream-text-main);
@@ -1143,6 +1154,7 @@
             margin-bottom: 12px;
             font-size: 14.5px;
             font-weight: 700;
+            color: var(--cream-text-main);
         }
 
         .pop-item:last-child {
@@ -1151,10 +1163,15 @@
 
         .pop-check {
             color: var(--gold-dark);
-            font-weight: 900;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
         }
 
-        /* ETAPAS */
+        /* =========================================================
+           SECTION 10: COMO FUNCIONA A APLICAÇÃO (ETAPAS)
+           ========================================================= */
         .steps-section {
             background: var(--navy-base);
             padding: 100px 0;
@@ -1211,7 +1228,9 @@
             line-height: 1.6;
         }
 
-        /* FAQ ACCORDION */
+        /* =========================================================
+           SECTION 11: FAQ ACCORDION
+           ========================================================= */
         .faq-section {
             background-color: var(--cream-base);
             color: var(--cream-text-main);
@@ -1252,13 +1271,16 @@
         }
 
         .faq-icon {
-            font-size: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             color: var(--gold-dark);
             transition: transform 0.3s ease;
+            flex-shrink: 0;
         }
 
         .faq-item.active .faq-icon {
-            transform: rotate(45deg);
+            transform: rotate(180deg);
         }
 
         .faq-answer {
@@ -1274,7 +1296,9 @@
             line-height: 1.7;
         }
 
-        /* SUPORTE */
+        /* =========================================================
+           SECTION 12: AINDA EM DÚVIDA
+           ========================================================= */
         .support-section {
             background: var(--navy-surface-1);
             padding: 100px 0;
@@ -1294,20 +1318,25 @@
             border: 1.5px solid var(--navy-border-card);
             padding: 35px;
             border-radius: var(--radius-lg);
+            text-align: left;
         }
 
         .support-box h3 {
             font-size: 22px;
             font-weight: 900;
             margin-bottom: 12px;
+            color: var(--navy-text-main);
         }
 
         .support-box p {
             color: var(--navy-text-muted);
             margin-bottom: 24px;
+            line-height: 1.6;
         }
 
-        /* FOOTER */
+        /* =========================================================
+           FOOTER (PADRÃO INSTITUCIONAL TATA PEREIRA)
+           ========================================================= */
         footer {
             background: var(--navy-surface-1);
             color: var(--navy-text-muted);
@@ -1329,33 +1358,39 @@
 
         .footer-grid {
             display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+            grid-template-columns: 1.8fr 1fr 1.2fr 1.2fr;
             gap: 40px;
             margin-bottom: 60px;
         }
 
-        .footer-logo {
+        .footer-brand {
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            gap: 4px;
+        }
+
+        .footer-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
         }
 
         .footer-logo img:first-child {
-            height: 28px;
+            height: 38px;
             width: auto;
+            object-fit: contain;
         }
 
         .footer-logo img:last-child {
-            height: 16px;
+            height: 20px;
             width: auto;
+            object-fit: contain;
         }
 
         .footer-tagline {
             font-size: 13.5px;
             color: var(--navy-text-muted);
             line-height: 1.6;
-            margin-top: 14px;
         }
 
         .footer-heading {
@@ -1366,6 +1401,7 @@
             color: var(--navy-text-main);
             margin-bottom: 20px;
             position: relative;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .footer-heading::after {
@@ -1380,6 +1416,8 @@
 
         .footer-nav-list {
             list-style: none;
+            padding: 0;
+            margin: 0;
             display: flex;
             flex-direction: column;
             gap: 12px;
@@ -1388,18 +1426,16 @@
         .footer-nav-list a {
             font-size: 14px;
             color: var(--navy-text-muted);
-            transition: var(--transition);
+            text-decoration: none;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
         .footer-nav-list a:hover {
             color: var(--gold-primary);
             transform: translateX(3px);
-        }
-
-        .footer-brand {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
         }
 
         .footer-contact-info {
@@ -1443,17 +1479,17 @@
             text-decoration: none;
         }
 
+        .social-icon-btn:hover {
+            border-color: var(--gold-primary);
+            color: var(--gold-primary);
+            background: var(--gold-muted);
+            transform: translateY(-2px);
+        }
+
         .social-icon-btn svg {
             width: 18px;
             height: 18px;
             fill: currentColor;
-        }
-
-        .social-icon-btn:hover {
-            color: var(--gold-primary);
-            border-color: var(--gold-border);
-            background: var(--gold-muted);
-            transform: translateY(-2px);
         }
 
         .footer-bottom {
@@ -1573,6 +1609,7 @@
 
         /* RESPONSIVIDADE */
         @media (max-width: 1024px) {
+
             .benefits-grid,
             .mentor-grid,
             .chaos-grid,
@@ -1596,6 +1633,7 @@
         }
 
         @media (max-width: 860px) {
+
             .infographic-wrapper .full-house-svg,
             .infographic-wrapper .golden-lines-bg,
             .infographic-wrapper .dots-pattern,
@@ -1606,11 +1644,22 @@
             .infographic-wrapper {
                 background: #ffffff;
                 border: 2px solid var(--gold-yellow);
-                border-radius: 18px;
+                border-top: none;
+                border-radius: 0 0 18px 18px;
                 position: relative;
                 padding: 0;
-                margin-top: 20px;
-                box-shadow: var(--shadow-cream);
+                margin-top: 50px;
+            }
+
+            .infographic-wrapper::before {
+                content: '';
+                position: absolute;
+                top: -42px;
+                left: -2px;
+                right: -2px;
+                height: 42px;
+                background: var(--navy-blue);
+                clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
             }
 
             .infographic-wrapper .house-content-layer {
@@ -1656,7 +1705,7 @@
         window.CONFIG = {
             whatsappUrl: "https://wa.me/5521975994712?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20diagn%C3%B3stico%20para%20o%20Programa%20Minha%20Creche%20Estruturada.",
             applicationUrl: "https://forms.gle/AY4aACKddDixFKUM7",
-            videoUrl: "https://youtu.be/I6vPIklYZOM"
+            videoUrl: "https://www.youtube.com/watch?v=NNmg9XwJxKI&t=1s"
         };
     </script>
 
@@ -1687,7 +1736,8 @@
             </p>
 
             <div class="hero-quote-box fade-in">
-                <p>“Não precisa trabalhar mais. <br><span class="gold-text">Você precisa estruturar melhor!”</span></p>
+                <p>“Você não precisa trabalhar mais. <br><span class="gold-text">Você precisa estruturar melhor!”</span>
+                </p>
             </div>
 
             <div id="video-wrapper" class="video-player-container fade-in">
@@ -1703,7 +1753,8 @@
             <div class="fade-in">
                 <a href="#" class="primary btn-hero open-app-modal">
                     <span>QUERO ESTRUTURAR MINHA CRECHE</span>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
                         <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                 </a>
@@ -1719,39 +1770,56 @@
         <div class="container text-center">
             <div class="section-tag-cream">Perfil de Alunos</div>
             <h2 class="section-title-cream">Esse programa é para você que:</h2>
-            <p style="color: var(--cream-text-muted); margin-top: 8px;">Veja se você se identifica com algum destes cenários:</p>
+            <p style="color: var(--cream-text-muted); margin-top: 8px;">Veja se você se identifica com algum destes
+                cenários:</p>
 
             <div class="target-grid">
                 <div class="target-card fade-in">
-                    <div class="target-icon">✓</div>
+                    <div class="target-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
                     <span class="target-text">Tem uma creche ou hospedagem pet em operação.</span>
                 </div>
                 <div class="target-card fade-in">
-                    <div class="target-icon">✓</div>
+                    <div class="target-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
                     <span class="target-text">Vive apagando incêndios na rotina.</span>
                 </div>
                 <div class="target-card fade-in">
-                    <div class="target-icon">✓</div>
+                    <div class="target-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
                     <span class="target-text">Sente que o negócio depende de você.</span>
                 </div>
                 <div class="target-card fade-in">
-                    <div class="target-icon">✓</div>
+                    <div class="target-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
                     <span class="target-text">Quer organizar a rotina, os processos e a agenda.</span>
                 </div>
                 <div class="target-card fade-in">
-                    <div class="target-icon">✓</div>
+                    <div class="target-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
                     <span class="target-text">Não consegue delegar com segurança.</span>
                 </div>
                 <div class="target-card fade-in">
-                    <div class="target-icon">✓</div>
+                    <div class="target-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
                     <span class="target-text">Tem a sensação de que corre e não sai do lugar.</span>
                 </div>
                 <div class="target-card fade-in">
-                    <div class="target-icon">✓</div>
+                    <div class="target-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
                     <span class="target-text">Percebe que a equipe trabalha sem um padrão.</span>
                 </div>
                 <div class="target-card fade-in">
-                    <div class="target-icon">✓</div>
+                    <div class="target-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
                     <span class="target-text">Quer crescer sem aumentar o caos.</span>
                 </div>
             </div>
@@ -1766,16 +1834,46 @@
                     <div class="hero-tag">O que está incluído</div>
                     <h2 class="section-title-navy">Com o programa, você terá:</h2>
                     <div class="benefits-pills" style="margin-top: 25px;">
-                        <div class="benefit-pill">diagnóstico da operação</div>
-                        <div class="benefit-pill">encontros individuais</div>
-                        <div class="benefit-pill">plano de ação personalizado</div>
-                        <div class="benefit-pill">acompanhamento da implementação</div>
-                        <div class="benefit-pill">clareza sobre gestão, números e indicadores</div>
-                        <div class="benefit-pill">suporte diário</div>
-                        <div class="benefit-pill">organização da rotina</div>
-                        <div class="benefit-pill">construção de processos</div>
-                        <div class="benefit-pill">materiais customizados</div>
-                        <div class="benefit-pill">direcionamento para gestão da equipe</div>
+                        <div class="benefit-pill">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            <span>diagnóstico da operação</span>
+                        </div>
+                        <div class="benefit-pill">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            <span>encontros individuais</span>
+                        </div>
+                        <div class="benefit-pill">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            <span>plano de ação personalizado</span>
+                        </div>
+                        <div class="benefit-pill">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            <span>acompanhamento da implementação</span>
+                        </div>
+                        <div class="benefit-pill">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            <span>clareza sobre gestão, números e indicadores</span>
+                        </div>
+                        <div class="benefit-pill">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            <span>suporte diário</span>
+                        </div>
+                        <div class="benefit-pill">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            <span>organização da rotina</span>
+                        </div>
+                        <div class="benefit-pill">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            <span>construção de processos</span>
+                        </div>
+                        <div class="benefit-pill">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            <span>materiais customizados</span>
+                        </div>
+                        <div class="benefit-pill">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            <span>direcionamento para gestão da equipe</span>
+                        </div>
                     </div>
                 </div>
                 <div class="benefits-image-wrap fade-in">
@@ -1794,27 +1892,39 @@
 
             <div class="pain-grid">
                 <div class="pain-card fade-in">
-                    <div class="pain-icon">!</div>
+                    <div class="pain-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    </div>
                     <span class="pain-text">Tudo depende de você para funcionar.</span>
                 </div>
                 <div class="pain-card fade-in">
-                    <div class="pain-icon">!</div>
+                    <div class="pain-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    </div>
                     <span class="pain-text">Os mesmos erros continuam se repetindo frequentemente.</span>
                 </div>
                 <div class="pain-card fade-in">
-                    <div class="pain-icon">!</div>
+                    <div class="pain-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    </div>
                     <span class="pain-text">A equipe executa cada tarefa de um jeito diferente.</span>
                 </div>
                 <div class="pain-card fade-in">
-                    <div class="pain-icon">!</div>
+                    <div class="pain-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    </div>
                     <span class="pain-text">Delegar ainda parece arriscado.</span>
                 </div>
                 <div class="pain-card fade-in">
-                    <div class="pain-icon">!</div>
+                    <div class="pain-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    </div>
                     <span class="pain-text">Você vive apagando incêndios.</span>
                 </div>
                 <div class="pain-card fade-in">
-                    <div class="pain-icon">!</div>
+                    <div class="pain-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    </div>
                     <span class="pain-text">Crescer só aumenta a sobrecarga.</span>
                 </div>
             </div>
@@ -1845,7 +1955,8 @@
                 </div>
                 <div class="chaos-item">
                     <div class="chaos-badge">3</div>
-                    <span style="color: var(--navy-text-main); font-weight: 600;">Faturamento em crescimento sustentável.</span>
+                    <span style="color: var(--navy-text-main); font-weight: 600;">Faturamento em crescimento
+                        sustentável.</span>
                 </div>
             </div>
         </div>
@@ -1858,47 +1969,40 @@
                 <div class="section-tag-cream">Sua Mentora</div>
                 <h2 class="section-title-cream">Tata Pereira</h2>
                 <p style="color: var(--cream-text-body); margin-top: 16px; line-height: 1.75;">
-                  Sou adestradora e atuo na formação de profissionais e na estruturação de negócios pet. Sou fundadora da Tata EducaCão, um ecossistema de educação para cães e seus responsáveis, que reúne escola canina, consultorias comportamentais, programas de adestramento e uma equipe de passeadores, adestradores e pet sitters.
-</p><p>
-Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da minha atuação no setor pet, onde trabalhei como pet sitter, dog walker, adestradora, monitora, supervisora e consultora de creches caninas. Minha trajetória une prática, gestão e conhecimento da rotina real de operação, tanto no atendimento às famílias quanto na preparação de profissionais e na organização de negócios pet.
+                    Sou adestradora e atuo na formação de profissionais e na estruturação de negócios pet. Sou fundadora
+                    da Tata EducaCão, um ecossistema de educação para cães e seus responsáveis, que reúne escola canina,
+                    consultorias comportamentais, programas de adestramento e uma equipe de passeadores, adestradores e
+                    pet sitters.
+
+                    Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da minha atuação no
+                    setor pet, onde trabalhei como pet sitter, dog walker, adestradora, monitora, supervisora e
+                    consultora de creches caninas. Minha trajetória une prática, gestão e conhecimento da rotina real de
+                    operação, tanto no atendimento às famílias quanto na preparação de profissionais e na organização de
+                    negócios pet.
                 </p>
 
                 <div class="mentor-stats-grid">
                     <div class="mentor-stat-card">
                         <div class="mentor-stat-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M10 5.172C10 3.782 8.423 2.679 6.5 3c-1.823.304-3 1.672-3 3.172 0 1.5 1.177 2.868 3 3.172 1.923.321 3.5-.782 3.5-2.172z"/>
-                                <path d="M20.5 6c0-1.5-1.177-2.868-3-3.172-1.923-.321-3.5.782-3.5 2.172 0 1.39 1.577 2.493 3.5 2.172 1.823-.304 3-1.672 3-3.172z"/>
-                                <path d="M15 12c0-1.39-1.577-2.493-3.5-2.172C9.677 10.132 8.5 11.5 8.5 13c0 1.5 1.177 2.868 3 3.172C13.423 16.493 15 15.39 15 14v-2z"/>
-                                <path d="M12 21c3.5 0 7-1.5 7-5.5 0-2.5-2-4.5-4.5-4.5h-5C7 11 5 13 5 15.5c0 4 3.5 5.5 7 5.5z"/>
-                            </svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><circle cx="4.5" cy="9.5" r="2.5"/><circle cx="9" cy="5.5" r="2.5"/><circle cx="15" cy="5.5" r="2.5"/><circle cx="19.5" cy="9.5" r="2.5"/><path d="M12 11c-3.5 0-6 2.5-6 5.5 0 2.2 1.8 4 4.5 4 1 0 1.5-.5 1.5-.5s.5.5 1.5.5c2.7 0 4.5-1.8 4.5-4 0-3-2.5-5.5-6-5.5z"/></svg>
                         </div>
                         <span><strong class="stat-number" data-target="8">0</strong> anos no mercado pet</span>
                     </div>
                     <div class="mentor-stat-card">
                         <div class="mentor-stat-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                                <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
-                            </svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
                         </div>
                         <span>Mais de <strong class="stat-number" data-target="100">0</strong> capacitados</span>
                     </div>
                     <div class="mentor-stat-card">
                         <div class="mentor-stat-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                                <polyline points="9 22 9 12 15 12 15 22"/>
-                            </svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                         </div>
                         <span>Mais de <strong class="stat-number" data-target="1000">0</strong> famílias</span>
                     </div>
                     <div class="mentor-stat-card">
                         <div class="mentor-stat-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect width="20" height="14" x="2" y="7" rx="2" ry="2"/>
-                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-                            </svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
                         </div>
                         <span><strong class="stat-number" data-target="13">0</strong> anos corporativo</span>
                     </div>
@@ -1911,415 +2015,255 @@ Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da
             </div>
         </div>
         <div class="text-center" style="margin-top: 40px;">
-            <a href="#" class="primary btn-hero open-app-modal">QUERO ESTRUTURAR MINHA CRECHE</a>
+            <a href="#" class="primary btn-hero open-app-modal">
+                <span>QUERO ESTRUTURAR MINHA CRECHE</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
         </div>
     </section>
 
-    <!-- =====================================================
-         5. BLOCO SOBRE O MÉTODO DOMUS (CASA DOMUS) - TEMA CLARO
-    ====================================================== -->
-    <section class="domus-section" id="metodo">
+    <!-- SECTION 7: POR DENTRO DO MÉTODO DOMUS -->
+    <section class="domus-section">
         <div class="container">
-            <div class="domus-header-wrap fade-in">
-                <div class="section-tag-cream">Engenharia Operacional</div>
-                <h2 class="section-title-cream">
-                    Uma empresa pet funciona melhor quando sua estrutura acompanha o crescimento.
-                </h2>
-
-                <p class="domus-intro-p">
-                    O Método Domus é a linha de raciocínio que orienta o meu trabalho: olhar para a empresa como
-                    uma estrutura que precisa de processos, rotina, equipe e gestão funcionando em conjunto.
+            <div class="text-center fade-in" style="max-width: 800px; margin: 0 auto 40px auto;">
+                <div class="section-tag-cream">Metodologia Exclusiva</div>
+                <h2 class="section-title-cream">Por dentro do Método Domus</h2>
+                <p style="color: var(--cream-text-body); margin-top: 14px;">
+                    Durante o programa, você aplicará o nosso Método exclusivo. Ele parte de uma lógica simples:
+                    <strong>Uma creche precisa funcionar como uma casa bem construída!</strong>
                 </p>
             </div>
 
-            <div class="domus-house-diagram fade-in">
-                <div class="infographic-wrapper">
+            <div class="infographic-wrapper fade-in">
+                <div class="dots-pattern"></div>
+                <svg class="golden-lines-bg" viewBox="0 0 220 260" fill="none">
+                    <path d="M 10 260 C 60 200, 120 150, 220 100" stroke="#E0A020" stroke-width="1.2" />
+                    <path d="M 40 260 C 90 200, 150 150, 220 80" stroke="#E0A020" stroke-width="1.2" />
+                    <path d="M 70 260 C 120 180, 180 140, 220 60" stroke="#E0A020" stroke-width="1.2" />
+                </svg>
 
-                    <div class="dots-pattern"></div>
+                <svg class="full-house-svg" viewBox="0 0 940 640" fill="none" preserveAspectRatio="none">
+                    <path d="M 30 230 L 470 20 L 910 230" stroke="#0A192F" stroke-width="16" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path d="M 740 150 V 75 H 825 V 190" stroke="#0A192F" stroke-width="10" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <line x1="46" y1="250" x2="46" y2="585" stroke="#E0A020" stroke-width="10" stroke-linecap="round" />
+                    <line x1="894" y1="250" x2="894" y2="585" stroke="#0A192F" stroke-width="10"
+                        stroke-linecap="round" />
+                </svg>
 
-                    <svg class="golden-lines-bg" viewBox="0 0 220 260" fill="none">
-                        <path d="M 10 260 C 60 200, 120 150, 220 100" stroke="#E0A020" stroke-width="1.2" />
-                        <path d="M 40 260 C 90 200, 150 150, 220 80" stroke="#E0A020" stroke-width="1.2" />
-                        <path d="M 70 260 C 120 180, 180 140, 220 60" stroke="#E0A020" stroke-width="1.2" />
-                    </svg>
-
-                    <svg class="full-house-svg" viewBox="0 0 940 640" fill="none" preserveAspectRatio="none">
-                        <path d="M 30 230 L 470 20 L 910 230" stroke="#0A192F" stroke-width="16"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M 740 150 V 75 H 825 V 190" stroke="#0A192F" stroke-width="10"
-                            stroke-linecap="round" stroke-linejoin="round" />
-                        <line x1="46" y1="250" x2="46" y2="585" stroke="#E0A020" stroke-width="10"
-                            stroke-linecap="round" />
-                        <line x1="894" y1="250" x2="894" y2="585" stroke="#0A192F" stroke-width="10"
-                            stroke-linecap="round" />
-                    </svg>
-
-                    <div class="house-content-layer">
-
-                        <div class="header-section">
-                            <div class="top-icon-svg">
-                                <svg width="68" height="56" viewBox="0 0 70 56" fill="none">
-                                    <circle cx="20" cy="22" r="11" stroke="#0A192F" stroke-width="2" fill="none" />
-                                    <text x="20" y="27" font-family="'Montserrat', sans-serif" font-weight="800"
-                                        font-size="13" fill="#0A192F" text-anchor="middle">$</text>
-                                    <rect x="33" y="34" width="7" height="18" rx="1" stroke="#0A192F"
-                                        stroke-width="2" fill="none" />
-                                    <rect x="44" y="25" width="7" height="27" rx="1" stroke="#0A192F"
-                                        stroke-width="2" fill="none" />
-                                    <rect x="55" y="16" width="7" height="36" rx="1" stroke="#0A192F"
-                                        stroke-width="2" fill="none" />
-                                    <path d="M 22 18 L 38 4 L 52 14 L 66 2" stroke="#E0A020" stroke-width="3"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                    <path d="M 56 2 H 66 V 12" stroke="#E0A020" stroke-width="3"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                            <div class="title-main">Receita e Escala</div>
-                            <div
-                                style="width: 50px; height: 3px; background: var(--gold-yellow); margin: 8px auto 14px auto; border-radius: 10px;">
-                            </div>
-                            <p class="subtitle-main">Crescimento financeiro sustentável.</p>
+                <div class="house-content-layer">
+                    <div class="header-section">
+                        <div class="top-icon-svg">
+                            <svg width="68" height="56" viewBox="0 0 70 56" fill="none">
+                                <circle cx="20" cy="22" r="11" stroke="#0A192F" stroke-width="2" fill="none" />
+                                <text x="20" y="27" font-family="'Montserrat', sans-serif" font-weight="800"
+                                    font-size="13" fill="#0A192F" text-anchor="middle">$</text>
+                                <rect x="33" y="34" width="7" height="18" rx="1" stroke="#0A192F" stroke-width="2"
+                                    fill="none" />
+                                <rect x="44" y="25" width="7" height="27" rx="1" stroke="#0A192F" stroke-width="2"
+                                    fill="none" />
+                                <rect x="55" y="16" width="7" height="36" rx="1" stroke="#0A192F" stroke-width="2"
+                                    fill="none" />
+                                <path d="M 22 18 L 38 4 L 52 14 L 66 2" stroke="#E0A020" stroke-width="3"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M 56 2 H 66 V 12" stroke="#E0A020" stroke-width="3" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
                         </div>
-
-                        <div class="columns-grid">
-
-                            <div class="central-divider">
-                                <div class="arrow-head up"></div>
-                                <div class="arrow-head down"></div>
-                            </div>
-
-                            <div class="column-block block-perception">
-                                <div class="pill-container pill-perception">
-                                    <div class="pill-icon-badge">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                                            <circle cx="9" cy="7" r="4" />
-                                            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                                        </svg>
-                                    </div>
-                                    <span>Sistema de Percepção</span>
-                                </div>
-
-                                <p class="column-description">
-                                    O que o cliente vê, sente e valoriza no seu negócio.
-                                </p>
-
-                                <div class="card-item card-perception">
-                                    <div class="card-icon-wrap">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                                            <circle cx="12" cy="7" r="4" />
-                                            <polyline points="16 11 18 13 22 9" />
-                                        </svg>
-                                    </div>
-                                    <div class="card-info">
-                                        <h4>Identidade & Posicionamento</h4>
-                                        <p>Imagem profissional e percepção de valor externa.</p>
-                                    </div>
-                                </div>
-
-                                <div class="card-item card-perception">
-                                    <div class="card-icon-wrap">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                                            <circle cx="9" cy="7" r="4" />
-                                            <line x1="17" y1="5" x2="17" y2="7" />
-                                            <line x1="16" y1="6" x2="18" y2="6" />
-                                            <line x1="20" y1="9" x2="20" y2="11" />
-                                            <line x1="19" y1="10" x2="21" y2="10" />
-                                            <line x1="17" y1="14" x2="17" y2="16" />
-                                            <line x1="16" y1="15" x2="18" y2="15" />
-                                        </svg>
-                                    </div>
-                                    <div class="card-info">
-                                        <h4>Experiência do Cliente</h4>
-                                        <p>Como o cliente vivencia e sente o serviço prestado.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="column-block block-sustentacao">
-                                <div class="pill-container pill-sustentacao">
-                                    <div class="pill-icon-badge">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <path
-                                                d="M20 13c0 5-3.5 7.5-7.66 9.7a1 1 0 0 1-.68 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.8 17 5 19 5a1 1 0 0 1 1 1Z" />
-                                            <path d="m9 12 2 2 4-4" />
-                                        </svg>
-                                    </div>
-                                    <span>Sistema de Sustentação</span>
-                                </div>
-
-                                <p class="column-description">
-                                    O que mantém o negócio e permite crescimento sustentável.
-                                </p>
-
-                                <div class="card-item card-sustentacao">
-                                    <div class="card-icon-wrap">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <path
-                                                d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .6 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
-                                            <path d="M9 18h6" />
-                                            <path d="M10 22h4" />
-                                            <line x1="12" y1="6" x2="12" y2="10" />
-                                            <line x1="10" y1="8" x2="14" y2="8" />
-                                        </svg>
-                                    </div>
-                                    <div class="card-info">
-                                        <h4>Técnica & Segurança</h4>
-                                        <p>Qualidade da entrega e domínio de execução da especialidade.</p>
-                                    </div>
-                                </div>
-
-                                <div class="card-item card-sustentacao">
-                                    <div class="card-icon-wrap">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" stroke-linejoin="round">
-                                            <circle cx="18" cy="15" r="3" />
-                                            <circle cx="9" cy="7" r="4" />
-                                            <path d="M10 15H6a4 4 0 0 0-4 4v2" />
-                                            <path d="m21.7 16.4-.9-.3" />
-                                            <path d="m15.2 13.9-.9-.3" />
-                                            <path d="m16.6 18.7.3-.9" />
-                                            <path d="m19.1 12.2.3-.9" />
-                                            <path d="m19.6 18.7-.4-.8" />
-                                            <path d="m16.8 12.1-.4-.8" />
-                                            <path d="m14.3 16-.8.4" />
-                                            <path d="m20.9 13.5-.8.4" />
-                                        </svg>
-                                    </div>
-                                    <div class="card-info">
-                                        <h4>Operação & Gestão</h4>
-                                        <p>Estrutura interna e funcionamento operacional do negócio.</p>
-                                    </div>
-                                </div>
-                            </div>
-
+                        <div class="title-main">Receita e Escala</div>
+                        <div
+                            style="width: 50px; height: 3px; background: var(--gold-yellow); margin: 8px auto 14px auto; border-radius: 10px;">
                         </div>
-
-                        <div class="foundation-banner">
-                            O CRESCIMENTO ACELERA, MAS SÓ UMA EQUIPE ESTRUTURADA SUSTENTA O PESO DO TOPO.
-                        </div>
-
+                        <p class="subtitle-main">Crescimento financeiro sustentável.</p>
                     </div>
 
+                    <div class="columns-grid">
+                        <div class="central-divider">
+                            <div class="arrow-head up"></div>
+                            <div class="arrow-head down"></div>
+                        </div>
+
+                        <div class="column-block block-perception">
+                            <div class="pill-container pill-perception">
+                                <div class="pill-icon-badge">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                                        <circle cx="9" cy="7" r="4" />
+                                        <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                    </svg>
+                                </div>
+                                <span>Sistema de Percepção</span>
+                            </div>
+                            <p class="column-description">O que o cliente vê, sente e valoriza no seu negócio.</p>
+                            <div class="card-item card-perception">
+                                <div class="card-icon-wrap">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                                        <circle cx="12" cy="7" r="4" />
+                                        <polyline points="16 11 18 13 22 9" />
+                                    </svg>
+                                </div>
+                                <div class="card-info">
+                                    <h4>Identidade & Posicionamento</h4>
+                                    <p>Imagem profissional e percepção de valor externa.</p>
+                                </div>
+                            </div>
+                            <div class="card-item card-perception">
+                                <div class="card-icon-wrap">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                                        <circle cx="9" cy="7" r="4" />
+                                        <line x1="17" y1="5" x2="17" y2="7" />
+                                        <line x1="16" y1="6" x2="18" y2="6" />
+                                        <line x1="20" y1="9" x2="20" y2="11" />
+                                        <line x1="19" y1="10" x2="21" y2="10" />
+                                        <line x1="17" y1="14" x2="17" y2="16" />
+                                        <line x1="16" y1="15" x2="18" y2="15" />
+                                    </svg>
+                                </div>
+                                <div class="card-info">
+                                    <h4>Experiência do Cliente</h4>
+                                    <p>Como o cliente vivencia e sente o serviço prestado.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="column-block block-sustentacao">
+                            <div class="pill-container pill-sustentacao">
+                                <div class="pill-icon-badge">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M20 13c0 5-3.5 7.5-7.66 9.7a1 1 0 0 1-.68 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.8 17 5 19 5a1 1 0 0 1 1 1Z" />
+                                        <path d="m9 12 2 2 4-4" />
+                                    </svg>
+                                </div>
+                                <span>Sistema de Sustentação</span>
+                            </div>
+                            <p class="column-description">O que mantém o negócio e permite crescimento sustentável.</p>
+                            <div class="card-item card-sustentacao">
+                                <div class="card-icon-wrap">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .6 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+                                        <path d="M9 18h6" />
+                                        <path d="M10 22h4" />
+                                        <line x1="12" y1="6" x2="12" y2="10" />
+                                        <line x1="10" y1="8" x2="14" y2="8" />
+                                    </svg>
+                                </div>
+                                <div class="card-info">
+                                    <h4>Técnica & Segurança</h4>
+                                    <p>Qualidade da entrega e domínio de execução da especialidade.</p>
+                                </div>
+                            </div>
+                            <div class="card-item card-sustentacao">
+                                <div class="card-icon-wrap">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                        stroke-linecap="round" stroke-linejoin="round">
+                                        <circle cx="18" cy="15" r="3" />
+                                        <circle cx="9" cy="7" r="4" />
+                                        <path d="M10 15H6a4 4 0 0 0-4 4v2" />
+                                        <path d="m21.7 16.4-.9-.3" />
+                                        <path d="m15.2 13.9-.9-.3" />
+                                        <path d="m16.6 18.7.3-.9" />
+                                        <path d="m19.1 12.2.3-.9" />
+                                        <path d="m19.6 18.7-.4-.8" />
+                                        <path d="m16.8 12.1-.4-.8" />
+                                        <path d="m14.3 16-.8.4" />
+                                        <path d="m20.9 13.5-.8.4" />
+                                    </svg>
+                                </div>
+                                <div class="card-info">
+                                    <h4>Operação & Gestão</h4>
+                                    <p>Estrutura interna e funcionamento operacional do negócio.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="foundation-banner">
+                        O CRESCIMENTO ACELERA, MAS SÓ UMA EQUIPE ESTRUTURADA SUSTENTA O PESO DO TOPO.
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-   <!-- SECTION 8: COMO FUNCIONA O PROGRAMA -->
+    <!-- SECTION 8: COMO FUNCIONA O PROGRAMA -->
     <section class="logistics-section">
         <div class="container text-center">
             <div class="hero-tag">Estrutura do Acompanhamento</div>
             <h2 class="section-title-navy">Como funciona o programa:</h2>
 
             <div class="logistics-grid">
-                <!-- CARD 1: 4 MESES DE DURAÇÃO -->
                 <div class="logistics-card fade-in">
-                    <div class="logistics-card-banner">
-                        <svg viewBox="0 0 400 225" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="400" height="225" fill="#0A0E28"></rect>
-                            <circle cx="200" cy="112" r="80" fill="#F1BF42" opacity="0.08"></circle>
-                            <!-- Calendário 4 Meses -->
-                            <rect x="130" y="40" width="140" height="145" rx="10" fill="#101538" stroke="#F1BF42" stroke-width="2"></rect>
-                            <path d="M130 50 C130 40, 270 40, 270 50 L270 75 L130 75 Z" fill="#F1BF42" opacity="0.2"></path>
-                            <line x1="130" y1="75" x2="270" y2="75" stroke="#F1BF42" stroke-width="2"></line>
-                            <!-- Argolas do Calendário -->
-                            <rect x="160" y="30" width="8" height="18" rx="4" fill="#F1BF42"></rect>
-                            <rect x="232" y="30" width="8" height="18" rx="4" fill="#F1BF42"></rect>
-                            <!-- Texto / Mês -->
-                            <rect x="160" y="52" width="80" height="12" rx="3" fill="#F1BF42"></rect>
-                            <!-- Grid do Mês / Destaque 4 Meses -->
-                            <rect x="150" y="90" width="20" height="18" rx="4" fill="#F1BF42"></rect>
-                            <rect x="180" y="90" width="20" height="18" rx="4" fill="#F1BF42"></rect>
-                            <rect x="210" y="90" width="20" height="18" rx="4" fill="#F1BF42"></rect>
-                            <rect x="240" y="90" width="20" height="18" rx="4" fill="#F1BF42"></rect>
-                            <circle cx="160" cy="99" r="3" fill="#10111A"></circle>
-                            <circle cx="190" cy="99" r="3" fill="#10111A"></circle>
-                            <circle cx="220" cy="99" r="3" fill="#10111A"></circle>
-                            <circle cx="250" cy="99" r="3" fill="#10111A"></circle>
-                            <!-- Linhas de Acompanhamento -->
-                            <rect x="150" y="122" width="100" height="4" rx="2" fill="#9BA3C7" opacity="0.6"></rect>
-                            <rect x="150" y="134" width="80" height="4" rx="2" fill="#9BA3C7" opacity="0.4"></rect>
-                            <rect x="150" y="146" width="90" height="4" rx="2" fill="#9BA3C7" opacity="0.4"></rect>
-                        </svg>
+                    <div class="logistics-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
                     </div>
-                    <div class="logistics-content">
-                        <div class="logistics-title">4 MESES DE DURAÇÃO</div>
-                        <p class="logistics-desc">Período planejado para redefinir as rotinas da sua empresa e acompanhar a equipe na fixação do novo modelo.</p>
-                    </div>
+                    <div class="logistics-title">4 MESES DE DURAÇÃO</div>
+                    <p class="logistics-desc">Período planejado para redefinir as rotinas da sua empresa e acompanhar a
+                        equipe na fixação do novo modelo.</p>
                 </div>
-
-                <!-- CARD 2: 10 ENCONTROS INDIVIDUAIS -->
                 <div class="logistics-card fade-in">
-                    <div class="logistics-card-banner">
-                        <svg viewBox="0 0 400 225" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="400" height="225" fill="#0A0E28"></rect>
-                            <circle cx="200" cy="112" r="80" fill="#F1BF42" opacity="0.08"></circle>
-                            <!-- Laptop / Mockup de Reunião -->
-                            <rect x="120" y="45" width="160" height="105" rx="8" fill="#101538" stroke="#F1BF42" stroke-width="2"></rect>
-                            <path d="M100 150 L300 150 L310 165 C310 168, 305 170, 300 170 L100 170 C95 170, 90 168, 90 165 Z" fill="#101538" stroke="#F1BF42" stroke-width="1.5"></path>
-                            <!-- Câmera do Laptop -->
-                            <circle cx="200" cy="53" r="2.5" fill="#F1BF42"></circle>
-                            <!-- Participantes na tela (1-a-1) -->
-                            <rect x="132" y="62" width="62" height="72" rx="5" fill="#0A0E28" stroke="#F1BF42" stroke-width="1"></rect>
-                            <circle cx="163" cy="88" r="12" fill="none" stroke="#F1BF42" stroke-width="1.5"></circle>
-                            <path d="M151 112 C151 102, 175 102, 175 112" stroke="#F1BF42" stroke-width="1.5" fill="none"></path>
-
-                            <rect x="206" y="62" width="62" height="72" rx="5" fill="#0A0E28" stroke="#F1BF42" stroke-width="1"></rect>
-                            <circle cx="237" cy="88" r="12" fill="none" stroke="#9BA3C7" stroke-width="1.5"></circle>
-                            <path d="M225 112 C225 102, 249 102, 249 112" stroke="#9BA3C7" stroke-width="1.5" fill="none"></path>
-                            <!-- Badge 10 Sessions -->
-                            <rect x="180" y="120" width="40" height="12" rx="6" fill="#F1BF42"></rect>
-                            <text x="200" y="129" font-family="'Inter', sans-serif" font-weight="900" font-size="8" fill="#10111A" text-anchor="middle">10x 1:1</text>
-                        </svg>
+                    <div class="logistics-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
                     </div>
-                    <div class="logistics-content">
-                        <div class="logistics-title">10 ENCONTROS INDIVIDUAIS</div>
-                        <p class="logistics-desc">Sessões estratégicas focadas no seu faturamento, processos operacionais e infraestrutura pet.</p>
-                    </div>
+                    <div class="logistics-title">10 ENCONTROS INDIVIDUAIS</div>
+                    <p class="logistics-desc">Sessões estratégicas focadas no seu faturamento, processos operacionais e
+                        infraestrutura pet.</p>
                 </div>
-
-                <!-- CARD 3: SUPORTE DIÁRIO DIRETO -->
                 <div class="logistics-card fade-in">
-                    <div class="logistics-card-banner">
-                        <svg viewBox="0 0 400 225" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="400" height="225" fill="#0A0E28"></rect>
-                            <circle cx="200" cy="112" r="80" fill="#F1BF42" opacity="0.08"></circle>
-                            <!-- Mockup Smartphone -->
-                            <rect x="155" y="30" width="90" height="165" rx="14" fill="#101538" stroke="#F1BF42" stroke-width="2"></rect>
-                            <!-- Speaker / Notch -->
-                            <rect x="185" y="38" width="30" height="4" rx="2" fill="#F1BF42"></rect>
-                            <!-- Mensagens de Chat -->
-                            <rect x="165" y="55" width="60" height="22" rx="6" fill="#0A0E28" stroke="#9BA3C7" stroke-width="1"></rect>
-                            <rect x="171" y="62" width="40" height="3" rx="1.5" fill="#9BA3C7"></rect>
-                            <rect x="171" y="68" width="28" height="3" rx="1.5" fill="#9BA3C7" opacity="0.6"></rect>
-
-                            <rect x="175" y="85" width="60" height="22" rx="6" fill="#F1BF42"></rect>
-                            <rect x="181" y="92" width="45" height="3" rx="1.5" fill="#10111A"></rect>
-                            <rect x="181" y="98" width="30" height="3" rx="1.5" fill="#10111A" opacity="0.7"></rect>
-
-                            <rect x="165" y="115" width="60" height="22" rx="6" fill="#0A0E28" stroke="#9BA3C7" stroke-width="1"></rect>
-                            <rect x="171" y="122" width="38" height="3" rx="1.5" fill="#9BA3C7"></rect>
-                            <rect x="171" y="128" width="25" height="3" rx="1.5" fill="#9BA3C7" opacity="0.6"></rect>
-
-                            <!-- Ícone WhatsApp Flutuante -->
-                            <circle cx="230" cy="165" r="16" fill="#25D366" stroke="#101538" stroke-width="2"></circle>
-                            <path d="M224 169 L225 165 C224 163, 224 160, 226 159 C228 157, 232 157, 234 159 C236 161, 236 164, 234 167 C232 170, 228 171, 224 169 Z" fill="#FFFFFF"></path>
-                        </svg>
+                    <div class="logistics-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
                     </div>
-                    <div class="logistics-content">
-                        <div class="logistics-title">SUPORTE DIÁRIO DIRETO</div>
-                        <p class="logistics-desc">Acesso diário e direto à Tata Pereira no WhatsApp para tirar dúvidas rápidas e aprovar processos.</p>
-                    </div>
+                    <div class="logistics-title">SUPORTE DIÁRIO DIRETO</div>
+                    <p class="logistics-desc">Acesso diário e direto à Tata Pereira no WhatsApp para tirar dúvidas
+                        rápidas e aprovar processos.</p>
                 </div>
-
-                <!-- CARD 4: GRAVAÇÃO DOS ENCONTROS -->
                 <div class="logistics-card fade-in">
-                    <div class="logistics-card-banner">
-                        <svg viewBox="0 0 400 225" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="400" height="225" fill="#0A0E28"></rect>
-                            <circle cx="200" cy="112" r="80" fill="#F1BF42" opacity="0.08"></circle>
-                            <!-- Player de Vídeo -->
-                            <rect x="120" y="45" width="160" height="110" rx="10" fill="#101538" stroke="#F1BF42" stroke-width="2"></rect>
-                            <!-- Header do Player / Badge REC -->
-                            <circle cx="140" cy="62" r="4" fill="#E74C3C"></circle>
-                            <rect x="150" y="58" width="22" height="8" rx="2" fill="#E74C3C" opacity="0.3"></rect>
-                            <text x="161" y="64.5" font-family="'Inter', sans-serif" font-weight="800" font-size="6" fill="#E74C3C" text-anchor="middle">REC</text>
-                            <!-- Botão Play Central -->
-                            <circle cx="200" cy="98" r="22" fill="#F1BF42"></circle>
-                            <path d="M194 88 L212 98 L194 108 Z" fill="#10111A"></path>
-                            <!-- Barra de Progresso de Vídeo -->
-                            <rect x="135" y="138" width="130" height="4" rx="2" fill="#0A0E28"></rect>
-                            <rect x="135" y="138" width="75" height="4" rx="2" fill="#F1BF42"></rect>
-                            <circle cx="210" cy="140" r="5" fill="#F1BF42"></circle>
-                        </svg>
+                    <div class="logistics-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2" ry="2"/></svg>
                     </div>
-                    <div class="logistics-content">
-                        <div class="logistics-title">GRAVAÇÃO DOS ENCONTROS</div>
-                        <p class="logistics-desc">Assista novamente quando quiser ou utilize as gravações para treinar seus gerentes de creche.</p>
-                    </div>
+                    <div class="logistics-title">GRAVAÇÃO DOS ENCONTROS</div>
+                    <p class="logistics-desc">Assista novamente quando quiser ou utilize as gravações para treinar seus
+                        gerentes de creche.</p>
                 </div>
-
-                <!-- CARD 5: MATERIAIS E MODELOS -->
                 <div class="logistics-card fade-in">
-                    <div class="logistics-card-banner">
-                        <svg viewBox="0 0 400 225" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="400" height="225" fill="#0A0E28"></rect>
-                            <circle cx="200" cy="112" r="80" fill="#F1BF42" opacity="0.08"></circle>
-                            <!-- Mockup de Ebook / Guia -->
-                            <rect x="140" y="35" width="120" height="155" rx="8" fill="#101538" stroke="#F1BF42" stroke-width="2"></rect>
-                            <rect x="155" y="55" width="90" height="6" rx="3" fill="#F1BF42"></rect>
-                            <rect x="155" y="68" width="60" height="4" rx="2" fill="#9BA3C7"></rect>
-                            <!-- Ícone de Cão / Comportamento -->
-                            <circle cx="200" cy="105" r="18" fill="none" stroke="#F1BF42" stroke-width="2"></circle>
-                            <path d="M192 110 C192 102, 208 102, 208 110" stroke="#F1BF42" stroke-width="2" fill="none"></path>
-                            <circle cx="194" cy="100" r="2" fill="#F1BF42"></circle>
-                            <circle cx="206" cy="100" r="2" fill="#F1BF42"></circle>
-                            <!-- Linhas de Texto -->
-                            <rect x="155" y="135" width="90" height="3" rx="1.5" fill="#9BA3C7" opacity="0.6"></rect>
-                            <rect x="155" y="143" width="70" height="3" rx="1.5" fill="#9BA3C7" opacity="0.4"></rect>
-                            <rect x="155" y="151" width="80" height="3" rx="1.5" fill="#9BA3C7" opacity="0.4"></rect>
-                        </svg>
+                    <div class="logistics-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.93a2 2 0 0 1-1.66-.9l-.82-1.2A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13c0 1.1.9 2 2 2Z"/></svg>
                     </div>
-                    <div class="logistics-content">
-                        <div class="logistics-title">MATERIAIS E MODELOS</div>
-                        <p class="logistics-desc">Acesso a modelos de POPs, planilhas operacionais e materiais de treinamento prontos para preencher.</p>
-                    </div>
+                    <div class="logistics-title">MATERIAIS E MODELOS</div>
+                    <p class="logistics-desc">Acesso a modelos de POPs, planilhas operacionais e materiais de
+                        treinamento prontos para preencher.</p>
                 </div>
-
-                <!-- CARD 6: AUDITORIA COMPLETA -->
                 <div class="logistics-card fade-in">
-                    <div class="logistics-card-banner">
-                        <svg viewBox="0 0 400 225" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="400" height="225" fill="#0A0E28"></rect>
-                            <circle cx="200" cy="112" r="80" fill="#F1BF42" opacity="0.08"></circle>
-                            <!-- Prancheta de Auditoria -->
-                            <rect x="135" y="40" width="130" height="150" rx="8" fill="#101538" stroke="#F1BF42" stroke-width="2"></rect>
-                            <!-- Presilha Superior -->
-                            <rect x="175" y="32" width="50" height="14" rx="4" fill="#F1BF42"></rect>
-                            <circle cx="200" cy="39" r="3" fill="#10111A"></circle>
-                            <!-- Itens Auditados com Check -->
-                            <circle cx="155" cy="70" r="7" fill="#F1BF42"></circle>
-                            <path d="M152 70 L154 72 L158 68" stroke="#10111A" stroke-width="1.5" fill="none"></path>
-                            <rect x="170" y="68" width="75" height="4" rx="2" fill="#F1BF42"></rect>
-
-                            <circle cx="155" cy="95" r="7" fill="#F1BF42"></circle>
-                            <path d="M152 95 L154 97 L158 93" stroke="#10111A" stroke-width="1.5" fill="none"></path>
-                            <rect x="170" y="93" width="60" height="4" rx="2" fill="#F1BF42"></rect>
-
-                            <circle cx="155" cy="120" r="7" fill="#F1BF42"></circle>
-                            <path d="M152 120 L154 122 L158 118" stroke="#10111A" stroke-width="1.5" fill="none"></path>
-                            <rect x="170" y="118" width="70" height="4" rx="2" fill="#F1BF42"></rect>
-
-                            <!-- Lupa Ilustrativa -->
-                            <circle cx="230" cy="140" r="20" fill="#101538" stroke="#F1BF42" stroke-width="3"></circle>
-                            <line x1="244" y1="154" x2="260" y2="170" stroke="#F1BF42" stroke-width="4" stroke-linecap="round"></line>
-                            <path d="M222 138 L227 143 L238 132" stroke="#F1BF42" stroke-width="2.5" fill="none"></path>
-                        </svg>
+                    <div class="logistics-icon">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="m9 11 2 2 4-4"/></svg>
                     </div>
-                    <div class="logistics-content">
-                        <div class="logistics-title">AUDITORIA COMPLETA</div>
-                        <p class="logistics-desc">Auditorias constantes dos seus procedimentos operacionais e acompanhamento dos indicadores.</p>
-                    </div>
+                    <div class="logistics-title">AUDITORIA COMPLETA</div>
+                    <p class="logistics-desc">Auditorias constantes dos seus procedimentos operacionais e acompanhamento
+                        dos indicadores.</p>
                 </div>
             </div>
 
             <div style="margin-top: 40px;" class="fade-in">
-                <a href="#" class="primary btn-hero open-app-modal">QUERO ESTRUTURAR MINHA CRECHE</a>
+                <a href="#" class="primary btn-hero open-app-modal">
+                    <span>QUERO ESTRUTURAR MINHA CRECHE</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
             </div>
         </div>
     </section>
@@ -2332,19 +2276,20 @@ Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da
                     <div class="section-tag-cream">Documentação Prática</div>
                     <h2 class="section-title-cream">Procedimentos Operacionais Padrão (POPs)</h2>
                     <p style="color: var(--cream-text-body); margin-top: 14px; line-height: 1.7;">
-                        Durante o programa, você terá acesso a modelos de procedimentos operacionais para creches e, com a Tata, desenvolverá os modelos adaptados à sua realidade.
+                        Durante o programa, você terá acesso a modelos de procedimentos operacionais para creches e, com
+                        a Tata, desenvolverá os modelos adaptados à sua realidade.
                     </p>
                 </div>
 
                 <div class="pops-box fade-in">
                     <h3>Modelos prontos e adaptáveis:</h3>
-                    <div class="pop-item"><span class="pop-check">✓</span> POPs de Entrada e Saída dos Cães</div>
-                    <div class="pop-item"><span class="pop-check">✓</span> POPs de Alimentação</div>
-                    <div class="pop-item"><span class="pop-check">✓</span> POPs de Manejo e Monitoramento</div>
-                    <div class="pop-item"><span class="pop-check">✓</span> POPs de Limpeza</div>
-                    <div class="pop-item"><span class="pop-check">✓</span> POPs de Segurança</div>
-                    <div class="pop-item"><span class="pop-check">✓</span> POPs de Integração e Treinamento</div>
-                    <div class="pop-item"><span class="pop-check">✓</span> POPs de Triagem e Avaliação</div>
+                    <div class="pop-item"><span class="pop-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> POPs de Entrada e Saída dos Cães</div>
+                    <div class="pop-item"><span class="pop-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> POPs de Alimentação</div>
+                    <div class="pop-item"><span class="pop-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> POPs de Manejo e Monitoramento</div>
+                    <div class="pop-item"><span class="pop-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> POPs de Limpeza</div>
+                    <div class="pop-item"><span class="pop-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> POPs de Segurança</div>
+                    <div class="pop-item"><span class="pop-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> POPs de Integração e Treinamento</div>
+                    <div class="pop-item"><span class="pop-check"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span> POPs de Triagem e Avaliação</div>
                 </div>
             </div>
         </div>
@@ -2361,17 +2306,20 @@ Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da
                 <div class="step-card fade-in">
                     <div class="step-num">1</div>
                     <div class="step-title">Formulário de Aplicação</div>
-                    <p class="step-desc">Você responde a perguntas sobre sua creche, rotina, desafios e o momento do seu negócio.</p>
+                    <p class="step-desc">Você responde a perguntas sobre sua creche, rotina, desafios e o momento do seu
+                        negócio.</p>
                 </div>
                 <div class="step-card fade-in">
                     <div class="step-num">2</div>
                     <div class="step-title">Análise de Perfil</div>
-                    <p class="step-desc">A Tatá analisa se o programa é adequado para o seu momento e se pode te ajudar.</p>
+                    <p class="step-desc">A Tatá analisa se o programa é adequado para o seu momento e se pode te ajudar.
+                    </p>
                 </div>
                 <div class="step-card fade-in">
                     <div class="step-num">3</div>
                     <div class="step-title">Sessão de Diagnóstico</div>
-                    <p class="step-desc">Reunião online e ao vivo para avaliar os desafios da sua operação e apresentar o plano.</p>
+                    <p class="step-desc">Reunião online e ao vivo para avaliar os desafios da sua operação e apresentar
+                        o plano.</p>
                 </div>
                 <div class="step-card fade-in">
                     <div class="step-num">4</div>
@@ -2381,7 +2329,10 @@ Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da
             </div>
 
             <div style="margin-top: 40px;" class="fade-in">
-                <a href="#" class="primary btn-hero open-app-modal">QUERO ESTRUTURAR MINHA CRECHE</a>
+                <a href="#" class="primary btn-hero open-app-modal">
+                    <span>QUERO ESTRUTURAR MINHA CRECHE</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
             </div>
         </div>
     </section>
@@ -2396,11 +2347,12 @@ Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da
                 <div class="faq-item fade-in">
                     <button class="faq-question">
                         <span>O programa serve para quem está começando do zero?</span>
-                        <span class="faq-icon">+</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            Sim, serve perfeitamente. Estruturar o seu negócio pet com processos claros desde o primeiro dia evita retrabalhos, desentendimentos e prejuízos futuros.
+                            Sim, serve perfeitamente. Estruturar o seu negócio pet com processos claros desde o primeiro
+                            dia evita retrabalhos, desentendimentos e prejuízos futuros.
                         </div>
                     </div>
                 </div>
@@ -2408,11 +2360,12 @@ Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da
                 <div class="faq-item fade-in">
                     <button class="faq-question">
                         <span>Como funcionam os encontros individuais?</span>
-                        <span class="faq-icon">+</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            São reuniões 100% online, ao vivo e individuais. Em cada sessão, avaliamos gargalos, desenhamos processos personalizados e acompanhamos a implementação.
+                            São reuniões 100% online, ao vivo e individuais. Em cada sessão, avaliamos gargalos,
+                            desenhamos processos personalizados e acompanhamos a implementação.
                         </div>
                     </div>
                 </div>
@@ -2420,11 +2373,12 @@ Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da
                 <div class="faq-item fade-in">
                     <button class="faq-question">
                         <span>Terei acesso a materiais prontos?</span>
-                        <span class="faq-icon">+</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            Sim! Você terá acesso a modelos estruturados de POPs e planilhas de gestão. Você só precisará preencher e adaptá-los com a ajuda da Tata.
+                            Sim! Você terá acesso a modelos estruturados de POPs e planilhas de gestão. Você só
+                            precisará preencher e adaptá-los com a ajuda da Tata.
                         </div>
                     </div>
                 </div>
@@ -2432,11 +2386,12 @@ Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da
                 <div class="faq-item fade-in">
                     <button class="faq-question">
                         <span>Qual é a duração do programa e suporte?</span>
-                        <span class="faq-icon">+</span>
+                        <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-inner">
-                            O programa dura 4 meses com suporte diário direto com a Tata Pereira pelo WhatsApp para validação de documentos e dúvidas operacionais.
+                            O programa dura 4 meses com suporte diário direto com a Tata Pereira pelo WhatsApp para
+                            validação de documentos e dúvidas operacionais.
                         </div>
                     </div>
                 </div>
@@ -2453,8 +2408,9 @@ Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da
             <div class="support-box fade-in">
                 <h3>AINDA EM DÚVIDA?</h3>
                 <p>Chame nossa equipe no WhatsApp e tire suas dúvidas diretas sobre o programa.</p>
-                <a class="primary btn-hero" onclick="window.open(window.CONFIG.whatsappUrl, '_blank')">
-                    CHAMAR NO WHATSAPP
+                <a href="#" class="primary btn-hero" onclick="window.open(window.CONFIG.whatsappUrl, '_blank')">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.322-.297-.124-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.124-1.256-.463-2.393-1.479-.885-.801-1.482-1.79-1.655-2.087-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                    <span>CHAMAR NO WHATSAPP</span>
                 </a>
             </div>
         </div>
@@ -2523,6 +2479,7 @@ Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da
                                         d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                                 </svg>
                             </a>
+
                             <a class="social-icon-btn" href="https://wa.me/5521975994712" target="_blank"
                                 rel="noopener noreferrer" aria-label="WhatsApp">
                                 <svg viewBox="0 0 24 24">
@@ -2536,29 +2493,39 @@ Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da
             </div>
 
             <div class="footer-bottom">
-                <div>© 2026 Tata Pereira. Todos os direitos reservados.</div>
+                <div>&copy; 2026 Tata Pereira. Todos os direitos reservados.</div>
             </div>
         </div>
     </footer>
 
     <!-- WHATSAPP FLUTUANTE -->
-    <a href="#" class="whatsapp-float" onclick="window.open(window.CONFIG.whatsappUrl, '_blank')" aria-label="WhatsApp Support">
+    <a href="#" class="whatsapp-float" onclick="window.open(window.CONFIG.whatsappUrl, '_blank')"
+        aria-label="WhatsApp Support">
         <svg viewBox="0 0 24 24">
-            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.322-.297-.124-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.124-1.256-.463-2.393-1.479-.885-.801-1.482-1.79-1.655-2.087-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+            <path
+                d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.322-.297-.124-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.124-1.256-.463-2.393-1.479-.885-.801-1.482-1.79-1.655-2.087-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
         </svg>
     </a>
 
     <!-- APPLICATION POPUP MODAL -->
     <div id="app-modal" class="app-modal-overlay">
         <div class="app-modal-container">
-            <button id="close-modal" class="modal-close-btn" aria-label="Fechar janela">✕</button>
+            <button id="close-modal" class="modal-close-btn" aria-label="Fechar janela">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
             <h3 class="modal-title">Como deseja aplicar?</h3>
             <p class="modal-subtitle">
-                Preencha o formulário para adiantar sua análise e agendar uma reunião de diagnóstico individual.
+                Recomendamos preencher o formulário para adiantar sua análise, mas você também pode falar com a equipe
+                diretamente.
             </p>
             <div style="display: flex; flex-direction: column; gap: 12px;">
-                <a href="#" class="primary" onclick="window.open(window.CONFIG.applicationUrl, '_blank')">
-                    📋 Preencher Formulário de Aplicação
+                <a class="primary" onclick="window.open(window.CONFIG.applicationUrl, '_blank')">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/></svg>
+                    <span>Preencher Formulário de Aplicação</span>
+                </a>
+                <a class="primary" style="background: rgba(255, 255, 255, 0.08); border: 1.5px solid var(--navy-border-card); color: var(--navy-text-main); box-shadow: none;" onclick="window.open(window.CONFIG.whatsappUrl, '_blank')">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.322-.297-.124-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.124-1.256-.463-2.393-1.479-.885-.801-1.482-1.79-1.655-2.087-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+                    <span>Falar Direto no WhatsApp</span>
                 </a>
             </div>
         </div>
@@ -2575,10 +2542,8 @@ Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da
             openButtons.forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     e.preventDefault();
-                    if (modal) {
-                        modal.classList.add('active');
-                        document.body.style.overflow = 'hidden';
-                    }
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
                 });
             });
 
@@ -2586,17 +2551,13 @@ Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da
                 closeButton.addEventListener('click', closeModal);
             }
 
-            if (modal) {
-                modal.addEventListener('click', (e) => {
-                    if (e.target === modal) closeModal();
-                });
-            }
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) closeModal();
+            });
 
             function closeModal() {
-                if (modal) {
-                    modal.classList.remove('active');
-                    document.body.style.overflow = '';
-                }
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
             }
 
             // Video Player Activation
@@ -2627,36 +2588,31 @@ Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da
                 const question = item.querySelector('.faq-question');
                 const answer = item.querySelector('.faq-answer');
 
-                if (question && answer) {
-                    question.addEventListener('click', () => {
-                        const isActive = item.classList.contains('active');
-                        faqItems.forEach(i => {
-                            i.classList.remove('active');
-                            const a = i.querySelector('.faq-answer');
-                            if (a) a.style.maxHeight = null;
-                        });
-                        if (!isActive) {
-                            item.classList.add('active');
-                            answer.style.maxHeight = answer.scrollHeight + 'px';
-                        }
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    faqItems.forEach(i => {
+                        i.classList.remove('active');
+                        i.querySelector('.faq-answer').style.maxHeight = null;
                     });
-                }
+                    if (!isActive) {
+                        item.classList.add('active');
+                        answer.style.maxHeight = answer.scrollHeight + 'px';
+                    }
+                });
             });
 
             // Intersection Observer para Fade-in
             const fadeElements = document.querySelectorAll(".fade-in");
-            if (fadeElements.length > 0) {
-                const fadeObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add("visible");
-                            fadeObserver.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.1 });
+            const fadeObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        fadeObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
 
-                fadeElements.forEach(el => fadeObserver.observe(el));
-            }
+            fadeElements.forEach(el => fadeObserver.observe(el));
 
             // Counter Animation
             const statNumbers = document.querySelectorAll('.stat-number');
@@ -2665,7 +2621,6 @@ Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da
             const animateStats = () => {
                 statNumbers.forEach(stat => {
                     const target = +stat.getAttribute('data-target');
-                    if (!target) return;
                     let current = 0;
                     const increment = target > 500 ? 10 : 1;
                     const timer = setInterval(() => {
@@ -2680,19 +2635,17 @@ Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da
                 });
             };
 
-            const mentorSection = document.querySelector('.mentor-section');
-            if (mentorSection && statNumbers.length > 0) {
-                const statsObserver = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting && !animated) {
-                            animateStats();
-                            animated = true;
-                        }
-                    });
-                }, { threshold: 0.2 });
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !animated) {
+                        animateStats();
+                        animated = true;
+                    }
+                });
+            }, { threshold: 0.2 });
 
-                statsObserver.observe(mentorSection);
-            }
+            const mentorSection = document.querySelector('.mentor-section');
+            if (mentorSection) statsObserver.observe(mentorSection);
         });
     </script>
 </body>
