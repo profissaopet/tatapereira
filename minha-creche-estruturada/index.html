@@ -539,6 +539,12 @@
             object-position: center center;
             display: block;
         }
+        @media (max-width: 768px) {
+    .benefits-image-wrap img {
+        max-height: 300px;           /* Reduz um pouco a altura no mobile para caber melhor na tela */
+        object-position: top center; /* Muda o foco para o topo da imagem (mostrando o rosto e a mão) */
+    }
+}
 
         /* =========================================================
            SECTION 4: A CRECHE CRESCE (PAIN GRID)
