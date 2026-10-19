@@ -430,9 +430,10 @@
             padding: 20px 24px;
             display: flex;
             align-items: center;
-            gap: 16px;
+            justify-content: space-between; /* Distribui o espaço entre o ícone e o texto */
             box-shadow: var(--shadow-cream);
             transition: var(--transition);
+            position: relative;
         }
 
         .target-card:hover {
@@ -459,7 +460,9 @@
             font-size: 14.5px;
             font-weight: 700;
             color: var(--cream-text-main);
-            text-align: center;
+            flex: 1;             /* Ocupa todo o espaço central livre */
+            text-align: center;  /* Centraliza o texto */
+            margin-right: 32px;  /* Compensa exatamente a largura do ícone para o texto ficar no meio exato do card */
         }
 
         /* =========================================================
