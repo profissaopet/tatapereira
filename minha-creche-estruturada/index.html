@@ -541,32 +541,26 @@
         .benefits-image-wrap img {
             width: 100%;
             height: 100%;
-            /* Usamos min-height para garantir que a imagem não achate no meio-termo */
-            min-height: 350px; 
-            max-height: 450px;
+            max-height: 400px;
             object-fit: cover;
-            /* Mantém sempre focado do meio para cima para nunca cortar o rosto/mão */
-            object-position: top center; 
+            object-position: 50% 20%; /* Posiciona o foco levemente abaixo do topo, ajustando perfeitamente o rosto e a mão */
             display: block;
         }
 
-        /* Ajuste para telas intermediárias (Tablets / Meio-termo) */
-        @media (min-width: 769px) and (max-width: 1024px) {
+        /* Ajuste fluido para telas intermediárias e mobile */
+        @media (max-width: 1024px) {
             .benefits-image-wrap img {
-                max-height: 400px;
-                object-position: top center;
+                max-height: 350px;
+                object-position: 50% 15%;
             }
         }
 
-        /* Ajuste específico para celulares */
         @media (max-width: 768px) {
             .benefits-image-wrap img {
                 max-height: 300px;
-                min-height: 250px;
+                object-position: 50% 15%;
             }
         }
-
-
         /* =========================================================
            SECTION 4: A CRECHE CRESCE (PAIN GRID)
            ========================================================= */
