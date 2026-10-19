@@ -755,74 +755,132 @@
       font-size: 1.2rem;
     }
 
-    /* =========================================================
-       8. QUEM VAI TE ENSINAR (NAVY com FOTO À DIREITA)
+  /* =========================================================
+       7. SOBRE A TATA (BIO PADRONIZADA)
        ========================================================= */
-    .mentor-wrapper-right {
-      display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 40px;
-      align-items: center;
-      max-width: 980px;
-      margin: 30px auto 0;
+    .about {
+      background:
+        radial-gradient(circle at 80% 30%, rgba(241, 191, 66, 0.08) 0%, rgba(5, 7, 23, 0) 50%),
+        var(--navy-surface-1);
+      color: var(--navy-text-main);
+      padding: 100px 0;
     }
 
-    .mentor-img-right {
-      width: 100%;
-      height: 480px;
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      align-items: center;
+      gap: 60px;
+    }
+
+    .about-image-wrap {
+      position: relative;
       border-radius: var(--radius-lg);
       overflow: hidden;
-      border: 1.5px solid var(--navy-border-card);
+      border: 1px solid var(--navy-border-card);
       box-shadow: var(--shadow-lg);
-      background: var(--navy-surface-1);
     }
 
-    .mentor-img-right img {
+    .about-image-wrap img {
       width: 100%;
-      height: 100%;
       object-fit: cover;
-      object-position: center 12%;
       display: block;
     }
 
-    .mentor-stats-grid {
+    .about-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gold-primary);
+      background: var(--gold-muted);
+      border: 1px solid var(--gold-border);
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      margin-bottom: 14px;
+    }
+
+    .section-title-navy {
+      font-size: clamp(24px, 3vw, 36px);
+      font-weight: 900;
+      color: var(--navy-text-main);
+      margin-bottom: 16px;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .about-lead {
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.6;
+      color: #f1f5f9;
+      margin-top: 12px;
+      margin-bottom: 16px;
+    }
+
+    .about-story {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--navy-text-muted);
+    }
+
+    .about-story p {
+      margin-bottom: 12px;
+    }
+
+    .about-highlights-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 20px;
+      gap: 12px;
+      margin-top: 24px;
+      margin-bottom: 30px;
     }
 
-    .mentor-stat-card {
-      background: var(--navy-card);
-      border: 1.5px solid var(--navy-border-card);
+    .about-highlight-card {
+      background: rgba(5, 7, 23, 0.55);
+      border: 1px solid var(--navy-border-subtle);
+      padding: 14px;
       border-radius: var(--radius-md);
-      padding: 16px;
-      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      transition: var(--transition);
     }
 
-    .mentor-stat-card strong {
-      display: block;
-      font-size: 1.2rem;
+    .about-highlight-card:hover {
+      border-color: var(--gold-border);
+      background: rgba(16, 21, 56, 0.7);
+    }
+
+    .about-highlight-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--gold-muted);
+      border: 1px solid var(--gold-border);
       color: var(--gold-primary);
-      font-family: 'Montserrat', sans-serif;
-      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 12px;
+      flex-shrink: 0;
     }
 
-    .mentor-stat-card p {
-      font-size: 0.85rem;
-      color: var(--navy-text-muted);
+    .about-highlight-text {
+      font-size: 13px;
+      font-weight: 600;
+      color: #e2e8f0;
       line-height: 1.4;
     }
 
-    .mentor-quote {
-      margin-top: 24px;
-      background: rgba(255, 255, 255, 0.04);
-      border-left: 4px solid var(--gold-primary);
-      padding: 14px 18px;
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      font-style: italic;
-      font-size: 0.92rem;
-      color: var(--navy-text-main);
+    @media (max-width: 860px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
     }
 
     /* =========================================================
@@ -1564,46 +1622,64 @@
       </div>
     </section>
 
-    <!-- =======================================================
-          8. QUEM VAI TE ENSINAR (NAVY com FOTO À DIREITA)
+   <!-- =======================================================
+          7. SOBRE A TATA (BIO PADRONIZADA)
     ======================================================== -->
-    <section>
-      <div class="container">
-        <div class="mentor-wrapper-right">
-          <div class="mentor-content">
-            <span class="section-kicker" style="text-align: left;">QUEM VAI TE ENSINAR</span>
-            <h2>Eu também não queria viver de amor e salário apertado.</h2>
-            <p style="margin-top: 10px; font-size: 0.92rem; color: var(--navy-text-muted); line-height: 1.6;">
-  Sou adestradora e atuo na formação de profissionais e na estruturação de negócios pet. Sou fundadora
-                    da Tata EducaCão, um ecossistema de educação para cães e seus responsáveis, que reúne escola canina,
-                    consultorias comportamentais, programas de adestramento e uma equipe de passeadores, adestradores e
-                    pet sitters.
-<br>
-                    Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da minha atuação no
-                    setor pet, onde trabalhei como pet sitter, dog walker, adestradora, monitora, supervisora e
-                    consultora de creches caninas. Minha trajetória une prática, gestão e conhecimento da rotina real de
-                    operação, tanto no atendimento às famílias quanto na preparação de profissionais e na organização de
-                    negócios pet.            </p>
+    <section class="about" id="sobre">
+      <div class="container about-grid">
+        <div class="about-image-wrap fade-in">
+          <img src="../assets/bio.png" alt="Tata Pereira especialista em comportamento e negócios pet com cão" />
+        </div>
 
-            <div class="mentor-stats-grid">
-              <div class="mentor-stat-card">
-                <strong>13 anos</strong>
-                <p>no mercado financeiro antes de migrar para o mercado pet.</p>
-              </div>
-              <div class="mentor-stat-card">
-                <strong>8 anos</strong>
-                <p>atuando com educação e comportamento canino, em creches, programas de socialização e atendendo famílias.</p>
-              </div>
+        <div class="about-content fade-in">
+          <span class="about-badge">Especialista & Fundadora</span>
+
+          <h2 class="section-title-navy">
+            Muito prazer, sou a Tata Pereira
+          </h2>
+          <p class="about-lead">
+            Sou adestradora e atuo na formação de profissionais e na estruturação de negócios pet. Sou fundadora
+            da Tata EducaCão, um ecossistema de educação para cães e seus responsáveis, que reúne escola canina,
+            consultorias comportamentais, programas de adestramento e uma equipe de passeadores, adestradores e
+            pet sitters.
+          </p>
+          <div class="about-story">
+            <p>
+              Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da minha atuação no
+              setor pet, onde trabalhei como pet sitter, dog walker, adestradora, monitora, supervisora e
+              consultora de creches caninas. Minha trajetória une prática, gestão e conhecimento da rotina real de
+              operação, tanto no atendimento às famílias quanto na preparação de profissionais e na organização de
+              negócios pet.
+            </p>
+          </div>
+
+          <div class="about-highlights-grid">
+            <div class="about-highlight-card">
+              <div class="about-highlight-icon">✓</div>
+              <div class="about-highlight-text">8 anos de atuação prática no mercado pet</div>
             </div>
-
-            <div class="mentor-quote">
-              “O que eu ensino aqui é exatamente o que eu gostaria de ter aprendido antes de ver tanta gente boa sendo jogada no coletivo sem preparo.”
+            <div class="about-highlight-card">
+              <div class="about-highlight-icon">✓</div>
+              <div class="about-highlight-text">13 anos de bagagem no mundo corporativo</div>
+            </div>
+            <div class="about-highlight-card">
+              <div class="about-highlight-icon">✓</div>
+              <div class="about-highlight-text">Vivência completa: Pet Sitter, Dog Walker, Monitora e Consultora</div>
+            </div>
+            <div class="about-highlight-card">
+              <div class="about-highlight-icon">✓</div>
+              <div class="about-highlight-text">+100 profissionais capacitados e +1.000 famílias atendidas</div>
             </div>
           </div>
 
-          <div class="mentor-img-right">
-            <img src="../assets/bio.png" alt="Tata Pereira" />
-          </div>
+          <a class="primary btn-hero"
+            href="https://wa.me/5521975994712?text=Ol%C3%A1%20Tata!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20sua%20equipe."
+            target="_blank" rel="noopener noreferrer">
+            <span>FALAR COM A EQUIPE</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+            </svg>
+          </a>
         </div>
       </div>
     </section>
