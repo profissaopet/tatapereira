@@ -558,7 +558,7 @@
             margin: 40px auto 0 auto;
         }
 
-        .pain-card {
+       .pain-card {
             background: var(--cream-card);
             color: var(--cream-text-main);
             border: 1.5px solid var(--cream-border-card);
@@ -566,7 +566,8 @@
             padding: 20px 24px;
             display: flex;
             align-items: center;
-            gap: 16px;
+            /* REMOVIDO o gap: 16px; para não empurrar o texto */
+            position: relative; /* Necessário para posicionar o ícone e o texto perfeitamente */
             box-shadow: var(--shadow-cream);
             transition: var(--transition);
         }
@@ -589,11 +590,15 @@
             font-weight: 900;
             font-size: 15px;
             flex-shrink: 0;
+            position: absolute; /* Fixa o ícone na esquerda do card */
+            left: 24px;         /* Mantém a mesma distância da borda do padding */
         }
 
-        .pain-text {
+       .pain-text {
             font-size: 14px;
             font-weight: 700;
+            width: 100%;        /* Faz o texto ocupar toda a largura da caixa */
+            text-align: center; /* Centraliza o texto exatamente no meio */
         }
 
         .pain-callout {
