@@ -488,35 +488,35 @@
       font-style: italic;
     }
 
-    /* =========================================================
-       4. TALVEZ VOCÊ PENSE / OBJEÇÕES (CREAM com FOTO À ESQUERDA)
-       ========================================================= */
-    .objections-wrapper {
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 40px;
-      align-items: center;
-      max-width: 1000px;
-      margin: 30px auto 0;
-    }
+/* =========================================================
+   4. TALVEZ VOCÊ PENSE / OBJEÇÕES (CREAM com FOTO À ESQUERDA)
+   ========================================================= */
+.objections-wrapper {
+  display: grid;
+  grid-template-columns: 340px 1fr; /* Aumentamos levemente de 320px para 340px para dar mais largura à foto */
+  gap: 40px;
+  align-items: center;
+  max-width: 1000px;
+  margin: 30px auto 0;
+}
 
-    .objection-img {
-      width: 100%;
-      height: 440px;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1.5px solid var(--cream-border-card);
-      box-shadow: var(--shadow-cream);
-      background: var(--cream-surface-2);
-    }
+.objection-img {
+  width: 100%;
+  height: 460px; /* Leve aumento para enquadrar melhor o cão e o céu */
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1.5px solid var(--cream-border-card);
+  box-shadow: var(--shadow-cream);
+  background: var(--cream-surface-2);
+}
 
-    .objection-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 15%;
-      display: block;
-    }
+.objection-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 35%; /* Centraliza melhor o foco vertical da foto */
+  display: block;
+}
 
     .objections-grid {
       display: grid;
@@ -544,6 +544,25 @@
       color: var(--gold-dark);
       font-weight: 700;
     }
+
+    @media (max-width: 860px) {
+  .objections-wrapper {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .objection-img {
+    height: 380px; /* Altura ideal para mobile sem achatar/cortar */
+  }
+
+  .objection-img img {
+    object-position: center 30%; /* Mantém Tata e o cão perfeitamente visíveis */
+  }
+
+  .objections-grid {
+    grid-template-columns: 1fr; /* Garante 1 coluna nos cards de objeção no mobile */
+  }
+}
 
     /* =========================================================
        5. O ROTEIRO DO CURSO / PARADAS (CREAM com FOTO À DIREITA)
