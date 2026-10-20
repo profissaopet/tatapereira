@@ -648,23 +648,23 @@
       text-transform: lowercase;
     }
 
-   @media (max-width: 860px) {
-  /* 1. Aumenta a altura do container para dar espaço vertical para a foto */
+@media (max-width: 860px) {
+  /* Garante uma altura bacana para a foto no mobile */
   .stops-img-card {
     min-height: 480px !important;
     max-height: 520px !important;
   }
 
-  /* 2. Garante que o enquadramento foque no topo da foto (pessoa/rosto) */
   .stops-img-card img {
     height: 100% !important;
     object-fit: cover !important;
-    object-position: center top !important;
+    object-position: center 20% !important;
   }
 
-  /* 3. Compacta o badge escuro para não ocupar metade do card */
+  /* MUDA O POSICIONAMENTO PARA O TOPO NO MOBILE */
   .stops-features-badge {
-    bottom: 12px !important;
+    top: 12px !important;      /* Cola na parte superior em vez da base */
+    bottom: auto !important;   /* Remove o posicionamento inferior */
     left: 12px !important;
     right: 12px !important;
     padding: 10px 8px !important;
