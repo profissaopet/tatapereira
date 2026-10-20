@@ -546,142 +546,107 @@
       font-weight: 700;
     }
 
-    /* =========================================================
-       5. O ROTEIRO DO CURSO / PARADAS (CREAM com FOTO À DIREITA)
-       ========================================================= */
-    .stops-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 40px;
-      align-items: center;
-      max-width: 1000px;
-      margin: 30px auto 0;
-    }
+   /* =========================================================
+   5. O ROTEIRO DO CURSO / PARADAS (DESKTOP IGUAL À FOTO)
+   ========================================================= */
+.stops-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 360px; /* Largura ideal para o card lateral */
+  gap: 40px;
+  align-items: stretch; /* Estica a foto para emparelhar com a altura da lista */
+  max-width: 1000px;
+  margin: 30px auto 0;
+}
 
-    .stops-list {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
+.stops-img-card {
+  position: relative;
+  width: 100%;
+  height: 100%; /* Ocupa 100% da altura da coluna da esquerda */
+  min-height: 520px; /* Garante altura suficiente para enquadrar a pessoa e o cão */
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1.5px solid var(--cream-border-card);
+  box-shadow: var(--shadow-cream);
+}
 
-    .stop-card {
-      background: var(--cream-card);
-      border: 1.5px solid var(--cream-border-card);
-      border-radius: var(--radius-md);
-      padding: 16px 20px;
-      box-shadow: var(--shadow-cream);
-      display: flex;
-      gap: 16px;
-      align-items: center;
-    }
+.stops-img-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 65%; /* Desce o ponto focal para mostrar a pessoa e o cãozinho no chão */
+  display: block;
+}
 
-    .stop-num {
-      width: 32px;
-      height: 32px;
-      background: var(--cream-text-main);
-      color: var(--cream-card);
-      font-weight: 900;
-      font-size: 0.95rem;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
+/* Badge no DESKTOP: Fica na parte inferior */
+.stops-features-badge {
+  position: absolute;
+  bottom: 16px;
+  top: auto;
+  left: 16px;
+  right: 16px;
+  background: rgba(10, 14, 40, 0.92);
+  border: 1px solid var(--gold-border);
+  backdrop-filter: blur(10px);
+  padding: 14px 12px;
+  border-radius: var(--radius-md);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  text-align: center;
+}
 
-    .stop-content h3 {
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: var(--cream-text-main);
-      margin-bottom: 2px;
-    }
+.stops-feature-item strong {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--navy-text-main);
+  font-weight: 700;
+}
 
-    .stop-content p {
-      font-size: 0.83rem;
-      color: var(--cream-text-muted);
-      line-height: 1.45;
-    }
+.stops-feature-item span {
+  font-size: 0.7rem;
+  color: var(--gold-primary);
+  text-transform: lowercase;
+}
 
-    .stops-img-card {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 3 / 4;
-      max-height: 480px;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1.5px solid var(--cream-border-card);
-      box-shadow: var(--shadow-cream);
-    }
+/* =========================================================
+   RESPONSIVIDADE (MOBILE / TELAS MENORES)
+   ========================================================= */
+@media (max-width: 860px) {
+  .stops-wrapper {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
 
-    .stops-img-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      display: block;
-    }
+  .stops-img-card {
+    height: auto;
+    min-height: 480px;
+    max-height: 520px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
 
-    .stops-features-badge {
-      position: absolute;
-      bottom: 16px;
-      left: 16px;
-      right: 16px;
-      background: rgba(10, 14, 40, 0.92);
-      border: 1px solid var(--gold-border);
-      backdrop-filter: blur(10px);
-      padding: 12px;
-      border-radius: var(--radius-md);
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      text-align: center;
-    }
+  .stops-img-card img {
+    object-position: center 20%;
+  }
 
-    .stops-feature-item strong {
-      display: block;
-      font-size: 0.72rem;
-      color: var(--navy-text-main);
-    }
+  /* No mobile, o badge passa para o topo conforme tínhamos definido */
+  .stops-features-badge {
+    top: 12px !important;
+    bottom: auto !important;
+    left: 12px !important;
+    right: 12px !important;
+    padding: 10px 8px !important;
+    gap: 6px !important;
+  }
 
-    .stops-feature-item span {
-      font-size: 0.7rem;
-      color: var(--gold-primary);
-      text-transform: lowercase;
-    }
+  .stops-feature-item strong {
+    font-size: 0.68rem !important;
+  }
 
-    /* Ajustes específicos do mobile para o card do roteiro */
-    @media (max-width: 860px) {
-      .stops-img-card {
-        min-height: 480px !important;
-        max-height: 520px !important;
-        max-width: 400px;
-        margin: 0 auto;
-      }
-
-      .stops-img-card img {
-        height: 100% !important;
-        object-fit: cover !important;
-        object-position: center 20% !important;
-      }
-
-      /* Mantém o badge flutuando no TOPO no mobile para não cortar a foto */
-      .stops-features-badge {
-        top: 12px !important;
-        bottom: auto !important;
-        left: 12px !important;
-        right: 12px !important;
-        padding: 10px 8px !important;
-        gap: 6px !important;
-      }
-
-      .stops-feature-item strong {
-        font-size: 0.68rem !important;
-      }
-
-      .stops-feature-item span {
-        font-size: 0.62rem !important;
-      }
-    }
+  .stops-feature-item span {
+    font-size: 0.62rem !important;
+  }
+}
 
     /* =========================================================
        6. QUANDO VOCÊ SE PROFISSIONALIZA... (CREAM)
