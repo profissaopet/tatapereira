@@ -648,33 +648,37 @@
       text-transform: lowercase;
     }
 
-    @media (max-width: 860px) {
-      /* Ajusta a ordem para a imagem aparecer abaixo ou acima da lista se preferir, 
-         e garante altura adequada no mobile */
-      .stops-wrapper {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
+   @media (max-width: 860px) {
+  /* 1. Aumenta a altura do container para dar espaço vertical para a foto */
+  .stops-img-card {
+    min-height: 480px !important;
+    max-height: 520px !important;
+  }
 
-      .stops-img-card {
-        min-height: 420px;
-        max-height: 480px;
-        width: 100%;
-      }
+  /* 2. Garante que o enquadramento foque no topo da foto (pessoa/rosto) */
+  .stops-img-card img {
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+  }
 
-      .stops-img-card img {
-        object-fit: cover;
-        object-position: center top; /* Foca na parte superior/central da foto para não cortar a pessoa */
-      }
+  /* 3. Compacta o badge escuro para não ocupar metade do card */
+  .stops-features-badge {
+    bottom: 12px !important;
+    left: 12px !important;
+    right: 12px !important;
+    padding: 10px 8px !important;
+    gap: 6px !important;
+  }
 
-      .stops-features-badge {
-        bottom: 12px;
-        left: 12px;
-        right: 12px;
-        padding: 10px;
-      }
-    }
-    
+  .stops-feature-item strong {
+    font-size: 0.68rem !important;
+  }
+
+  .stops-feature-item span {
+    font-size: 0.62rem !important;
+  }
+}
 
     /* =========================================================
        6. QUANDO VOCÊ SE PROFISSIONALIZA... (CREAM)
