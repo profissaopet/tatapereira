@@ -648,6 +648,34 @@
       text-transform: lowercase;
     }
 
+    @media (max-width: 860px) {
+      /* Ajusta a ordem para a imagem aparecer abaixo ou acima da lista se preferir, 
+         e garante altura adequada no mobile */
+      .stops-wrapper {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .stops-img-card {
+        min-height: 420px;
+        max-height: 480px;
+        width: 100%;
+      }
+
+      .stops-img-card img {
+        object-fit: cover;
+        object-position: center top; /* Foca na parte superior/central da foto para não cortar a pessoa */
+      }
+
+      .stops-features-badge {
+        bottom: 12px;
+        left: 12px;
+        right: 12px;
+        padding: 10px;
+      }
+    }
+    
+
     /* =========================================================
        6. QUANDO VOCÊ SE PROFISSIONALIZA... (CREAM)
        ========================================================= */
