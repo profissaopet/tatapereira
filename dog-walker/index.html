@@ -488,7 +488,7 @@
       font-style: italic;
     }
 
-    /* =========================================================
+   /* =========================================================
        4. TALVEZ VOCÊ PENSE / OBJEÇÕES (CREAM com FOTO À ESQUERDA)
        ========================================================= */
     .objections-wrapper {
@@ -502,8 +502,8 @@
 
     .objection-img {
       width: 100%;
-      aspect-ratio: 3 / 4;
-      max-height: 480px;
+      aspect-ratio: 3 / 4; /* Mantém a proporção vertical ideal para mostrar a pessoa e o cão */
+      max-height: 500px;
       border-radius: var(--radius-lg);
       overflow: hidden;
       border: 1.5px solid var(--cream-border-card);
@@ -515,7 +515,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 30%;
+      object-position: center 55%; /* Desce o ponto focal para exibir o cãozinho completo na parte inferior */
       display: block;
     }
 
@@ -546,6 +546,27 @@
       font-weight: 700;
     }
 
+    /* Ajustes específicos para a faixa entre 480px e 860px */
+    @media (max-width: 860px) {
+      .objections-wrapper {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .objection-img {
+        max-width: 420px;
+        aspect-ratio: 3 / 4; /* Garante que o card não fique achatado em tablets/telas intermediárias */
+        margin: 0 auto;
+      }
+
+      .objection-img img {
+        object-position: center 50%; /* Centraliza perfeitamente entre a cabeça da Tata e o cão */
+      }
+
+      .objections-grid {
+        grid-template-columns: 1fr;
+      }
+    }
 /* =========================================================
        5. O ROTEIRO DO CURSO / PARADAS (DESKTOP E MOBILE)
        ========================================================= */
