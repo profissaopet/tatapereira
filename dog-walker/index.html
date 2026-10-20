@@ -47,7 +47,7 @@
     gtag('config', 'G-7Y6MYXW5X3');
   </script>
 
-  <style>
+<style>
     /* =========================================================
        DESIGN SYSTEM - DUAL PALETTE (DEEP NAVY & CREAM CHAMPAGNE)
        ========================================================= */
@@ -488,35 +488,36 @@
       font-style: italic;
     }
 
-/* =========================================================
-   4. TALVEZ VOCÊ PENSE / OBJEÇÕES (CREAM com FOTO À ESQUERDA)
-   ========================================================= */
-.objections-wrapper {
-  display: grid;
-  grid-template-columns: 340px 1fr; /* Aumentamos levemente de 320px para 340px para dar mais largura à foto */
-  gap: 40px;
-  align-items: center;
-  max-width: 1000px;
-  margin: 30px auto 0;
-}
+    /* =========================================================
+       4. TALVEZ VOCÊ PENSE / OBJEÇÕES (CREAM com FOTO À ESQUERDA)
+       ========================================================= */
+    .objections-wrapper {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 40px;
+      align-items: center;
+      max-width: 1000px;
+      margin: 30px auto 0;
+    }
 
-.objection-img {
-  width: 100%;
-  height: 460px; /* Leve aumento para enquadrar melhor o cão e o céu */
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  border: 1.5px solid var(--cream-border-card);
-  box-shadow: var(--shadow-cream);
-  background: var(--cream-surface-2);
-}
+    .objection-img {
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      max-height: 480px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1.5px solid var(--cream-border-card);
+      box-shadow: var(--shadow-cream);
+      background: var(--cream-surface-2);
+    }
 
-.objection-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 35%; /* Centraliza melhor o foco vertical da foto */
-  display: block;
-}
+    .objection-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
 
     .objections-grid {
       display: grid;
@@ -544,25 +545,6 @@
       color: var(--gold-dark);
       font-weight: 700;
     }
-
-    @media (max-width: 860px) {
-  .objections-wrapper {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-
-  .objection-img {
-    height: 380px; /* Altura ideal para mobile sem achatar/cortar */
-  }
-
-  .objection-img img {
-    object-position: center 50%; /* Mantém Tata e o cão perfeitamente visíveis */
-  }
-
-  .objections-grid {
-    grid-template-columns: 1fr; /* Garante 1 coluna nos cards de objeção no mobile */
-  }
-}
 
     /* =========================================================
        5. O ROTEIRO DO CURSO / PARADAS (CREAM com FOTO À DIREITA)
@@ -622,19 +604,20 @@
 
     .stops-img-card {
       position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 4;
+      max-height: 480px;
       border-radius: var(--radius-lg);
       overflow: hidden;
       border: 1.5px solid var(--cream-border-card);
       box-shadow: var(--shadow-cream);
-      height: 100%;
-      min-height: 420px;
     }
 
     .stops-img-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 20%;
+      object-position: center top;
       display: block;
     }
 
@@ -658,7 +641,6 @@
       display: block;
       font-size: 0.72rem;
       color: var(--navy-text-main);
-
     }
 
     .stops-feature-item span {
@@ -666,38 +648,6 @@
       color: var(--gold-primary);
       text-transform: lowercase;
     }
-
-@media (max-width: 860px) {
-  /* Garante uma altura bacana para a foto no mobile */
-  .stops-img-card {
-    min-height: 480px !important;
-    max-height: 520px !important;
-  }
-
-  .stops-img-card img {
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center 20% !important;
-  }
-
-  /* MUDA O POSICIONAMENTO PARA O TOPO NO MOBILE */
-  .stops-features-badge {
-    top: 12px !important;      /* Cola na parte superior em vez da base */
-    bottom: auto !important;   /* Remove o posicionamento inferior */
-    left: 12px !important;
-    right: 12px !important;
-    padding: 10px 8px !important;
-    gap: 6px !important;
-  }
-
-  .stops-feature-item strong {
-    font-size: 0.68rem !important;
-  }
-
-  .stops-feature-item span {
-    font-size: 0.62rem !important;
-  }
-}
 
     /* =========================================================
        6. QUANDO VOCÊ SE PROFISSIONALIZA... (CREAM)
@@ -733,76 +683,7 @@
     }
 
     /* =========================================================
-       7. QUEM VAI TE ENSINAR (NAVY com FOTO À DIREITA)
-       ========================================================= */
-    .mentor-wrapper-right {
-      display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 40px;
-      align-items: center;
-      max-width: 980px;
-      margin: 30px auto 0;
-    }
-
-    .mentor-img-right {
-      width: 100%;
-      height: 480px;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1.5px solid var(--navy-border-card);
-      box-shadow: var(--shadow-lg);
-      background: var(--navy-surface-1);
-    }
-
-    .mentor-img-right img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 12%;
-      display: block;
-    }
-
-    .mentor-stats-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-top: 20px;
-    }
-
-    .mentor-stat-card {
-      background: var(--navy-card);
-      border: 1.5px solid var(--navy-border-card);
-      border-radius: var(--radius-md);
-      padding: 16px;
-      backdrop-filter: blur(12px);
-    }
-
-    .mentor-stat-card strong {
-      display: block;
-      font-size: 1.2rem;
-      color: var(--gold-primary);
-      font-family: 'Montserrat', sans-serif;
-      margin-bottom: 4px;
-    }
-
-    .mentor-stat-card p {
-      font-size: 0.85rem;
-      color: var(--navy-text-muted);
-      line-height: 1.4;
-    }
-
-    .mentor-quote {
-      margin-top: 24px;
-      background: rgba(255, 255, 255, 0.04);
-      border-left: 4px solid var(--gold-primary);
-      padding: 14px 18px;
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      font-style: italic;
-      font-size: 0.92rem;
-      color: var(--navy-text-main);
-    }
-/* =========================================================
-       7. SOBRE A TATA (BIO PADRONIZADA)
+       7. QUEM VAI TE ENSINAR / SOBRE A TATA (BIO PADRONIZADA)
        ========================================================= */
     .about {
       background:
@@ -922,12 +803,6 @@
       line-height: 1.4;
     }
 
-    @media (max-width: 860px) {
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
-    }
     /* =========================================================
        8. SEU PASSE PARA A PROFISSIONALIZAÇÃO & OFERTA (CREAM)
        ========================================================= */
@@ -1259,10 +1134,57 @@
       color: var(--navy-text-muted);
     }
 
+    /* =========================================================
+       RESPONSIVIDADE GERAL E MEDIA QUERIES
+       ========================================================= */
     @media (max-width: 1024px) {
       .footer-grid {
         grid-template-columns: 1fr 1fr;
         gap: 32px;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .hero-grid,
+      .timeline-grid,
+      .objections-wrapper,
+      .objections-grid,
+      .stops-wrapper,
+      .benefits-grid,
+      .about-grid,
+      .offer-wrapper,
+      .faq-section-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-author-card {
+        max-width: 340px;
+        margin: 24px auto 0;
+      }
+
+      .hero-author-card img {
+        height: 390px;
+        object-position: center 18%;
+      }
+
+      .objection-img,
+      .stops-img-card {
+        max-width: 400px;
+        aspect-ratio: 4 / 3;
+        margin: 0 auto;
+      }
+
+      .cta-bottom-bar {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .cta-bottom-bar .primary {
+        width: 100%;
+        max-width: 380px;
+        justify-content: center;
       }
     }
 
@@ -1281,67 +1203,11 @@
         text-align: center;
         gap: 10px;
       }
-    }
 
-    /* RESPONSIVIDADE */
-    @media (max-width: 860px) {
-
-      .hero-grid,
-      .timeline-grid,
-      .objections-wrapper,
-      .objections-grid,
-      .stops-wrapper,
-      .benefits-grid,
-      .mentor-wrapper-right,
-      .offer-wrapper,
-      .faq-section-grid,
-      .mentor-stats-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-author-card {
-        max-width: 340px;
-        margin: 24px auto 0;
-      }
-
-      .hero-author-card img {
-        height: 390px;
-        object-position: center 18%;
-      }
-
-      .objection-img {
-        height: 340px;
-        max-width: 440px;
-        margin: 0 auto 20px;
-      }
-
-      .mentor-img-right {
-        order: -1;
-        height: 400px;
-        max-width: 320px;
-        margin: 0 auto 25px;
-      }
-
-      .mentor-img-right img {
-        object-position: center 12%;
-      }
-
+      .objection-img,
       .stops-img-card {
-        min-height: 340px;
-        max-height: 440px;
-      }
-
-      .cta-bottom-bar {
-        flex-direction: column;
-        text-align: center;
-        justify-content: center;
-        gap: 20px;
-      }
-
-      .cta-bottom-bar .primary {
-        width: 100%;
-        max-width: 380px;
-        justify-content: center;
+        aspect-ratio: 3 / 4;
+        max-height: 420px;
       }
     }
   </style>
