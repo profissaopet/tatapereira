@@ -488,22 +488,13 @@
       font-style: italic;
     }
 
-   /* =========================================================
-       4. TALVEZ VOCÊ PENSE / OBJEÇÕES (CREAM com FOTO À ESQUERDA)
+  /* =========================================================
+       4. TALVEZ VOCÊ PENSE / OBJEÇÕES (ENQUADRAMENTO PERFEITO)
        ========================================================= */
-    .objections-wrapper {
-      display: grid;
-      grid-template-columns: 340px 1fr;
-      gap: 40px;
-      align-items: center;
-      max-width: 1000px;
-      margin: 30px auto 0;
-    }
-
     .objection-img {
       width: 100%;
-      aspect-ratio: 3 / 4; /* Mantém a proporção vertical ideal para mostrar a pessoa e o cão */
-      max-height: 500px;
+      aspect-ratio: 3 / 4; /* Garante o formato vertical em qualquer ecrã */
+      max-height: 520px;
       border-radius: var(--radius-lg);
       overflow: hidden;
       border: 1.5px solid var(--cream-border-card);
@@ -515,38 +506,11 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 55%; /* Desce o ponto focal para exibir o cãozinho completo na parte inferior */
+      object-position: center 25%; /* Ponto focal ideal: enquadra da cabeça ao cão */
       display: block;
     }
 
-    .objections-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .objection-card {
-      background: var(--cream-card);
-      border: 1.5px solid var(--cream-border-card);
-      border-radius: var(--radius-md);
-      padding: 18px;
-      box-shadow: var(--shadow-cream);
-    }
-
-    .objection-card strong {
-      display: block;
-      font-size: 0.85rem;
-      color: var(--cream-text-main);
-      margin-bottom: 6px;
-    }
-
-    .objection-card p {
-      font-size: 0.83rem;
-      color: var(--gold-dark);
-      font-weight: 700;
-    }
-
-    /* Ajustes específicos para a faixa entre 480px e 860px */
+    /* AJUSTE RESPONSIVO (480px até 860px) */
     @media (max-width: 860px) {
       .objections-wrapper {
         grid-template-columns: 1fr;
@@ -554,17 +518,14 @@
       }
 
       .objection-img {
-        max-width: 420px;
-        aspect-ratio: 3 / 4; /* Garante que o card não fique achatado em tablets/telas intermediárias */
+        max-width: 380px; /* Evita que a foto fique excessivamente larga e achate */
+        aspect-ratio: 3 / 4 !important; /* Força a proporção vertical no mobile */
+        height: 460px !important; /* Altura fixa de segurança para garantir espaço vertical */
         margin: 0 auto;
       }
 
       .objection-img img {
-        object-position: center 50%; /* Centraliza perfeitamente entre a cabeça da Tata e o cão */
-      }
-
-      .objections-grid {
-        grid-template-columns: 1fr;
+        object-position: center 20% !important; /* Sobe a câmara para resgatar o rosto */
       }
     }
 /* =========================================================
