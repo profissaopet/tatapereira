@@ -1156,7 +1156,7 @@
             margin-top: 40px;
         }
 
-        .logistics-card {
+       .logistics-card {
             background: var(--navy-card);
             border: 1.5px solid var(--navy-border-card);
             padding: 28px;
@@ -1164,12 +1164,9 @@
             display: flex;
             flex-direction: column;
             gap: 14px;
+            align-items: center; /* Centraliza horizontalmente todos os itens do card */
+            text-align: center;  /* Garante o alinhamento central dos textos */
             transition: var(--transition);
-        }
-
-        .logistics-card:hover {
-            border-color: var(--gold-border);
-            transform: translateY(-4px);
         }
 
         .logistics-icon {
@@ -1182,6 +1179,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            margin: 0 auto; /* Centraliza o círculo do ícone */
+            flex-shrink: 0;
+        }
+
+        .logistics-card:hover {
+            border-color: var(--gold-border);
+            transform: translateY(-4px);
         }
 
         .logistics-title {
