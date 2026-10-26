@@ -1,0 +1,119 @@
+{
+  "nome_empresa": "Academia de Cursos Online",
+  "hotmart": {
+    "ativo": true,
+    "hottok": "",
+    "produto_padrao": "Curso Online Completo",
+    "link_checkout": "https://pay.hotmart.com/?src=wpp_automacao",
+    "link_acesso": "https://app-vlc.hotmart.com/login",
+    "msg_abandono": "Oi {nome}, tudo bem? 🎓\n\nVi que você estava se inscrevendo no curso *{produto}*, mas o pagamento não foi concluído.\n\n---delay:2---\nAconteceu algum problema ou você ficou com alguma dúvida sobre o conteúdo do curso?\n\nSe quiser garantir sua vaga agora com desconto especial, segue seu link direto:\n{link_checkout}",
+    "msg_pix_boleto": "Olá {nome}! Tudo bem? 💳\n\nRecebemos seu pedido de inscrição para o curso *{produto}*!\n\n---delay:2---\nPara garantir sua vaga na turma com acesso imediato e certificado, segue seu código de pagamento:\n\n{codigo_pix}\n\nAssim que o pagamento for confirmado, seu acesso é liberado instantaneamente!",
+    "msg_aprovado": "🎉 Parabéns, {nome}! Sua inscrição no curso *{produto}* foi CONFIRMADA com sucesso!\n\n---delay:2---\nSeu acesso à área de membros exclusiva foi liberado! Você já pode entrar por aqui:\n{link_acesso}\n\nSeja muito bem-vindo(a) à nossa turma! Se precisar de qualquer ajuda, estamos à disposição aqui no WhatsApp! 🚀",
+    "msg_cancelado": "Oi {nome}, tudo bem? 💳\n\nIdentificamos que o pagamento do curso *{produto}* não foi aprovado pela operadora do cartão.\n\n---delay:2---\nIsso costuma acontecer por bloqueio preventivo do banco ou limite disponível. Se quiser, você pode tentar com outro cartão em até 12x ou via PIX por este link direto:\n{link_checkout}\n\nSe precisar de qualquer suporte, me chame aqui!",
+    "msg_expirado": "Olá {nome}! Tudo bem? ⏳\n\nO prazo de pagamento do seu pedido para o curso *{produto}* expirou.\n\n---delay:2---\nAinda conseguimos segurar as condições e os bônus da sua turma! Se quiser concluir sua inscrição, segue seu link atualizado:\n{link_checkout}",
+    "msg_reembolsado": "Olá {nome}. Confirmamos que o processo de estorno/reembolso do curso *{produto}* foi iniciado junto à Hotmart.\n\n---delay:2---\nSe puder nos contar o motivo ou se houve alguma dificuldade com as aulas, seu feedback é fundamental para continuarmos melhorando. Desejamos muito sucesso na sua trajetória!",
+    "regua_pos_venda": {
+      "ativo": true,
+      "mensagens": [
+        {
+          "id": "dia_3",
+          "dias": 3,
+          "titulo": "Dia 3 (72h) - Dica Prática de Estudos",
+          "ativo": true,
+          "mensagem": "Fala, {nome}! Tudo certo com as aulas do *{produto}*? 📚\n\n---delay:2---\nUma dica importante para os primeiros módulos: assista com um caderno por perto para anotar os pontos-chave. Os alunos que mais têm resultados são os que aplicam os exercícios práticos logo no início!\n\nBons estudos! 🚀",
+          "tipo_disparo": "dias_apos_compra",
+          "data_fixa": "",
+          "hora_fixa": "09:00",
+          "filtro_produto": "TODOS"
+        },
+        {
+          "id": "dia_7",
+          "dias": 7,
+          "titulo": "Dia 7 - Retenção & 1 Semana de Aluno",
+          "ativo": true,
+          "mensagem": "Olá {nome}! Hoje você completa 1 semana como nosso aluno no *{produto}*! 👏\n\n---delay:2---\nComo tem sido sua experiência até agora? Se estiver gostando, ficarei muito feliz com seu feedback. E se precisar de suporte em qualquer aula, nossa equipe está à disposição por aqui!",
+          "tipo_disparo": "dias_apos_compra",
+          "data_fixa": "",
+          "hora_fixa": "09:00",
+          "filtro_produto": "TODOS"
+        },
+        {
+          "id": "dia_15",
+          "dias": 15,
+          "titulo": "Dia 15 - Próximo Nível / Mentoria / Upsell",
+          "ativo": false,
+          "mensagem": "Oi {nome}, como estão os resultados com o curso *{produto}*? 🚀\n\n---delay:2---\nVários alunos nos pediram acompanhamento individual e condições especiais para treinamentos avançados. Se tiver interesse em dar o próximo passo, me dá um alô por aqui!",
+          "tipo_disparo": "dias_apos_compra",
+          "data_fixa": "",
+          "hora_fixa": "09:00",
+          "filtro_produto": "TODOS"
+        }
+      ]
+    },
+    "msg_aviso_acesso": "",
+    "msg_reengajamento": "",
+    "dias_inatividade_reengajamento": 3
+  },
+  "gatilhos_custom": {
+    "curso": {
+      "tipo": "INICIAR_FUNIL",
+      "funil_id": "venda_curso"
+    },
+    "quero o curso": {
+      "tipo": "INICIAR_FUNIL",
+      "funil_id": "venda_curso"
+    },
+    "como funciona o curso": {
+      "tipo": "INICIAR_FUNIL",
+      "funil_id": "venda_curso"
+    },
+    "comprar": {
+      "tipo": "INICIAR_FUNIL",
+      "funil_id": "venda_curso"
+    },
+    "matricula": {
+      "tipo": "INICIAR_FUNIL",
+      "funil_id": "venda_curso"
+    },
+    "humano": {
+      "tipo": "HUMANO"
+    },
+    "atendente": {
+      "tipo": "HUMANO"
+    },
+    "suporte": {
+      "tipo": "HUMANO"
+    }
+  },
+  "funis": {
+    "venda_curso": {
+      "nome": "Qualificação & Venda de Curso Online",
+      "etapas": [
+        {
+          "id": "inicio",
+          "mensagem": "Olá! Que ótimo ver seu interesse no nosso treinamento! 🎓\n\n---delay:2---\nPara eu te orientar da melhor forma, me diz uma coisa: você já tem alguma experiência ou está começando do zero absoluto?",
+          "espera_resposta": true,
+          "campo_salvar": "nivel_aluno",
+          "proxima_etapa": "apresentacao"
+        },
+        {
+          "id": "apresentacao",
+          "mensagem": "Perfeito! O método foi desenvolvido justamente para te levar do básico ao avançado com aulas 100% práticas!\n\n---delay:2---\nAlém do acesso imediato, você conta com certificado de conclusão oficial e suporte direto a todas as dúvidas.\n\n---delay:2---\nGostaria de garantir sua vaga com nossa condição promocional exclusiva de hoje?",
+          "espera_resposta": true,
+          "campo_salvar": "interesse_desconto",
+          "proxima_etapa": "entrega_link"
+        },
+        {
+          "id": "entrega_link",
+          "mensagem": "Show de bola! 🚀 Segue o link seguro com o desconto aplicado:\n\n{link_checkout}\n\n---delay:2---\nAssim que concluir a inscrição, seu acesso à plataforma é liberado na hora no seu e-mail e aqui no WhatsApp!",
+          "espera_resposta": false,
+          "proxima_etapa": null
+        }
+      ]
+    }
+  },
+  "ia_ativa": true,
+  "ia_modelo": "llama3",
+  "ia_url": "http://host.docker.internal:11434",
+  "prompt_ia": "Você é o consultor de matrículas e suporte do curso online. Seu objetivo é tirar dúvidas sobre o conteúdo das aulas, método de ensino, garantia de 7 dias e formas de pagamento (PIX e cartão em até 12x).\n\nDIRETRIZES:\n- Seja empático, prestativo e persuasivo.\n- Respostas curtas de 2 a 3 linhas, como um consultor real no WhatsApp.\n- Se o cliente perguntar como comprar ou quiser se matricular, incentive e envie o link de checkout ou responda [INICIAR_VENDA].\n- Se o cliente pedir para falar com uma pessoa, responda [HUMANO]."
+}
