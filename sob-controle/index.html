@@ -48,8 +48,8 @@
   <link rel="dns-prefetch" href="https://i.ytimg.com" />
 
   <!-- Favicon Otimizado (2.6KB vs 259KB) -->
-  <link rel="icon" type="image/png" sizes="64x64" href="./assets/favicon-64.png" />
-  <link rel="icon" type="image/png" href="./assets/tata-logo-dog.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-64.png" />
+  <link rel="icon" type="image/png" href="../assets/tata-logo-dog.png" />
 
   <!-- Google Fonts: Inter & Montserrat (Pesos essenciais com carregamento assíncrono não-bloqueante) -->
   <link rel="preload" as="style"
@@ -343,6 +343,60 @@
 
     .section-cream .journey-time {
       color: var(--gold-dark);
+    }
+
+    /* CARDS DE ALERTA DA JORNADA (LADO A LADO) */
+    .journey-alerts-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin: 4px 0;
+    }
+
+    .journey-alert-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #ffffff 0%, #fdfbf7 100%);
+      border: 1.5px solid rgba(241, 191, 66, 0.45);
+      border-left: 4px solid var(--gold-dark);
+      box-shadow: 0 4px 16px rgba(181, 142, 28, 0.08);
+      transition: var(--transition);
+    }
+
+    .journey-alert-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(181, 142, 28, 0.15);
+      border-color: var(--gold-dark);
+    }
+
+    .journey-alert-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(241, 191, 66, 0.18);
+      border: 1px solid rgba(241, 191, 66, 0.4);
+      color: var(--gold-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .journey-alert-text {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--cream-text-main);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 680px) {
+      .journey-alerts-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
     }
 
     /* =========================================================
@@ -1824,11 +1878,11 @@
       <a href="../" class="logo" aria-label="Tata Pereira - Início">
         <picture class="logo-icon">
           <source srcset="../assets/tata-logo-dog.webp" type="image/webp">
-          <img src="./assets/tata-logo-dog.png" alt="Tata Pereira Logo Ícone" width="18" height="26" fetchpriority="high" />
+          <img src="../assets/tata-logo-dog.png" alt="Tata Pereira Logo Ícone" width="18" height="26" fetchpriority="high" />
         </picture>
         <picture class="logo-text">
           <source srcset="../assets/tata-logo-nome.webp" type="image/webp">
-          <img src="./assets/tata-logo-nome.png" alt="Tata Pereira Logo Nome" width="54" height="16" fetchpriority="high" />
+          <img src="../assets/tata-logo-nome.png" alt="Tata Pereira Logo Nome" width="54" height="16" fetchpriority="high" />
         </picture>
       </a>
       <div class="immersion-info">
@@ -2010,13 +2064,13 @@
         <div class="compare-img-wrapper">
           <picture>
             <source srcset="../assets/1depara.webp" type="image/webp">
-            <img src="./assets/1depara.png" alt="Avaliação de cães no improviso" width="417" height="348" loading="lazy" decoding="async" />
+            <img src="../assets/1depara.png" alt="Avaliação de cães no improviso" width="417" height="348" loading="lazy" decoding="async" />
           </picture>
         </div>
         <div class="compare-img-wrapper">
           <picture>
             <source srcset="../assets/2depara.webp" type="image/webp">
-            <img src="./assets/2depara.png" alt="Avaliação de cães com processo estruturado" width="427" height="349" loading="lazy" decoding="async" />
+            <img src="../assets/2depara.png" alt="Avaliação de cães com processo estruturado" width="427" height="349" loading="lazy" decoding="async" />
           </picture>
         </div>
       </div>
@@ -2071,10 +2125,38 @@
           <p>Como criar histórico e transformar avaliações em informações úteis para a gestão.</p>
         </div>
 
-        <div class="journey-item featured">
+        <div class="journey-item">
           <h3>Método Domus: A engenharia de uma creche e hospedagem estruturadas</h3>
           <p>Como avaliação, equipe, rotina, segurança, experiência do cliente e gestão se conectam dentro de uma
             operação mais estruturada.</p>
+        </div>
+
+        <div class="journey-alerts-grid">
+          <div class="journey-alert-card">
+            <div class="journey-alert-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polygon points="10 8 16 12 10 16 10 8" fill="currentColor"></polygon>
+              </svg>
+            </div>
+            <div class="journey-alert-text">
+              Este encontro será gravado e disponibilizado posteriormente
+            </div>
+          </div>
+
+          <div class="journey-alert-card">
+            <div class="journey-alert-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <div class="journey-alert-text">
+              Você fará parte de um Grupo de Implementação com acompanhamento por 30 dias após a imersão!
+            </div>
+          </div>
         </div>
 
         <div class="journey-item">
@@ -2292,7 +2374,7 @@
       <div class="about-image-wrap">
         <picture>
           <source srcset="../assets/bio.webp" type="image/webp">
-          <img src="./assets/bio.png" alt="Tata Pereira especialista em comportamento e negócios pet com cão" width="1448" height="1086" loading="lazy" decoding="async" />
+          <img src="../assets/bio.png" alt="Tata Pereira especialista em comportamento e negócios pet com cão" width="1448" height="1086" loading="lazy" decoding="async" />
         </picture>
       </div>
 
@@ -2624,11 +2706,11 @@
           <a href="../" class="footer-logo" aria-label="Tata Pereira - Início">
             <picture class="logo-icon">
               <source srcset="../assets/tata-logo-dog.webp" type="image/webp">
-              <img src="./assets/tata-logo-dog.png" alt="Tata Pereira Logo Ícone" width="19" height="28" loading="lazy" decoding="async" />
+              <img src="../assets/tata-logo-dog.png" alt="Tata Pereira Logo Ícone" width="19" height="28" loading="lazy" decoding="async" />
             </picture>
             <picture class="logo-text">
               <source srcset="../assets/tata-logo-nome.webp" type="image/webp">
-              <img src="./assets/tata-logo-nome.png" alt="Tata Pereira Logo Nome" width="54" height="16" loading="lazy" decoding="async" />
+              <img src="../assets/tata-logo-nome.png" alt="Tata Pereira Logo Nome" width="54" height="16" loading="lazy" decoding="async" />
             </picture>
           </a>
           <p class="footer-tagline">
