@@ -190,7 +190,7 @@
       line-height: 1.65;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
-      padding-bottom: 70px;
+      padding-bottom: calc(85px + env(safe-area-inset-bottom));
     }
 
     @media (min-width: 861px) {
@@ -1743,7 +1743,6 @@
        RESPONSIVIDADE E AJUSTES DE TELA
        ========================================================= */
     @media (max-width: 860px) {
-
       .bullet-card,
       .audience-card {
         flex: 1 1 100% !important;
@@ -1765,6 +1764,46 @@
 
       .whatsapp-float {
         bottom: calc(75px + env(safe-area-inset-bottom));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .event-line {
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        padding: 8px 16px;
+        border-radius: var(--radius-md);
+        gap: 6px 10px;
+      }
+
+      .about-highlights-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .video-facade .play-button-wrapper {
+        width: 62px;
+        height: 62px;
+      }
+
+      .video-facade .play-button svg {
+        width: 26px;
+        height: 26px;
+      }
+
+      .video-facade-caption {
+        font-size: 0.74rem;
+        padding: 4px 12px;
+        bottom: 10px;
+      }
+
+      .faq-trigger {
+        padding: 16px;
+      }
+
+      .price-card {
+        padding: 30px 18px;
       }
     }
   </style>
