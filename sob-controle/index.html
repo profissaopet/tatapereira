@@ -39,15 +39,28 @@
   <meta name="twitter:image"
     content="https://raw.githubusercontent.com/profissaopet/sob-controle/main/assets/og-cover.jpg" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="../assets/tata-logo-dog.png" />
-
-  <!-- Google Fonts: Inter & Montserrat -->
+  <!-- Preconnect & DNS Prefetch para Recursos Críticos -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@500;600;700;800;900&display=swap"
-    rel="stylesheet" />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+  <link rel="dns-prefetch" href="https://pay.hotmart.com" />
+  <link rel="dns-prefetch" href="https://i.ytimg.com" />
+
+  <!-- Favicon Otimizado (2.6KB vs 259KB) -->
+  <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-64.png" />
+  <link rel="icon" type="image/png" href="../assets/tata-logo-dog.png" />
+
+  <!-- Google Fonts: Inter & Montserrat (Pesos essenciais com carregamento assíncrono não-bloqueante) -->
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap"
+    media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" />
+  </noscript>
 
   <!-- Google Tag Manager -->
   <script>
@@ -399,13 +412,15 @@
       text-decoration: none;
     }
 
-    .logo img:first-child {
+    .logo img:first-child,
+    .logo .logo-icon img {
       height: 26px;
       width: auto;
       object-fit: contain;
     }
 
-    .logo img:last-child {
+    .logo img:last-child,
+    .logo .logo-text img {
       height: 16px;
       width: auto;
       object-fit: contain;
@@ -524,6 +539,7 @@
       border: 1.5px solid var(--navy-border-card);
       box-shadow: var(--shadow-lg), 0 0 40px rgba(241, 191, 66, 0.1);
       background: #000;
+      position: relative;
     }
 
     .hero-media iframe {
@@ -531,6 +547,107 @@
       height: 100%;
       display: block;
       border: 0;
+    }
+
+    /* Video Facade de Alta Performance */
+    .video-facade {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+      overflow: hidden;
+      border: 0;
+      padding: 0;
+    }
+
+    .video-facade picture,
+    .video-facade img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+
+    .video-facade:hover img,
+    .video-facade:focus-visible img {
+      transform: scale(1.03);
+      filter: brightness(1.06);
+    }
+
+    .video-facade .play-button-wrapper {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 76px;
+      height: 76px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-hover));
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(241, 191, 66, 0.6);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+    }
+
+    .video-facade:hover .play-button-wrapper,
+    .video-facade:focus-visible .play-button-wrapper {
+      transform: scale(1.12);
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.7), 0 0 35px rgba(241, 191, 66, 0.9);
+    }
+
+    .video-facade .play-pulse {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 2px solid var(--gold-primary);
+      animation: facade-pulse 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+      pointer-events: none;
+    }
+
+    @keyframes facade-pulse {
+      0% { transform: scale(1); opacity: 0.8; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+
+    .video-facade .play-button svg {
+      width: 32px;
+      height: 32px;
+      fill: #050717;
+      margin-left: 4px;
+      display: block;
+    }
+
+    .video-facade-caption {
+      position: absolute;
+      bottom: 14px;
+      z-index: 2;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: #fff;
+      background: rgba(5, 7, 23, 0.78);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 6px 16px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: all 0.3s ease;
+    }
+
+    .video-facade:hover .video-facade-caption,
+    .video-facade:focus-visible .video-facade-caption {
+      background: rgba(5, 7, 23, 0.95);
+      border-color: var(--gold-border);
+      color: var(--gold-primary);
     }
 
     .event-line {
@@ -556,6 +673,12 @@
     /* =========================================================
        3. ESTRUTURA GERAL DE SEÇÕES & CORREÇÕES DE CARDS/GRIDS
        ========================================================= */
+    /* Otimização de renderização abaixo da dobra */
+    section:not(.hero-new) {
+      content-visibility: auto;
+      contain-intrinsic-size: 1px 650px;
+    }
+
     .section-kicker {
       font-size: 11px;
       font-weight: 800;
@@ -700,13 +823,14 @@
       gap: var(--spacing-grid-gap);
     }
 
-    
+
 
     .compare-img-wrapper:hover {
       transform: translateY(-4px);
       border-color: var(--gold-border);
     }
 
+    .compare-img-wrapper picture,
     .compare-img-wrapper img {
       width: 100%;
       height: 100%;
@@ -975,7 +1099,7 @@
       }
     }
 
-   /* =========================================================
+    /* =========================================================
        9. SOBRE A TATA
        ========================================================= */
     .about {
@@ -1001,6 +1125,7 @@
       box-shadow: var(--shadow-lg);
     }
 
+    .about-image-wrap picture,
     .about-image-wrap img {
       width: 100%;
       object-fit: cover;
@@ -1102,6 +1227,7 @@
         gap: 40px;
       }
     }
+
     /* =========================================================
        10. OPERAÇÃO IMPROVISADA X ESTRUTURADA
        ========================================================= */
@@ -1409,13 +1535,15 @@
       text-decoration: none;
     }
 
-    .footer-logo img:first-child {
+    .footer-logo img:first-child,
+    .footer-logo .logo-icon img {
       height: 28px;
       width: auto;
       object-fit: contain;
     }
 
-    .footer-logo img:last-child {
+    .footer-logo img:last-child,
+    .footer-logo .logo-text img {
       height: 16px;
       width: auto;
       object-fit: contain;
@@ -1550,10 +1678,12 @@
       footer {
         padding: 60px 0 25px;
       }
+
       .footer-grid {
         grid-template-columns: 1fr;
         gap: 28px;
       }
+
       .footer-bottom {
         flex-direction: column;
         text-align: center;
@@ -1653,8 +1783,14 @@
   <header class="immersion-bar" id="site-header">
     <div class="container">
       <a href="../" class="logo" aria-label="Tata Pereira - Início">
-        <img src="../assets/tata-logo-dog.png" alt="Tata Pereira Logo Ícone" />
-        <img src="../assets/tata-logo-nome.png" alt="Tata Pereira Logo Nome" />
+        <picture class="logo-icon">
+          <source srcset="../assets/tata-logo-dog.webp" type="image/webp">
+          <img src="../assets/tata-logo-dog.png" alt="Tata Pereira Logo Ícone" width="18" height="26" fetchpriority="high" />
+        </picture>
+        <picture class="logo-text">
+          <source srcset="../assets/tata-logo-nome.webp" type="image/webp">
+          <img src="../assets/tata-logo-nome.png" alt="Tata Pereira Logo Nome" width="54" height="16" fetchpriority="high" />
+        </picture>
       </a>
       <div class="immersion-info">
         <strong>14 de novembro</strong>
@@ -1684,12 +1820,22 @@
         o que observar, como decidir e o que registrar antes de aceitar um cão na sua operação.
       </p>
 
-      <div class="hero-media">
-        <iframe id="hero-video-player"
-          src="https://www.youtube.com/embed/NNmg9XwJxKI?autoplay=0&amp;playsinline=1&amp;controls=1&amp;fs=1&amp;cc_load_policy=0&amp;enablejsapi=1&amp;rel=0"
-          title="Vídeo de vendas — Imersão Operação Sob Controle"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowfullscreen></iframe>
+      <div class="hero-media" id="hero-media-container">
+        <div class="video-facade" id="video-facade" role="button" tabindex="0" aria-label="Assistir ao vídeo da Imersão Operação Sob Controle">
+          <picture>
+            <source srcset="../assets/video-thumb.webp" type="image/webp">
+            <img src="https://i.ytimg.com/vi/NNmg9XwJxKI/maxresdefault.jpg" alt="Vídeo de Apresentação — Imersão Operação Sob Controle" width="1280" height="720" fetchpriority="high" decoding="async" />
+          </picture>
+          <div class="play-button-wrapper">
+            <div class="play-pulse"></div>
+            <div class="play-button" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+            </div>
+          </div>
+          <span class="video-facade-caption">Assistir à apresentação da imersão</span>
+        </div>
       </div>
 
       <div class="event-line">
@@ -1703,7 +1849,6 @@
         </a>
       </div>
     </div>
-  </header>
   </section>
   <!-- =======================================================
         3. O PROBLEMA (CLARO - CREAM) [2]
@@ -1824,10 +1969,16 @@
 
       <div class="comparison-section-container">
         <div class="compare-img-wrapper">
-          <img src="../assets/1depara.png" alt="Avaliação de cães no improviso" />
+          <picture>
+            <source srcset="../assets/1depara.webp" type="image/webp">
+            <img src="../assets/1depara.png" alt="Avaliação de cães no improviso" width="417" height="348" loading="lazy" decoding="async" />
+          </picture>
         </div>
         <div class="compare-img-wrapper">
-          <img src="../assets/2depara.png" alt="Avaliação de cães com processo estruturado" />
+          <picture>
+            <source srcset="../assets/2depara.webp" type="image/webp">
+            <img src="../assets/2depara.png" alt="Avaliação de cães com processo estruturado" width="427" height="349" loading="lazy" decoding="async" />
+          </picture>
         </div>
       </div>
 
@@ -2002,13 +2153,16 @@
               <rect x="150" y="113" width="60" height="4" rx="2" fill="#F1BF42" />
               <rect x="150" y="122" width="90" height="3" rx="1.5" fill="#9BA3C7" opacity="0.6" />
               <rect x="150" y="128" width="65" height="3" rx="1.5" fill="#9BA3C7" opacity="0.4" />
-              <rect x="140" y="148" width="120" height="24" rx="4" fill="#050717" stroke="#F1BF42" stroke-dasharray="3 3" />
-              <text x="200" y="163" font-family="sans-serif" font-size="8" font-weight="bold" fill="#F1BF42" text-anchor="middle">LEVANTAMENTO DE HIPÓTESE</text>
+              <rect x="140" y="148" width="120" height="24" rx="4" fill="#050717" stroke="#F1BF42"
+                stroke-dasharray="3 3" />
+              <text x="200" y="163" font-family="sans-serif" font-size="8" font-weight="bold" fill="#F1BF42"
+                text-anchor="middle">LEVANTAMENTO DE HIPÓTESE</text>
             </svg>
           </div>
           <div class="prep-card-body">
             <h3>Levantamento de Hipótese</h3>
-            <p>Aprenda a analisar as respostas coletadas na anamnese para <strong>formular hipóteses comportamentais precisas</strong> antes mesmo da avaliação presencial.</p>
+            <p>Aprenda a analisar as respostas coletadas na anamnese para <strong>formular hipóteses comportamentais
+                precisas</strong> antes mesmo da avaliação presencial.</p>
           </div>
         </div>
 
@@ -2091,68 +2245,71 @@
     </div>
   </section>
 
- <!-- =======================================================
+  <!-- =======================================================
         6. SOBRE A TATA (BIO)
     ======================================================== -->
-    <section class="about" id="sobre">
-      <div class="container about-grid">
-         <div class="about-image-wrap fade-in">
-          <img src="../assets/bio.png" alt="Tata Pereira especialista em comportamento e negócios pet com cão" />
-        </div>
-
-        <div class="about-content fade-in">
-          <span class="about-badge">Especialista & Fundadora</span>
-
-          <h2 class="section-title-navy">
-            Muito prazer, sou a Tata Pereira
-          </h2>
-         
-          <p class="about-lead">
-            Sou adestradora e atuo na formação de profissionais e na estruturação de negócios pet. Sou fundadora
-            da Tata EducaCão, um ecossistema de educação para cães e seus responsáveis, que reúne escola canina,
-            consultorias comportamentais, programas de adestramento e uma equipe de passeadores, adestradores e
-            pet sitters.
-          </p>
-          <div class="about-story">
-            <p>
-              Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da minha atuação no
-              setor pet, onde trabalhei como pet sitter, dog walker, adestradora, monitora, supervisora e
-              consultora de creches caninas. Minha trajetória une prática, gestão e conhecimento da rotina real de
-              operação, tanto no atendimento às famílias quanto na preparação de profissionais e na organização de
-              negócios pet.
-            </p>
-          </div>
-
-          <div class="about-highlights-grid">
-            <div class="about-highlight-card">
-              <div class="about-highlight-icon">✓</div>
-              <div class="about-highlight-text">8 anos de atuação prática no mercado pet</div>
-            </div>
-            <div class="about-highlight-card">
-              <div class="about-highlight-icon">✓</div>
-              <div class="about-highlight-text">13 anos de bagagem no mundo corporativo</div>
-            </div>
-            <div class="about-highlight-card">
-              <div class="about-highlight-icon">✓</div>
-              <div class="about-highlight-text">Vivência completa: Pet Sitter, Dog Walker, Monitora e Consultora</div>
-            </div>
-            <div class="about-highlight-card">
-              <div class="about-highlight-icon">✓</div>
-              <div class="about-highlight-text">+100 profissionais capacitados e +1.000 famílias atendidas</div>
-            </div>
-          </div>
-
-          <a class="primary btn-hero"
-            href="https://wa.me/5521975994712?text=Ol%C3%A1%20Tata!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20sua%20equipe."
-            target="_blank" rel="noopener noreferrer" onclick="trackWhatsApp('about_button')">
-            <span>FALAR COM A EQUIPE</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
+  <section class="about" id="sobre">
+    <div class="container about-grid">
+      <div class="about-image-wrap">
+        <picture>
+          <source srcset="../assets/bio.webp" type="image/webp">
+          <img src="../assets/bio.png" alt="Tata Pereira especialista em comportamento e negócios pet com cão" width="1448" height="1086" loading="lazy" decoding="async" />
+        </picture>
       </div>
-    </section>
+
+      <div class="about-content fade-in">
+        <span class="about-badge">Especialista & Fundadora</span>
+
+        <h2 class="section-title-navy">
+          Muito prazer, sou a Tata Pereira
+        </h2>
+
+        <p class="about-lead">
+          Sou adestradora e atuo na formação de profissionais e na estruturação de negócios pet. Sou fundadora
+          da Tata EducaCão, um ecossistema de educação para cães e seus responsáveis, que reúne escola canina,
+          consultorias comportamentais, programas de adestramento e uma equipe de passeadores, adestradores e
+          pet sitters.
+        </p>
+        <div class="about-story">
+          <p>
+            Criei o Método DOMUS a partir da minha experiência no mercado corporativo e da minha atuação no
+            setor pet, onde trabalhei como pet sitter, dog walker, adestradora, monitora, supervisora e
+            consultora de creches caninas. Minha trajetória une prática, gestão e conhecimento da rotina real de
+            operação, tanto no atendimento às famílias quanto na preparação de profissionais e na organização de
+            negócios pet.
+          </p>
+        </div>
+
+        <div class="about-highlights-grid">
+          <div class="about-highlight-card">
+            <div class="about-highlight-icon">✓</div>
+            <div class="about-highlight-text">8 anos de atuação prática no mercado pet</div>
+          </div>
+          <div class="about-highlight-card">
+            <div class="about-highlight-icon">✓</div>
+            <div class="about-highlight-text">13 anos de bagagem no mundo corporativo</div>
+          </div>
+          <div class="about-highlight-card">
+            <div class="about-highlight-icon">✓</div>
+            <div class="about-highlight-text">Vivência completa: Pet Sitter, Dog Walker, Monitora e Consultora</div>
+          </div>
+          <div class="about-highlight-card">
+            <div class="about-highlight-icon">✓</div>
+            <div class="about-highlight-text">+100 profissionais capacitados e +1.000 famílias atendidas</div>
+          </div>
+        </div>
+
+        <a class="primary btn-hero"
+          href="https://wa.me/5521975994712?text=Ol%C3%A1%20Tata!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20sua%20equipe."
+          target="_blank" rel="noopener noreferrer" onclick="trackWhatsApp('about_button')">
+          <span>FALAR COM A EQUIPE</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
   <!-- =======================================================
         11. COMPARATIVO DE OPERAÇÃO (CLARO - CREAM) [10]
   ======================================================== -->
@@ -2298,8 +2455,8 @@
         <span style="display: block; margin-top: 12px; font-size: 0.8rem; color: var(--cream-text-muted);">
           Vagas limitadas. Pagamento seguro pela Hotmart.
         </span>
-        <div class="ab-note" id="ab-note"
-          style="margin-top: 10px; font-size: 0.72rem; color: rgba(71, 85, 105, 0.65);"></div>
+        <div class="ab-note" id="ab-note" style="margin-top: 10px; font-size: 0.72rem; color: rgba(71, 85, 105, 0.65);">
+        </div>
       </div>
     </div>
   </section>
@@ -2314,8 +2471,9 @@
 
       <div class="faq-wrapper">
         <div class="faq-item" style="background: var(--navy-card); border: 1.5px solid var(--navy-border-card);">
-          <button class="faq-trigger" style="color: var(--navy-text-main);"><span>Preciso ser especialista em comportamento canino?</span><svg width="18"
-              height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--gold-primary);">
+          <button class="faq-trigger" style="color: var(--navy-text-main);"><span>Preciso ser especialista em
+              comportamento canino?</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5" style="color: var(--gold-primary);">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg></button>
           <div class="faq-content" style="color: var(--navy-text-muted);">
@@ -2325,7 +2483,8 @@
         </div>
 
         <div class="faq-item" style="background: var(--navy-card); border: 1.5px solid var(--navy-border-card);">
-          <button class="faq-trigger" style="color: var(--navy-text-main);"><span>Já tenho uma creche ou hospedagem funcionando. Faz sentido para
+          <button class="faq-trigger" style="color: var(--navy-text-main);"><span>Já tenho uma creche ou hospedagem
+              funcionando. Faz sentido para
               mim?</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
               stroke-width="2.5" style="color: var(--gold-primary);">
               <polyline points="6 9 12 15 18 9"></polyline>
@@ -2337,8 +2496,9 @@
         </div>
 
         <div class="faq-item" style="background: var(--navy-card); border: 1.5px solid var(--navy-border-card);">
-          <button class="faq-trigger" style="color: var(--navy-text-main);"><span>Estou começando minha operação. Posso participar?</span><svg width="18"
-              height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--gold-primary);">
+          <button class="faq-trigger" style="color: var(--navy-text-main);"><span>Estou começando minha operação. Posso
+              participar?</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5" style="color: var(--gold-primary);">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg></button>
           <div class="faq-content" style="color: var(--navy-text-muted);">
@@ -2348,8 +2508,9 @@
         </div>
 
         <div class="faq-item" style="background: var(--navy-card); border: 1.5px solid var(--navy-border-card);">
-          <button class="faq-trigger" style="color: var(--navy-text-main);"><span>Preciso ter um formulário de anamnese pronto?</span><svg width="18"
-              height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--gold-primary);">
+          <button class="faq-trigger" style="color: var(--navy-text-main);"><span>Preciso ter um formulário de anamnese
+              pronto?</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5" style="color: var(--gold-primary);">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg></button>
           <div class="faq-content" style="color: var(--navy-text-muted);">
@@ -2359,8 +2520,9 @@
         </div>
 
         <div class="faq-item" style="background: var(--navy-card); border: 1.5px solid var(--navy-border-card);">
-          <button class="faq-trigger" style="color: var(--navy-text-main);"><span>A imersão é presencial?</span><svg width="18" height="18"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--gold-primary);">
+          <button class="faq-trigger" style="color: var(--navy-text-main);"><span>A imersão é presencial?</span><svg
+              width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              style="color: var(--gold-primary);">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg></button>
           <div class="faq-content" style="color: var(--navy-text-muted);">
@@ -2369,8 +2531,9 @@
         </div>
 
         <div class="faq-item" style="background: var(--navy-card); border: 1.5px solid var(--navy-border-card);">
-          <button class="faq-trigger" style="color: var(--navy-text-main);"><span>Qual é o horário?</span><svg width="18" height="18" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--gold-primary);">
+          <button class="faq-trigger" style="color: var(--navy-text-main);"><span>Qual é o horário?</span><svg
+              width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+              style="color: var(--gold-primary);">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg></button>
           <div class="faq-content" style="color: var(--navy-text-muted);">
@@ -2379,8 +2542,9 @@
         </div>
 
         <div class="faq-item" style="background: var(--navy-card); border: 1.5px solid var(--navy-border-card);">
-          <button class="faq-trigger" style="color: var(--navy-text-main);"><span>Haverá gravação? Por quanto tempo terei acesso?</span><svg width="18"
-              height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--gold-primary);">
+          <button class="faq-trigger" style="color: var(--navy-text-main);"><span>Haverá gravação? Por quanto tempo
+              terei acesso?</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5" style="color: var(--gold-primary);">
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg></button>
           <div class="faq-content" style="color: var(--navy-text-muted);">
@@ -2404,7 +2568,8 @@
         style="color: var(--cream-text-muted); font-size: clamp(0.95rem, 2vw, 1.05rem); max-width: 650px; margin: 0 auto var(--spacing-element-margin);">
         <strong style="color: var(--cream-text-main);">14 de novembro | 10h às 16h | Online e ao vivo</strong>
       </p>
-      <a href="https://pay.hotmart.com/O107981912D?checkoutMode=10" target="_blank" rel="noopener noreferrer" class="primary price-cta">
+      <a href="https://pay.hotmart.com/O107981912D?checkoutMode=10" target="_blank" rel="noopener noreferrer"
+        class="primary price-cta">
         Quero participar e estruturar o meu processo
       </a>
     </div>
@@ -2418,8 +2583,14 @@
       <div class="footer-grid">
         <div class="footer-brand">
           <a href="../" class="footer-logo" aria-label="Tata Pereira - Início">
-            <img src="../assets/tata-logo-dog.png" alt="Tata Pereira Logo Ícone" />
-            <img src="../assets/tata-logo-nome.png" alt="Tata Pereira Logo Nome" />
+            <picture class="logo-icon">
+              <source srcset="../assets/tata-logo-dog.webp" type="image/webp">
+              <img src="../assets/tata-logo-dog.png" alt="Tata Pereira Logo Ícone" width="19" height="28" loading="lazy" decoding="async" />
+            </picture>
+            <picture class="logo-text">
+              <source srcset="../assets/tata-logo-nome.webp" type="image/webp">
+              <img src="../assets/tata-logo-nome.png" alt="Tata Pereira Logo Nome" width="54" height="16" loading="lazy" decoding="async" />
+            </picture>
           </a>
           <p class="footer-tagline">
             Estruturação de processos, gestão operacional e capacitação profissional para creches e
@@ -2465,43 +2636,45 @@
                 <svg viewBox="0 0 24 24">
                   <path
                     d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
-              </svg>
-            </a>
+                </svg>
+              </a>
 
-            <a class="social-icon-btn" href="https://youtube.com/@TataEducacao" target="_blank"
-              rel="noopener noreferrer" aria-label="YouTube">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-              </svg>
-            </a>
-            <a class="social-icon-btn" href="https://wa.me/5521975994712" target="_blank"
-              rel="noopener noreferrer" aria-label="WhatsApp">
-              <svg viewBox="0 0 24 24">
-                <path
-                  d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.322-.297-.124-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.124-1.256-.463-2.393-1.479-.885-.801-1.482-1.79-1.655-2.087-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
-              </svg>
-            </a>
+              <a class="social-icon-btn" href="https://youtube.com/@TataEducacao" target="_blank"
+                rel="noopener noreferrer" aria-label="YouTube">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                </svg>
+              </a>
+              <a class="social-icon-btn" href="https://wa.me/5521975994712" target="_blank" rel="noopener noreferrer"
+                onclick="trackWhatsApp('footer_social')" aria-label="WhatsApp">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.322-.297-.124-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.124-1.256-.463-2.393-1.479-.885-.801-1.482-1.79-1.655-2.087-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="footer-bottom">
-      <div>© 2026 Tata Pereira. Todos os direitos reservados.</div>
+      <div class="footer-bottom">
+        <div>© 2026 Tata Pereira. Todos os direitos reservados.</div>
+      </div>
     </div>
   </footer>
 
   <!-- BARRA FLUTUANTE MOBILE -->
   <div class="mobile-cta">
-    <a href="https://pay.hotmart.com/O107981912D?checkoutMode=10" target="_blank" rel="noopener noreferrer" class="primary price-cta">
+    <a href="https://pay.hotmart.com/O107981912D?checkoutMode=10" target="_blank" rel="noopener noreferrer"
+      class="primary price-cta">
       Garantir Minha Vaga
     </a>
   </div>
 
   <!-- WHATSAPP FLUTUANTE -->
   <a href="https://wa.me/5521975994712?text=Ol%C3%A1%20Tata!%20Vim%20pela%20p%C3%A1gina%20da%20Imers%C3%A3o%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida."
-    target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Falar pelo WhatsApp">
+    target="_blank" rel="noopener noreferrer" class="whatsapp-float" onclick="trackWhatsApp('whatsapp_flutuante')" aria-label="Falar pelo WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor">
       <path
         d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.322-.297-.124-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.124-1.256-.463-2.393-1.479-.885-.801-1.482-1.79-1.655-2.087-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
@@ -2512,6 +2685,73 @@
         17. JAVASCRIPT FUNCIONAL
   ======================================================== -->
   <script>
+    // Função Global de Tracking WhatsApp (evita ReferenceError)
+    window.trackWhatsApp = function (origin) {
+      const label = origin || "geral";
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "click_whatsapp", {
+          event_category: "contato",
+          event_label: label
+        });
+      }
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "click_whatsapp",
+        origem: label
+      });
+    };
+
+    // Facade de Vídeo YouTube de Alta Performance (Economiza ~1.5MB e 30+ requisições no carregamento inicial)
+    (function initVideoFacade() {
+      const facade = document.getElementById("video-facade");
+      const container = document.getElementById("hero-media-container");
+      if (!facade || !container) return;
+
+      function playVideo() {
+        const iframe = document.createElement("iframe");
+        iframe.id = "hero-video-player";
+        iframe.src = "https://www.youtube.com/embed/NNmg9XwJxKI?autoplay=1&playsinline=1&controls=1&fs=1&enablejsapi=1&rel=0";
+        iframe.title = "Vídeo de vendas — Imersão Operação Sob Controle";
+        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+        iframe.allowFullscreen = true;
+        iframe.style.width = "100%";
+        iframe.style.height = "100%";
+        iframe.style.border = "0";
+        iframe.style.display = "block";
+
+        container.innerHTML = "";
+        container.appendChild(iframe);
+      }
+
+      facade.addEventListener("click", playVideo);
+      facade.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          playVideo();
+        }
+      });
+
+      // Pré-aquecimento de conexão DNS/TLS em hover ou ociosidade
+      let warmedUp = false;
+      function warmUp() {
+        if (warmedUp) return;
+        warmedUp = true;
+        ["https://www.youtube.com", "https://i.ytimg.com"].forEach(function (href) {
+          const link = document.createElement("link");
+          link.rel = "preconnect";
+          link.href = href;
+          document.head.appendChild(link);
+        });
+      }
+
+      facade.addEventListener("pointerenter", warmUp, { once: true });
+      if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(warmUp, { timeout: 3000 });
+      } else {
+        setTimeout(warmUp, 3000);
+      }
+    })();
+
     // Accordion FAQ
     document.querySelectorAll('.faq-item').forEach(item => {
       const trigger = item.querySelector('.faq-trigger');
@@ -2522,7 +2762,7 @@
       });
     });
 
-   // Teste A/B de Preço
+    // Teste A/B de Preço
     (function () {
       const AB_TEST_ATIVO = false;
 
