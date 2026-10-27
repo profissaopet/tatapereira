@@ -48,8 +48,8 @@
   <link rel="dns-prefetch" href="https://i.ytimg.com" />
 
   <!-- Favicon Otimizado (2.6KB vs 259KB) -->
-  <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-64.png" />
-  <link rel="icon" type="image/png" href="../assets/tata-logo-dog.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="./assets/favicon-64.png" />
+  <link rel="icon" type="image/png" href="./assets/tata-logo-dog.png" />
 
   <!-- Google Fonts: Inter & Montserrat (Pesos essenciais com carregamento assíncrono não-bloqueante) -->
   <link rel="preload" as="style"
@@ -1824,11 +1824,11 @@
       <a href="../" class="logo" aria-label="Tata Pereira - Início">
         <picture class="logo-icon">
           <source srcset="../assets/tata-logo-dog.webp" type="image/webp">
-          <img src="../assets/tata-logo-dog.png" alt="Tata Pereira Logo Ícone" width="18" height="26" fetchpriority="high" />
+          <img src="./assets/tata-logo-dog.png" alt="Tata Pereira Logo Ícone" width="18" height="26" fetchpriority="high" />
         </picture>
         <picture class="logo-text">
           <source srcset="../assets/tata-logo-nome.webp" type="image/webp">
-          <img src="../assets/tata-logo-nome.png" alt="Tata Pereira Logo Nome" width="54" height="16" fetchpriority="high" />
+          <img src="./assets/tata-logo-nome.png" alt="Tata Pereira Logo Nome" width="54" height="16" fetchpriority="high" />
         </picture>
       </a>
       <div class="immersion-info">
@@ -2010,13 +2010,13 @@
         <div class="compare-img-wrapper">
           <picture>
             <source srcset="../assets/1depara.webp" type="image/webp">
-            <img src="../assets/1depara.png" alt="Avaliação de cães no improviso" width="417" height="348" loading="lazy" decoding="async" />
+            <img src="./assets/1depara.png" alt="Avaliação de cães no improviso" width="417" height="348" loading="lazy" decoding="async" />
           </picture>
         </div>
         <div class="compare-img-wrapper">
           <picture>
             <source srcset="../assets/2depara.webp" type="image/webp">
-            <img src="../assets/2depara.png" alt="Avaliação de cães com processo estruturado" width="427" height="349" loading="lazy" decoding="async" />
+            <img src="./assets/2depara.png" alt="Avaliação de cães com processo estruturado" width="427" height="349" loading="lazy" decoding="async" />
           </picture>
         </div>
       </div>
@@ -2292,7 +2292,7 @@
       <div class="about-image-wrap">
         <picture>
           <source srcset="../assets/bio.webp" type="image/webp">
-          <img src="../assets/bio.png" alt="Tata Pereira especialista em comportamento e negócios pet com cão" width="1448" height="1086" loading="lazy" decoding="async" />
+          <img src="./assets/bio.png" alt="Tata Pereira especialista em comportamento e negócios pet com cão" width="1448" height="1086" loading="lazy" decoding="async" />
         </picture>
       </div>
 
@@ -2624,11 +2624,11 @@
           <a href="../" class="footer-logo" aria-label="Tata Pereira - Início">
             <picture class="logo-icon">
               <source srcset="../assets/tata-logo-dog.webp" type="image/webp">
-              <img src="../assets/tata-logo-dog.png" alt="Tata Pereira Logo Ícone" width="19" height="28" loading="lazy" decoding="async" />
+              <img src="./assets/tata-logo-dog.png" alt="Tata Pereira Logo Ícone" width="19" height="28" loading="lazy" decoding="async" />
             </picture>
             <picture class="logo-text">
               <source srcset="../assets/tata-logo-nome.webp" type="image/webp">
-              <img src="../assets/tata-logo-nome.png" alt="Tata Pereira Logo Nome" width="54" height="16" loading="lazy" decoding="async" />
+              <img src="./assets/tata-logo-nome.png" alt="Tata Pereira Logo Nome" width="54" height="16" loading="lazy" decoding="async" />
             </picture>
           </a>
           <p class="footer-tagline">
@@ -2724,23 +2724,95 @@
         17. JAVASCRIPT FUNCIONAL
   ======================================================== -->
   <script>
-    // Função Global de Tracking WhatsApp (evita ReferenceError)
+    // -------------------------------------------------------------
+    // 1. UTILITÁRIOS DE RASTREAMENTO & GA4 CLIENT ID
+    // -------------------------------------------------------------
+    function getGaClientId() {
+      try {
+        const match = document.cookie.match(/_ga=(?:GA1\.\d+\.)?([0-9]+\.[0-9]+)/);
+        if (match) return match[1];
+      } catch (e) {}
+      return "";
+    }
+
+    // Propagação de UTMs e Parâmetros (src e sck) para os links de checkout da Hotmart
+    function buildCheckoutUrl(baseUrl) {
+      try {
+        const url = new URL(baseUrl);
+        const searchParams = new URLSearchParams(window.location.search);
+
+        // Repassa todos os parâmetros de anúncio (UTMs, fbclid, gclid, etc.)
+        searchParams.forEach((val, key) => {
+          if (key !== "preco" && key !== "debug" && !url.searchParams.has(key)) {
+            url.searchParams.set(key, val);
+          }
+        });
+
+        // Constrói 'src' amigável para a Hotmart se não existir
+        if (!url.searchParams.has("src")) {
+          const srcParts = [
+            searchParams.get("src") || searchParams.get("utm_source"),
+            searchParams.get("utm_campaign"),
+            searchParams.get("utm_content")
+          ].filter(Boolean);
+          if (srcParts.length > 0) {
+            url.searchParams.set("src", srcParts.join("_").replace(/[^a-zA-Z0-9_-]/g, "").substring(0, 50));
+          }
+        }
+
+        // Constrói 'sck' com o Client ID do GA4 para atribuição no webhook do Make
+        const gaId = getGaClientId();
+        if (gaId && !url.searchParams.has("sck")) {
+          url.searchParams.set("sck", gaId.replace(/[^a-zA-Z0-9_.-]/g, "").substring(0, 50));
+        }
+
+        return url.toString();
+      } catch (err) {
+        return baseUrl;
+      }
+    }
+
+    // -------------------------------------------------------------
+    // 2. TRACKING WHATSAPP (LEADS)
+    // -------------------------------------------------------------
     window.trackWhatsApp = function (origin) {
       const label = origin || "geral";
+      const variant = document.documentElement.dataset.priceVariant || "67";
+      const priceVal = variant === "97" ? 97.0 : 67.0;
+
+      // Evento Customizado (compatibilidade com histórico)
       if (typeof window.gtag === "function") {
         window.gtag("event", "click_whatsapp", {
           event_category: "contato",
           event_label: label
         });
+
+        // Evento Oficial GA4 de Geração de Lead
+        window.gtag("event", "generate_lead", {
+          event_category: "lead",
+          event_label: label,
+          currency: "BRL",
+          value: priceVal
+        });
       }
+
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: "click_whatsapp",
         origem: label
       });
+      window.dataLayer.push({
+        event: "generate_lead",
+        lead_type: "whatsapp",
+        origem: label,
+        currency: "BRL",
+        value: priceVal
+      });
     };
 
-    // Facade de Vídeo YouTube de Alta Performance (Economiza ~1.5MB e 30+ requisições no carregamento inicial)
+    // -------------------------------------------------------------
+    // 3. FACADE DE VÍDEO YOUTUBE & TRACKING DE REPRODUÇÃO
+    // -------------------------------------------------------------
     (function initVideoFacade() {
       const facade = document.getElementById("video-facade");
       const container = document.getElementById("hero-media-container");
@@ -2760,6 +2832,20 @@
 
         container.innerHTML = "";
         container.appendChild(iframe);
+
+        // Tracking GA4 de Início de Vídeo (Engajamento de Lead)
+        if (typeof window.gtag === "function") {
+          window.gtag("event", "video_start", {
+            video_title: "Vídeo de vendas — Imersão Operação Sob Controle",
+            video_provider: "youtube",
+            video_url: "https://www.youtube.com/watch?v=NNmg9XwJxKI"
+          });
+        }
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "video_start",
+          video_title: "Operacao Sob Controle"
+        });
       }
 
       facade.addEventListener("click", playVideo);
@@ -2791,17 +2877,36 @@
       }
     })();
 
-    // Accordion FAQ
+    // -------------------------------------------------------------
+    // 4. ACCORDION FAQ & TRACKING DE OBJEÇÕES
+    // -------------------------------------------------------------
     document.querySelectorAll('.faq-item').forEach(item => {
       const trigger = item.querySelector('.faq-trigger');
+      if (!trigger) return;
       trigger.addEventListener('click', () => {
         const active = item.classList.contains('active');
         document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-        if (!active) item.classList.add('active');
+        if (!active) {
+          item.classList.add('active');
+          const questionText = trigger.innerText.replace(/[\r\n]+/g, ' ').trim();
+          if (typeof window.gtag === "function") {
+            window.gtag("event", "select_content", {
+              content_type: "faq_duvida",
+              item_id: questionText.substring(0, 80)
+            });
+          }
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: "faq_interaction",
+            question: questionText
+          });
+        }
       });
     });
 
-    // Teste A/B de Preço
+    // -------------------------------------------------------------
+    // 5. TESTE A/B DE PREÇO & ATRIBUIÇÃO NOS BOTÕES HOTMART
+    // -------------------------------------------------------------
     (function () {
       const AB_TEST_ATIVO = false;
 
@@ -2843,11 +2948,10 @@
       if (discount) discount.textContent = cfg.desconto;
       if (description) description.textContent = cfg.descricao;
 
-      // Atualiza o href de todos os botões com a classe .price-cta
+      // Atualiza o href de todos os botões .price-cta com UTMs e parâmetros de rastreamento
+      const finalCheckoutUrl = buildCheckoutUrl(cfg.checkout);
       document.querySelectorAll(".price-cta").forEach(link => {
-        if (cfg.checkout) {
-          link.href = cfg.checkout;
-        }
+        link.href = finalCheckoutUrl;
       });
 
       document.documentElement.dataset.priceVariant = variante;
@@ -2857,17 +2961,34 @@
       }
     })();
 
-    // Tracking do botão de checkout
+    // -------------------------------------------------------------
+    // 6. TRACKING DE CHECKOUT (GA4 E-COMMERCE: BEGIN_CHECKOUT)
+    // -------------------------------------------------------------
     document.addEventListener("DOMContentLoaded", function () {
       document.querySelectorAll(".price-cta").forEach(function (button) {
         button.addEventListener("click", function () {
           const variant = document.documentElement.dataset.priceVariant || "67";
+          const priceVal = variant === "97" ? 97.0 : 67.0;
 
           if (typeof window.gtag === "function") {
+            // Evento legado
             window.gtag("event", "click_checkout", {
               event_category: "conversion",
               event_label: "Operacao Sob Controle",
               price_variant: variant
+            });
+
+            // Evento Oficial GA4 de Comércio Eletrônico
+            window.gtag("event", "begin_checkout", {
+              currency: "BRL",
+              value: priceVal,
+              items: [{
+                item_id: "operacao_sob_controle_" + variant,
+                item_name: "Imersão Operação Sob Controle",
+                item_category: "Imersão Pet",
+                price: priceVal,
+                quantity: 1
+              }]
             });
           }
 
@@ -2877,8 +2998,78 @@
             product: "operacao_sob_controle",
             price_variant: variant
           });
+          window.dataLayer.push({
+            event: "begin_checkout",
+            ecommerce: {
+              currency: "BRL",
+              value: priceVal,
+              items: [{
+                item_id: "operacao_sob_controle_" + variant,
+                item_name: "Imersão Operação Sob Controle",
+                price: priceVal,
+                quantity: 1
+              }]
+            }
+          });
         });
       });
+
+      // -----------------------------------------------------------
+      // 7. TRACKING DE VISUALIZAÇÃO DA OFERTA (VIEW_PROMOTION)
+      // -----------------------------------------------------------
+      const offerSection = document.getElementById("oferta");
+      if (offerSection && "IntersectionObserver" in window) {
+        let offerTracked = false;
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting && !offerTracked) {
+              offerTracked = true;
+              const variant = document.documentElement.dataset.priceVariant || "67";
+              const priceVal = variant === "97" ? 97.0 : 67.0;
+
+              if (typeof window.gtag === "function") {
+                window.gtag("event", "view_promotion", {
+                  promotion_name: "Oferta Imersão Operação Sob Controle",
+                  creative_name: "Card de Preço R$" + variant,
+                  items: [{
+                    item_id: "operacao_sob_controle_" + variant,
+                    item_name: "Imersão Operação Sob Controle",
+                    price: priceVal
+                  }]
+                });
+              }
+
+              window.dataLayer = window.dataLayer || [];
+              window.dataLayer.push({
+                event: "view_promotion",
+                price_variant: variant
+              });
+              observer.disconnect();
+            }
+          });
+        }, { threshold: 0.35 });
+        observer.observe(offerSection);
+      }
+
+      // -----------------------------------------------------------
+      // 8. TRACKING DE LEAD ALTAMENTE ENGAJADO (TEMPO DE LEITURA)
+      // -----------------------------------------------------------
+      setTimeout(function () {
+        if (document.visibilityState === "visible") {
+          if (typeof window.gtag === "function") {
+            window.gtag("event", "engaged_lead", {
+              event_category: "engajamento",
+              event_label: "60_segundos_leitura",
+              time_seconds: 60
+            });
+          }
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: "engaged_lead",
+            seconds: 60
+          });
+        }
+      }, 60000);
     });
   </script>
 </body>
