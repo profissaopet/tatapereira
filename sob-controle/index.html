@@ -2853,7 +2853,8 @@
     window.trackWhatsApp = function (origin) {
       const label = origin || "geral";
       const variant = document.documentElement.dataset.priceVariant || "67";
-      const priceVal = variant === "97" ? 97.0 : 67.0;
+      const priceMap = { "45": 45.0, "67": 67.0, "97": 97.0 };
+      const priceVal = priceMap[variant] || 67.0;
 
       // Evento Customizado (compatibilidade com histórico)
       if (typeof window.gtag === "function") {
@@ -2986,6 +2987,12 @@
       const AB_TEST_ATIVO = false;
 
       const CONFIG = {
+        "45": {
+          preco: "45",
+          desconto: "77% OFF",
+          descricao: "Imersão online e ao vivo • 14 de novembro • 10h às 16h",
+          checkout: "https://pay.hotmart.com/Q108217539D?checkoutMode=10" // Link R$ 45
+        },
         "67": {
           preco: "67",
           desconto: "66% OFF",
@@ -3003,7 +3010,7 @@
       const params = new URLSearchParams(window.location.search);
       let variante = params.get("preco");
 
-      if (variante !== "67" && variante !== "97") {
+      if (variante !== "45" && variante !== "67" && variante !== "97") {
         if (AB_TEST_ATIVO) {
           const salva = localStorage.getItem("operacao_sob_controle_preco");
           variante = salva || (Math.random() < 0.5 ? "67" : "97");
@@ -3043,7 +3050,8 @@
       document.querySelectorAll(".price-cta").forEach(function (button) {
         button.addEventListener("click", function () {
           const variant = document.documentElement.dataset.priceVariant || "67";
-          const priceVal = variant === "97" ? 97.0 : 67.0;
+          const priceMap = { "45": 45.0, "67": 67.0, "97": 97.0 };
+          const priceVal = priceMap[variant] || 67.0;
 
           if (typeof window.gtag === "function") {
             // Evento legado
@@ -3100,7 +3108,8 @@
             if (entry.isIntersecting && !offerTracked) {
               offerTracked = true;
               const variant = document.documentElement.dataset.priceVariant || "67";
-              const priceVal = variant === "97" ? 97.0 : 67.0;
+              const priceMap = { "45": 45.0, "67": 67.0, "97": 97.0 };
+              const priceVal = priceMap[variant] || 67.0;
 
               if (typeof window.gtag === "function") {
                 window.gtag("event", "view_promotion", {
