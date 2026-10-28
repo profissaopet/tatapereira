@@ -42,10 +42,15 @@
   <!-- Preconnect & DNS Prefetch para Recursos Críticos -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin />
+  <link rel="preconnect" href="https://www.youtube.com" crossorigin />
+  <link rel="preconnect" href="https://i.ytimg.com" crossorigin />
+  <link rel="dns-prefetch" href="https://www.youtube-nocookie.com" />
+  <link rel="dns-prefetch" href="https://www.youtube.com" />
+  <link rel="dns-prefetch" href="https://i.ytimg.com" />
   <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
   <link rel="dns-prefetch" href="https://www.google-analytics.com" />
   <link rel="dns-prefetch" href="https://pay.hotmart.com" />
-  <link rel="dns-prefetch" href="https://i.ytimg.com" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="../assets/tata-logo-dog.png" />
@@ -726,6 +731,34 @@
       background: rgba(5, 7, 23, 0.95);
       border-color: var(--gold-border);
       color: var(--gold-primary);
+    }
+
+    /* Estado de Inicialização Imediata (0ms feedback) */
+    .video-facade.is-loading {
+      cursor: wait;
+    }
+
+    .video-facade.is-loading .play-pulse {
+      display: none;
+    }
+
+    .video-facade.is-loading .play-button-wrapper {
+      transform: scale(0.96);
+      background: rgba(10, 14, 40, 0.9);
+      border: 3px solid rgba(241, 191, 66, 0.25);
+      border-top-color: var(--gold-primary);
+      animation: videoSpinner 0.75s linear infinite;
+      box-shadow: 0 0 24px rgba(241, 191, 66, 0.5);
+    }
+
+    .video-facade.is-loading .play-button svg {
+      opacity: 0;
+    }
+
+    @keyframes videoSpinner {
+      to {
+        transform: rotate(360deg);
+      }
     }
 
     .event-line {
@@ -1815,6 +1848,201 @@
       width: 26px;
       height: 26px;
       fill: currentColor;
+    }
+
+    /* =========================================================
+       COOKIE BANNER LGPD & MODAL DE PRIVACIDADE
+       ========================================================= */
+    .cookie-banner {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 1001;
+      max-width: 440px;
+      background: rgba(10, 14, 40, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 14px;
+      padding: 12px 16px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+      display: none;
+      animation: cookieFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .cookie-banner.show {
+      display: block;
+    }
+
+    @keyframes cookieFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .cookie-inner {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cookie-icon {
+      font-size: 18px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .cookie-text {
+      font-size: 12px;
+      line-height: 1.45;
+      color: #9BA3C7;
+      margin: 0;
+      flex: 1;
+    }
+
+    .cookie-text a {
+      color: #F8FAFC;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .cookie-text a:hover {
+      color: var(--gold-primary);
+    }
+
+    .cookie-btn-accept {
+      background: var(--gold-primary);
+      color: #0A0E28;
+      border: none;
+      padding: 7px 18px;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      font-size: 12px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+      flex-shrink: 0;
+    }
+
+    .cookie-btn-accept:hover {
+      background: var(--gold-hover);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 640px) {
+      .cookie-banner {
+        left: 12px;
+        right: 12px;
+        bottom: 82px;
+        max-width: none;
+        padding: 12px 14px;
+      }
+
+      .cookie-inner {
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .cookie-text {
+        font-size: 11.5px;
+        flex: 1 1 200px;
+      }
+
+      .cookie-btn-accept {
+        width: 100%;
+        padding: 8px 14px;
+        text-align: center;
+      }
+    }
+
+    /* Modal de Privacidade */
+    .privacy-modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(5, 7, 23, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .privacy-modal-overlay.show {
+      display: flex;
+    }
+
+    .privacy-modal {
+      background: var(--navy-surface-deep);
+      border: 1px solid var(--navy-border-strong);
+      border-radius: var(--radius-lg);
+      max-width: 680px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 32px 28px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      color: var(--navy-text-main);
+    }
+
+    .privacy-modal h3 {
+      color: var(--gold-primary);
+      margin-bottom: 16px;
+      font-size: 20px;
+    }
+
+    .privacy-modal h4 {
+      color: var(--white);
+      margin: 18px 0 8px;
+      font-size: 15px;
+    }
+
+    .privacy-modal p,
+    .privacy-modal li {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: var(--navy-text-subtle);
+      margin-bottom: 10px;
+    }
+
+    .privacy-modal ul {
+      padding-left: 20px;
+      margin-bottom: 14px;
+    }
+
+    .privacy-modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: rgba(255, 255, 255, 0.08);
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      color: var(--white);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: var(--transition);
+    }
+
+    .privacy-modal-close:hover {
+      background: rgba(255, 255, 255, 0.2);
     }
 
     /* =========================================================
@@ -3056,9 +3284,50 @@
 
       <div class="footer-bottom">
         <div>© 2026 Tata Pereira. Todos os direitos reservados.</div>
+        <div>
+          <a href="../politica-privacidade/" style="color: var(--navy-text-muted); text-decoration: underline; font-size: 12.5px; transition: var(--transition);">Política de Privacidade &amp; Cookies</a>
+        </div>
       </div>
     </div>
   </footer>
+
+  <!-- =======================================================
+        AVISO DE COOKIES MINIMALISTA (LGPD)
+  ======================================================== -->
+  <div id="cookieBanner" class="cookie-banner" role="region" aria-label="Aviso de Cookies">
+    <div class="cookie-inner">
+      <span class="cookie-icon" aria-hidden="true">🍪</span>
+      <p class="cookie-text">
+        Utilizamos cookies para aprimorar sua experiência. Ao continuar navegando, você concorda com nossa
+        <a href="javascript:void(0)" id="openPrivacyBtn">Política de Privacidade</a>.
+      </p>
+      <button id="acceptCookiesBtn" class="cookie-btn-accept">Entendi</button>
+    </div>
+  </div>
+
+  <!-- MODAL DE POLÍTICA DE PRIVACIDADE -->
+  <div id="privacyModal" class="privacy-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+    <div class="privacy-modal">
+      <button id="closePrivacyBtn" class="privacy-modal-close" aria-label="Fechar modal">✕</button>
+      <h3 id="privacyTitle">Política de Privacidade &amp; Cookies</h3>
+      
+      <p>O <strong>Instituto Impacto Criativo / Tata Pereira</strong> respeita sua privacidade e tem compromisso com a transparência no tratamento de dados conforme a Lei Geral de Proteção de Dados Pessoais (LGPD — Lei nº 13.709/2018).</p>
+      
+      <h4>1. Tecnologias Analíticas &amp; Anúncios (Google, Clarity e Meta Ads)</h4>
+      <p>Nosso site utiliza o <strong>Google Analytics</strong> e o <strong>Microsoft Clarity</strong> para registrar métricas de uso e comportamento (como mapas de calor e páginas visitadas) com a finalidade exclusiva de aprimorar a usabilidade e o conteúdo. O Clarity opera com <strong>Mascaramento Estrito (Strict Masking)</strong> ativo, impedindo a gravação de dados pessoais ou senhas digitadas.</p>
+      <p>Também utilizamos o <strong>Pixel da Meta</strong> para mensurar a eficácia de nossas campanhas no Instagram e Facebook e exibir comunicações pertinentes aos profissionais do mercado pet.</p>
+
+      <h4>2. O que são Cookies?</h4>
+      <p>Cookies são pequenos arquivos armazenados temporariamente no seu navegador para reconhecer preferências de visita, medir fontes de tráfego e garantir a segurança da navegação.</p>
+
+      <h4>3. Seus Direitos e Contato</h4>
+      <p>Você pode configurar seu navegador para recusar cookies a qualquer momento. Para dúvidas ou solicitações sobre o tratamento de seus dados, entre em contato através do e-mail <strong>contato@tatapereira.com</strong>.</p>
+      
+      <div style="margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--navy-border-subtle); display: flex; justify-content: flex-end;">
+        <a href="../politica-privacidade/" target="_blank" style="color: var(--gold-primary); text-decoration: underline; font-size: 13px; font-weight: 600;">Ver Política de Privacidade Completa &rarr;</a>
+      </div>
+    </div>
+  </div>
 
   <!-- BARRA FLUTUANTE MOBILE -->
   <div class="mobile-cta">
@@ -3177,19 +3446,48 @@
       const container = document.getElementById("hero-media-container");
       if (!facade || !container) return;
 
+      let isLaunching = false;
+
       function playVideo() {
+        if (isLaunching) return;
+        isLaunching = true;
+        facade.classList.add("is-loading");
+        const caption = facade.querySelector(".video-facade-caption");
+        if (caption) caption.textContent = "Iniciando apresentação...";
+
         const iframe = document.createElement("iframe");
         iframe.id = "hero-video-player";
-        iframe.src = "https://www.youtube.com/embed/NNmg9XwJxKI?autoplay=1&playsinline=1&controls=1&fs=1&enablejsapi=1&rel=0";
+        // YouTube nocookie com parâmetros otimizados para início imediato
+        iframe.src = "https://www.youtube-nocookie.com/embed/NNmg9XwJxKI?autoplay=1&playsinline=1&controls=1&fs=1&enablejsapi=1&rel=0&modestbranding=1";
         iframe.title = "Vídeo de vendas — Imersão Operação Sob Controle";
         iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
         iframe.allowFullscreen = true;
+        iframe.setAttribute("loading", "eager");
+        iframe.style.position = "absolute";
+        iframe.style.inset = "0";
         iframe.style.width = "100%";
         iframe.style.height = "100%";
         iframe.style.border = "0";
-        iframe.style.display = "block";
+        iframe.style.zIndex = "3";
+        iframe.style.opacity = "0";
+        iframe.style.transition = "opacity 0.25s ease";
 
-        container.innerHTML = "";
+        let revealed = false;
+        function revealIframe() {
+          if (revealed) return;
+          revealed = true;
+          iframe.style.opacity = "1";
+          setTimeout(function () {
+            if (facade && facade.parentNode) {
+              facade.style.display = "none";
+            }
+          }, 350);
+        }
+
+        iframe.addEventListener("load", revealIframe);
+        // Fallback rápido para revelar mesmo com conexão instável
+        setTimeout(revealIframe, 1500);
+
         container.appendChild(iframe);
 
         // Tracking GA4 de Início de Vídeo (Engajamento de Lead)
@@ -3215,24 +3513,29 @@
         }
       });
 
-      // Pré-aquecimento de conexão DNS/TLS em hover ou ociosidade
+      // Pré-aquecimento antecipado de conexão DNS/TLS ao primeiro gesto no site
       let warmedUp = false;
       function warmUp() {
         if (warmedUp) return;
         warmedUp = true;
-        ["https://www.youtube.com", "https://i.ytimg.com"].forEach(function (href) {
+        ["https://www.youtube-nocookie.com", "https://www.youtube.com", "https://i.ytimg.com"].forEach(function (href) {
           const link = document.createElement("link");
           link.rel = "preconnect";
           link.href = href;
+          link.crossOrigin = "anonymous";
           document.head.appendChild(link);
         });
       }
 
-      facade.addEventListener("pointerenter", warmUp, { once: true });
+      ["pointerdown", "mousemove", "scroll", "touchstart"].forEach(function (evt) {
+        window.addEventListener(evt, warmUp, { once: true, passive: true });
+      });
+
+      // Executa warm-up imediato não-bloqueante
       if ("requestIdleCallback" in window) {
-        window.requestIdleCallback(warmUp, { timeout: 3000 });
+        window.requestIdleCallback(warmUp, { timeout: 1500 });
       } else {
-        setTimeout(warmUp, 3000);
+        setTimeout(warmUp, 1500);
       }
     })();
 
@@ -3437,6 +3740,65 @@
           });
         }
       }, 60000);
+
+      // -----------------------------------------------------------
+      // 9. BANNER DE COOKIES & MODAL DE PRIVACIDADE (LGPD / CLARITY)
+      // -----------------------------------------------------------
+      const cookieBanner = document.getElementById("cookieBanner");
+      const acceptCookiesBtn = document.getElementById("acceptCookiesBtn");
+      const privacyModal = document.getElementById("privacyModal");
+      const openPrivacyBtn = document.getElementById("openPrivacyBtn");
+      const closePrivacyBtn = document.getElementById("closePrivacyBtn");
+      const footerPrivacyLink = document.getElementById("footerPrivacyLink");
+
+      const COOKIE_STORAGE_KEY = "tata_cookies_consent_accepted";
+
+      if (cookieBanner && !localStorage.getItem(COOKIE_STORAGE_KEY)) {
+        // Exibe o banner suavemente após 1 segundo de navegação
+        setTimeout(function () {
+          cookieBanner.classList.add("show");
+        }, 1000);
+      }
+
+      if (acceptCookiesBtn) {
+        acceptCookiesBtn.addEventListener("click", function () {
+          localStorage.setItem(COOKIE_STORAGE_KEY, "true");
+          cookieBanner.classList.remove("show");
+
+          // Informa consentimento ao Microsoft Clarity se ativo
+          if (typeof window.clarity === "function") {
+            window.clarity("consent");
+          }
+
+          if (window.dataLayer) {
+            window.dataLayer.push({ event: "cookie_consent_accepted" });
+          }
+        });
+      }
+
+      function openPrivacyModal() {
+        if (privacyModal) privacyModal.classList.add("show");
+      }
+
+      function closePrivacyModal() {
+        if (privacyModal) privacyModal.classList.remove("show");
+      }
+
+      if (openPrivacyBtn) openPrivacyBtn.addEventListener("click", openPrivacyModal);
+      if (footerPrivacyLink) footerPrivacyLink.addEventListener("click", openPrivacyModal);
+      if (closePrivacyBtn) closePrivacyBtn.addEventListener("click", closePrivacyModal);
+
+      if (privacyModal) {
+        privacyModal.addEventListener("click", function (e) {
+          if (e.target === privacyModal) closePrivacyModal();
+        });
+      }
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && privacyModal && privacyModal.classList.contains("show")) {
+          closePrivacyModal();
+        }
+      });
     });
   </script>
 </body>
