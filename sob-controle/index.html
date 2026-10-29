@@ -42,12 +42,10 @@
   <!-- Preconnect & DNS Prefetch para Recursos Críticos -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://www.youtube-nocookie.com" crossorigin />
-  <link rel="preconnect" href="https://www.youtube.com" crossorigin />
-  <link rel="preconnect" href="https://i.ytimg.com" crossorigin />
-  <link rel="dns-prefetch" href="https://www.youtube-nocookie.com" />
-  <link rel="dns-prefetch" href="https://www.youtube.com" />
-  <link rel="dns-prefetch" href="https://i.ytimg.com" />
+  <link rel="preconnect" href="https://github.com" crossorigin />
+  <link rel="preconnect" href="https://objects.githubusercontent.com" crossorigin />
+  <link rel="dns-prefetch" href="https://github.com" />
+  <link rel="dns-prefetch" href="https://objects.githubusercontent.com" />
   <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
   <link rel="dns-prefetch" href="https://www.google-analytics.com" />
   <link rel="dns-prefetch" href="https://pay.hotmart.com" />
@@ -613,16 +611,23 @@
       border-radius: var(--radius-lg);
       overflow: hidden;
       border: 1.5px solid var(--navy-border-card);
-      box-shadow: var(--shadow-lg), 0 0 40px rgba(241, 191, 66, 0.1);
+      box-shadow: var(--shadow-lg), 0 0 40px rgba(241, 191, 66, 0.12);
       background: #000;
       position: relative;
     }
 
+    #hero-video,
+    .hero-media video,
     .hero-media iframe {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       display: block;
       border: 0;
+      object-fit: contain;
+      background: #000;
+      z-index: 1;
     }
 
     /* Video Facade de Alta Performance */
@@ -640,6 +645,14 @@
       overflow: hidden;
       border: 0;
       padding: 0;
+      z-index: 2;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+    }
+
+    .video-facade.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
     }
 
     .video-facade picture,
@@ -711,7 +724,7 @@
 
     .video-facade-caption {
       position: absolute;
-      bottom: 14px;
+      bottom: 18px;
       z-index: 2;
       font-size: 0.8rem;
       font-weight: 600;
@@ -724,6 +737,9 @@
       border-radius: 20px;
       border: 1px solid rgba(255, 255, 255, 0.15);
       transition: all 0.3s ease;
+      white-space: nowrap;
+      max-width: 90%;
+      text-align: center;
     }
 
     .video-facade:hover .video-facade-caption,
@@ -2163,11 +2179,22 @@
       </p>
 
       <div class="hero-media" id="hero-media-container">
+        <video id="hero-video"
+               playsinline
+               webkit-playsinline
+               preload="auto"
+               poster="../assets/video-thumb.webp">
+          <source src="https://github.com/profissaopet/tatapereira/releases/download/video/sobcontrole.mp4" type="video/mp4" />
+          Seu navegador não suporta a reprodução de vídeo HTML5.
+        </video>
         <div class="video-facade" id="video-facade" role="button" tabindex="0"
           aria-label="Assistir ao vídeo da Imersão Operação Sob Controle">
-          <img src="https://i.ytimg.com/vi/NNmg9XwJxKI/maxresdefault.jpg"
-            alt="Vídeo de Apresentação — Imersão Operação Sob Controle" width="1280" height="720" fetchpriority="high"
-            decoding="async" />
+          <picture>
+            <source srcset="../assets/video-thumb.webp" type="image/webp" />
+            <img src="../assets/video-thumb.webp"
+              alt="Vídeo de Apresentação — Imersão Operação Sob Controle" width="1280" height="720" fetchpriority="high"
+              decoding="async" onerror="this.onerror=null;this.src='../assets/tata-video-placeholder.png';" />
+          </picture>
           <div class="play-button-wrapper">
             <div class="play-pulse"></div>
             <div class="play-button" aria-hidden="true">
@@ -3439,70 +3466,54 @@
     };
 
     // -------------------------------------------------------------
-    // 3. FACADE DE VÍDEO YOUTUBE & TRACKING DE REPRODUÇÃO
+    // 3. REPRODUÇÃO INSTANTÂNEA DE VÍDEO (MP4 NATIVO ULTRA-RÁPIDO)
     // -------------------------------------------------------------
-    (function initVideoFacade() {
+    (function initInstantVideoPlayer() {
       const facade = document.getElementById("video-facade");
-      const container = document.getElementById("hero-media-container");
-      if (!facade || !container) return;
+      const video = document.getElementById("hero-video");
+      if (!facade || !video) return;
 
-      let isLaunching = false;
+      let hasPlayed = false;
 
       function playVideo() {
-        if (isLaunching) return;
-        isLaunching = true;
-        facade.classList.add("is-loading");
-        const caption = facade.querySelector(".video-facade-caption");
-        if (caption) caption.textContent = "Iniciando apresentação...";
+        if (hasPlayed) return;
+        hasPlayed = true;
 
-        const iframe = document.createElement("iframe");
-        iframe.id = "hero-video-player";
-        // YouTube nocookie com parâmetros otimizados para início imediato
-        iframe.src = "https://www.youtube-nocookie.com/embed/NNmg9XwJxKI?autoplay=1&playsinline=1&controls=1&fs=1&enablejsapi=1&rel=0&modestbranding=1";
-        iframe.title = "Vídeo de vendas — Imersão Operação Sob Controle";
-        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-        iframe.allowFullscreen = true;
-        iframe.setAttribute("loading", "eager");
-        iframe.style.position = "absolute";
-        iframe.style.inset = "0";
-        iframe.style.width = "100%";
-        iframe.style.height = "100%";
-        iframe.style.border = "0";
-        iframe.style.zIndex = "3";
-        iframe.style.opacity = "0";
-        iframe.style.transition = "opacity 0.25s ease";
+        // Garante áudio ativo e controles nativos
+        video.muted = false;
+        video.volume = 1.0;
+        video.controls = true;
+        facade.classList.add("is-hidden");
 
-        let revealed = false;
-        function revealIframe() {
-          if (revealed) return;
-          revealed = true;
-          iframe.style.opacity = "1";
-          setTimeout(function () {
-            if (facade && facade.parentNode) {
-              facade.style.display = "none";
-            }
-          }, 350);
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then(function () {
+              trackVideoStart();
+            })
+            .catch(function (error) {
+              console.warn("Erro ao iniciar vídeo com som:", error);
+              trackVideoStart();
+            });
+        } else {
+          trackVideoStart();
         }
+      }
 
-        iframe.addEventListener("load", revealIframe);
-        // Fallback rápido para revelar mesmo com conexão instável
-        setTimeout(revealIframe, 1500);
-
-        container.appendChild(iframe);
-
-        // Tracking GA4 de Início de Vídeo (Engajamento de Lead)
+      function trackVideoStart() {
         if (typeof window.gtag === "function") {
           window.gtag("event", "video_start", {
             video_title: "Vídeo de vendas — Imersão Operação Sob Controle",
-            video_provider: "youtube",
-            video_url: "https://www.youtube.com/watch?v=NNmg9XwJxKI"
+            video_provider: "html5_mp4",
+            video_url: video.currentSrc || "https://github.com/profissaopet/tatapereira/releases/download/video/sobcontrole.mp4"
           });
         }
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: "video_start",
-          video_title: "Operacao Sob Controle"
-        });
+        if (window.dataLayer) {
+          window.dataLayer.push({
+            event: "video_start",
+            video_title: "Operacao Sob Controle"
+          });
+        }
       }
 
       facade.addEventListener("click", playVideo);
@@ -3513,30 +3524,11 @@
         }
       });
 
-      // Pré-aquecimento antecipado de conexão DNS/TLS ao primeiro gesto no site
-      let warmedUp = false;
-      function warmUp() {
-        if (warmedUp) return;
-        warmedUp = true;
-        ["https://www.youtube-nocookie.com", "https://www.youtube.com", "https://i.ytimg.com"].forEach(function (href) {
-          const link = document.createElement("link");
-          link.rel = "preconnect";
-          link.href = href;
-          link.crossOrigin = "anonymous";
-          document.head.appendChild(link);
-        });
-      }
-
-      ["pointerdown", "mousemove", "scroll", "touchstart"].forEach(function (evt) {
-        window.addEventListener(evt, warmUp, { once: true, passive: true });
+      video.addEventListener("play", function () {
+        video.muted = false;
+        video.controls = true;
+        facade.classList.add("is-hidden");
       });
-
-      // Executa warm-up imediato não-bloqueante
-      if ("requestIdleCallback" in window) {
-        window.requestIdleCallback(warmUp, { timeout: 1500 });
-      } else {
-        setTimeout(warmUp, 1500);
-      }
     })();
 
     // -------------------------------------------------------------
